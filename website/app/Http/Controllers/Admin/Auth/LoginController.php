@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
+
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -13,12 +15,12 @@ class LoginController extends Controller
     protected string $redirectTo = RouteServiceProvider::ADMIN_HOME;
 
 
-    public function showLoginForm(): Factory|View|Application
+    public function showLoginForm()
     {
         return view("auth.admin.login");
     }
 
-    public function login(Request $request): RedirectResponse
+    public function login(Request $request)
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
@@ -31,7 +33,7 @@ class LoginController extends Controller
 
         return back()->withInput($request->only('email', 'remember'));
     }
-    public function logout(Request $request): Application|Redirector|RedirectResponse
+    public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();

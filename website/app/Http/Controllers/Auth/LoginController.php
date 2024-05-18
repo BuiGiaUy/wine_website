@@ -36,23 +36,5 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admin')->except('logout');
-    }
-    public function showAdminLoginForm(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
-    {
-        return view("auth.login", ["route" => route("admin.login-view"), 'title' => "Admin"]);
-    }
-    public function adminLogin(Request $request): \Illuminate\Http\RedirectResponse
-    {
-        $this->validate($request, [
-            'email'   => 'required|email',
-            'password' => 'required|min:6'
-        ]);
-
-        if (\Auth::guard('admin')->attempt($request->only(['email','password']), $request->get('remember'))){
-            return redirect()->intended('/admin');
-        }
-
-        return back()->withInput($request->only('email', 'remember'));
     }
 }
