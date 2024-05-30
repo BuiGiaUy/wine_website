@@ -2,7 +2,13 @@
 
 namespace App\Exceptions;
 
+use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Arr;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -21,10 +27,25 @@ class Handler extends ExceptionHandler
     /**
      * Register the exception handling callbacks for the application.
      */
-    public function register(): void
+    public function report(Exception|Throwable $e): void
     {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
+        parent::report($e);
+    }
+
+
+    public function render($request, Exception|Throwable $e)
+    {
+        return parent::render($request, $e);
+    }
+
+    protected function unauthenticated($request, AuthenticationException $exception): JsonResponse|Response|RedirectResponse
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['message' => 'Unauthenticated.'], 401);
+        }
+        $guard = Arr::get($exception->guards(),0);
+        if ($guard == "admin")
+            return redirect()->route('admin.login.form');
+        return redirect()->guest(route('login'));
     }
 }
