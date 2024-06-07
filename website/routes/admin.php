@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::namespace('admin')->group(function () {
@@ -51,5 +52,14 @@ Route::namespace('admin')->group(function () {
             Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('admin.post.delete');
         });
 
+        // Quản lý bài viết
+        Route::group(['prefix'=> 'product'], function() {
+            Route::get('/', [ProductController::class, 'index'])->name('admin.product.index');
+            Route::get('/add', [ProductController::class, 'add'])->name('admin.product.add');
+            Route::post('/add', [ProductController::class, 'store'])->name('admin.product.store');
+            Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
+            Route::post('/edit/{id}', [ProductController::class, 'update'])->name('admin.product.update');
+            Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('admin.product.delete');
+        });
     });
 });
