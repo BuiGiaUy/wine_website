@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
@@ -52,20 +53,32 @@ class ProductController extends Controller
     }
     public function index(): Factory|View|Application
     {
-        return view("admin.content.post.add", [
+        $products = Product::paginate(12);
+        return view("admin.content.product.index", [
             "categories" => $this->getProductCategories(),
+            "products" => $products
+        ]);
+    }
+    public function add():Factory|View|Application
+    {
+        $brands = Brand::all();
+        $posts = Post::all();
+        return view("admin.content.product.add", [
+            "categories" => $this->getProductCategories(),
+            "brands" => $brands,
+            "posts" => $posts
         ]);
     }
     public function saveImageIntoProduct($images, $product): void
     {
         foreach ($images as $img)
         {
-            $image = new Image();
-            $image["type"] = typeOf($product);
-            $image["model_id"] = $product->id;
-            $image["path"] = $img;
-            $image["name"] = $img;
-            $image["alt"] = $img;
+            $image= new Image();
+            $image["type"]= typeOf($product);
+            $image["model_id"]= $product->id;
+            $image["path"]= $img;
+            $image["name"]= $img;
+            $image["alt"]= $img;
             $image->save();
         }
     }
@@ -86,8 +99,10 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         if (!$product) return redirect()->back();
-        return view("admin.product.edit", [
-            "item" => $product,
+        $brands = Brand::all();
+        return view("admin.content.product.edit", [
+            "product" => $product,
+            "brands" => $brands,
             "categories" => $this->getProductCategories(),
         ]);
     }

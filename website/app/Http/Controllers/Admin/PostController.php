@@ -31,7 +31,7 @@ class PostController extends Controller
     protected function fillDataToPost($item, $input, $is_create): void
     {
         $item["name"] = $input["name"] ?? "";
-        $item["slug"] = $input["slug"] ?? Str::slug($item["item"]);
+        $item["slug"] = $input["slug"] ?? Str::slug($item["name"]);
         $item["description"] = $input["description"] ?? "";
         $item["content"] = $input["content"] ?? "";
         $item["seo_title"] = $input["seo_title"] ?? "";
@@ -52,8 +52,16 @@ class PostController extends Controller
         return view('admin.content.post.index', [
             "posts" => Post::orderBy('category_id', 'ASC')->whereHas('category', function ($query) use($group) {
                 $query->where('model_type', $group);
-            })->paginate(50)
+            })->paginate(15)
         ]);
+
+//        $posts = Post::orderBy('category_id', 'ASC')->whereHas('category', function ($query) use ($group) {
+//            $query->where('model_type', $group);
+//        })->paginate(50);
+//
+//        echo "<pre>";
+//        print_r($post);
+//        echo "</pre>";
     }
     public function add():Factory|View|Application
     {
@@ -65,7 +73,7 @@ class PostController extends Controller
     {
         foreach ($images as $img)
         {
-            $image = new Image();
+            $image= new Image();
             $image["type"]= typeOf($post);
             $image["model_id"]= $post->id;
             $image["path"]= $img;
@@ -90,8 +98,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         if (!$post) return redirect()->back();
-        return view("admin.post.edit", [
-            "item" => $post,
+        return view("admin.content.post.edit", [
+            "post" => $post,
             "categories" => $this->getPostCategories(),
         ]);
     }

@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
     protected $table = "posts";
-    protected $fillable = ['name', 'slug', 'description', 'content', 'seo_title', 'seo_description', 'seo_keywords', 'category_id', 'views', 'rating_number', 'rating_value'];
-    protected $with = ['categories', 'images'];
+    protected $fillable = ['id','name', 'slug', 'description', 'content', 'seo_title', 'seo_description', 'seo_keywords', 'category_id', 'views', 'rating_number', 'rating_value'];
+
 
     public function category(): BelongsTo
     {

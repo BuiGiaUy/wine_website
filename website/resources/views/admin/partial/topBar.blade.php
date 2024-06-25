@@ -1,11 +1,6 @@
 <div class="top-bar -mx-4 px-4 md:mx-0 md:px-0">
     <!-- BEGIN: Breadcrumb -->
-    <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Application</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-        </ol>
-    </nav>
+    @yield('breadcrumb')
     <!-- END: Breadcrumb -->
     <!-- BEGIN: Search -->
     <div class="intro-x relative mr-3 sm:mr-6">

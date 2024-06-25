@@ -52,7 +52,7 @@ Route::namespace('admin')->group(function () {
             Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('admin.post.delete');
         });
 
-        // Quản lý bài viết
+        // Quản lý sản phẩm
         Route::group(['prefix'=> 'product'], function() {
             Route::get('/', [ProductController::class, 'index'])->name('admin.product.index');
             Route::get('/add', [ProductController::class, 'add'])->name('admin.product.add');

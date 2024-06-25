@@ -13,19 +13,19 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('category_id')->constrained('categories')->onDelete('cascade');
-            $table->text('name');
-            $table->text('slug')->unique();;
-            $table->text('barcode')->unique();;
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('barcode')->unique();
             $table->text('description');
-            $table->bigInteger('quantity');
-            $table->bigInteger('price');
-            $table->bigInteger('discount_percent');
-            $table->bigInteger('viewer')->default(0);
+            $table->unsignedBigInteger('quantity');
+            $table->unsignedBigInteger('price');
+            $table->unsignedBigInteger('discount_percent');
+            $table->unsignedBigInteger('viewer')->default(0);
             $table->double('rating_number')->default(0);
-            $table->integer('rating_value')->default(0);
-            $table->bigInteger('brand_id')->constrained('brands')->onDelete('cascade');
-            $table->bigInteger('post_id')->constrained('posts')->onDelete('cascade');
+            $table->unsignedInteger('rating_value')->default(0);
+            $table->foreignId('brand_id')->constrained()->onDelete('cascade');
+            $table->foreignId('post_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
