@@ -52,6 +52,5 @@ Route::namespace('admin')->group(function () {
             Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('admin.post.delete');
         });
 
-
     });
 });
