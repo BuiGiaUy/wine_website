@@ -52,7 +52,7 @@ class PostController extends Controller
         return view('admin.content.post.index', [
             "posts" => Post::orderBy('category_id', 'ASC')->whereHas('category', function ($query) use($group) {
                 $query->where('model_type', $group);
-            })->paginate(15)
+            })->qaginate(15)
         ]);
 
 //        $posts = Post::orderBy('category_id', 'ASC')->whereHas('category', function ($query) use ($group) {
