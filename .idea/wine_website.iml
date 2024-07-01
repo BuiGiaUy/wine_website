@@ -8,6 +8,8 @@
       <sourceFolder url="file://$MODULE_DIR$/website/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/website/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/website/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/carbonphp/carbon-doctrine-types" />
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/composer" />
@@ -120,6 +122,12 @@
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/website/vendor/laravel/ui" />
+      <excludeFolder url="file://$MODULE_DIR$/website/vendor/alexusmai/laravel-file-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/website/vendor/intervention/gif" />
+      <excludeFolder url="file://$MODULE_DIR$/website/vendor/intervention/image" />
+      <excludeFolder url="file://$MODULE_DIR$/website/vendor/intervention/image-laravel" />
+      <excludeFolder url="file://$MODULE_DIR$/website/vendor/darryldecode/cart" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

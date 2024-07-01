@@ -12,7 +12,7 @@ class Product extends Model
 {
     protected $table = "products";
     protected $fillable = ["name", "slug", "barcode", "description", "brand_id", "post_id", "model_type"];
-    protected $with =["posts", "categories", "brands", "images"];
+//    protected $with =["posts", "categories", "brands", "images"];
 
     public function category(): BelongsTo
     {
@@ -20,7 +20,7 @@ class Product extends Model
     }
     public function brand(): BelongsTo
     {
-        return $this->belongsTo(Brand::class, 'category_id', 'id');
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
     public function posts(): HasMany
     {
