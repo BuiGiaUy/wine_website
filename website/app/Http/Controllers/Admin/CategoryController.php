@@ -17,9 +17,7 @@ class CategoryController extends Controller
         $this->middleware('auth:admin');
     }
 
-    private function getCategories($model_type){
-        return Category::where('model_type','=', $model_type)->where('parent_id','=',0)->with('childs')->get();
-    }
+
     private function fillData($item, $input, $model_type): void
     {
         $item["parent_id"] = $input["parent_id"];
@@ -29,7 +27,12 @@ class CategoryController extends Controller
         $item["model_type"] = $model_type;
         $item->save();
     }
-
+    private function getCategories($model_type, $perPage = 10){
+        return Category::where('model_type','=', $model_type)
+            ->where('parent_id','=',0)
+            ->with('subCategories')
+            ->paginate($perPage);
+    }
 
     public function index($model_type): Factory|View|Application
     {
