@@ -1,67 +1,122 @@
-<header id="header" class="header header-full-width has-sticky sticky-jump" style="">
-    <div class="header-wrapper">
-        <div id="masthead" class="header-main has-sticky-logo nav-dark">
-            <div class="header-inner flex-row container logo-left medium-logo-center" role="navigation">
-                <div id="logo" class="flex-col logo">  <a href="https://winecellar.vn/" title="WINECELLAR.vn - We are masters of wine" rel="home"> <img width="1020" height="613" src="https://winecellar.vn/wp-content/uploads/2022/04/W-Bronze-logo-2.png" class="header-logo-sticky" alt="WINECELLAR.vn"><img width="300" height="179" src="https://winecellar.vn/wp-content/uploads/2021/07/Winecellar-Logo-120721-1.png" class="header_logo header-logo" alt="WINECELLAR.vn"><img width="334" height="200" src="https://winecellar.vn/wp-content/uploads/2022/09/W-Bronze-logo-New-1.png" class="header-logo-dark" alt="WINECELLAR.vn"></a></div><div class="flex-col show-for-medium flex-left"> <ul class="mobile-nav nav nav-left"> <li class="nav-icon has-icon"> <a href="#" data-open="#main-menu" data-pos="left" data-bg="main-menu-overlay" data-color="dark" class="is-small" aria-label="Menu" aria-controls="main-menu" aria-expanded="false"> <i class="icon-menu"></i> </a> </li> </ul></div><div class="flex-col hide-for-medium flex-left flex-grow"> <ul class="header-nav header-nav-main nav nav-left nav-divided nav-size-medium nav-spacing-large nav-uppercase"> </ul></div><div class="flex-col hide-for-medium flex-right">
-                    <ul class="header-nav header-nav-main nav nav-right nav-divided nav-size-medium nav-spacing-large nav-uppercase">
-                        <li id="menu-item-36227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-35556 current_page_item menu-item-36227 active menu-item-design-default"><a href="https://winecellar.vn/" aria-current="page" class="nav-top-link">Trang chủ</a></li>
-                        <li id="menu-item-11284" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-11284 menu-item-design-full-width menu-item-has-block has-dropdown"><a href="https://winecellar.vn/ruou-vang/" class="nav-top-link" aria-expanded="false" aria-haspopup="menu">RƯỢU VANG<i class="icon-angle-down"></i></a><div class="sub-menu nav-dropdown">	<section class="section" id="section_1526236682">
-                                    <div class="bg section-bg fill bg-fill bg-loaded"></div><div class="section-content relative">
-                                        <div class="row" id="row-1173563553">
-                                            <div id="col-1764799511" class="col medium-3 small-6 large-3">
-                                                <div class="col-inner">
-                                                    <div class="ux-menu stack stack-col justify-start">
-                                                        <div class="ux-menu-title flex mn-icon mn-icon-type"> Theo loại rượu</div><div class="ux-menu-link flex menu-item label-hot"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-do/"> <span class="ux-menu-link__text"> Rượu vang đỏ </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-trang/"> <span class="ux-menu-link__text"> Rượu vang trắng </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-sui/"> <span class="ux-menu-link__text"> Rượu vang sủi </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-champagne/"> <span class="ux-menu-link__text"> Rượu Champagne </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-hong/"> <span class="ux-menu-link__text"> Rượu vang hồng </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-ngot/"> <span class="ux-menu-link__text"> Rượu vang ngọt </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-cuong-hoa/"> <span class="ux-menu-link__text"> Rượu vang cường hóa </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-khong-con/"> <span class="ux-menu-link__text"> Rượu vang không cồn </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-organic/"> <span class="ux-menu-link__text"> Rượu vang Organic </span> </a></div><div class="ux-menu-link flex menu-item color-main font-bold"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang/"> <i class="ux-menu-link__icon text-center icon-angle-right"></i> <span class="ux-menu-link__text"> Tất cả rượu vang </span> </a></div></div></div></div><div id="col-1015600044" class="col medium-3 small-6 large-3">
-                                                <div class="col-inner">
-                                                    <div class="ux-menu stack stack-col justify-start">
-                                                        <div class="ux-menu-title flex mn-icon mn-icon-country"> Theo quốc gia</div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-phap/"> <span class="ux-menu-link__text"> Rượu vang Pháp </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-y/"> <span class="ux-menu-link__text"> Rượu vang Ý </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/vang-tay-ban-nha/"> <span class="ux-menu-link__text"> Rượu vang Tây Ban Nha </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-chile/"> <span class="ux-menu-link__text"> Rượu vang Chile </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-my/"> <span class="ux-menu-link__text"> Rượu vang Mỹ </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-uc/"> <span class="ux-menu-link__text"> Rượu vang Úc </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-newzealand/"> <span class="ux-menu-link__text"> Rượu vang New Zealand </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-argentina/"> <span class="ux-menu-link__text"> Rượu vang Argentina </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-bo-dao-nha/"> <span class="ux-menu-link__text"> Rượu vang Bồ Đào Nha </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-duc/"> <span class="ux-menu-link__text"> Rượu vang Đức </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-nam-phi/"> <span class="ux-menu-link__text"> Rượu vang Nam Phi </span> </a></div></div></div></div><div id="col-167231979" class="col medium-3 small-6 large-3">
-                                                <div class="col-inner">
-                                                    <div class="ux-menu stack stack-col justify-start">
-                                                        <div class="ux-menu-title flex mn-icon mn-icon-grape"> Theo giống nho</div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/cabernet-sauvignon/"> <span class="ux-menu-link__text"> Cabernet Sauvignon </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/merlot/"> <span class="ux-menu-link__text"> Merlot </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/syrah-shiraz/"> <span class="ux-menu-link__text"> Syrah (Shiraz) </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/pinot-noir/"> <span class="ux-menu-link__text"> Pinot Noir </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/malbec/"> <span class="ux-menu-link__text"> Malbec </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/montepulciano-d-abruzzo/"> <span class="ux-menu-link__text"> Montepulciano D'Abruzzo </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/negroamaro/"> <span class="ux-menu-link__text"> Negroamaro </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/primitivo/"> <span class="ux-menu-link__text"> Primitivo </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/chardonnay/"> <span class="ux-menu-link__text"> Chardonnay </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/sauvignon-blanc/"> <span class="ux-menu-link__text"> Sauvignon Blanc </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/riesling/"> <span class="ux-menu-link__text"> Riesling </span> </a></div><div class="ux-menu-link flex menu-item color-main font-bold"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/giong-nho/"> <i class="ux-menu-link__icon text-center icon-angle-right"></i> <span class="ux-menu-link__text"> Tìm giống nho </span> </a></div></div></div></div><div id="col-1540067994" class="col medium-3 small-6 large-3">
-                                                <div class="col-inner">
-                                                    <div class="ux-menu stack stack-col justify-start">
-                                                        <div class="ux-menu-title flex mn-icon mn-icon-regions"> Theo vùng nổi tiếng</div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-bordeaux/"> <span class="ux-menu-link__text"> Rượu vang Bordeaux (Pháp) </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-burgundy/"> <span class="ux-menu-link__text"> Rượu vang Bourgogne (Pháp) </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-tuscany/"> <span class="ux-menu-link__text"> Rượu vang Tuscany (Ý) </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-puglia/"> <span class="ux-menu-link__text"> Rượu vang Puglia (Ý) </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-piedmont/"> <span class="ux-menu-link__text"> Rượu vang Piedmont (Ý) </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-vang-california/"> <span class="ux-menu-link__text"> Rượu vang California (Mỹ) </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ruou-champagne/"> <span class="ux-menu-link__text"> Rượu Champagne (Pháp) </span> </a></div></div></div></div></div></div><style>#section_1526236682{padding-top:24px;padding-bottom:24px;}</style>
-                                </section></div></li>
-                        <li id="menu-item-45626" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-45626 menu-item-design-default"><a href="https://winecellar.vn/ruou-manh-cao-cap/" class="nav-top-link">Rượu Mạnh</a></li>
-                        <li id="menu-item-36468" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36468 menu-item-design-full-width menu-item-has-block has-dropdown"><a href="https://winecellar.vn/pha-le-riedel/" class="nav-top-link" aria-expanded="false" aria-haspopup="menu">Pha Lê Riedel<i class="icon-angle-down"></i></a><div class="sub-menu nav-dropdown">	<section class="section" id="section_1848376577">
-                                    <div class="bg section-bg fill bg-fill bg-loaded"></div><div class="section-content relative">
-                                        <div class="row" id="row-1722948373">
-                                            <div id="col-1266029262" class="col medium-3 small-6 large-3">
-                                                <div class="col-inner">
-                                                    <div class="ux-menu stack stack-col justify-start">
-                                                        <div class="ux-menu-title flex"> Ly Pha Lê Riedel</div><div class="ux-menu-link flex menu-item label-hot"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ly-vang-do/"> <span class="ux-menu-link__text"> Ly Vang Đỏ </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ly-vang-trang/"> <span class="ux-menu-link__text"> Ly Vang Trắng </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ly-champagne/"> <span class="ux-menu-link__text"> Ly Champagne </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ly-ruou-manh/"> <span class="ux-menu-link__text"> Ly Rượu Mạnh </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ly-chan-mau/"> <span class="ux-menu-link__text"> Ly Chân Màu </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ly-cocktail/"> <span class="ux-menu-link__text"> Ly Cocktail </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/coc-nuoc/"> <span class="ux-menu-link__text"> Cốc Nước </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ly-thu-cong/"> <span class="ux-menu-link__text"> Ly Thủ Công </span> </a></div><div class="ux-menu-link flex menu-item color-main font-bold"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/ly-pha-le-riedel/"> <i class="ux-menu-link__icon text-center icon-angle-right"></i> <span class="ux-menu-link__text"> Tất cả ly pha lê RIEDEL </span> </a></div></div></div></div><div id="col-721032296" class="col medium-3 small-6 large-3">
-                                                <div class="col-inner">
-                                                    <div class="ux-menu stack stack-col justify-start">
-                                                        <div class="ux-menu-title flex"> DECANTER RIEDEL</div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/decanter-handmade/"> <span class="ux-menu-link__text"> Decanter Handmade </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/decanter-handmade-rq/"> <span class="ux-menu-link__text"> Decanter Handmade RQ </span> </a></div><div class="ux-menu-link flex menu-item"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/decanter-machine-made/"> <span class="ux-menu-link__text"> Decanter Machine Made </span> </a></div><div class="ux-menu-link flex menu-item color-main font-bold"> <a class="ux-menu-link__link flex" href="https://winecellar.vn/decanter-riedel/"> <i class="ux-menu-link__icon text-center icon-angle-right"></i> <span class="ux-menu-link__text"> Tất cả Decanter RIEDEL </span> </a></div></div></div></div></div></div><style>#section_1848376577{padding-top:24px;padding-bottom:24px;}</style>
-                                </section></div></li>
-                        <li id="menu-item-41012" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41012 menu-item-design-default"><a href="https://winecellar.vn/nha-san-xuat/" class="nav-top-link">Nhà sản xuất</a></li>
-                        <li id="menu-item-11287" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11287 menu-item-design-default has-icon-left"><a href="https://winecellar.vn/qua-tang-doanh-nghiep/" class="nav-top-link"><img class="ux-menu-icon" width="18" height="18" src="https://winecellar.vn/wp-content/uploads/2023/11/172472_gift_present_icon-1.png" alt="">QUÀ TẶNG</a></li>
-                        <li id="menu-item-21950" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-21950 menu-item-design-default has-icon-left"><a href="https://winecellar.vn/chuong-trinh-khuyen-mai/" class="nav-top-link"><img class="ux-menu-icon" width="18" height="18" src="https://winecellar.vn/wp-content/uploads/2023/11/172543_sale_icon.png" alt="">Khuyến mại</a></li>
-                        <li id="menu-item-32006" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32006 menu-item-design-default"><a href="https://winecellar.vn/kien-thuc-ruou-vang/" class="nav-top-link">Kiến thức</a></li>
-                        <li id="menu-item-11288" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11288 menu-item-design-default"><a href="https://winecellar.vn/lien-he/" class="nav-top-link">Liên hệ</a></li>
-                        <li class="header-search header-search-lightbox has-icon"> <a href="#search-lightbox" aria-label="Tìm kiếm" data-open="#search-lightbox" data-focus="input.search-field" class="is-small">  <i class="icon-search"></i> </a> <div id="search-lightbox" class="mfp-hide dark text-center"> <div class="searchform-wrapper ux-search-box relative is-large"><form role="search" method="get" class="searchform" action="https://winecellar.vn/"> <div class="flex-row relative"> <div class="flex-col flex-grow"> <label class="screen-reader-text" for="woocommerce-product-search-field-0">Tìm kiếm:</label> <input type="search" id="woocommerce-product-search-field-0" class="search-field mb-0" placeholder="Hãy thử 'vang cá chép' xem sao!" value="" name="s"> <input type="hidden" name="post_type" value="product"></div><div class="flex-col"> <button type="submit" value="Tìm kiếm" class="ux-search-submit submit-button secondary button icon mb-0" aria-label="Submit"> <i class="icon-search"></i> </button></div></div><div class="live-search-results text-left z-top"></div></form></div></div></li>
-                        <li class="cart-item has-icon"> <a href="https://winecellar.vn/cart/" class="header-cart-link is-small off-canvas-toggle nav-top-link" title="Giỏ hàng" data-open="#cart-popup" data-class="off-canvas-cart" data-pos="right"> 				<i class="icon-shopping-basket" data-icon-label="0">
-                                </i> </a>  <div id="cart-popup" class="mfp-hide"> <div class="cart-popup-inner inner-padding cart-popup-inner--sticky"> <div class="cart-popup-title text-center"> <span class="heading-font uppercase">Giỏ hàng</span> <div class="is-divider"></div></div><div class="widget woocommerce widget_shopping_cart"><div class="widget_shopping_cart_content">
+<header id="header" class="  uk-navbar-container uk-navbar-transparent uk-sticky" uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    <div class="uk-container">
+        <nav class="uk-navbar " uk-navbar>
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" href="https://winecellar.vn/">
+                </a>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav uk-visible@m">
+                    <li class="uk-active"><a href="https://winecellar.vn/">Trang chủ</a></li>
+                    <li>
+                        <a href="#">RƯỢU VANG <span uk-icon="icon: triangle-down"></span></a>
+                        <div class="uk-navbar-dropdown" uk-drop="boundary: !.uk-navbar; stretch: x; flip: false">
+                            <div class="uk-drop-grid uk-child-width-1-4@m" uk-grid>
+                                <div>
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li class="uk-nav-header">Theo loại rượu</li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-do/">Rượu vang đỏ</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-trang/">Rượu vang trắng</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-sui/">Rượu vang sủi</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-champagne/">Rượu Champagne</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-hong/">Rượu vang hồng</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-ngot/">Rượu vang ngọt</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-cuong-hoa/">Rượu vang cường hóa</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-khong-con/">Rượu vang không cồn</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-organic/">Rượu vang Organic</a></li>
+                                        <li class="uk-nav-divider"></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang/" style="padding-left: 5px " class="link-p">Tất cả rượu vang</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li class="uk-nav-header">Theo quốc gia</li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-phap/">Rượu vang Pháp</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-y/">Rượu vang Ý</a></li>
+                                        <li><a href="https://winecellar.vn/vang-tay-ban-nha/">Rượu vang Tây Ban Nha</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-chile/">Rượu vang Chile</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-my/">Rượu vang Mỹ</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-uc/">Rượu vang Úc</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-newzealand/">Rượu vang New Zealand</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-argentina/">Rượu vang Argentina</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-bo-dao-nha/">Rượu vang Bồ Đào Nha</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-duc/">Rượu vang Đức</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-nam-phi/">Rượu vang Nam Phi</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li class="uk-nav-header">Theo giống nho</li>
+                                        <li><a href="https://winecellar.vn/cabernet-sauvignon/">Cabernet Sauvignon</a></li>
+                                        <li><a href="https://winecellar.vn/merlot/">Merlot</a></li>
+                                        <li><a href="https://winecellar.vn/syrah-shiraz/">Syrah (Shiraz)</a></li>
+                                        <li><a href="https://winecellar.vn/pinot-noir/">Pinot Noir</a></li>
+                                        <li><a href="https://winecellar.vn/malbec/">Malbec</a></li>
+                                        <li><a href="https://winecellar.vn/montepulciano-d-abruzzo/">Montepulciano D'Abruzzo</a></li>
+                                        <li><a href="https://winecellar.vn/negroamaro/">Negroamaro</a></li>
+                                        <li><a href="https://winecellar.vn/primitivo/">Primitivo</a></li>
+                                        <li><a href="https://winecellar.vn/chardonnay/">Chardonnay</a></li>
+                                        <li><a href="https://winecellar.vn/sauvignon-blanc/">Sauvignon Blanc</a></li>
+                                        <li><a href="https://winecellar.vn/riesling/">Riesling</a></li>
+                                        <li class="uk-nav-divider"></li>
+                                        <li><a href="https://winecellar.vn/giong-nho/" style="padding-left: 5px " class="link-p">Tìm giống nho</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li class="uk-nav-header">Theo vùng nổi tiếng</li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-bordeaux/">Rượu vang Bordeaux (Pháp)</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-burgundy/">Rượu vang Bourgogne (Pháp)</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-tuscany/">Rượu vang Tuscany (Ý)</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-puglia/">Rượu vang Puglia (Ý)</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-piedmont/">Rượu vang Piedmont (Ý)</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-vang-california/">Rượu vang California (Mỹ)</a></li>
+                                        <li><a href="https://winecellar.vn/ruou-champagne/">Rượu Champagne (Pháp)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="https://winecellar.vn/ruou-manh-cao-cap/">Rượu Mạnh</a></li>
+                    <li>
+                        <a href="#">Pha Lê Riedel <span uk-icon="icon: triangle-down"></span></a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a href="https://winecellar.vn/ly-vang-do/">Ly Vang Đỏ</a></li>
+                                <li><a href="https://winecellar.vn/ly-vang-trang/">Ly Vang Trắng</a></li>
+                                <li><a href="https://winecellar.vn/ly-champagne/">Ly Champagne</a></li>
+                                <li><a href="https://winecellar.vn/ly-ruou-manh/">Ly Rượu Mạnh</a></li>
+                                <li><a href="https://winecellar.vn/ly-chan-mau/">Ly Chân Màu</a></li>
+                                <li><a href="https://winecellar.vn/ly-cocktail/">Ly Cocktail</a></li>
+                                <li><a href="https://winecellar.vn/coc-nuoc/">Cốc nước</a></li>
+                                <li><a href="https://winecellar.vn/binh-decanter/">Bình Decanter</a></li>
+                                <li><a href="https://winecellar.vn/phu-kien-ruou/">Phụ kiện rượu</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="https://winecellar.vn/nha-san-xuat/">Nhà sản xuất</a></li>
+                    <li><a href="https://winecellar.vn/qua-tang/" class="uk-icon"><span uk-icon="icon: gift"></span> QUÀ TẶNG</a></li>
+                    <li><a href="https://winecellar.vn/khuyen-mai/" class="uk-icon"><span uk-icon="icon: tag"></span> Khuyến mại</a></li>
+                    <li><a href="https://winecellar.vn/kien-thuc-ruou-vang/">Kiến thức</a></li>
+                    <li><a href="https://winecellar.vn/lien-he/">Liên hệ</a></li>
+                </ul>
+                <div class="uk-navbar-item">
+                    <a href="#modal-full" class="text-white"  uk-search-icon uk-toggle></a>
+                </div>
+                <div class="uk-navbar-item">
+                    <a href=""><span uk-icon="icon: cart"></span></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
 
-                                            <div class="ux-mini-cart-empty flex flex-row-col text-center pt pb">
-                                                <div class="ux-mini-cart-empty-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 19" style="opacity: .1;height:80px;">
-                                                        <path d="M8.5 0C6.7 0 5.3 1.2 5.3 2.7v2H2.1c-.3 0-.6.3-.7.7L0 18.2c0 .4.2.8.6.8h15.7c.4 0 .7-.3.7-.7v-.1L15.6 5.4c0-.3-.3-.6-.7-.6h-3.2v-2c0-1.6-1.4-2.8-3.2-2.8zM6.7 2.7c0-.8.8-1.4 1.8-1.4s1.8.6 1.8 1.4v2H6.7v-2zm7.5 3.4 1.3 11.5h-14L2.8 6.1h2.5v1.4c0 .4.3.7.7.7.4 0 .7-.3.7-.7V6.1h3.5v1.4c0 .4.3.7.7.7s.7-.3.7-.7V6.1h2.6z" fill-rule="evenodd" clip-rule="evenodd" fill="#303031"></path>
-                                                    </svg>
-                                                </div>
-                                                <p class="woocommerce-mini-cart__empty-message empty">Chưa có sản phẩm trong giỏ hàng.</p>
-                                                <p class="return-to-shop">
-                                                    <a class="button primary wc-backward" href="https://winecellar.vn/cua-hang-ruou-vang/">
-                                                        Quay trở lại cửa hàng				</a>
-                                                </p>
-                                            </div>
-
-
-                                        </div></div></div></div></li>
-                    </ul></div><div class="flex-col show-for-medium flex-right">
-                    <ul class="mobile-nav nav nav-right">
-                        <li class="header-search header-search-lightbox has-icon"> <a href="#search-lightbox" aria-label="Tìm kiếm" data-open="#search-lightbox" data-focus="input.search-field" class="is-small">  <i class="icon-search"></i> </a> <div id="search-lightbox" class="mfp-hide dark text-center"> <div class="searchform-wrapper ux-search-box relative is-large"><form role="search" method="get" class="searchform" action="https://winecellar.vn/"> <div class="flex-row relative"> <div class="flex-col flex-grow"> <label class="screen-reader-text" for="woocommerce-product-search-field-1">Tìm kiếm:</label> <input type="search" id="woocommerce-product-search-field-1" class="search-field mb-0" placeholder="Hãy thử 'vang cá chép' xem sao!" value="" name="s"> <input type="hidden" name="post_type" value="product"></div><div class="flex-col"> <button type="submit" value="Tìm kiếm" class="ux-search-submit submit-button secondary button icon mb-0" aria-label="Submit"> <i class="icon-search"></i> </button></div></div><div class="live-search-results text-left z-top"></div></form></div></div></li>
-                        <li class="cart-item has-icon"> <a href="https://winecellar.vn/cart/" class="header-cart-link is-small off-canvas-toggle nav-top-link" title="Giỏ hàng" data-open="#cart-popup" data-class="off-canvas-cart" data-pos="right"> 				<i class="icon-shopping-basket" data-icon-label="0">
-                                </i> </a> </li>
-                        <li class="account-item has-icon"> <a href="https://winecellar.vn/my-account/" class="account-link-mobile is-small" title="Tài khoản"> <i class="icon-user"></i> </a> </li>
-                    </ul></div></div></div><div class="header-bg-container fill"><div class="header-bg-image fill"></div><div class="header-bg-color fill"></div></div></div></header>
+<!-- Search Modal -->
+<div id="modal-full" class="uk-modal-full" uk-modal>
+    <div class="uk-modal-dialog uk-flex uk-flex-center uk-flex-middle" uk-height-viewport>
+        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+        <form class="uk-search uk-search-large">
+            <input class="uk-search-input uk-text-center" type="search" placeholder="Search..." autofocus>
+        </form>
+    </div>
+</div>
