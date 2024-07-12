@@ -53,20 +53,5 @@ Route::namespace('admin')->group(function () {
             Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('admin.post.delete');
         });
 
-        // Quản lý sản phẩm
-        Route::group(['prefix'=> 'product'], function() {
-            Route::get('/', [ProductController::class, 'index'])->name('admin.product.index');
-            Route::get('/add', [ProductController::class, 'add'])->name('admin.product.add');
-            Route::post('/add', [ProductController::class, 'store'])->name('admin.product.store');
-            Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
-            Route::post('/edit/{id}', [ProductController::class, 'update'])->name('admin.product.update');
-            Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('admin.product.delete');
-        });
-
-        // Config System
-        Route:: group(['prefix'=>'config'], function() {
-            Route:: get( '/edit', [ConfigController::class, 'edit'])->name( 'admin.setting.config.edit');
-            Route:: post( '/edit', [ConfigController::class, 'update']) ->name ( 'admin.setting.config.update');
-        });
     });
 });
