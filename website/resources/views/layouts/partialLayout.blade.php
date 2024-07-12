@@ -12,14 +12,21 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN: Head -->
 <head>
     @include("partial.head")
+    @yield("style")
 </head>
 <!-- END: Head -->
-<body class="py-5 md:py-0 bg-black/[0.15] dark:bg-transparent">
-{{-- BEGIN:Header --}}
+<body class="uk-margin-remove">
+    {{-- BEGIN:Header --}}
     @include("partial.header")
-{{-- END: Header --}}
-<!-- BEGIN: JS Assets-->
-{{--@include('partial.bodyJs')--}}
-<!-- END: JS Assets-->
+    {{-- END: Header --}}
+    <div class="">
+        @yield("content")
+    </div>
+    <!-- BEGIN: Footer -->
+    @include('partial.footer')
+    <!-- END: Footer -->
+    <!-- BEGIN: JS Assets-->
+    @include('partial.bodyJs')
+    <!-- END: JS Assets-->
 </body>
 </html>
