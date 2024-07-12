@@ -11,8 +11,7 @@ use Illuminate\COntracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-
+use Psy\Util\Str;
 
 class PostController extends Controller
 {
@@ -22,10 +21,7 @@ class PostController extends Controller
     }
 
     public function getPostCategories() {
-        return Category::where('model_type','=', 'post')
-            ->where('parent_id', '=', 0)
-            ->with('subCategories')
-            ->get();
+        return Category::where('model_type','=', 'post')->where('parent_id', '=', 0)->with('subCategories')->get();
     }
 
     protected function fillDataToPost($item, $input, $is_create): void
@@ -52,7 +48,7 @@ class PostController extends Controller
         return view('admin.content.post.index', [
             "posts" => Post::orderBy('category_id', 'ASC')->whereHas('category', function ($query) use($group) {
                 $query->where('model_type', $group);
-            })->paginate(15)
+            })->qaginate(50)
         ]);
 
 //        $posts = Post::orderBy('category_id', 'ASC')->whereHas('category', function ($query) use ($group) {

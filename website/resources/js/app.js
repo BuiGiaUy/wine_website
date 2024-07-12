@@ -10,7 +10,7 @@ import 'tinymce/models/dom/model';
 
 window.addEventListener('DOMContentLoaded', () => {
     tinymce.init({
-        selector: 'textarea',
+        selector: '#myTextArea',
         /* Cấu hình tinyMCE */
         skin: false,
         content_css: false,
