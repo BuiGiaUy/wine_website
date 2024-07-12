@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductController;
@@ -60,6 +61,12 @@ Route::namespace('admin')->group(function () {
             Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
             Route::post('/edit/{id}', [ProductController::class, 'update'])->name('admin.product.update');
             Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('admin.product.delete');
+        });
+
+        // Config System
+        Route:: group(['prefix'=>'config'], function() {
+            Route:: get( '/edit', [ConfigController::class, 'edit'])->name( 'admin.setting.config.edit');
+            Route:: post( '/edit', [ConfigController::class, 'update']) ->name ( 'admin.setting.config.update');
         });
     });
 });
