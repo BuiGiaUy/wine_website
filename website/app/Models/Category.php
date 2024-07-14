@@ -25,6 +25,15 @@ class Category extends Model
             $child->delete();
         }
     }
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
 
     //cấu hình boot cho model category
     public static function boot() : void
@@ -32,7 +41,7 @@ class Category extends Model
         //trước khi xóa 1 category sẽ xóa các category con
         parent::boot();
         static ::deleting(function ($category) {
-            $category->deleteChilren();
+            $category->deleteChildren();
         });
     }
 }

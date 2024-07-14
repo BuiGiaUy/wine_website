@@ -1,5 +1,5 @@
 @extends('layouts.adminPartialLayout')
-@section('title', 'Add Category')
+@section('title', 'Edit Category')
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
@@ -16,7 +16,7 @@
     </div>
     <div class="pos intro-y grid grid-cols-12 gap-5 mt-5">
         <div class="intro-y col-span-12 lg:col-span-6">
-            <form action="{{ route('admin.category.update', $model_type) }}" method="POST">
+            <form action="{{ route('admin.category.update', ['model_type' => $model_type, 'id' => $item->id]) }}" method="POST">
                 @csrf
                 <div class="box p-5">
                     <div>
