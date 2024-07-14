@@ -52,6 +52,15 @@ Route::namespace('admin')->group(function () {
             Route::post('/edit/{id}', [PostController::class, 'update'])->name('admin.post.update');
             Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('admin.post.delete');
         });
+        // Quản lý sản phẩm
+        Route::group(['prefix'=> 'product'], function() {
+            Route::get('/', [ProductController::class, 'index'])->name('admin.product.index');
+            Route::get('/add', [ProductController::class, 'add'])->name('admin.product.add');
+            Route::post('/add', [ProductController::class, 'store'])->name('admin.product.store');
+            Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
+            Route::post('/edit/{id}', [ProductController::class, 'update'])->name('admin.product.update');
+            Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('admin.product.delete');
+        });
 
     });
 });
