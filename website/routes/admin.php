@@ -40,7 +40,7 @@ Route::namespace('admin')->group(function () {
             Route::post('/add', [BrandController::class, 'store'])->name('admin.brand.store');
             Route::get('/edit/{id}', [BrandController::class, 'edit'])->name('admin.brand.edit');
             Route::post('/edit/{id}', [BrandController::class, 'update'])->name('admin.brand.update');
-            Route::delete('/delete/{id}', [BrandController::class, 'destroy'])->name('admin.brand.delete');
+            Route::get('/delete/{id}', [BrandController::class, 'destroy'])->name('admin.brand.delete');
         });
 
         // Quản lý bài viết

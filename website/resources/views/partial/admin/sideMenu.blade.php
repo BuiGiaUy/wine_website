@@ -72,10 +72,10 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;" class="side-menu">
+            <a href="{{route('admin.brand.index') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-lucide="layout"></i> </div>
                 <div class="side-menu__title">
-                    Pages
+                    Brand
                 </div>
             </a>
         </li>

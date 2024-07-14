@@ -109,7 +109,7 @@
                                     </div>
                                     <div class="px-5 pb-8 text-center">
                                         <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
-                                        <button type="button" class="btn btn-danger w-24 delete-category" data-category-id="{{ $category->id }}">Delete</button>
+                                        <a href="{{ route('admin.category.delete', [$model_type, $category->id]) }}" class="btn btn-danger w-24 delete-category" >Delete</a>
                                     </div>
                                 </div>
                             </div>
@@ -139,30 +139,6 @@
         var allCategories = {!! json_encode($search) !!};
         console.log(allCategories)
         $(document).ready(function() {
-            // Event handler for delete button click
-            $('.delete-category').click(function() {
-                // Retrieve the category ID from the data attribute
-                var categoryId = $(this).data('category-id');
-                var token = "{{ csrf_token() }}"; // CSRF token
-
-                // Perform AJAX request to delete the category
-                $.ajax({
-                    url: '/admin/category/{{ $model_type }}/delete/' + categoryId,
-                    type: 'DELETE',
-                    data: {
-                        "_token": token,
-                    },
-                    success: function(result) {
-                        // Handle success, such as refreshing the page or updating the UI
-                        window.location.reload(); // For example, refreshing the page
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle errors, such as displaying an error message
-                        console.error('Error:', error);
-                    }
-                });
-            });
-
 
             // Function to filter categories based on input value
             function filterCategories() {
