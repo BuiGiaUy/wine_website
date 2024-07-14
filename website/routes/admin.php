@@ -61,5 +61,7 @@ Route::namespace('admin')->group(function () {
             Route::post('/edit/{id}', [ProductController::class, 'update'])->name('admin.product.update');
             Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('admin.product.delete');
         });
+
+
     });
 });

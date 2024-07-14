@@ -60,9 +60,11 @@
                     <tr class="intro-x">
                         <td class="w-40">
                             <div class="flex">
-                                <div class="w-10 h-10 image-fit zoom-in">
-                                    <img alt="Post Image" class="tooltip rounded-full" src="{{ $post->image_url }}" title="Uploaded on {{ $post->created_at->format('d M Y') }}">
-                                </div>
+                                @foreach ($post->images as $index => $image)
+                                    <div class="w-10 h-10 image-fit zoom-in {{ $index > 0 ? '-ml-5' : '' }}">
+                                        <img  class="tooltip rounded-full" alt="{{ $image->alt }}" src="{{ $image->path }}">
+                                    </div>
+                                @endforeach
                             </div>
                         </td>
                         <td>

@@ -12,19 +12,19 @@
     <div class="container mx-auto py-8">
         <div class="bg-white rounded-lg shadow-md p-8">
             <h2 class="text-2xl font-semibold mb-6">Edit Post</h2>
-            <form action="{{ route('admin.post.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.post.update', $post->id) }}" method="Post" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
+                @method('POST')
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Title -->
                     <div class="col-span-2">
                         <label for="title" class="block text-gray-700 font-medium mb-2">Title</label>
-                        <input type="text" name="title" id="title" class="form-input w-full" value="{{ $post->name }}" placeholder="Enter title...">
+                        <input type="text" name="name" id="title" class="form-input w-full" value="{{ $post->name }}" placeholder="Enter title...">
                     </div>
                     <!-- Categories -->
                     <div>
                         <label for="category" class="block text-gray-700 font-medium mb-2">Category</label>
-                        <select name="category[]" id="category" class="form-control " >
+                        <select name="category_id" id="category" class="form-control " >
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}" {{ $category->id == $post->category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                             @endforeach
@@ -59,11 +59,19 @@
                     <div class="">
                         <label class="form-label">Upload Image</label>
                         <div class="border-2 border-dashed dark:border-darkmode-400 rounded-md pt-4">
-                            <div class="flex flex-wrap px-4">
-                                <div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in">
-                                    <img class="rounded-md" alt="Midone - HTML Admin Template" src="{{asset('backend/dist/images/preview-9.jpg')}}">
-                                    <div title="Remove this image?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2"> <i data-lucide="x" class="w-4 h-4"></i> </div>
-                                </div>
+                            <div class="flex flex-wrap px-4" id="add-images">
+                                @foreach ($post->images as $image)
+                                    <div class=" w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in image-container" id="button-image">
+                                        <img class="text-white rounded-md" alt="{{ $image->alt }}" src="{{ asset($image->path) }}">
+                                        <input type="text" value="{{ asset($image->path) }}" name="images[]" class="hidden" id="image" multiple>
+                                        <div class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2 close-button">
+                                            x
+                                        </div>
+                                    </div>
+                                @endforeach
+                                    <div class=" w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in" id="button-image">
+                                        <img  class="text-white rounded-md" alt="Midone - HTML Admin Template" src="{{ asset('images/cong2.jpg') }}">
+                                    </div>
                             </div>
                             <div class="px-4 pb-4 flex items-center cursor-pointer relative">
                                 <i data-lucide="image" class="w-4 h-4 mr-2"></i> <span class="text-primary mr-1">Upload a file</span> or drag and drop
@@ -105,4 +113,39 @@
             </form>
         </div>
     </div>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            document.getElementById('button-image').addEventListener('click', (event) => {
+                event.preventDefault();
+
+                window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+            });
+            document.getElementById('add-images').addEventListener('click', function(event) {
+                if (event.target.classList.contains('close-button')) {
+                    event.target.closest('.image-container').remove();
+                }
+            });
+        });
+        // set file link
+        function fmSetLink($url) {
+            let newUrl = $url.replace("http://localhost/", "http://winewebsite.th/");
+            // cấu hình link
+            // document.getElementById('image_label').value = newUrl;
+            let newHtml = `<div class="w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in image-container">
+                                <img class="rounded-md" alt="" src="${newUrl}">
+                                <input type="text" value="${newUrl}" name="images[]" class="hidden" id="image" multiple>
+                                <div class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2 close-button">
+                                    x
+                                </div>
+                           </div>`;
+            // Get the element with the ID 'add-images'
+            let addImagesElement = document.getElementById('add-images');
+
+            // Insert the new HTML at the beginning of the element
+            addImagesElement.insertAdjacentHTML('afterbegin', newHtml);
+
+        }
+    </script>
 @endsection

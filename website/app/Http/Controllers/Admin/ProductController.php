@@ -20,6 +20,7 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->product = "product";
     }
 
     public function getProductCategories()
@@ -45,7 +46,7 @@ class ProductController extends Controller
 
         if ($is_create)
         {
-            $item["views"] = 0;
+            $item["viewer"] = 0;
             $item["rating_number"] = 0;
             $item["rating_value"] = 0;
         }
@@ -53,11 +54,15 @@ class ProductController extends Controller
     }
     public function index(): Factory|View|Application
     {
-        $products = Product::paginate(12);
+        $products = Product::with('images')->paginate(12);
+//        echo "<pre>";
+//        print_r($products);
+//        echo "</pre>";
         return view("admin.content.product.index", [
             "categories" => $this->getProductCategories(),
             "products" => $products
         ]);
+
     }
     public function add():Factory|View|Application
     {
@@ -74,7 +79,7 @@ class ProductController extends Controller
         foreach ($images as $img)
         {
             $image= new Image();
-            $image["type"]= typeOf($product);
+            $image["model_type"]= $this->product;
             $image["model_id"]= $product->id;
             $image["path"]= $img;
             $image["name"]= $img;

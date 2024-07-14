@@ -19,6 +19,8 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->post = 'post';
+
     }
 
     public function getPostCategories() {
@@ -69,13 +71,13 @@ class PostController extends Controller
             "categories" => $this->getPostCategories(),
         ]);
     }
-    public function saveImageIntoPost($images, $post): void
+    public function saveImageIntoPost($images, $item): void
     {
         foreach ($images as $img)
         {
             $image= new Image();
-            $image["type"]= typeOf($post);
-            $image["model_id"]= $post->id;
+            $image["model_type"]= $this->post;
+            $image["model_id"]= $item->id;
             $image["path"]= $img;
             $image["name"]= $img;
             $image["alt"]= $img;
@@ -90,6 +92,9 @@ class PostController extends Controller
         $this->fillDataToPost($item, $input, true);
         $images = $input["images"] ?? [];
         $this->saveImageIntoPost($images, $item);
+//        echo "<pre>";
+//        print_r($images);
+//        echo "</pre>";
 
         return redirect()->route("admin.post.index");
     }
@@ -102,19 +107,25 @@ class PostController extends Controller
             "post" => $post,
             "categories" => $this->getPostCategories(),
         ]);
+//        echo "<pre>";
+//        print_r($post->images);
+//        echo "</pre>";
     }
 
     public function update(Request $request, $id): RedirectResponse
     {
         $post = Post::find($id);
+//        echo "<pre>";
+//        print_r($post->images);
+//        echo "</pre>";
         if (!$post) return redirect()->back();
 
         $input = $request->all();
         $this->fillDataToPost($post, $input, false);
 
         $post->deleteImages();
-        $images = $input['image'] ?? [];
-        $this->saveImageIntoPost($images, $post );
+        $images = $input['images'] ?? [];
+        $this->saveImageIntoPost($images, $post);
 
         return redirect()->route("admin.post.index");
     }
@@ -123,6 +134,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         if (!$post) return redirect()->back();
+        $post->deleteImages();
         $post->delete();
         return redirect()->route("admin.post.index");
     }
