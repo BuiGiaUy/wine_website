@@ -54,7 +54,11 @@
                     <div class="p-5">
                         <div class="h-40 2xl:h-56 image-fit rounded-md overflow-hidden before:block before:absolute before:w-full before:h-full before:top-0 before:left-0 before:z-10 before:bg-gradient-to-t before:from-black before:to-black/10">
                             <!-- Replace 'src' attribute with product image URL -->
-                            <img alt="{{ $product->name }}" class="rounded-md" src="{{ $product->image_url }}">
+                            @if ($product->images->isNotEmpty())
+                                <img src="{{ asset($product->images->first()->path) }}" class="rounded-md" alt="{{ $product->images->first()->alt }}">
+                            @else
+                                <img src="{{ asset('path_to_default_image.jpg') }}" class="rounded-md" alt="No Image">
+                            @endif
                             <!-- Example: <img alt="Product Image" class="rounded-md" src="dist/images/product-1.jpg"> -->
                             <span class="absolute top-0 bg-pending/80 text-white text-xs m-5 px-2 py-1 rounded z-10">Featured</span>
                             <div class="absolute bottom-0 text-white px-5 pb-6 z-10">
@@ -89,13 +93,40 @@
                             <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>
                             Edit
                         </a>
-                        <a class="flex items-center text-danger" href="#" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
+                        <button class="flex items-center text-danger" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal-{{ $product->id }}">
                             <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i>
                             Delete
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
+            <!-- BEGIN: Delete Confirmation Modal -->
+            <div id="delete-confirmation-modal-{{ $product->id }}" class="modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body p-0">
+                            <div class="p-5 text-center">
+                                <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i>
+                                <div class="text-3xl mt-5">Are you sure?</div>
+                                <div class="text-slate-500 mt-2">
+                                    Do you really want to delete this post?
+                                    <br>
+                                    This process cannot be undone.
+                                </div>
+                            </div>
+                            <div class="px-5 pb-8 text-center">
+                                <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+                                <form action="{{ route('admin.product.delete', $product->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger w-24">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Delete Confirmation Modal -->
         @endforeach
         <!-- End Product Cards -->
 

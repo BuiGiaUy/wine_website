@@ -20,7 +20,7 @@ class BrandController extends Controller
 
     private function getAllBrands()
     {
-        return Brand::get();
+        return Brand::paginate(10);
     }
 
     private function fillData($item, $input): void
@@ -52,7 +52,7 @@ class BrandController extends Controller
     public function edit($id): Factory|View|Application|RedirectResponse
     {
         $item = Brand::find($id);
-        if ($item) return view('admin.content.brand.edit', ["item" => $item]);
+        if ($item) return view('admin.content.brand.edit', ["brand" => $item]);
         else return redirect()->back();
     }
 
@@ -69,9 +69,9 @@ class BrandController extends Controller
     public function destroy($id): RedirectResponse
     {
         $item = Brand::find($id);
-        if ($item) {
-            $item->delete();
-        }
+        if (!$item) return redirect()->back();
+
+        $item->delete();
         return redirect()->route("admin.brand.index");
     }
 }

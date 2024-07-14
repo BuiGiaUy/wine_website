@@ -14,3 +14,4 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="{{ asset('vendor/file-manager/css/file-manager.css') }}">
 <script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

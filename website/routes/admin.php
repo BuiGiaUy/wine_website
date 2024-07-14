@@ -30,6 +30,7 @@ Route::namespace('admin')->group(function () {
             Route::get('/{model_type}/edit/{id}', [CategoryController::class,'edit'])->name('admin.category.edit');
             Route::post('/{model_type}/edit/{id}', [CategoryController::class,'update'])->name('admin.category.update');
             Route::get('/{model_type}/delete/{id}', [CategoryController::class,'destroy'])->name('admin.category.delete');
+            Route::get('/{model_type}/children/{id}', [CategoryController::class, 'showChildren'])->name('admin.category.children');
         });
 
         // Quản lý Brand
@@ -39,7 +40,7 @@ Route::namespace('admin')->group(function () {
             Route::post('/add', [BrandController::class, 'store'])->name('admin.brand.store');
             Route::get('/edit/{id}', [BrandController::class, 'edit'])->name('admin.brand.edit');
             Route::post('/edit/{id}', [BrandController::class, 'update'])->name('admin.brand.update');
-            Route::delete('/delete/{id}', [BrandController::class, 'destroy'])->name('admin.brand.delete');
+            Route::get('/delete/{id}', [BrandController::class, 'destroy'])->name('admin.brand.delete');
         });
 
         // Quản lý bài viết

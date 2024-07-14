@@ -27,18 +27,35 @@ class CategoryController extends Controller
         $item["model_type"] = $model_type;
         $item->save();
     }
+
+    public function showChildren($model_type, $id)
+    {
+        $category = Category::with('children')->findOrFail($id);
+        $children = $category->children;
+
+        return view('admin.content.category.children', compact('category', 'children', 'model_type'));
+    }
     private function getCategories($model_type, $perPage = 10){
         return Category::where('model_type','=', $model_type)
             ->where('parent_id','=',0)
             ->with('subCategories')
             ->paginate($perPage);
     }
-
+    private function searchCategories($model_type){
+        return Category::where('model_type','=', $model_type)
+            ->where('parent_id','=',0)
+            ->with('subCategories')
+            ->get()->toArray();
+    }
     public function index($model_type): Factory|View|Application
     {
+//        echo "<pre>";
+//        print_r($post->images);
+//        echo "</pre>";
         return view("admin.content.category.index",[
             "categories" => $this->getCategories($model_type),
             'model_type' => $model_type,
+            "search" => $this->searchCategories($model_type),
         ]);
     }
 

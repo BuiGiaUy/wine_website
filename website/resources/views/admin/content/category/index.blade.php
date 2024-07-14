@@ -36,7 +36,7 @@
             </div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
-                    <input type="text" class="form-control w-56 box pr-10" placeholder="Search..." onkeyup="searchCategories(this.value)">
+                    <input type="text" class="form-control w-56 box pr-10" placeholder="Search..."  id="categorySearch">
                     <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="categoryTableBody">
                 @foreach ($categories as $category)
                     <tr class="intro-x">
                         <td class="w-40">
@@ -74,7 +74,13 @@
                             </a>
                         </td>
                         <td>
-                            {{ $category->parent ? $category->parent->name : 'N/A' }}
+                            @if ($category->children->isNotEmpty())
+                                <a href="{{ route('admin.category.children', [$model_type, $category->id]) }}" class="text-blue-500 underline">
+                                    View Children
+                                </a>
+                            @else
+                                N/A
+                            @endif
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
@@ -103,7 +109,7 @@
                                     </div>
                                     <div class="px-5 pb-8 text-center">
                                         <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
-                                        <a href="/admin/category/{{ $model_type }}/delete/{{ $category->id }}" type="button" class="btn btn-danger w-24" id="delete" data-category-id="{{ $category->id }}">Delete</a>
+                                        <a href="{{ route('admin.category.delete', [$model_type, $category->id]) }}" class="btn btn-danger w-24 delete-category" >Delete</a>
                                     </div>
                                 </div>
                             </div>
@@ -129,33 +135,37 @@
         <!-- END: Pagination -->
     </div>
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+        var allCategories = {!! json_encode($search) !!};
+        console.log(allCategories)
         $(document).ready(function() {
-            // Event handler for delete button click
-            $('#delete').click(function() {
-                // Retrieve the category ID from the data attribute
-                var categoryId = $(this).data('category-id');
 
-                // Perform AJAX request to delete the category
-                $.ajax({
-                    url: '/admin/{{ $model_type }}/category/delete/' + categoryId,
-                    type: 'DELETE',
-                    success: function(result) {
-                        // Handle success, such as refreshing the page or updating the UI
-                        window.location.reload(); // For example, refreshing the page
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle errors, such as displaying an error message
-                        console.error('Error:', error);
+            // Function to filter categories based on input value
+            function filterCategories() {
+                var query = $('#categorySearch').val().trim().toLowerCase();
+
+                $('#categoryTableBody tr').each(function() {
+                    var categoryName = $(this).find('td:nth-child(2)').text().trim().toLowerCase();
+                    var parentCategory = $(this).find('td:nth-child(4)').text().trim().toLowerCase();
+
+                    // Show or hide rows based on filter condition
+                    if (categoryName.includes(query) || parentCategory.includes(query)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
                     }
                 });
+            }
 
+            // Attach event listener to input for real-time filtering
+            $('#categorySearch').on('keyup', function () {
+                console.log('Search input value:', $(this).val()); // Check input value on keyup
+                filterCategories()
             });
+
         });
 
-
-
     </script>
+
 @endsection
+
