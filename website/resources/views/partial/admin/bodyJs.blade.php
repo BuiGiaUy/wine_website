@@ -8,6 +8,7 @@
 
         var menuItems = document.querySelectorAll('#side-menu .side-menu');
         var categoryMenu = document.getElementById('category-menu');
+
         console.log(categoryMenu)
 
         menuItems.forEach(function (menuItem) {

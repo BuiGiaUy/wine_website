@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,7 @@ Route::namespace('admin')->group(function () {
     Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
         Route::post('/logout', [LoginController::class, 'logout'])->name('admin.auth.logout');
-        Route::get('/', [HomeController::class, 'index'])->name('admin.homepage');
+        Route::get('/home', [HomeController::class, 'index'])->name('admin.homepage');
 
         // Quản lý Category
         Route::group(['prefix'=>'category'],function() {
@@ -60,6 +61,13 @@ Route::namespace('admin')->group(function () {
             Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
             Route::post('/edit/{id}', [ProductController::class, 'update'])->name('admin.product.update');
             Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('admin.product.delete');
+        });
+
+        // Quản lý Order
+        Route::group(['prefix' => 'order'], function () {
+            Route::get('/', [OrderController::class, 'index'])->name('admin.orders.index');
+            Route::get('/{id}', [OrderController::class, 'show'])->name('admin.orders.show');
+            Route::delete('/delete/{id}', [OrderController::class, 'destroy'])->name('admin.order.delete');
         });
 
     });

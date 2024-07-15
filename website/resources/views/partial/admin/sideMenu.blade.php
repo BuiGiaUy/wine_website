@@ -1,21 +1,19 @@
 <nav class="side-nav" id="side-menu">
     <a href="" class="intro-x flex items-center pl-5 pt-4 mt-3">
         <img alt="Midone - HTML Admin Template" class="w-6" src="{{asset('backend/dist/images/logo.svg')}}">
-        <span class="hidden xl:block text-white text-lg ml-3"> Tinker </span>
+        <span class="hidden xl:block text-white text-lg ml-3"> Wine-website </span>
     </a>
     <div class="side-nav__devider my-6"></div>
     <ul>
         <li>
             <a href="/admin/home" class="side-menu">
                 <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
-                <div class="side-menu__title">
-                    Dashboard
-                </div>
+                <div class="side-menu__title"> Dashboard </div>
             </a>
         </li>
-        <li  >
+        <li>
             <a href="javascript:;" id="category-menu" class="side-menu">
-                <div class="side-menu__icon">  <i data-lucide="database" ></i>  </div>
+                <div class="side-menu__icon"> <i data-lucide="database"></i> </div>
                 <div class="side-menu__title">
                     Category
                     <div class="side-menu__sub-icon transform rotate-180"> <i data-lucide="chevron-down"></i> </div>
@@ -52,17 +50,13 @@
         <li>
             <a href="javascript:;" class="side-menu">
                 <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
-                <div class="side-menu__title">
-                    Users
-                </div>
+                <div class="side-menu__title"> Users </div>
             </a>
         </li>
         <li>
             <a href="/admin/brand" class="side-menu">
                 <div class="side-menu__icon"> <i data-lucide="layout"></i> </div>
-                <div class="side-menu__title">
-                    Brand
-                </div>
+                <div class="side-menu__title"> Brand </div>
             </a>
         </li>
         <li class="side-nav__devider my-6"></li>
