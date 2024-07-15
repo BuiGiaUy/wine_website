@@ -37,7 +37,7 @@
             </div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
-                    <input type="text" id="searchInput" class="form-control w-56 box pr-10" placeholder="Search...">
+                    <input type="text" id="postSearch" class="form-control w-56 box pr-10" placeholder="Search...">
                     <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="postTableBody">
                 @foreach($posts as $post)
                     <tr class="intro-x">
                         <td class="w-40">
@@ -128,16 +128,36 @@
         </div>
         <!-- END: Pagination -->
     </div>
-@endsection
-<script>
-    $(document).ready(function() {
-        $('#searchInput').on('keyup', function() {
-            var query = $(this).val().toLowerCase(); // Lấy giá trị nhập vào và chuyển thành chữ thường
+    <script>
 
-            // Lọc các hàng của bảng dựa trên giá trị tìm kiếm
-            $('table tbody tr').filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(query) > -1);
+        $(document).ready(function() {
+
+            // Function to filter categories based on input value
+            function filterPosts() {
+                var query = $('#postSearch').val().trim().toLowerCase();
+
+                $('#postTableBody tr').each(function() {
+                    var postName = $(this).find('td:nth-child(2)').text().trim().toLowerCase();
+                    var parentPost = $(this).find('td:nth-child(4)').text().trim().toLowerCase();
+
+                    // Show or hide rows based on filter condition
+                    if (postName.includes(query) || parentPost.includes(query)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            }
+
+            // Attach event listener to input for real-time filtering
+            $('#postSearch').on('keyup', function () {
+                console.log('Search input value:', $(this).val()); // Check input value on keyup
+                filterPosts()
             });
+
         });
-    });
-</script>
+
+    </script>
+@endsection
+
+
