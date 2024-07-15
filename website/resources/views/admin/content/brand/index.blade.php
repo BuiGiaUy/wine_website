@@ -97,8 +97,11 @@
                                     </div>
                                     <div class="px-5 pb-8 text-center">
                                         <button type="button" class="btn btn-outline-secondary w-24 mr-1" data-tw-dismiss="modal">Cancel</button>
-                                        <a href="{{ route('admin.brand.delete',  $brand->id) }}" class="btn btn-danger w-24 delete-brand" data-brand-id="{{ $brand->id }}">Delete</a>
-                                    </div>
+                                        <form action="{{ route('admin.brand.delete', $brand->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger w-24">Delete</button>
+                                        </form>                                    </div>
                                 </div>
                             </div>
                         </div>

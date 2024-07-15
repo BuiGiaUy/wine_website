@@ -109,7 +109,11 @@
                                     </div>
                                     <div class="px-5 pb-8 text-center">
                                         <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
-                                        <a href="{{ route('admin.category.delete', [$model_type, $category->id]) }}" class="btn btn-danger w-24 delete-category" >Delete</a>
+                                        <form action="{{ route('admin.category.delete', $category->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger w-24">Delete</button>
+                                        </form>Delete</a>
                                     </div>
                                 </div>
                             </div>
