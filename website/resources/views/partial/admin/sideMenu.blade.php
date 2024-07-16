@@ -48,7 +48,7 @@
         </li>
         <li class="side-nav__devider my-6"></li>
         <li>
-            <a href="javascript:;" class="side-menu">
+            <a href="/admin/users" class="side-menu">
                 <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
                 <div class="side-menu__title"> Users </div>
             </a>
@@ -57,6 +57,12 @@
             <a href="/admin/brand" class="side-menu">
                 <div class="side-menu__icon"> <i data-lucide="layout"></i> </div>
                 <div class="side-menu__title"> Brand </div>
+            </a>
+        </li>
+        <li>
+            <a href="/admin/order" class="side-menu">
+                <div class="side-menu__icon"> <i data-lucide="layout"></i> </div>
+                <div class="side-menu__title"> Order </div>
             </a>
         </li>
         <li class="side-nav__devider my-6"></li>

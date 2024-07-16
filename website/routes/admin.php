@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::namespace('admin')->group(function () {
@@ -70,5 +71,10 @@ Route::namespace('admin')->group(function () {
             Route::delete('/delete/{id}', [OrderController::class, 'destroy'])->name('admin.order.delete');
         });
 
+        // Quản lý User
+        Route::group(['prefix' => 'users'], function () {
+            Route::get('/', [UserController::class, 'index'])->name('admin.users.index');
+            Route::get('/{id}', [UserController::class, 'show'])->name('admin.users.show');
+        });
     });
 });
