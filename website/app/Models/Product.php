@@ -11,8 +11,22 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Product extends Model
 {
     protected $table = "products";
-    protected $fillable = ["name", "slug", "barcode", "description", "category_id", "brand_id", "post_id", "model_type"];
-//    protected $with =["posts", "categories", "brands", "images"];
+    protected $fillable = [
+        'category_id',
+        'name',
+        'slug',
+        'barcode',
+        'description',
+        'quantity',
+        'price',
+        'discount_percent',
+        'viewer',
+        'rating_number',
+        'rating_value',
+        'brand_id',
+        'post_id',
+    ];
+    //    protected $with =["posts", "categories", "brands", "images"];
 
     public function category(): BelongsTo
     {
@@ -25,6 +39,13 @@ class Product extends Model
     public function post(): BelongsTo
     {
         return $this->belongsTo(Brand::class, 'post_id', 'id');
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_items')
+            ->withPivot('quantity', 'price', 'discount_percent')
+            ->withTimestamps();
     }
 
     public function images()
