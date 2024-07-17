@@ -66,57 +66,20 @@
                     <div class="uk-slider-container uk-margin" tabindex="-1" uk-slider="center: true; autoplay: true; autoplay-interval: 6000; pause-on-hover: true">
 
                         <ul class="uk-slider-items uk-child-width-1-5@s uk-grid">
-                            <li>
-                                <div class="uk-panel">
-                                    <a href="https://winecellar.vn/nha-san-xuat/maison-louis-latour/">
-                                        <img src="https://winecellar.vn/wp-content/uploads/2024/03/Louis-latour-80.jpg" alt="Maison Louis Latour">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="uk-panel">
-                                    <a href="https://winecellar.vn/nha-san-xuat/san-marzano/">
-                                        <img src="https://winecellar.vn/wp-content/uploads/2024/03/San-Marzano-80.jpg" alt="San Marzano">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="uk-panel">
-                                    <a href="https://winecellar.vn/nha-san-xuat/bodegas-muga/">
-                                        <img src="https://winecellar.vn/wp-content/uploads/2024/03/Muga-80.jpg" alt="Bodegas Muga">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="uk-panel">
-                                    <a href="https://winecellar.vn/nha-san-xuat/bodegas-muga/">
-                                        <img src="https://winecellar.vn/wp-content/uploads/2024/03/Muga-80.jpg" alt="Bodegas Muga">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="uk-panel">
-                                    <a href="https://winecellar.vn/nha-san-xuat/bodegas-muga/">
-                                        <img src="https://winecellar.vn/wp-content/uploads/2024/03/Muga-80.jpg" alt="Bodegas Muga">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="uk-panel">
-                                    <a href="https://winecellar.vn/nha-san-xuat/bodegas-muga/">
-                                        <img src="https://winecellar.vn/wp-content/uploads/2024/03/Muga-80.jpg" alt="Bodegas Muga">
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="uk-panel">
-                                    <a href="https://winecellar.vn/nha-san-xuat/bodegas-muga/">
-                                        <img src="https://winecellar.vn/wp-content/uploads/2024/03/Muga-80.jpg" alt="Bodegas Muga">
-                                    </a>
-                                </div>
-                            </li>
-
-                            <!-- Repeat for all other items -->
+                            @foreach($brands as $brand)
+                                <li>
+                                    <div class="uk-panel">
+                                        <a href="">
+                                            {{--                                        <a href="{{ route('brand.show', ['slug' => $brand->slug]) }}">--}}
+                                            @if ($brand->logo)
+                                                <img src="{{ asset($brand->logo) }}" alt="{{ $brand->name }}">
+                                            @else
+                                                <img src="https://winecellar.vn/wp-content/uploads/2024/03/Louis-latour-80.jpg" alt="{{ $brand->name }}">
+                                            @endif
+                                        </a>
+                                    </div>
+                                </li>
+                            @endforeach
                         </ul>
 
                         <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
@@ -172,108 +135,35 @@
                     </div>
 
                     <div class="uk-child-width-1-2@s uk-child-width-1-4@m uk-grid-medium uk-grid-match uk-grid uk-grid-stack" uk-grid="">
-                        <div class="uk-width-1-4@l uk-first-column">
-                            <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card uk-border-rounded" style="background: #f5ecdb;">
-                                <a href="https://winecellar.vn/nha-san-xuat/chateau-dauzac/" style=" text-decoration: none; color: #0A0A0A" class=" uk-padding-remove">
-                                    <img src="https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png" alt="Château Dauzac" uk-cover="" class="uk-width-1-1 uk-border-rounded">
-                                    <h3 class=" uk-text-default uk-text-center uk-margin-remove uk-padding-small uk-padding-remove-bottom" style=" color: #0A0A0A;"> Beau Jardin</h3>
-                                    <div class="uk-flex uk-flex-between uk-flex-middle">
-                                        <div class="uk-flex uk-flex-middle uk-margin-right uk-padding-small">
-                                            <span uk-icon="icon: location" style="color: #b19458"></span>
-                                            <span class="uk-margin-small-left ">Pháp</span>
+                        @foreach($brands as $brand)
+                            <div class="uk-width-1-4@l uk-first-column">
+                                <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card uk-border-rounded" style="background: #f5ecdb;">
+                                    <a href="" style="text-decoration: none; color: #0A0A0A" class="uk-padding-remove">
+{{--                                        <a href="{{ route('brand.show', ['slug' => $brand->slug]) }}" style="text-decoration: none; color: #0A0A0A" class="uk-padding-remove">--}}
+                                        @if ($brand->image)
+                                            <img src="{{ asset($brand->image) }}" alt="{{ $brand->name }}" uk-cover class="uk-width-1-1 uk-border-rounded">
+                                        @else
+                                            <img src="https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png" alt="Château Dauzac" uk-cover="" class="uk-width-1-1 uk-border-rounded">
+                                        @endif
+                                        <h3 class="uk-text-default uk-text-center uk-margin-remove uk-padding-small uk-padding-remove-bottom" style="color: #0A0A0A;">{{ $brand->name }}</h3>
+                                        <div class="uk-flex uk-flex-between uk-flex-middle">
+                                            <div class="uk-flex uk-flex-middle uk-margin-right uk-padding-small">
+                                                <span uk-icon="icon: location" style="color: #b19458"></span>
+                                                <span class="uk-margin-small-left ">{{ $brand->country }}</span>
+                                            </div>
+                                            <div class="uk-flex uk-flex-middle uk-padding-small">
+                                                 <span class="uk-margin-small-right">
+                                                    <img decoding="async" src="https://winecellar.vn/wp-content/themes/winecellarvn/assets/icons/icon_region.png" alt="Vùng" uk-img>
+                                                </span>
+                                                {{ $brand->region }}
+                                            </div>
                                         </div>
-                                        <div class="uk-flex uk-flex-middle uk-padding-small">
-                                        <span class="uk-margin-small-right">
-                                            <img decoding="async" src="https://winecellar.vn/wp-content/themes/winecellarvn/assets/icons/icon_region.png" alt="Vùng" uk-img>
-                                        </span>
-                                            Bordeaux
-                                        </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="uk-width-1-4@l uk-first-column">
-                            <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card uk-border-rounded" style="background: #f5ecdb;">
-                                <a href="https://winecellar.vn/nha-san-xuat/chateau-dauzac/" style=" text-decoration: none; color: #0A0A0A" class=" uk-padding-remove">
-                                    <img src="https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png" alt="Château Dauzac" uk-cover="" class="uk-width-1-1 uk-border-rounded">
-                                    <h3 class=" uk-text-default uk-text-center uk-margin-remove uk-padding-small uk-padding-remove-bottom" style=" color: #0A0A0A;"> Beau Jardin</h3>
-                                    <div class="uk-flex uk-flex-between uk-flex-middle">
-                                        <div class="uk-flex uk-flex-middle uk-margin-right uk-padding-small">
-                                            <span uk-icon="icon: location" style="color: #b19458"></span>
-                                            <span class="uk-margin-small-left ">Pháp</span>
-                                        </div>
-                                        <div class="uk-flex uk-flex-middle uk-padding-small">
-                                        <span class="uk-margin-small-right">
-                                            <img decoding="async" src="https://winecellar.vn/wp-content/themes/winecellarvn/assets/icons/icon_region.png" alt="Vùng" uk-img>
-                                        </span>
-                                            Bordeaux
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="uk-width-1-4@l uk-first-column">
-                            <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card uk-border-rounded" style="background: #f5ecdb;">
-                                <a href="https://winecellar.vn/nha-san-xuat/chateau-dauzac/" style=" text-decoration: none; color: #0A0A0A" class=" uk-padding-remove">
-                                    <img src="https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png" alt="Château Dauzac" uk-cover="" class="uk-width-1-1 uk-border-rounded">
-                                    <h3 class=" uk-text-default uk-text-center uk-margin-remove uk-padding-small uk-padding-remove-bottom" style=" color: #0A0A0A;"> Beau Jardin</h3>
-                                    <div class="uk-flex uk-flex-between uk-flex-middle">
-                                        <div class="uk-flex uk-flex-middle uk-margin-right uk-padding-small">
-                                            <span uk-icon="icon: location" style="color: #b19458"></span>
-                                            <span class="uk-margin-small-left ">Pháp</span>
-                                        </div>
-                                        <div class="uk-flex uk-flex-middle uk-padding-small">
-                                        <span class="uk-margin-small-right">
-                                            <img decoding="async" src="https://winecellar.vn/wp-content/themes/winecellarvn/assets/icons/icon_region.png" alt="Vùng" uk-img>
-                                        </span>
-                                            Bordeaux
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="uk-width-1-4@l uk-first-column">
-                            <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card uk-border-rounded" style="background: #f5ecdb;">
-                                <a href="https://winecellar.vn/nha-san-xuat/chateau-dauzac/" style=" text-decoration: none; color: #0A0A0A" class=" uk-padding-remove">
-                                    <img src="https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png" alt="Château Dauzac" uk-cover="" class="uk-width-1-1 uk-border-rounded">
-                                    <h3 class=" uk-text-default uk-text-center uk-margin-remove uk-padding-small uk-padding-remove-bottom" style=" color: #0A0A0A;"> Beau Jardin</h3>
-                                    <div class="uk-flex uk-flex-between uk-flex-middle">
-                                        <div class="uk-flex uk-flex-middle uk-margin-right uk-padding-small">
-                                            <span uk-icon="icon: location" style="color: #b19458"></span>
-                                            <span class="uk-margin-small-left ">Pháp</span>
-                                        </div>
-                                        <div class="uk-flex uk-flex-middle uk-padding-small">
-                                        <span class="uk-margin-small-right">
-                                            <img decoding="async" src="https://winecellar.vn/wp-content/themes/winecellarvn/assets/icons/icon_region.png" alt="Vùng" uk-img>
-                                        </span>
-                                            Bordeaux
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="uk-width-1-4@l uk-first-column">
-                            <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card uk-border-rounded" style="background: #f5ecdb;">
-                                <a href="https://winecellar.vn/nha-san-xuat/chateau-dauzac/" style=" text-decoration: none; color: #0A0A0A" class=" uk-padding-remove">
-                                    <img src="https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png" alt="Château Dauzac" uk-cover="" class="uk-width-1-1 uk-border-rounded">
-                                    <h3 class=" uk-text-default uk-text-center uk-margin-remove uk-padding-small uk-padding-remove-bottom" style=" color: #0A0A0A;"> Beau Jardin</h3>
-                                    <div class="uk-flex uk-flex-between uk-flex-middle">
-                                        <div class="uk-flex uk-flex-middle uk-margin-right uk-padding-small">
-                                            <span uk-icon="icon: location" style="color: #b19458"></span>
-                                            <span class="uk-margin-small-left ">Pháp</span>
-                                        </div>
-                                        <div class="uk-flex uk-flex-middle uk-padding-small">
-                                        <span class="uk-margin-small-right">
-                                            <img decoding="async" src="https://winecellar.vn/wp-content/themes/winecellarvn/assets/icons/icon_region.png" alt="Vùng" uk-img>
-                                        </span>
-                                            Bordeaux
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Repeat for other items -->
+                        @endforeach
                     </div>
+
 
                 </div>
             </section>

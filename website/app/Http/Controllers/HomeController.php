@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Post;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('content.homepage');
+        // Lấy tất cả các bài viết từ bảng posts
+        $posts = Post::with('featuredImage')->take(4)->get();
+        $brands = Brand::take(4)->get();
+        $products = Product::with('featuredImage')->take(5)->get();
+
+        return view('content.homepage', ['posts'=> $posts, 'brands'=> $brands ,'products'=> $products  ]);
     }
     public function category()
     {
@@ -36,7 +44,8 @@ class HomeController extends Controller
 
     public function brand()
     {
-        return view('content.brand');
+        $brands = Brand::all();
+        return view('content.brand', ['brands'=>$brands]);
     }
     public function post()
     {

@@ -213,15 +213,21 @@
                 <h2 class="uk-text-large" style="color: #990d23">DANH MỤC SẢN PHẨM ĐA ĐẠNG & VÔ VÀN KHÁM PHÁ</h2>
             </div>
             <div class="uk-child-width-1-2@s uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
-                <div class="uk-width-1-4@l">
-                    <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card" style="background: #f5ecdb;">
-                        <a href="https://winecellar.vn/ruou-vang/">
-                            <img src="https://winecellar.vn/wp-content/uploads/2024/05/ruou-vang-nhap-khau-home.jpg" alt="RƯỢU VANG NHẬP KHẨU" class="uk-width-1-1">
-                            <h3 class="uk-card-title uk-text-default uk-text-center">RƯỢU VANG NHẬP KHẨU</h3>
-                        </a>
+                @foreach($posts as $post)
+                    <div class="uk-width-1-4@l">
+                        <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card" style="background: #f5ecdb;">
+                            <a href="">
+{{--                                {{ route('post.show', ['slug' => $post->slug]) }}--}}
+                                @if ($post->featuredImage)
+                                    <img src="{{ asset($post->featuredImage->path) }}" alt="{{ $post->title }}" class="uk-width-1-1">
+                                @else
+                                    <img src="https://winecellar.vn/wp-content/uploads/2024/05/ruou-vang-nhap-khau-home.jpg" alt="{{ $post->title }}" class="uk-width-1-1">
+                                @endif
+                                <h3 class="uk-card-title uk-text-default uk-text-center">{{ $post->name }}</h3>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <!-- Repeat for other items -->
+                @endforeach
             </div>
         </div>
     </section>
@@ -265,16 +271,23 @@
                 <p>WINECELLAR.vn tự hào là đại diện độc quyền nhập khẩu và phân phối sản phẩm từ một số nhà sản xuất rượu vang tốt nhất thế giới tại Việt Nam.</p>
             </div>
             <div class="uk-child-width-1-2@s uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
-                <div class="uk-width-1-4@l">
-                    <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card" style="background: #f5ecdb;">
-                        <a href="https://winecellar.vn/nha-san-xuat/chateau-dauzac/">
-                            <img src="https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png" alt="Château Dauzac" uk-cover class="uk-width-1-1">
-                            <h3 class=" uk-text-default uk-text-center" style=" color: #0A0A0A">Château Dauzac</h3>
-                        </a>
+                @foreach($brands as $brand)
+                    <div class="uk-width-1-4@l">
+                        <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card" style="background: #f5ecdb;">
+                            <a href="">
+{{--                                <a href="{{ route('brand.show', ['slug' => $brand->slug]) }}">--}}
+                                @if ($post->featuredImage)
+                                    <img src="{{ asset($brand->path) }}" alt="{{ $brand->name }}" uk-cover class="uk-width-1-1">
+                                @else
+                                    <img src="https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png" alt="{{ $post->title }}" class="uk-width-1-1">
+                                @endif
+                                <h3 class="uk-text-default uk-text-center" style="color: #0A0A0A">{{ $brand->name }}</h3>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <!-- Repeat for other items -->
+                @endforeach
             </div>
+
         </div>
     </section>
     <section class="uk-section uk-section-small uk-background-norepeat uk-background-cover uk-background-center-center" style="background-image: url('path/to/background/image.jpg');" id="section_1212447303">
@@ -283,18 +296,23 @@
                 <h2 class="uk-text-large uk-margin-remove-top" style="color: #990d23; font-weight: 600">Sản phẩm bán chạy</h2>
             </div>
             <div class="uk-child-width-1-2@s uk-child-width-1-5@m uk-grid-match uk-grid-small" uk-grid uk-scrollspy="cls: uk-animation-slide-bottom; target: .uk-card; delay: 100; repeat: false">
-                <div>
-                    <div class="uk-card uk-card-default uk-card-body uk-card-hover uk-flex uk-flex-column uk-flex-middle">
-                        <a href="https://winecellar.vn/ruou-vang-y/cf-collefrisio-montepulciano-dabruzzo/">
-                            <img src="https://winecellar.vn/wp-content/uploads/2024/03/cf-collefrisio-montepulciano-dabruzzo-300x400.jpg" alt="Rượu Vang Ý CF Collefrisio Montepulciano D’abruzzo">
-                        </a>
-                        <h3 class="uk-text-default uk-text-center">Rượu Vang Ý CF Collefrisio Montepulciano D’abruzzo 2022</h3>
-                        <p class="uk-text-meta uk-margin-remove-top" style="color: #990d23; font-weight: bold;">532.000 ₫</p>
-                        <a href="?add-to-cart=43407" class="uk-button uk-border-rounded" style="background: #990d23; color: #FFFFFF">Thêm vào giỏ hàng</a>
+                @foreach($products as $product)
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body uk-card-hover uk-flex uk-flex-column uk-flex-middle">
+                            <a href="">
+{{--                                <a href="{{ route('product.show', ['slug' => $product->slug]) }}">--}}
+                                @if ($product->featuredImage)
+                                    <img src="{{ asset($product->featuredImage->path) }}" alt="{{ $product->name }}">
+                                @else
+                                    <img src="https://winecellar.vn/wp-content/uploads/2024/03/cf-collefrisio-montepulciano-dabruzzo-300x400.jpg" alt="{{ $product->name }}">
+                                @endif
+                            </a>
+                            <h3 class="uk-text-default uk-text-center">{{ $product->name }}</h3>
+                            <p class="uk-text-meta uk-margin-remove-top" style="color: #990d23; font-weight: bold;">{{ number_format($product->price, 0, ',', '.') }} ₫</p>
+                            <a href="?add-to-cart={{ $product->id }}" class="uk-button uk-border-rounded" style="background: #990d23; color: #FFFFFF">Thêm vào giỏ hàng</a>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Repeat similar structure for other products -->
+                @endforeach
             </div>
         </div>
     </section>
