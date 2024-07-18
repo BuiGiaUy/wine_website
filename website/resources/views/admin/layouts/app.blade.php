@@ -11,21 +11,21 @@ License: You must have a valid license purchased only from themeforest(the above
 <html lang="en" class="light">
 <!-- BEGIN: Head -->
 <head>
-    @include("partial.admin.head")
+    @include("admin.includes.head")
 </head>
 <!-- END: Head -->
 <body class="py-5 md:py-0 bg-black/[0.15] dark:bg-transparent">
 <!-- BEGIN: Mobile Menu -->
-@include('partial.admin.mobileMenu')
+@include('admin.includes.mobileMenu')
 <!-- END: Mobile Menu -->
 <div class="flex mt-[4.7rem] md:mt-0 overflow-hidden">
     <!-- BEGIN: Side Menu -->
-    @include('partial.admin.sideMenu')
+    @include('admin.includes.sideMenu')
     <!-- END: Side Menu -->
     <!-- BEGIN: Content -->
     <div class="content">
         <!-- BEGIN: Top Bar -->
-        @include('partial.admin.topBar')
+        @include('admin.includes.topBar')
         <!-- END: Top Bar -->
         <div class="container-fluid">
             @yield("content")
@@ -42,7 +42,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END: Dark Mode Switcher-->
 
 <!-- BEGIN: JS Assets-->
-@include('partial.admin.bodyJs')
+@include('admin.includes.bodyJs')
 <!-- END: JS Assets-->
 </body>
 </html>

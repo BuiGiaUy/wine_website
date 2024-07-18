@@ -1,11 +1,11 @@
-@extends('layouts.adminPartialLayout')
+@extends('admin.layouts.app')
 
 @section('title', 'Users')
 
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Users</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('includes.users.index') }}">Users</a></li>
         </ol>
     </nav>
 @endsection
@@ -14,7 +14,7 @@
     <h2 class="intro-y text-lg font-medium mt-10">
         Users Management
     </h2>
-    <div  class="grid grid-cols-12 gap-6 mt-5">
+    <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
 
             <!-- Dropdown Menu -->
@@ -26,14 +26,17 @@
                 </button>
                 <div class="dropdown-menu w-40">
                     <ul class="dropdown-content">
-                        <li><a href="#" class="dropdown-item"> <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print </a></li>
-                        <li><a href="#" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel </a></li>
-                        <li><a href="#" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to PDF </a></li>
+                        <li><a href="#" class="dropdown-item"> <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print
+                            </a></li>
+                        <li><a href="#" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                                Export to Excel </a></li>
+                        <li><a href="#" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i>
+                                Export to PDF </a></li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Pagination and Total Entries -->
+            <!-- pagination.blade.php and Total Entries -->
             <div class="hidden md:block mx-auto text-slate-500">
                 Showing {{ $users->firstItem() }} to {{ $users->lastItem() }} of {{ $users->total() }} entries
             </div>
@@ -57,7 +60,7 @@
                                 <img alt="{{ $user->name }}" class="rounded-full" src="{{asset('images/avatar.jpg')}}">
                             </div>
                             <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                                <a href="#" class="font-medium user-a" >{{ $user->name }}</a>
+                                <a href="#" class="font-medium user-a">{{ $user->name }}</a>
                                 <div class="text-slate-500 text-xs mt-0.5">{{ $user->role }}</div>
                             </div>
                         </div>
@@ -82,27 +85,28 @@
 
         <!-- END: Data List -->
 
-        <!-- BEGIN: Pagination -->
+        <!-- BEGIN: pagination.blade.php -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-            {{ $users->links('admin.components.pagination') }}
+            {{ $users->links('includes.components.pagination') }}
 
             <select class="w-20 form-select box mt-3 sm:mt-0" onchange="window.location.href=this.value;">
                 @foreach ([10, 25, 35, 50] as $size)
-                    <option value="{{ request()->fullUrlWithQuery(['perPage' => $size]) }}" {{ request('perPage') == $size ? 'selected' : '' }}>{{ $size }}</option>
+                    <option
+                        value="{{ request()->fullUrlWithQuery(['perPage' => $size]) }}" {{ request('perPage') == $size ? 'selected' : '' }}>{{ $size }}</option>
                 @endforeach
             </select>
         </div>
-        <!-- END: Pagination -->
+        <!-- END: pagination.blade.php -->
     </div>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             // Function to filter users based on input value
             function filterUsers() {
                 var query = $('#userSearch').val().trim().toLowerCase();
 
-                $('#userDiv .users-div ').each(function() {
+                $('#userDiv .users-div ').each(function () {
                     var userName = $(this).find('.user-a').val().trim().toLowerCase();
 
                     // Show or hide rows based on filter condition

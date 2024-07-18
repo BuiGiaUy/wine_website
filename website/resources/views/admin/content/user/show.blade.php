@@ -1,12 +1,12 @@
-<!-- resources/views/admin/content/order/show.blade.php -->
+<!-- resources/views/includes/content/order/show.blade.php -->
 
-@extends('layouts.adminPartialLayout')
+@extends('admin.layouts.app')
 
 @section('title', 'User Detail')
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Users</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('includes.users.index') }}">Users</a></li>
             <li class="breadcrumb-item active" aria-current="page">User Details</li>
         </ol>
     </nav>
@@ -28,14 +28,21 @@
             <div class="box p-5 rounded-md">
                 <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5 mb-5">
                     <div class="font-medium text-base truncate">User Info</div>
-                    <a href="#" class="flex items-center ml-auto text-primary"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Edit </a>
+                    <a href="#" class="flex items-center ml-auto text-primary"> <i data-lucide="edit"
+                                                                                   class="w-4 h-4 mr-2"></i> Edit </a>
                 </div>
-                <div class="flex items-center"> <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i> Unique ID: <a href="#" class="underline decoration-dotted ml-1">{{ $user->id }}</a> </div>
-                <div class="flex items-center mt-3"> <i data-lucide="user" class="w-4 h-4 text-slate-500 mr-2"></i> Name: <a href="#" class="underline decoration-dotted ml-1">{{ $user->name }}</a> </div>
-                <div class="flex items-center mt-3"> <i data-lucide="calendar" class="w-4 h-4 text-slate-500 mr-2"></i> Email: <a href="#" class="underline decoration-dotted ml-1">{{ $user->email }}</a> </div>
-                <div class="flex items-center mt-3"> <i data-lucide="phone" class="w-4 h-4 text-slate-500 mr-2"></i> Phone Number: {{ $user->phone_number }}</div>
-                <div class="flex items-center mt-3"> <i data-lucide="map-pin" class="w-4 h-4 text-slate-500 mr-2"></i> Address: {{ $user->address }}</div>
-                <div class="flex items-center border-t border-slate-200/60 dark:border-darkmode-400 pt-5 mt-5 font-medium">
+                <div class="flex items-center"><i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i>
+                    Unique ID: <a href="#" class="underline decoration-dotted ml-1">{{ $user->id }}</a></div>
+                <div class="flex items-center mt-3"><i data-lucide="user" class="w-4 h-4 text-slate-500 mr-2"></i> Name:
+                    <a href="#" class="underline decoration-dotted ml-1">{{ $user->name }}</a></div>
+                <div class="flex items-center mt-3"><i data-lucide="calendar" class="w-4 h-4 text-slate-500 mr-2"></i>
+                    Email: <a href="#" class="underline decoration-dotted ml-1">{{ $user->email }}</a></div>
+                <div class="flex items-center mt-3"><i data-lucide="phone" class="w-4 h-4 text-slate-500 mr-2"></i>
+                    Phone Number: {{ $user->phone_number }}</div>
+                <div class="flex items-center mt-3"><i data-lucide="map-pin" class="w-4 h-4 text-slate-500 mr-2"></i>
+                    Address: {{ $user->address }}</div>
+                <div
+                    class="flex items-center border-t border-slate-200/60 dark:border-darkmode-400 pt-5 mt-5 font-medium">
                     <button type="button" class="btn btn-outline-secondary w-full py-1 px-2">Message User</button>
                 </div>
             </div>
@@ -57,7 +64,8 @@
                             @foreach ($order->items as $item)
                                 <div class="flex items-center border-b border-gray-200 py-3">
                                     <div class="flex-shrink-0">
-                                        <img src="@isset($item->images[1]->path){{ $item->images[1]->path }}@endisset" class="w-16 h-16 rounded-md">
+                                        <img src="@isset($item->images[1]->path){{ $item->images[1]->path }}@endisset"
+                                             class="w-16 h-16 rounded-md">
                                     </div>
                                     <div class="ml-4">
                                         <h3 class="text-lg font-semibold">{{ $item->name }}</h3>
@@ -66,10 +74,12 @@
                                             <i data-lucide="link" class="w-4 h-4 mr-1"></i> <span class="text-gray-600">Price: ${{ $item->price }}</span>
                                         </div>
                                         <div class="flex items-center mt-1">
-                                            <i data-lucide="layers" class="w-4 h-4 mr-1"></i> <span class="text-gray-600">Remaining Stock: {{ $item->stock }}</span>
+                                            <i data-lucide="layers" class="w-4 h-4 mr-1"></i> <span
+                                                class="text-gray-600">Remaining Stock: {{ $item->stock }}</span>
                                         </div>
                                         <div class="flex items-center mt-1">
-                                            <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> <span class="text-gray-600">Status: {{ $item->status }}</span>
+                                            <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> <span
+                                                class="text-gray-600">Status: {{ $item->status }}</span>
                                         </div>
                                     </div>
                                 </div>

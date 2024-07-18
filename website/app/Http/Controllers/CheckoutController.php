@@ -15,6 +15,6 @@ class CheckoutController extends Controller
         // Process order here (save to database, send email, etc.)
 
         // Example redirect to checkout complete page
-        return view('content.checkout-complete');
+        return view('content.cart.checkout-complete');
     }
 }

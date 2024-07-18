@@ -1,9 +1,10 @@
-@extends('layouts.adminPartialLayout')
+@extends('admin.layouts.app')
 @section('title', 'Add Category')
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('admin.category.index', $model_type) }}">Categories {{ $model_type }}</a></li>
+            <li class="breadcrumb-item"><a
+                    href="{{ route('includes.category.index', $model_type) }}">Categories {{ $model_type }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">Add Category</li>
         </ol>
     </nav>
@@ -16,7 +17,7 @@
     </div>
     <div class="pos intro-y grid grid-cols-12 gap-5 mt-5">
         <div class="intro-y col-span-12 lg:col-span-6">
-            <form action="{{ route('admin.category.store', $model_type) }}" method="POST">
+            <form action="{{ route('includes.category.store', $model_type) }}" method="POST">
                 @csrf
                 <div class="box p-5">
                     <div>

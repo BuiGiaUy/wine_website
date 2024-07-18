@@ -1,4 +1,4 @@
-tinymce.Resource.add('tinymce.html-i18n.help-keynav.es',
+tinymce.Resource.add('tinymce.html-i18n.help-keynav.vi',
 '<h1>Iniciar la navegación con el teclado</h1>\n' +
   '\n' +
   '<dl>\n' +
@@ -27,7 +27,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.es',
   '\n' +
   '<p>Para pasar de una sección de la IU a la anterior, pulse <strong>Mayús+Tab</strong>.</p>\n' +
   '\n' +
-  '<p>El orden de <strong>tabulación</strong> de estas secciones de la IU es:</p>\n' +
+  '<p>El orden de <strong>tabulación</strong> de estas secciones de la IU vi:</p>\n' +
   '\n' +
   '<ol>\n' +
   '  <li>Barra de menús</li>\n' +

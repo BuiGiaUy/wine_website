@@ -1,10 +1,11 @@
-@extends('layouts.partialLayout')
+@extends('content.layouts.app')
 @section('title', 'cart')
 @section('style')
     <style>
-        .uk-active{
+        .uk-active {
             color: #0A0A0A !important;
         }
+
         .breadcrumb-step {
             display: inline-block;
             width: 30px;
@@ -22,6 +23,7 @@
             color: #fff; /* Màu chữ khi active */
             background-color: #b4975a; /* Màu nền khi active */
         }
+
         input[type=number]::-webkit-outer-spin-button,
         input[type=number]::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -107,7 +109,8 @@
                 <div uk-grid class="uk-child-width-1-1@s uk-child-width-1-5@l">
                     <div class="uk-width-3-5@l">
 
-                        <form class="uk-card uk-card-default uk-card-body uk-margin-bottom" action="https://winecellar.vn/cart/" method="post">
+                        <form class="uk-card uk-card-default uk-card-body uk-margin-bottom"
+                              action="https://winecellar.vn/cart/" method="post">
                             <table class="uk-table uk-table-divider uk-table-justify uk-table-responsive">
                                 <thead>
                                 <tr>
@@ -121,27 +124,40 @@
                                 <tbody>
                                 <tr>
                                     <td class="">
-                                        <a href="https://winecellar.vn/cart/?remove_item=c15e114aa760ddb760c00f8bb029d8cc&amp;_wpnonce=688978e447" uk-icon="icon: close"></a>
+                                        <a href="https://winecellar.vn/cart/?remove_item=c15e114aa760ddb760c00f8bb029d8cc&amp;_wpnonce=688978e447"
+                                           uk-icon="icon: close"></a>
                                     </td>
                                     <td class="">
                                         <a href="https://winecellar.vn/ruou-whisky-single-malt/glengoyne-10-year-old/">
-                                            <img src="https://winecellar.vn/wp-content/uploads/2024/05/glengoyne-10-year-old-300x400.jpg" width="50" alt="Rượu Whisky Glengoyne 10 Year Old">
+                                            <img
+                                                src="https://winecellar.vn/wp-content/uploads/2024/05/glengoyne-10-year-old-300x400.jpg"
+                                                width="50" alt="Rượu Whisky Glengoyne 10 Year Old">
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="https://winecellar.vn/ruou-whisky-single-malt/glengoyne-10-year-old/">Rượu Whisky Glengoyne 10 Year Old</a>
+                                        <a href="https://winecellar.vn/ruou-whisky-single-malt/glengoyne-10-year-old/">Rượu
+                                            Whisky Glengoyne 10 Year Old</a>
                                     </td>
                                     <td>1.430.000 ₫</td>
                                     <td>
                                         <div class="uk-margin  uk-flex " style="width: 70px;">
                                             <div class="uk-width-auto ">
-                                                <button type="button" class="ux-quantity__button ux-quantity__button--minus uk-button uk-button-default" style="padding-right: 3px; padding-left: 3px;">-</button>
+                                                <button type="button"
+                                                        class="ux-quantity__button ux-quantity__button--minus uk-button uk-button-default"
+                                                        style="padding-right: 3px; padding-left: 3px;">-
+                                                </button>
                                             </div>
                                             <div class="uk-width-expand ">
-                                                <input type="number" id="quantity" size="4" class="uk-input" name="cart[c15e114aa760ddb760c00f8bb029d8cc][qty]" value="1" aria-label="Product quantity" min="0" step="1" autocomplete="off">
+                                                <input type="number" id="quantity" size="4" class="uk-input"
+                                                       name="cart[c15e114aa760ddb760c00f8bb029d8cc][qty]" value="1"
+                                                       aria-label="Product quantity" min="0" step="1"
+                                                       autocomplete="off">
                                             </div>
                                             <div class="uk-width-auto ">
-                                                <button type="button" class="ux-quantity__button ux-quantity__button--plus uk-button uk-button-default" style="padding-right: 3px; padding-left: 3px;">+</button>
+                                                <button type="button"
+                                                        class="ux-quantity__button ux-quantity__button--plus uk-button uk-button-default"
+                                                        style="padding-right: 3px; padding-left: 3px;">+
+                                                </button>
                                             </div>
                                         </div>
                                     </td>
@@ -150,7 +166,8 @@
                                 <tr class="">
                                     <td colspan="3" class="">
                                         <div class="">
-                                            <a href="https://winecellar.vn/cua-hang-ruou-vang/" class="uk-button button-continue-shopping">
+                                            <a href="https://winecellar.vn/cua-hang-ruou-vang/"
+                                               class="uk-button button-continue-shopping">
                                                 <span uk-icon="icon: arrow-left"></span> Tiếp tục xem sản phẩm
                                             </a>
                                         </div>
@@ -177,16 +194,22 @@
 
                             </table>
                             <div class="uk-margin ">
-                                <a href="https://winecellar.vn/checkout/" class="uk-width-1-1 uk-button checkout-button">Tiến hành thanh toán</a>
+                                <a href="https://winecellar.vn/checkout/"
+                                   class="uk-width-1-1 uk-button checkout-button">Tiến hành thanh toán</a>
                             </div>
                             <form class="uk-form-stacked uk-margin" method="post">
                                 <div class="uk-margin">
-                                    <h3 class="widget-title uk-margin-small-bottom "><i class="fa-solid fa-tag"></i> Phiếu ưu đãi</h3>
+                                    <h3 class="widget-title uk-margin-small-bottom "><i class="fa-solid fa-tag"></i>
+                                        Phiếu ưu đãi</h3>
                                     <div class="uk-form-controls">
-                                        <input class="uk-input" id="coupon_code" type="text" name="coupon_code" placeholder="Mã ưu đãi">
+                                        <input class="uk-input" id="coupon_code" type="text" name="coupon_code"
+                                               placeholder="Mã ưu đãi">
                                     </div>
                                 </div>
-                                <button type="submit" class="is-form expand button uk-border-rounder uk-width-1-1" name="apply_coupon" value="Áp dụng">Áp dụng</button>                            </form>
+                                <button type="submit" class="is-form expand button uk-border-rounder uk-width-1-1"
+                                        name="apply_coupon" value="Áp dụng">Áp dụng
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -198,17 +221,17 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const inputQuantity = document.getElementById('quantity');
             const btnPlus = document.querySelector('.ux-quantity__button--plus');
             const btnMinus = document.querySelector('.ux-quantity__button--minus');
 
-            btnPlus.addEventListener('click', function() {
+            btnPlus.addEventListener('click', function () {
                 let currentValue = parseInt(inputQuantity.value);
                 inputQuantity.value = currentValue + 1;
             });
 
-            btnMinus.addEventListener('click', function() {
+            btnMinus.addEventListener('click', function () {
                 let currentValue = parseInt(inputQuantity.value);
                 if (currentValue > 0) {
                     inputQuantity.value = currentValue - 1;

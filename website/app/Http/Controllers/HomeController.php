@@ -35,7 +35,8 @@ class HomeController extends Controller
     }
     public function category()
     {
-        return view('content.category');
+        $products = Product::with('featuredImage')->get();
+        return view('content.category', ['products' => $products]);
     }
     public function product()
     {

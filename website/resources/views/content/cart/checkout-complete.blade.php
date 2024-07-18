@@ -1,4 +1,4 @@
-@extends('layouts.partialLayout')
+@extends('content.layouts.app')
 
 @section('title', 'Hoàn thành thanh toán')
 
@@ -8,6 +8,7 @@
             background-color: #f8f8f8;
             padding: 40px 0;
         }
+
         .checkout-complete-card {
             padding: 30px;
             background-color: #ffffff;
@@ -15,25 +16,30 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+
         .checkout-complete-card h3 {
             font-size: 2em;
             margin-bottom: 20px;
             color: #333;
         }
+
         .checkout-complete-card p {
             font-size: 1.2em;
             margin-bottom: 10px;
             color: #555;
         }
+
         .checkout-complete-card .order-number {
             font-size: 1.4em;
             font-weight: bold;
             color: #333;
             margin-bottom: 20px;
         }
+
         .checkout-complete-card .order-details {
             margin: 20px 0;
         }
+
         .checkout-complete-card .cta-button {
             display: inline-block;
             margin-top: 20px;
@@ -46,9 +52,11 @@
             text-decoration: none;
             transition: background-color 0.3s;
         }
+
         .checkout-complete-card .cta-button:hover {
             background-color: #907948;
         }
+
         .checkout-complete-icon {
             width: 100px;
             height: 100px;

@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -11,7 +12,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
+// Cart routes
+Route::prefix('cart')->group(function () {
+    Route::get('/', [CartController::class, 'index'])->name('cart');
+    Route::get('summary', [CartController::class, 'summary'])->name('cart.summary');
+//    Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
+//    Route::post('checkout', [OrderController::class, 'store'])->name('checkout.store');
+//    Route::get('checkout/complete/{order}', [OrderController::class, 'complete'])->name('checkout.complete');
+});
 Route::get('/checkout', [App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout');
 Route::get('/checkout-complete', [App\Http\Controllers\CheckoutController::class, 'placeOrder'])->name('complete');
 Route::get('/ruou-vang', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
