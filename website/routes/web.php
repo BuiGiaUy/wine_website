@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Cart\CartController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,8 +20,8 @@ Route::prefix('cart')->group(function () {
 //    Route::post('checkout', [OrderController::class, 'store'])->name('checkout.store');
 //    Route::get('checkout/complete/{order}', [OrderController::class, 'complete'])->name('checkout.complete');
 });
-Route::get('/checkout', [App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout');
-Route::get('/checkout-complete', [App\Http\Controllers\CheckoutController::class, 'placeOrder'])->name('complete');
+Route::get('/checkout', [\App\Http\Controllers\Cart\CheckoutController::class, 'index'])->name('checkout');
+Route::get('/checkout-complete', [\App\Http\Controllers\Cart\CheckoutController::class, 'placeOrder'])->name('complete');
 Route::get('/ruou-vang', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
 Route::get('/product', [App\Http\Controllers\HomeController::class, 'product'])->name('product');
 Route::get('/brand', [App\Http\Controllers\HomeController::class, 'brand'])->name('brand');

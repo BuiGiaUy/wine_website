@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Posts;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
-use Illuminate\Contracts\View\View;
 use Illuminate\COntracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Psy\Util\Str;

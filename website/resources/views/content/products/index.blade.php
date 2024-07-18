@@ -1,6 +1,6 @@
 @extends('content.layouts.app')
 
-@section('title', '')
+@section('title', 'products')
 
 @section('style')
     <style>
@@ -160,6 +160,25 @@
 
 @section('content')
     <div>
+        <div class="uk-section uk-padding-remove">
+            <div class="uk-position-relative uk-light">
+{{--                    <img src="{{ $backgroundImage }}" alt="Background Image" uk-cover>--}}
+                <img src="https://winecellar.vn/wp-content/uploads/2022/11/hinh-anh-nha-san-xuat-ruou-vang.jpeg"
+                     alt="Rượu Vang" uk-cover>
+                <div class="uk-overlay-primary uk-position-cover"></div>
+                <div class="uk-position-left uk-width-1-1 uk-flex uk-flex-between uk-container">
+                    <div class="uk-width-1-3 uk-padding-small">
+                        @include('components.breadcrumb', ['breadcrumbs' => $breadcrumbs])
+                    </div>
+                    <div class="uk-width-1-3 uk-text-center uk-padding-large uk-margin-large">
+                        <h1 class="uk-text-large">{{ $title }}</h1>
+                        <p class="uk-text-default">
+                            {{ $description }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="uk-section uk-padding-remove">
             <div class="uk-position-relative uk-light">
                 <img src="https://winecellar.vn/wp-content/uploads/2022/11/hinh-anh-nha-san-xuat-ruou-vang.jpeg"

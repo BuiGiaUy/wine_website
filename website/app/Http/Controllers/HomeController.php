@@ -40,7 +40,8 @@ class HomeController extends Controller
     }
     public function product()
     {
-        return view('content.product');
+        $products = Product::with('featuredImage')->get();
+        return view('content.products.index',['products' => $products]);
     }
 
     public function brand()

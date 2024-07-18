@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
@@ -8,10 +8,10 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
