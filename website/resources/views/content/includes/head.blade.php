@@ -129,3 +129,25 @@
 
     }
 </style>
+<style>
+    .uk-pagination > li > a,
+    .uk-pagination > li > span {
+        line-height: 1.8em;
+        font-weight: 500;
+        border-radius: 4px;
+        border: 1px solid currentColor;
+        margin: 0 0.25em;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .uk-pagination > li.uk-active > span {
+        background-color: #990d23;
+        color: #fff;
+    }
+
+    .uk-pagination > li > a:hover {
+        background-color: #990d23;
+        color: #fff;
+    }
+</style>

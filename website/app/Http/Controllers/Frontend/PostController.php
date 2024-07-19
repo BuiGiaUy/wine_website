@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Posts;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class PostController extends Controller
 {
     //
 }

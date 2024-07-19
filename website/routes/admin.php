@@ -5,10 +5,10 @@ use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Orders\OrderController;
-use App\Http\Controllers\Posts\PostController;
-use App\Http\Controllers\Products\ProductController;
-use App\Http\Controllers\Users\UserController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::namespace('admin')->group(function () {
