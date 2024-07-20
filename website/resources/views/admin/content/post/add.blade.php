@@ -1,4 +1,4 @@
-@extends('layouts.adminPartialLayout')
+@extends('admin.layouts.app')
 @section('title', 'Add Post')
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
@@ -20,7 +20,8 @@
                         <!-- Title -->
                         <div class="">
                             <label for="name" class="block text-gray-700 font-medium mb-2">Title</label>
-                            <input type="text" name="name" id="name" class="form-input w-full" placeholder="Enter name...">
+                            <input type="text" name="name" id="name" class="form-input w-full"
+                                   placeholder="Enter name...">
                             @error('name')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -28,7 +29,8 @@
                         <!-- Content -->
                         <div class="">
                             <label for="content" class="block text-gray-700 font-medium mb-2">Content</label>
-                            <textarea name="content" id="content" class="form-textarea w-full" rows="8" placeholder="Enter content..."></textarea>
+                            <textarea name="content" id="content" class="form-textarea w-full" rows="8"
+                                      placeholder="Enter content..."></textarea>
                             @error('content')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -36,7 +38,8 @@
                         <!-- Description -->
                         <div class="">
                             <label for="description" class="block text-gray-700 font-medium mb-2">Description</label>
-                            <textarea name="description" id="description" class="form-textarea w-full" rows="4" placeholder="Enter description..."></textarea>
+                            <textarea name="description" id="description" class="form-textarea w-full" rows="4"
+                                      placeholder="Enter description..."></textarea>
                             @error('description')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -47,7 +50,8 @@
                         <!-- SEO Title -->
                         <div>
                             <label for="seo_title" class="block text-gray-700 font-medium mb-2">SEO Title</label>
-                            <input type="text" name="seo_title" id="seo_title" class="form-input w-full" placeholder="Enter SEO title...">
+                            <input type="text" name="seo_title" id="seo_title" class="form-input w-full"
+                                   placeholder="Enter SEO title...">
                             @error('seo_title')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -55,7 +59,8 @@
                         <!-- SEO Keywords -->
                         <div>
                             <label for="seo_keywords" class="block text-gray-700 font-medium mb-2">SEO Keywords</label>
-                            <textarea type="text" name="seo_keywords" id="seo_keywords" class="form-input w-full" placeholder="Enter SEO keywords...">
+                            <textarea type="text" name="seo_keywords" id="seo_keywords" class="form-input w-full"
+                                      placeholder="Enter SEO keywords...">
                             </textarea>
                             @error('seo_keywords')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -63,8 +68,10 @@
                         </div>
                         <!-- SEO Description -->
                         <div class="">
-                            <label for="seo_description" class="block text-gray-700 font-medium mb-2">SEO Description</label>
-                            <textarea name="seo_description" id="seo_description" class="form-textarea w-full" rows="4" placeholder="Enter SEO description..."></textarea>
+                            <label for="seo_description" class="block text-gray-700 font-medium mb-2">SEO
+                                Description</label>
+                            <textarea name="seo_description" id="seo_description" class="form-textarea w-full" rows="4"
+                                      placeholder="Enter SEO description..."></textarea>
                             @error('seo_description')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -98,8 +105,10 @@
                         <label for="image" class="block text-gray-700 font-medium mb-2">Upload Image</label>
                         <div class="border-2 border-dashed dark:border-darkmode-400 rounded-md pt-4">
                             <div class="flex flex-wrap px-4" id="add-images">
-                                <div class=" w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in" id="button-image">
-                                    <img  class="text-white rounded-md" alt="Midone - HTML Admin Template" src="{{ asset('images/cong2.jpg') }}">
+                                <div class=" w-24 h-24 relative image-fit mb-5 mr-5 cursor-pointer zoom-in"
+                                     id="button-image">
+                                    <img class="text-white rounded-md" alt="Midone - HTML Admin Template"
+                                         src="{{ asset('images/cong2.jpg') }}">
                                 </div>
                             </div>
                         </div>
@@ -118,19 +127,20 @@
     </div>
     <script>
 
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
 
             document.getElementById('button-image').addEventListener('click', (event) => {
                 event.preventDefault();
 
                 window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
             });
-            document.getElementById('add-images').addEventListener('click', function(event) {
+            document.getElementById('add-images').addEventListener('click', function (event) {
                 if (event.target.classList.contains('close-button')) {
                     event.target.closest('.image-container').remove();
                 }
             });
         });
+
         // set file link
         function fmSetLink($url) {
             let newUrl = $url.replace("http://localhost/", "http://winewebsite.th/");

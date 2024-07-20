@@ -4,8 +4,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ConfigController;
-use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductController;
@@ -23,7 +22,7 @@ Route::namespace('admin')->group(function () {
     Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
         Route::post('/logout', [LoginController::class, 'logout'])->name('admin.auth.logout');
-        Route::get('/home', [HomeController::class, 'index'])->name('admin.homepage');
+        Route::get('/home', [DashboardController::class, 'index'])->name('admin.homepage');
 
         // Quản lý Category
         Route::group(['prefix'=>'category'],function() {

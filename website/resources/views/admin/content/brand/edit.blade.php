@@ -1,4 +1,4 @@
-@extends('layouts.adminPartialLayout')
+@extends('admin.layouts.app')
 
 @section('title', 'Edit Brand')
 
@@ -26,17 +26,20 @@
                 <div class="box p-5">
                     <div class="mt-3">
                         <label class="form-label">Brand Name</label>
-                        <input type="text" name="name" value="{{ $brand->name }}" class="form-control" placeholder="Name" required>
+                        <input type="text" name="name" value="{{ $brand->name }}" class="form-control"
+                               placeholder="Name" required>
                     </div>
 
                     <div class="mt-3">
                         <label class="form-label">Slug</label>
-                        <input type="text" name="slug" value="{{ $brand->slug }}" class="form-control" placeholder="Slug">
+                        <input type="text" name="slug" value="{{ $brand->slug }}" class="form-control"
+                               placeholder="Slug">
                     </div>
 
                     <div class="mt-3">
                         <label class="form-label">Description</label>
-                        <textarea name="description" class="form-control" placeholder="Description">{{ $brand->description }}</textarea>
+                        <textarea name="description" class="form-control"
+                                  placeholder="Description">{{ $brand->description }}</textarea>
                     </div>
 
 

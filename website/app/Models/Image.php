@@ -11,6 +11,10 @@ class Image extends Model
     protected $fillable = ["model_type", 'model_id', 'path', 'name', 'alt'];
     protected $hidden = ['created_at', 'updated_at'];
 
+    public function model()
+    {
+        return $this->morphTo();
+    }
     public function post()
     {
         return $this->belongsTo(Post::class, 'model_id', 'id');

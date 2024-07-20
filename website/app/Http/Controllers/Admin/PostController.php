@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
-use Illuminate\Contracts\View\View;
 use Illuminate\COntracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Psy\Util\Str;
@@ -18,12 +18,12 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
-        $this->post = 'post';
+        $this->post = 'App\Models\Post';
 
     }
 
     public function getPostCategories() {
-        return Category::where('model_type','=', 'post')->where('parent_id', '=', 0)->with('subCategories')->get();
+        return Category::where('model_type','=', $this->post)->where('parent_id', '=', 0)->with('subCategories')->get();
     }
 
     protected function fillDataToPost($item, $input, $is_create): void
@@ -46,11 +46,11 @@ class PostController extends Controller
     }
     public function index(): Factory|View|Application
     {
-        $group = 'post';
+        $group = "App\Models\Post";
         return view('admin.content.post.index', [
             "posts" => Post::orderBy('category_id', 'ASC')->whereHas('category', function ($query) use($group) {
                 $query->where('model_type', $group);
-            })->qaginate(50)
+            })->paginate(50)
         ]);
 
 //        $posts = Post::orderBy('category_id', 'ASC')->whereHas('category', function ($query) use ($group) {
@@ -58,7 +58,7 @@ class PostController extends Controller
 //        })->paginate(50);
 //
 //        echo "<pre>";
-//        print_r($post);
+//        print_r($posts);
 //        echo "</pre>";
     }
     public function add():Factory|View|Application

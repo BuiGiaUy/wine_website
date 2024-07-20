@@ -1,4 +1,4 @@
-@extends('layouts.adminPartialLayout')
+@extends('admin.layouts.app')
 @section('title', 'profile')
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
 {
@@ -40,7 +41,10 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class, 'post_id', 'id');
     }
-
+    public function featuredImage() :HasOne
+    {
+        return $this->hasOne(Image::class, 'model_id')->where('model_type', self::class);
+    }
     public function orders()
     {
         return $this->belongsToMany(Order::class, 'order_items')
@@ -50,7 +54,7 @@ class Product extends Model
 
     public function images()
     {
-        return $this->hasMany(Image::class, 'model_id','id')->where('model_type', 'product');
+        return $this->hasMany(Image::class, 'model_id','id')->where('model_type', self::class);
     }
 
     public function deleteImages()

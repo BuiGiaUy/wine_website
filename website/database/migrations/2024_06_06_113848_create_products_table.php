@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('categories', 'id')->onDelete('cascade');
+            $table->foreignId('brand_id')->constrained('brands', 'id')->onDelete('cascade');
+            $table->foreignId('post_id')->constrained('posts', 'id')->onDelete('cascade');
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('barcode')->unique();
@@ -24,8 +26,6 @@ return new class extends Migration
             $table->unsignedBigInteger('viewer')->default(0);
             $table->double('rating_number')->default(0);
             $table->unsignedInteger('rating_value')->default(0);
-            $table->foreignId('brand_id')->constrained()->onDelete('cascade');
-            $table->foreignId('post_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

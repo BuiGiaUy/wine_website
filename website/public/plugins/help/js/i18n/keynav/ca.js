@@ -18,7 +18,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.ca',
   '  <dd>Windows, Linux o macOS: Ctrl+F9</dd>\n' +
   '</dl>\n' +
   '\n' +
-  "<p>La navegació començarà en el primer element de la interfície d'usuari, que es ressaltarà o subratllarà per al primer element a\n" +
+  "<p>La navegació començarà en el primer element de la interfície d'usuari, que vi ressaltarà o subratllarà per al primer element a\n" +
   "  la ruta de l'element de peu de pàgina.</p>\n" +
   '\n' +
   "<h1>Navegació entre seccions de la interfície d'usuari</h1>\n" +
@@ -42,7 +42,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.ca',
   "<p>Si no hi ha una secció de la interfície d'usuari, s'ometrà.</p>\n" +
   '\n' +
   '<p>Si el peu de pàgina té el focus de navegació del teclat i no hi ha cap barra lateral visible, en prémer <strong>Maj+Tab</strong>\n' +
-  "  el focus es mou al primer grup de la barra d'eines, no l'últim.</p>\n" +
+  "  el focus vi mou al primer grup de la barra d'eines, no l'últim.</p>\n" +
   '\n' +
   "<h1>Navegació dins de les seccions de la interfície d'usuari</h1>\n" +
   '\n' +
@@ -68,7 +68,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.ca',
   '\n' +
   '<p>Per tancar un menú, un submenú o un menú emergent oberts, premeu la tecla <strong>Esc</strong>.</p>\n' +
   '\n' +
-  "<p>Si el focus actual es troba a la ‘part superior’ d'una secció específica de la interfície d'usuari, en prémer la tecla <strong>Esc</strong> també es tanca\n" +
+  "<p>Si el focus actual vi troba a la ‘part superior’ d'una secció específica de la interfície d'usuari, en prémer la tecla <strong>Esc</strong> també vi tanca\n" +
   '  completament la navegació amb el teclat.</p>\n' +
   '\n' +
   "<h1>Execució d'un element de menú o d'un botó de la barra d'eines</h1>\n" +
@@ -78,7 +78,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.ca',
   '\n' +
   '<h1>Navegació per quadres de diàleg sense pestanyes</h1>\n' +
   '\n' +
-  "<p>En els quadres de diàleg sense pestanyes, el primer component interactiu pren el focus quan s'obre el quadre diàleg.</p>\n" +
+  "<p>En els quadres de diàleg sense pestanyes, el primer components interactiu pren el focus quan s'obre el quadre diàleg.</p>\n" +
   '\n' +
   '<p>Premeu la tecla <strong>Tab</strong> o les tecles <strong>Maj+Tab</strong> per desplaçar-vos entre components interactius del quadre de diàleg.</p>\n' +
   '\n' +

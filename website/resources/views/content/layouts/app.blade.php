@@ -11,22 +11,22 @@ License: You must have a valid license purchased only from themeforest(the above
 <html lang="en" class="light">
 <!-- BEGIN: Head -->
 <head>
-    @include("partial.head")
+    @include("content.includes.head")
     @yield("style")
 </head>
 <!-- END: Head -->
 <body class="uk-margin-remove">
-    {{-- BEGIN:Header --}}
-    @include("partial.header")
-    {{-- END: Header --}}
-    <div class="">
-        @yield("content")
-    </div>
-    <!-- BEGIN: Footer -->
-    @include('partial.footer')
-    <!-- END: Footer -->
-    <!-- BEGIN: JS Assets-->
-    @include('partial.bodyJs')
-    <!-- END: JS Assets-->
+{{-- BEGIN:Header --}}
+@include("content.includes.header")
+{{-- END: Header --}}
+<div class="">
+    @yield("content")
+</div>
+<!-- BEGIN: Footer -->
+@include('content.includes.footer')
+<!-- END: Footer -->
+<!-- BEGIN: JS Assets-->
+@include('content.includes.bodyJs')
+<!-- END: JS Assets-->
 </body>
 </html>

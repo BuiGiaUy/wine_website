@@ -8,10 +8,10 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -20,12 +20,12 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
-        $this->product = "product";
+        $this->product = "App\Models\Product";
     }
 
     public function getProductCategories()
     {
-        return Category::where('model_type', '=', 'product')
+        return Category::where('model_type', '=', $this->product)
             ->where('parent_id', '=', 0)
             ->with('subCategories')
             ->get();
