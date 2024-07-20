@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="111e7cd9-ba10-422d-aec2-8c56f7d275bf" name="Changes" comment="feat_adminLayout" />
+    <list default="true" id="111e7cd9-ba10-422d-aec2-8c56f7d275bf" name="Changes" comment="feat_adminLayout">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -148,6 +150,9 @@
       <path value="$PROJECT_DIR$/website/vendor/darryldecode/cart" />
     </include_path>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -162,7 +167,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat__integration&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/web/OSPanel/domains/wine_website&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -182,11 +187,11 @@
       <recent name="D:\web\OSPanel\domains\wine_website\website\public\backend\Source" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\web\OSPanel\domains\wine_website\website\resources\views\content" />
-      <recent name="D:\web\OSPanel\domains\wine_website\website\resources\views\partial\admin" />
       <recent name="D:\web\OSPanel\domains\wine_website\website\resources\views" />
-      <recent name="D:\web\OSPanel\domains\wine_website\website\resources\views\admin\content\post" />
-      <recent name="D:\web\OSPanel\domains\wine_website\website\resources\views\auth\admin" />
+      <recent name="D:\web\OSPanel\domains\wine_website\website\resources\views\layouts" />
+      <recent name="D:\web\OSPanel\domains\wine_website\website\resources\views\content" />
+      <recent name="D:\web\OSPanel\domains\wine_website\website\resources\views\admin\layouts" />
+      <recent name="D:\web\OSPanel\domains\wine_website\website\resources\views\admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -225,6 +230,9 @@
       <workItem from="1721168689029" duration="47000" />
       <workItem from="1721173168901" duration="1047000" />
       <workItem from="1721241604615" duration="518000" />
+      <workItem from="1721330440584" duration="17262000" />
+      <workItem from="1721387754740" duration="20260000" />
+      <workItem from="1721502144868" duration="370000" />
     </task>
     <task id="LOCAL-00001" summary="feat post">
       <option name="closed" value="true" />
