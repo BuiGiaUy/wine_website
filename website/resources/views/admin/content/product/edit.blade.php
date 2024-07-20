@@ -3,7 +3,7 @@
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('includes.product.index') }}">Products</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Products</a></li>
             <li class="breadcrumb-item active" aria-current="page">Edit Product</li>
         </ol>
     </nav>
@@ -14,7 +14,7 @@
             Edit Product
         </h2>
     </div>
-    <form action="{{ route('includes.product.update', $product->id) }}" method="POST">
+    <form action="{{ route('admin.product.update', $product->id) }}" method="POST">
         @csrf
         @method('POST')
         <div class="pos intro-y grid grid-cols-12 gap-5 mt-5">

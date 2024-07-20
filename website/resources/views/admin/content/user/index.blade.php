@@ -5,7 +5,7 @@
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('includes.users.index') }}">Users</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Users</a></li>
         </ol>
     </nav>
 @endsection
@@ -87,7 +87,7 @@
 
         <!-- BEGIN: pagination.blade.php -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-            {{ $users->links('includes.components.pagination') }}
+            {{ $users->links('admin.components.pagination') }}
 
             <select class="w-20 form-select box mt-3 sm:mt-0" onchange="window.location.href=this.value;">
                 @foreach ([10, 25, 35, 50] as $size)

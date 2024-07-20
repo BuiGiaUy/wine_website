@@ -3,7 +3,7 @@
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('includes.post.index') }}">Posts</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}">Posts</a></li>
             <li class="breadcrumb-item active" aria-current="page">Add Post</li>
         </ol>
     </nav>
@@ -12,7 +12,7 @@
     <div class="container mx-auto py-8">
         <div class="bg-white rounded-lg shadow-md p-8">
             <h2 class="text-2xl font-semibold mb-6">Add New Post</h2>
-            <form action="{{ route('includes.post.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <div class="grid grid-cols-12 gap-6 mt-5">

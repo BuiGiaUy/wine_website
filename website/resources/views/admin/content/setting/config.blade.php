@@ -1,4 +1,4 @@
-{{-- resources/views/includes/content/setting/config.blade.php --}}
+{{-- resources/views/admin/content/setting/config.blade.php --}}
 
 @extends('admin.layouts.app')
 
@@ -7,7 +7,7 @@
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('includes.product.index') }}">Setting</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Setting</a></li>
             <li class="breadcrumb-item active" aria-current="page">Cấu hình thông số hệ thống</li>
         </ol>
     </nav>
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="iq-card-body">
-            <form action="{{ route('includes.setting.config.update') }}" method="POST">
+            <form action="{{ route('admin.setting.config.update') }}" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col-sm-12 col-lg-6">

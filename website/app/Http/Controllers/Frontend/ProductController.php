@@ -20,8 +20,12 @@ class ProductController extends Controller
             ['title' => 'Trang chủ', 'url' => route('home')],
             ['title' => 'Rượu Vang'] // Mục hiện tại không có liên kết
         ];
-
-        $products = Product::all(); // Retrieve all products
+        $group = "App\Models\Product";
+        $products = Product::orderBy('category_id', 'ASC')
+            ->whereHas('category', function ($query) use ($group) {
+                $query->where('model_type', $group);
+            })
+            ->paginate(50);
         return view('content.products.index', ['breadcrumbs'=> $breadcrumbs, 'products' => $products]); // Pass products to the view
     }
 
@@ -33,22 +37,26 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+
         $product = Product::findOrFail($id); // Find product by ID or fail
-        return view('products.show', compact('product')); // Pass product to the view
+        $breadcrumbs = [
+            ['title' => 'Trang chủ', 'url' => route('home')],
+            ['title' => $product->category->name, 'url' => route('products.show', $product->category->slug)],
+            ['title' => $product->name]
+        ];
+        return view('content.products.show', [
+            'product' => $product,
+            'breadcrumbs' => $breadcrumbs
+        ]); // Pass product to the view
     }
 
-    /**
-     * Display products by category.
-     *
-     * @param  string  $category
-     * @return \Illuminate\View\View
-     */
-    public function category($category)
+
+    public function category($slug)
     {
 
 
         // Find the category by its slug
-        $category = Category::where('slug', $category)->firstOrFail();
+        $category = Category::where('slug', $slug)->firstOrFail();
 
         // Retrieve products that belong to the found category
         $products = Product::where('category_id', $category->id)->paginate(10);

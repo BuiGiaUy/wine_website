@@ -5,7 +5,7 @@
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('includes.orders.index') }}">Orders</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.orders.index') }}">Orders</a></li>
         </ol>
     </nav>
 @endsection
@@ -65,7 +65,7 @@
                         <td class="whitespace-nowrap">{{ $order->status }}</td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a href="{{ route('includes.orders.show', $order->id) }}"
+                                <a href="{{ route('admin.orders.show', $order->id) }}"
                                    class="flex items-center mr-3">
                                     <i class="w-4 h-4 mr-1" data-lucide="eye"></i> View
                                 </a>
@@ -94,7 +94,7 @@
                                         <button type="button" class="btn btn-outline-secondary w-24 mr-1"
                                                 data-tw-dismiss="modal">Cancel
                                         </button>
-                                        <form action="{{ route('includes.order.delete', $order->id) }}" method="POST"
+                                        <form action="{{ route('admin.order.delete', $order->id) }}" method="POST"
                                               style="display:inline;">
                                             @csrf
                                             @method('DELETE')
@@ -114,7 +114,7 @@
 
         <!-- BEGIN: pagination.blade.php -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-            {{ $orders->links('includes.components.pagination') }}
+            {{ $orders->links('admin.components.pagination') }}
 
             <select class="w-20 form-select box mt-3 sm:mt-0" onchange="window.location.href=this.value;">
                 @foreach ([10, 25, 35, 50] as $size)

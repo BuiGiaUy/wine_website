@@ -5,7 +5,7 @@
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('includes.brand.index') }}">Brands</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.brand.index') }}">Brands</a></li>
         </ol>
     </nav>
 @endsection
@@ -16,7 +16,7 @@
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="{{ route('includes.brand.add') }}" class="btn btn-primary shadow-md mr-2">Add New Brand</a>
+            <a href="{{ route('admin.brand.add') }}" class="btn btn-primary shadow-md mr-2">Add New Brand</a>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center">
@@ -76,7 +76,7 @@
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a href="{{ route('includes.brand.edit', $brand->id) }}" class="flex items-center mr-3">
+                                <a href="{{ route('admin.brand.edit', $brand->id) }}" class="flex items-center mr-3">
                                     <i class="w-4 h-4 mr-1" data-lucide="check-square"></i> Edit
                                 </a>
                                 <a href="javascript:;" class="flex items-center text-danger" data-tw-toggle="modal"
@@ -104,7 +104,7 @@
                                         <button type="button" class="btn btn-outline-secondary w-24 mr-1"
                                                 data-tw-dismiss="modal">Cancel
                                         </button>
-                                        <form action="{{ route('includes.brand.delete', $brand->id) }}" method="POST"
+                                        <form action="{{ route('admin.brand.delete', $brand->id) }}" method="POST"
                                               style="display:inline;">
                                             @csrf
                                             @method('DELETE')
@@ -124,7 +124,7 @@
 
         <!-- BEGIN: pagination.blade.php -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-            {{ $brands->links('includes.components.pagination') }}
+            {{ $brands->links('admin.components.pagination') }}
 
             <select class="w-20 form-select box mt-3 sm:mt-0" onchange="window.location.href=this.value;">
                 @foreach ([10, 25, 35, 50] as $size)

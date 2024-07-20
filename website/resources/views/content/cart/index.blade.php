@@ -84,12 +84,12 @@
                     <nav class="uk-breadcrumb uk-width-1-1 uk-flex-center uk-text-center uk-margin-remove">
                         <ul class="uk-breadcrumb">
                             <li>
-                                <a href="https://winecellar.vn/cart/" class="uk-text-large  uk-active">
+                                <a href="{{ route('cart.index') }}" class="uk-text-large uk-active">
                                     <span class="breadcrumb-step uk-visible@m">1</span> Giỏ hàng
                                 </a>
                             </li>
                             <li>
-                                <a href="https://winecellar.vn/checkout/" class="uk-text-large">
+                                <a href="{{ route('cart.checkout') }}" class="uk-text-large">
                                     <span class="breadcrumb-step uk-visible@m">2</span> Đặt hàng
                                 </a>
                             </li>
@@ -100,6 +100,99 @@
                             </li>
                         </ul>
                     </nav>
+                </div>
+            </div>
+        </div>
+        <div class="uk-section uk-padding-remove-top">
+            <div class="uk-container uk-padding-remove">
+                <div uk-grid class="uk-child-width-1-1@s uk-child-width-1-5@l">
+                    <div class="uk-width-3-5@l">
+                        <form class="uk-card uk-card-default uk-card-body uk-margin-bottom" action="{{ route('cart.update') }}" method="post">
+                            @csrf
+                            <table class="uk-table uk-table-divider uk-table-justify uk-table-responsive">
+                                <thead>
+                                <tr>
+                                    <th colspan="3">Sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Tạm tính</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($cartItems as $item)
+                                    <tr>
+                                        <td class="uk-text-center">
+                                            <a href="{{ route('cart.remove', $item['id']) }}" uk-icon="icon: close"></a>
+                                        </td>
+                                        <td class="uk-text-center">
+                                            <a href="{{ $item['product_url'] }}">
+                                                <img src="{{ $item['product_image'] }}" width="50" alt="{{ $item['product_name'] }}">
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ $item['product_url'] }}">{{ $item['product_name'] }}</a>
+                                        </td>
+                                        <td>{{ number_format($item['price'], 0, ',', '.') }} ₫</td>
+                                        <td>
+                                            <div class="uk-margin uk-flex" style="width: 70px;">
+                                                <div class="uk-width-auto">
+                                                    <button type="button" class="ux-quantity__button ux-quantity__button--minus uk-button uk-button-default" style="padding-right: 3px; padding-left: 3px;">-</button>
+                                                </div>
+                                                <div class="uk-width-expand">
+                                                    <input type="number" name="cart[{{ $item['id'] }}][qty]" value="{{ $item['quantity'] }}" aria-label="Product quantity" min="0" step="1" class="uk-input" style="text-align: center;">
+                                                </div>
+                                                <div class="uk-width-auto">
+                                                    <button type="button" class="ux-quantity__button ux-quantity__button--plus uk-button uk-button-default" style="padding-right: 3px; padding-left: 3px;">+</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{{ number_format($item['total'], 0, ',', '.') }} ₫</td>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <td colspan="7" class="uk-text-left">
+                                        <a href="{{ route('products.index') }}" class="uk-button button-continue-shopping">
+                                            <span uk-icon="icon: arrow-left"></span> Tiếp tục xem sản phẩm
+                                        </a>
+                                        <button type="submit" class="uk-button uk-button-primary">Cập nhật giỏ hàng</button>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="uk-width-2-5@l">
+                        <div class="uk-card uk-card-default uk-card-body uk-margin-bottom">
+                            <h2>Cộng giỏ hàng</h2>
+                            <table class="uk-table uk-table-divider">
+                                <tbody>
+                                <tr>
+                                    <th>Tạm tính</th>
+                                    <td class="uk-text-right"> ₫</td>
+                                </tr>
+                                <tr>
+                                    <th>Tổng</th>
+                                    <td class="uk-text-right"><strong> ₫</strong></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="uk-margin">
+                                <a href="{{ route('cart.checkout') }}" class="uk-width-1-1 uk-button checkout-button">Tiến hành thanh toán</a>
+                            </div>
+                            <form class="uk-form-stacked uk-margin" action="" method="post">
+                                @csrf
+                                <div class="uk-margin">
+                                    <h3 class="widget-title uk-margin-small-bottom"><i class="fa-solid fa-tag"></i> Phiếu ưu đãi</h3>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input" id="coupon_code" type="text" name="coupon_code" placeholder="Mã ưu đãi">
+                                    </div>
+                                </div>
+                                <button type="submit" class="uk-button uk-border-rounded uk-width-1-1" name="apply_coupon" value="Áp dụng">Áp dụng</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

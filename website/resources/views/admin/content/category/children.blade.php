@@ -6,7 +6,7 @@
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a
-                    href="{{ route('includes.category.index', $model_type) }}">Categories {{ $model_type }}</a></li>
+                    href="{{ route('admin.category.index', $model_type) }}">Categories {{ $model_type }}</a></li>
         </ol>
     </nav>
 @endsection
@@ -51,7 +51,7 @@
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a class="flex items-center mr-3"
-                                   href="{{ route('includes.category.edit', [$model_type, $child->id]) }}">
+                                   href="{{ route('admin.category.edit', [$model_type, $child->id]) }}">
                                     <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                 </a>
                                 <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal"

@@ -1,4 +1,4 @@
-<!-- resources/views/includes/content/order/show.blade.php -->
+<!-- resources/views/admin/content/order/show.blade.php -->
 
 @extends('admin.layouts.app')
 
@@ -6,7 +6,7 @@
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('includes.orders.index') }}"> Orders </a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.orders.index') }}"> Orders </a></li>
         </ol>
     </nav>
 @endsection

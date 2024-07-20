@@ -151,3 +151,15 @@
         color: #fff;
     }
 </style>
+<style>
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Ẩn nút tăng giảm trong trình duyệt Firefox */
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+</style>

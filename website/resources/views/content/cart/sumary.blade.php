@@ -1,6 +1,6 @@
 <!-- resources/views/cart/summary.blade.php -->
 
-@extends('layouts.front')
+@extends('content.layouts.app')
 
 @section('content')
     <div class="uk-container uk-margin-top">

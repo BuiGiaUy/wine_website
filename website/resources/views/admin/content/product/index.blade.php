@@ -5,7 +5,7 @@
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('includes.product.index') }}"> Products </a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}"> Products </a></li>
         </ol>
     </nav>
 @endsection
@@ -17,7 +17,7 @@
 
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="{{ route('includes.product.add') }}" class="btn btn-primary shadow-md mr-2">Add New Product</a>
+            <a href="{{ route('admin.product.add') }}" class="btn btn-primary shadow-md mr-2">Add New Product</a>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -70,7 +70,7 @@
                                 <span
                                     class="absolute top-0 bg-pending/80 text-white text-xs m-5 px-2 py-1 rounded z-10">Featured</span>
                                 <div class="absolute bottom-0 text-white px-5 pb-6 z-10">
-                                    <a href="{{ route('includes.product.index', $product->id) }}"
+                                    <a href="{{ route('admin.product.index', $product->id) }}"
                                        class="block font-medium text-base product-name">{{ $product->name }}</a>
                                     <span class="text-white/90 text-xs mt-3">{{ $product->category }}</span>
                                 </div>
@@ -96,11 +96,11 @@
                         <div
                             class="flex justify-center lg:justify-end items-center p-5 border-t border-slate-200/60 dark:border-darkmode-400">
                             <a class="flex items-center text-primary mr-auto"
-                               href="{{ route('includes.product.index', $product->id) }}">
+                               href="{{ route('admin.product.index', $product->id) }}">
                                 <i data-lucide="eye" class="w-4 h-4 mr-1"></i>
                                 Preview
                             </a>
-                            <a class="flex items-center mr-3" href="{{ route('includes.product.edit', $product->id) }}">
+                            <a class="flex items-center mr-3" href="{{ route('admin.product.edit', $product->id) }}">
                                 <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>
                                 Edit
                             </a>
@@ -130,7 +130,7 @@
                                     <button type="button" data-tw-dismiss="modal"
                                             class="btn btn-outline-secondary w-24 mr-1">Cancel
                                     </button>
-                                    <form action="{{ route('includes.product.delete', $product->id) }}" method="POST"
+                                    <form action="{{ route('admin.product.delete', $product->id) }}" method="POST"
                                           style="display:inline;">
                                         @csrf
                                         @method('DELETE')
@@ -149,7 +149,7 @@
 
         <!-- BEGIN: pagination.blade.php -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-            {{ $products->links('includes.components.pagination') }}
+            {{ $products->links('admin.components.pagination') }}
             <select class="w-20 form-select box mt-3 sm:mt-0" onchange="window.location.href=this.value;">
                 @foreach ([10, 25, 35, 50] as $size)
                     <option

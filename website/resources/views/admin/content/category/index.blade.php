@@ -6,7 +6,7 @@
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a
-                    href="{{ route('includes.category.index', $model_type) }}">Categories {{ $model_type }}</a></li>
+                    href="{{ route('admin.category.index', $model_type) }}">Categories {{ $model_type }}</a></li>
         </ol>
     </nav>
 @endsection
@@ -17,7 +17,7 @@
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="{{ route('includes.category.add', $model_type) }}" class="btn btn-primary shadow-md mr-2">Add New
+            <a href="{{ route('admin.category.add', $model_type) }}" class="btn btn-primary shadow-md mr-2">Add New
                 Category</a>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
@@ -85,7 +85,7 @@
                         </td>
                         <td>
                             @if ($category->children->isNotEmpty())
-                                <a href="{{ route('includes.category.children', [$model_type, $category->id]) }}"
+                                <a href="{{ route('admin.category.children', [$model_type, $category->id]) }}"
                                    class="text-blue-500 underline">
                                     View Children
                                 </a>
@@ -96,7 +96,7 @@
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a class="flex items-center mr-3"
-                                   href="{{ route('includes.category.edit', [$model_type, $category->id]) }}">
+                                   href="{{ route('admin.category.edit', [$model_type, $category->id]) }}">
                                     <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                 </a>
                                 <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal"
@@ -126,7 +126,7 @@
                                                 class="btn btn-outline-secondary w-24 mr-1">Cancel
                                         </button>
                                         <form
-                                            action="{{ route('includes.category.delete', [ $model_type ,$category->id ]) }}"
+                                            action="{{ route('admin.category.delete', [ $model_type ,$category->id ]) }}"
                                             method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
@@ -147,7 +147,7 @@
 
         <!-- BEGIN: pagination.blade.php -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-            {{ $categories->links('includes.components.pagination') }}
+            {{ $categories->links('admin.components.pagination') }}
 
             <select class="w-20 form-select box mt-3 sm:mt-0" onchange="window.location.href=this.value;">
                 @foreach ([10, 25, 35, 50] as $size)

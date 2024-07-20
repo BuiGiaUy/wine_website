@@ -43,7 +43,7 @@ class Product extends Model
     }
     public function featuredImage() :HasOne
     {
-        return $this->hasOne(Image::class, 'model_id')->where('model_type', 'App\Models\Product');
+        return $this->hasOne(Image::class, 'model_id')->where('model_type', self::class);
     }
     public function orders()
     {
@@ -54,7 +54,7 @@ class Product extends Model
 
     public function images()
     {
-        return $this->hasMany(Image::class, 'model_id','id')->where('model_type', 'product');
+        return $this->hasMany(Image::class, 'model_id','id')->where('model_type', self::class);
     }
 
     public function deleteImages()

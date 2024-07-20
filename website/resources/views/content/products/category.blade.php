@@ -1,6 +1,6 @@
 @extends('content.layouts.app')
 
-@section('title', 'products')
+@section('title', $category->name)
 
 @section('style')
     <style>

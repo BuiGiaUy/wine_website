@@ -1,9 +1,37 @@
 @extends('content.layouts.app')
 
-@section('title', '')
+@section('title', $product->name)
 
 @section('style')
     <style>
+        /* Add this to your CSS file */
+        .uk-flex-middle {
+            align-items: center;
+        }
+
+        .uk-width-auto {
+            flex: 0 0 auto;
+        }
+
+        .uk-input {
+            text-align: center;
+        }
+
+        .ux-quantity__button {
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .ux-quantity__button:hover {
+            opacity: 0.8;
+        }
+
+        .uk-flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         #section_782981026 {
             padding-top: 30px;
             padding-bottom: 30px;
@@ -68,18 +96,7 @@
                 <div class="">
                     <section class="uk-section uk-section-small uk-padding-small" id="section_1984779848">
                         <div class="uk-background-cover b"></div>
-                        <div class="uk-position-relative ">
-                            <div class=" uk-text-muted uk-text-normal">
-                                <nav class="uk-breadcrumb ">
-                                    <ul class="uk-breadcrumb uk-text-default">
-                                        <li><a href="https://winecellar.vn">Trang chủ</a></li>
-                                        <li><a href="https://winecellar.vn/ruou-manh-cao-cap/">Rượu Mạnh</a></li>
-                                        <li><a href="https://winecellar.vn/ruou-whisky-single-malt/">Rượu Whisky Single
-                                                Malt</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+                        @include('content.components.breadcrumb', ['breadcrumbs' => $breadcrumbs])
                     </section>
 
                     <section class="uk-section uk-section-small product-detail__row product-detail__gallery"
@@ -99,18 +116,12 @@
                                                         alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)"
                                                         uk-cover>
                                                 </li>
-                                                <li>
-                                                    <img
-                                                        src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-2-1.jpg"
-                                                        alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)"
-                                                        uk-cover>
-                                                </li>
-                                                <li>
-                                                    <img
-                                                        src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-1-1.jpg"
-                                                        alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)"
-                                                        uk-cover>
-                                                </li>
+                                                @foreach ($product->images as $image)
+                                                    <li>
+                                                        <img src="{{ $image->path }}" alt="{{ $image->alt }}" uk-cover>
+                                                    </li>
+                                                @endforeach
+
                                             </ul>
 
                                             <a class="uk-position-center-left uk-position-small uk-hidden-hover"
@@ -127,13 +138,6 @@
                                             </button>
                                         </div>
 
-                                        <!-- Zoom Button -->
-                                        <div class="uk-position-bottom-left uk-padding-small uk-margin-small-bottom">
-                                            <a href="#product-zoom" class="btn-icon  uk-padding-small"
-                                               uk-tooltip="title: Zoom">
-                                                <span uk-icon="expand"></span>
-                                            </a>
-                                        </div>
 
                                     </div>
                                     <div class="uk-thumbnav uk-flex-center">
@@ -143,25 +147,21 @@
                                                 width="100" height="100"
                                                 alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)">
                                         </a>
-                                        <a href="#" uk-slideshow-item="1">
-                                            <img
-                                                src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-2-1-300x400.jpg"
-                                                width="100" height="100"
-                                                alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)">
-                                        </a>
-                                        <a href="#" uk-slideshow-item="2">
-                                            <img
-                                                src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-1-1-300x400.jpg"
-                                                width="100" height="100"
-                                                alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)">
-                                        </a>
+                                        @foreach($product->images as $index => $image)
+                                            <a href="#" uk-slideshow-item="{{ $index }}">
+                                                <img
+                                                    src="{{ $product->path }}"
+                                                    width="100" height="100"
+                                                    alt="{{ $product->alt }}">
+                                            </a>
+                                        @endforeach
                                     </div>
                                 </div>
 
-                                <div id="col-2003211962" class="col uk-width-1-3@m">
+                                <div id="col-{{ $product->id }}" class="col uk-width-1-3@m">
                                     <div class="uk-card uk-padding-remove uk-card-body">
-                                        <h1 class="uk-text-bold uk-text-large btn-wine">Rượu Whisky Glengoyne 10 Year
-                                            Old</h1>
+                                        <h1 class="uk-text-bold uk-text-large btn-wine">{{ $product->name }}</h1>
+{{--                                        rating--}}
                                         <div class="uk-margin" uk-margin>
                                             <div class="uk-flex" uk-grid>
                                                 <div class="uk-width-auto">
@@ -206,12 +206,7 @@
 
                                         <div class="uk-text-small">
                                             <p style="text-align: justify;">
-                                                Dòng whisky mang sắc vàng kim sắc nét, mở ra những nốt hương quyến rũ,
-                                                ngọt ngào của kẹo toffee, bỏng ngô, cuốn theo hương táo xanh đầy tươi
-                                                mới. Chất vị whisky mạnh mẽ với táo xanh và chút cỏ hoa quyện cùng gỗ
-                                                sồi mềm mại. Hương vị cam thảo dần bung toả ngọt ngào. Thêm một chút
-                                                nước khi thưởng thức để cảm nhận vị hạt lanh và hạnh nhân đầy lôi cuốn.
-                                                Hậu vị thoảng hương lúa mạch ngọt ngào, lưu luyến.
+                                                {{ $product->description }}
                                             </p>
                                         </div>
                                         <div class="uk-card uk-border-bottom">
@@ -239,8 +234,8 @@
                                                     <div class="uk-text-small">
                                                         <div class="pa-info__label">Nhà sản xuất</div>
                                                         <div class="uk-text-bold">
-                                                            <p><a href="https://winecellar.vn/nha-san-xuat/glengoyne/"
-                                                                  class="btn-wine " rel="tag">Glengoyne</a></p>
+                                                            <p><a href="{{ route('brands.show', $product->brand->id) }}"
+                                                                  class="btn-wine " rel="tag">{{ $product->brand->name }}</a></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -254,7 +249,7 @@
                                                     <div class="uk-text-small">
                                                         <div class="pa-info__label">Quốc gia</div>
                                                         <div class="uk-text-bold">
-                                                            <p>Scotland</p>
+                                                            <p>{{ $product->country }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -277,9 +272,9 @@
 
                                         <hr class="uk-divider-small">
                                         <div id="text-3363948913"
-                                             class="uk-padding-remove-bottom uk-margin uk-margin-remove-bottom uk-padding-small"
+                                             class=" uk-margin-remove-bottom "
                                              style="background: #f7f7f7">
-                                            <ul class="uk-list uk-list-bullet uk-text-small">
+                                            <ul class="uk-list uk-list-bullet uk-text-small uk-padding-small">
                                                 <li>Giá sản phẩm đã bao gồm VAT</li>
                                                 <li>Phí giao hàng tùy theo từng khu vực.</li>
                                                 <li>Đơn hàng từ 1.000.000vnđ miễn phí giao hàng.</li>
@@ -287,49 +282,44 @@
                                         </div>
                                         <div class="uk-visible@s">
                                             <p class="uk-text-default btn-wine" style="font-size: 22px">
-                                                <span class="woocommerce-Price-amount amount"><bdi>1.430.000&nbsp;<span
-                                                            class="woocommerce-Price-currencySymbol">₫</span></bdi></span>
+                                                <span >
+                                                    <bdi>{{ $product->price }}&nbsp;
+                                                        <span>₫</span>
+                                                    </bdi>
+                                                </span>
                                             </p>
                                         </div>
 
 
-                                        <div class=" uk-margin">
-                                            <form class="uk-grid-small"
-                                                  action="https://winecellar.vn/ruou-whisky-single-malt/glengoyne-10-year-old/"
-                                                  method="post" enctype="multipart/form-data" uk-grid>
-                                                <div class="uk-margin uk-padding-remove uk-flex" style="width: 80px;">
-                                                    <div class="uk-width-auto ">
-                                                        <button type="button"
-                                                                class="ux-quantity__button ux-quantity__button--minus uk-button uk-button-default"
-                                                                style="padding-right: 3px; padding-left: 3px;">-
-                                                        </button>
+                                        <!-- resources/views/products/show.blade.php -->
+
+                                        <div class="uk-margin">
+                                            <form class="uk-grid-small" action="" method="post" enctype="multipart/form-data" uk-grid>
+{{--                                                <form class="uk-grid-small" action="{{ route('cart.add', $product->id) }}" method="post" enctype="multipart/form-data" uk-grid>--}}
+                                                @csrf
+                                                <div class="uk-padding-remove uk-flex uk-flex-middle" style="width: 120px;">
+                                                    <div class="uk-width-auto">
+                                                        <button type="button" class="ux-quantity__button ux-quantity__button--minus uk-button uk-button-default" style="padding: 2px 10px; font-size: 18px;">-</button>
                                                     </div>
-                                                    <div class="uk-width-expand ">
-                                                        <input type="number" id="quantity" size="4" class="uk-input"
-                                                               name="cart[c15e114aa760ddb760c00f8bb029d8cc][qty]"
-                                                               value="1" aria-label="Product quantity" min="0" step="1"
-                                                               autocomplete="off">
+                                                    <div class="uk-width-auto uk-flex uk-flex-center">
+                                                        <input type="number" id="quantity" size="4" class="uk-input" name="quantity" value="1" aria-label="Product quantity" min="0" step="1" autocomplete="off" style="text-align: center; width: 30px;">
                                                     </div>
-                                                    <div class="uk-width-auto ">
-                                                        <button type="button"
-                                                                class="ux-quantity__button ux-quantity__button--plus uk-button uk-button-default"
-                                                                style="padding-right: 3px; padding-left: 3px;">+
-                                                        </button>
+                                                    <div class="uk-width-auto">
+                                                        <button type="button" class="ux-quantity__button ux-quantity__button--plus uk-button uk-button-default" style="padding: 2px 10px; font-size: 18px;">+</button>
                                                     </div>
-                                                </div>
-                                                <div class="wcl-button w-50 uk-text-right ">
-                                                    <button type="submit" name="add-to-cart"
-                                                            class="uk-margin-small uk-button uk-button-primary uk-border-rounded custom-add-to-cart-button">
-                                                        Thêm vào giỏ hàng
-                                                    </
-                                                    >
                                                 </div>
 
+                                                <div class="wcl-button w-50 uk-text-right">
+                                                    <button type="submit" name="add-to-cart" class="uk-margin-small uk-button uk-button-primary uk-border-rounded custom-add-to-cart-button">
+                                                        Thêm vào giỏ hàng
+                                                    </button>
+                                                </div>
                                             </form>
                                         </div>
 
                                     </div>
                                 </div>
+
                                 <div id="col-317425088" class="">
                                     <div class="col-inner">
                                         <div class="uk-card uk-card-default uk-card-body ">
@@ -355,27 +345,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <a class="plain" href="https://winecellar.vn/lien-he/he-thong-cua-hang/">
-                                            <div
-                                                class="uk-card uk-card-default uk-card-body icon-box featured-box ss-icon-box icon-box-left text-left uk-margin-top">
-                                                <div class="uk-grid-small uk-flex-middle" uk-grid>
-                                                    <div class="uk-width-auto">
-                                                        <div class="icon-box-img uk-border-circle uk-box-shadow-medium">
-                                                            <img width="30" height="24"
-                                                                 src="https://winecellar.vn/wp-content/uploads/2022/04/icon_shop.png"
-                                                                 class="attachment-medium size-medium" alt=""
-                                                                 decoding="async" loading="lazy">
-                                                        </div>
-                                                    </div>
-                                                    <div class="uk-width-expand">
-                                                        <div class="icon-box-text last-reset">
-                                                            <h5 class="uppercase">Thông tin cửa hàng</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
 
                                         <div id="text-412004289" class="text wcl-text-uu-dai hidden uk-margin-top">
                                             <div class="uk-card uk-card-default uk-card-body">
@@ -411,20 +380,7 @@
                                         <h3 class="heading-yellow uk-heading-line  uk-text-center"><span>Thông tin sản phẩm</span>
                                         </h3>
                                         <div class="product-detail__content uk-text-justify">
-                                            <p>Siêu phẩm quà tặng từ nhà sản xuất San Marzano hàng đầu Nam Ý. 60
-                                                Sessantanni Limited Edition 24 Karat Gold lôi cuốn với sắc đỏ ruby đậm
-                                                đà, nồng nàn hương thơm trái cây hòa quyện cùng mứt mận, anh đào. Hương
-                                                vị vang đầy đặn, cân bằng tuyệt vời, vị chát mềm mượt và thanh lịch. Hậu
-                                                vị đầy lưu luyến với những nốt hương cacao, cà phê và vani tinh tế.</p>
-                                            <p>Những cây nho từ 60 năm tuổi trồng trên thổ nhưỡng đặc biệt tại trung tâm
-                                                Primitivo di Manduria D.O.P đã được lựa chọn để làm nên phiên bản vang Ý
-                                                60 Sessantanni Limited Edition 24 Karat Gold. Dòng vang Ý mang biểu hiện
-                                                trung thực nhất của lãnh thổ, nơi những cây nho phát triển trong điều
-                                                kiện khí hậu trong lành. Đây cũng là vùng đất mang truyền thống sản xuất
-                                                vang từ lâu đời – Một di sản mà San Marzano luôn gìn giữ trong nhiều năm
-                                                qua.</p>
-                                            <p>60 Sessantanni Limited Edition với hương vị tuyệt hảo, nhãn chai mạ vàng
-                                                24 Karat sang trọng – Quà tặng tuyệt vời cho đối tác, khách hàng.</p>
+                                            <p>{{ $product->description }}</p>
                                         </div>
                                         <h3 class="heading-yellow uk-heading-line uk-text-center"><span>Những câu hỏi thường gặp</span>
                                         </h3>

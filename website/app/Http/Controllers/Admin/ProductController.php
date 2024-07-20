@@ -20,12 +20,12 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
-        $this->product = "product";
+        $this->product = "App\Models\Product";
     }
 
     public function getProductCategories()
     {
-        return Category::where('model_type', '=', 'product')
+        return Category::where('model_type', '=', $this->product)
             ->where('parent_id', '=', 0)
             ->with('subCategories')
             ->get();
