@@ -2,9 +2,12 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/website/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/website/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/website/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/website/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/website/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/website/tests/Unit" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/website/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/carbonphp/carbon-doctrine-types" />
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/composer" />
@@ -117,12 +120,6 @@
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/webmozart/assert" />
-      <excludeFolder url="file://$MODULE_DIR$/website/vendor/alexusmai/laravel-file-manager" />
-      <excludeFolder url="file://$MODULE_DIR$/website/vendor/darryldecode/cart" />
-      <excludeFolder url="file://$MODULE_DIR$/website/vendor/intervention/gif" />
-      <excludeFolder url="file://$MODULE_DIR$/website/vendor/intervention/image" />
-      <excludeFolder url="file://$MODULE_DIR$/website/vendor/intervention/image-laravel" />
-      <excludeFolder url="file://$MODULE_DIR$/website/vendor/laravel/ui" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

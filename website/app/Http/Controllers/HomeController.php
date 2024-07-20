@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Post;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -23,6 +26,35 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // Lấy tất cả các bài viết từ bảng posts
+        $posts = Post::with('featuredImage')->take(4)->get();
+        $brands = Brand::take(4)->get();
+        $products = Product::with('featuredImage')->take(5)->get();
+
+        return view('content.homepage', ['posts'=> $posts, 'brands'=> $brands ,'products'=> $products  ]);
+    }
+    public function category()
+    {
+        $products = Product::with('featuredImage')->get();
+        return view('content.category', ['products' => $products]);
+    }
+    public function product()
+    {
+        $products = Product::with('featuredImage')->get();
+        return view('content.products.index',['products' => $products]);
+    }
+
+    public function brand()
+    {
+        $brands = Brand::all();
+        return view('content.brand', ['brands'=>$brands]);
+    }
+    public function post()
+    {
+        return view('content.post');
+    }
+    public function contact()
+    {
+        return view('content.contact');
     }
 }

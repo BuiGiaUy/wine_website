@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -19,11 +20,12 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->product = "App\Models\Product";
     }
 
     public function getProductCategories()
     {
-        return Category::where('model_type', '=', 'product')
+        return Category::where('model_type', '=', $this->product)
             ->where('parent_id', '=', 0)
             ->with('subCategories')
             ->get();
@@ -44,7 +46,7 @@ class ProductController extends Controller
 
         if ($is_create)
         {
-            $item["views"] = 0;
+            $item["viewer"] = 0;
             $item["rating_number"] = 0;
             $item["rating_value"] = 0;
         }
@@ -52,20 +54,36 @@ class ProductController extends Controller
     }
     public function index(): Factory|View|Application
     {
-        return view("admin.content.post.add", [
+        $products = Product::with('images')->paginate(12);
+//        echo "<pre>";
+//        print_r($products);
+//        echo "</pre>";
+        return view("admin.content.product.index", [
             "categories" => $this->getProductCategories(),
+            "products" => $products
+        ]);
+
+    }
+    public function add():Factory|View|Application
+    {
+        $brands = Brand::all();
+        $posts = Post::all();
+        return view("admin.content.product.add", [
+            "categories" => $this->getProductCategories(),
+            "brands" => $brands,
+            "posts" => $posts
         ]);
     }
     public function saveImageIntoProduct($images, $product): void
     {
         foreach ($images as $img)
         {
-            $image = new Image();
-            $image["type"] = typeOf($product);
-            $image["model_id"] = $product->id;
-            $image["path"] = $img;
-            $image["name"] = $img;
-            $image["alt"] = $img;
+            $image= new Image();
+            $image["model_type"]= $this->product;
+            $image["model_id"]= $product->id;
+            $image["path"]= $img;
+            $image["name"]= $img;
+            $image["alt"]= $img;
             $image->save();
         }
     }
@@ -86,8 +104,10 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         if (!$product) return redirect()->back();
-        return view("admin.product.edit", [
-            "item" => $product,
+        $brands = Brand::all();
+        return view("admin.content.product.edit", [
+            "product" => $product,
+            "brands" => $brands,
             "categories" => $this->getProductCategories(),
         ]);
     }

@@ -124,12 +124,6 @@
       <path value="$PROJECT_DIR$/website/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/website/vendor/psr/clock" />
       <path value="$PROJECT_DIR$/website/vendor/psr/container" />
-      <path value="$PROJECT_DIR$/website/vendor/intervention/image" />
-      <path value="$PROJECT_DIR$/website/vendor/intervention/image-laravel" />
-      <path value="$PROJECT_DIR$/website/vendor/intervention/gif" />
-      <path value="$PROJECT_DIR$/website/vendor/alexusmai/laravel-file-manager" />
-      <path value="$PROJECT_DIR$/website/vendor/darryldecode/cart" />
-      <path value="$PROJECT_DIR$/website/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />

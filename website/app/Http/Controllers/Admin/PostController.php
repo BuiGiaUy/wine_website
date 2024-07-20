@@ -6,32 +6,30 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
-use Illuminate\Contracts\View\View;
 use Illuminate\COntracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-
+use Psy\Util\Str;
 
 class PostController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->post = 'App\Models\Post';
+
     }
 
     public function getPostCategories() {
-        return Category::where('model_type','=', 'post')
-            ->where('parent_id', '=', 0)
-            ->with('subCategories')
-            ->get();
+        return Category::where('model_type','=', $this->post)->where('parent_id', '=', 0)->with('subCategories')->get();
     }
 
     protected function fillDataToPost($item, $input, $is_create): void
     {
         $item["name"] = $input["name"] ?? "";
-        $item["slug"] = $input["slug"] ?? Str::slug($item["item"]);
+        $item["slug"] = $input["slug"] ?? Str::slug($item["name"]);
         $item["description"] = $input["description"] ?? "";
         $item["content"] = $input["content"] ?? "";
         $item["seo_title"] = $input["seo_title"] ?? "";
@@ -48,12 +46,20 @@ class PostController extends Controller
     }
     public function index(): Factory|View|Application
     {
-        $group = 'post';
+        $group = "App\Models\Post";
         return view('admin.content.post.index', [
             "posts" => Post::orderBy('category_id', 'ASC')->whereHas('category', function ($query) use($group) {
                 $query->where('model_type', $group);
             })->paginate(50)
         ]);
+
+//        $posts = Post::orderBy('category_id', 'ASC')->whereHas('category', function ($query) use ($group) {
+//            $query->where('model_type', $group);
+//        })->paginate(50);
+//
+//        echo "<pre>";
+//        print_r($posts);
+//        echo "</pre>";
     }
     public function add():Factory|View|Application
     {
@@ -61,13 +67,13 @@ class PostController extends Controller
             "categories" => $this->getPostCategories(),
         ]);
     }
-    public function saveImageIntoPost($images, $post): void
+    public function saveImageIntoPost($images, $item): void
     {
         foreach ($images as $img)
         {
-            $image = new Image();
-            $image["type"]= typeOf($post);
-            $image["model_id"]= $post->id;
+            $image= new Image();
+            $image["model_type"]= $this->post;
+            $image["model_id"]= $item->id;
             $image["path"]= $img;
             $image["name"]= $img;
             $image["alt"]= $img;
@@ -82,6 +88,9 @@ class PostController extends Controller
         $this->fillDataToPost($item, $input, true);
         $images = $input["images"] ?? [];
         $this->saveImageIntoPost($images, $item);
+//        echo "<pre>";
+//        print_r($images);
+//        echo "</pre>";
 
         return redirect()->route("admin.post.index");
     }
@@ -90,23 +99,29 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         if (!$post) return redirect()->back();
-        return view("admin.post.edit", [
-            "item" => $post,
+        return view("admin.content.post.edit", [
+            "post" => $post,
             "categories" => $this->getPostCategories(),
         ]);
+//        echo "<pre>";
+//        print_r($post->images);
+//        echo "</pre>";
     }
 
     public function update(Request $request, $id): RedirectResponse
     {
         $post = Post::find($id);
+//        echo "<pre>";
+//        print_r($post->images);
+//        echo "</pre>";
         if (!$post) return redirect()->back();
 
         $input = $request->all();
         $this->fillDataToPost($post, $input, false);
 
         $post->deleteImages();
-        $images = $input['image'] ?? [];
-        $this->saveImageIntoPost($images, $post );
+        $images = $input['images'] ?? [];
+        $this->saveImageIntoPost($images, $post);
 
         return redirect()->route("admin.post.index");
     }
@@ -115,6 +130,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         if (!$post) return redirect()->back();
+        $post->deleteImages();
         $post->delete();
         return redirect()->route("admin.post.index");
     }
