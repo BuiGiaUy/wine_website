@@ -77,6 +77,11 @@
 @endsection
 
 @section('content')
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <div>
         <div class="uk-section">
             <div class="uk-container">
@@ -103,12 +108,19 @@
                 </div>
             </div>
         </div>
+
         <div class="uk-section uk-padding-remove-top">
             <div class="uk-container uk-padding-remove">
-                <div uk-grid class="uk-child-width-1-1@s uk-child-width-1-5@l">
-                    <div class="uk-width-3-5@l">
-                        <form class="uk-card uk-card-default uk-card-body uk-margin-bottom" action="{{ route('cart.update') }}" method="post">
-                            @csrf
+                @if(empty($cartItems) || count($cartItems) === 0)
+                    <div class="uk-text-center">
+                        <p>Chưa có sản phẩm nào trong giỏ hàng.</p>
+                        <a href="{{ route('products.index') }}" class="uk-button button-continue-shopping">
+                            <span uk-icon="icon: arrow-left"></span> QUAY TRỞ LẠI CỬA HÀNG
+                        </a>
+                    </div>
+                @else
+                    <div uk-grid class="uk-child-width-1-1@s uk-child-width-1-5@l">
+                        <div class="uk-width-3-5@l">
                             <table class="uk-table uk-table-divider uk-table-justify uk-table-responsive">
                                 <thead>
                                 <tr>
@@ -126,74 +138,80 @@
                                             <a href="{{ route('cart.remove', $item['id']) }}" uk-icon="icon: close"></a>
                                         </td>
                                         <td class="uk-text-center">
-                                            <a href="{{ $item['product_url'] }}">
-                                                <img src="{{ $item['product_image'] }}" width="50" alt="{{ $item['product_name'] }}">
+                                            <a href="{{ $item['attributes']['url'] }}">
+                                                <img src="{{ $item['attributes']['image'] }}" width="50" alt="{{ $item['name'] }}">
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="{{ $item['product_url'] }}">{{ $item['product_name'] }}</a>
+                                            <a href="{{ $item['attributes']['url'] }}">{{ $item['name'] }}</a>
                                         </td>
                                         <td>{{ number_format($item['price'], 0, ',', '.') }} ₫</td>
                                         <td>
                                             <div class="uk-margin uk-flex" style="width: 70px;">
                                                 <div class="uk-width-auto">
-                                                    <button type="button" class="ux-quantity__button ux-quantity__button--minus uk-button uk-button-default" style="padding-right: 3px; padding-left: 3px;">-</button>
+                                                    <button type="button" class="ux-quantity__button ux-quantity__button--minus uk-button uk-button-default" style="padding-right: 3px; padding-left: 3px;" onclick="decrementQuantity({{ $item['id'] }})">-</button>
                                                 </div>
                                                 <div class="uk-width-expand">
-                                                    <input type="number" name="cart[{{ $item['id'] }}][qty]" value="{{ $item['quantity'] }}" aria-label="Product quantity" min="0" step="1" class="uk-input" style="text-align: center;">
+                                                    <input type="number" name="quantity" id="quantity-{{ $item['id'] }}" value="{{ $item['quantity'] }}" aria-label="Product quantity" min="0" step="1" class="uk-input" style="text-align: center;">
                                                 </div>
                                                 <div class="uk-width-auto">
-                                                    <button type="button" class="ux-quantity__button ux-quantity__button--plus uk-button uk-button-default" style="padding-right: 3px; padding-left: 3px;">+</button>
+                                                    <button type="button" class="ux-quantity__button ux-quantity__button--plus uk-button uk-button-default" style="padding-right: 3px; padding-left: 3px;" onclick="incrementQuantity({{ $item['id'] }})">+</button>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>{{ number_format($item['total'], 0, ',', '.') }} ₫</td>
+                                        <td>{{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }}  ₫</td>
+                                        <td>
+                                            <form action="{{ route('cart.update', $item['id']) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="quantity" id="form-quantity-{{ $item['id'] }}" value="{{ $item['quantity'] }}">
+                                                <button type="submit" class="uk-width-1-1 uk-button checkout-button">Cập nhật</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
-                                <tr>
-                                    <td colspan="7" class="uk-text-left">
-                                        <a href="{{ route('products.index') }}" class="uk-button button-continue-shopping">
-                                            <span uk-icon="icon: arrow-left"></span> Tiếp tục xem sản phẩm
-                                        </a>
-                                        <button type="submit" class="uk-button uk-button-primary">Cập nhật giỏ hàng</button>
-
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <a href="{{ route('products.index') }}" class="uk-button button-continue-shopping">
+                                                <span uk-icon="icon: arrow-left"></span> Tiếp tục xem sản phẩm
+                                            </a>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
-                        </form>
-                    </div>
-                    <div class="uk-width-2-5@l">
-                        <div class="uk-card uk-card-default uk-card-body uk-margin-bottom">
-                            <h2>Cộng giỏ hàng</h2>
-                            <table class="uk-table uk-table-divider">
-                                <tbody>
-                                <tr>
-                                    <th>Tạm tính</th>
-                                    <td class="uk-text-right"> ₫</td>
-                                </tr>
-                                <tr>
-                                    <th>Tổng</th>
-                                    <td class="uk-text-right"><strong> ₫</strong></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <div class="uk-margin">
-                                <a href="{{ route('cart.checkout') }}" class="uk-width-1-1 uk-button checkout-button">Tiến hành thanh toán</a>
-                            </div>
-                            <form class="uk-form-stacked uk-margin" action="" method="post">
-                                @csrf
+                        </div>
+                        <div class="uk-width-2-5@l">
+                            <div class="uk-card uk-card-default uk-card-body uk-margin-bottom">
+                                <h2>Cộng giỏ hàng</h2>
+                                <table class="uk-table uk-table-divider">
+                                    <tbody>
+                                    <tr>
+                                        <th>Tạm tính</th>
+                                        <td class="uk-text-right">{{ number_format($subtotal, 0, ',', '.') }} ₫</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tổng</th>
+                                        <td class="uk-text-right"><strong>{{ number_format($total, 0, ',', '.') }} ₫</strong></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                                 <div class="uk-margin">
-                                    <h3 class="widget-title uk-margin-small-bottom"><i class="fa-solid fa-tag"></i> Phiếu ưu đãi</h3>
-                                    <div class="uk-form-controls">
-                                        <input class="uk-input" id="coupon_code" type="text" name="coupon_code" placeholder="Mã ưu đãi">
-                                    </div>
+                                    <a href="{{ route('cart.checkout') }}" class="uk-width-1-1 uk-button checkout-button">Tiến hành thanh toán</a>
                                 </div>
-                                <button type="submit" class="uk-button uk-border-rounded uk-width-1-1" name="apply_coupon" value="Áp dụng">Áp dụng</button>
-                            </form>
+                                <form class="uk-form-stacked uk-margin" action="" method="post">
+                                    @csrf
+                                    <div class="uk-margin">
+                                        <h3 class="widget-title uk-margin-small-bottom"><i class="fa-solid fa-tag"></i> Phiếu ưu đãi</h3>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input" id="coupon_code" type="text" name="coupon_code" placeholder="Mã ưu đãi">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="uk-button uk-border-rounded uk-width-1-1" name="apply_coupon" value="Áp dụng">Áp dụng</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
+
             </div>
         </div>
 
@@ -311,7 +329,27 @@
 
     </div>
 
+    <script>
+        function incrementQuantity(id) {
+            var quantityInput = document.getElementById('quantity-' + id);
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+            updateFormQuantity(id);
+        }
 
+        function decrementQuantity(id) {
+            var quantityInput = document.getElementById('quantity-' + id);
+            if (quantityInput.value > 0) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+            updateFormQuantity(id);
+        }
+
+        function updateFormQuantity(id) {
+            var quantityInput = document.getElementById('quantity-' + id);
+            var formQuantityInput = document.getElementById('form-quantity-' + id);
+            formQuantityInput.value = quantityInput.value;
+        }
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {

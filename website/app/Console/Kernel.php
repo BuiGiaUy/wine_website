@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Http\Middleware\Authenticate;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,6 +15,17 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
     }
+    protected $middlewareGroups = [
+        'web' => [
+            // Other middleware,
+            Authenticate::class,
+
+            \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        ],
+    ];
 
     /**
      * Register the commands for the application.

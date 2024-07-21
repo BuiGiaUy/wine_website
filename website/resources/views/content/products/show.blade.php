@@ -294,21 +294,24 @@
                                         <!-- resources/views/products/show.blade.php -->
 
                                         <div class="uk-margin">
-                                            <form class="uk-grid-small" action="" method="post" enctype="multipart/form-data" uk-grid>
-{{--                                                <form class="uk-grid-small" action="{{ route('cart.add', $product->id) }}" method="post" enctype="multipart/form-data" uk-grid>--}}
+                                            <form class="uk-grid-small" action="{{ route('cart.add') }}" method="post" enctype="multipart/form-data" uk-grid>
                                                 @csrf
                                                 <div class="uk-padding-remove uk-flex uk-flex-middle" style="width: 120px;">
                                                     <div class="uk-width-auto">
                                                         <button type="button" class="ux-quantity__button ux-quantity__button--minus uk-button uk-button-default" style="padding: 2px 10px; font-size: 18px;">-</button>
                                                     </div>
                                                     <div class="uk-width-auto uk-flex uk-flex-center">
-                                                        <input type="number" id="quantity" size="4" class="uk-input" name="quantity" value="1" aria-label="Product quantity" min="0" step="1" autocomplete="off" style="text-align: center; width: 30px;">
+                                                        <input type="number" id="quantity" size="4" class="uk-input" name="quantity" value="1" aria-label="Product quantity" min="1" step="1" autocomplete="off" style="text-align: center; width: 30px;">
                                                     </div>
                                                     <div class="uk-width-auto">
                                                         <button type="button" class="ux-quantity__button ux-quantity__button--plus uk-button uk-button-default" style="padding: 2px 10px; font-size: 18px;">+</button>
                                                     </div>
                                                 </div>
-
+                                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                                <input type="hidden" name="name" value="{{ $product->name }}">
+                                                <input type="hidden" name="price" value="{{ $product->price }}">
+                                                <input type="hidden" name="image" value="{{ $product->featuredImage->path }}">
+                                                <input type="hidden" name="url" value="{{ route('products.show', $product->id) }}">
                                                 <div class="wcl-button w-50 uk-text-right">
                                                     <button type="submit" name="add-to-cart" class="uk-margin-small uk-button uk-button-primary uk-border-rounded custom-add-to-cart-button">
                                                         Thêm vào giỏ hàng

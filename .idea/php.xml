@@ -12,63 +12,47 @@
   </component>
   <component name="PhpIncludePathManager">
     <include_path>
+      <path value="$PROJECT_DIR$/website/vendor/composer" />
       <path value="$PROJECT_DIR$/website/vendor/graham-campbell/result-type" />
       <path value="$PROJECT_DIR$/website/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/website/vendor/dragonmantank/cron-expression" />
-      <path value="$PROJECT_DIR$/website/vendor/intervention/image" />
-      <path value="$PROJECT_DIR$/website/vendor/intervention/image-laravel" />
-      <path value="$PROJECT_DIR$/website/vendor/nunomaduro/termwind" />
-      <path value="$PROJECT_DIR$/website/vendor/intervention/gif" />
-      <path value="$PROJECT_DIR$/website/vendor/guzzlehttp/uri-template" />
       <path value="$PROJECT_DIR$/website/vendor/nunomaduro/collision" />
-      <path value="$PROJECT_DIR$/website/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/website/vendor/nunomaduro/termwind" />
       <path value="$PROJECT_DIR$/website/vendor/guzzlehttp/psr7" />
-      <path value="$PROJECT_DIR$/website/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/website/vendor/guzzlehttp/uri-template" />
       <path value="$PROJECT_DIR$/website/vendor/guzzlehttp/guzzle" />
-      <path value="$PROJECT_DIR$/website/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/website/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/website/vendor/sebastian/version" />
-      <path value="$PROJECT_DIR$/website/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/website/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/website/vendor/sebastian/recursion-context" />
-      <path value="$PROJECT_DIR$/website/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/website/vendor/sebastian/type" />
       <path value="$PROJECT_DIR$/website/vendor/sebastian/object-enumerator" />
-      <path value="$PROJECT_DIR$/website/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/website/vendor/sebastian/object-reflector" />
       <path value="$PROJECT_DIR$/website/vendor/sebastian/global-state" />
-      <path value="$PROJECT_DIR$/website/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/website/vendor/sebastian/lines-of-code" />
       <path value="$PROJECT_DIR$/website/vendor/sebastian/environment" />
-      <path value="$PROJECT_DIR$/website/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/website/vendor/sebastian/exporter" />
       <path value="$PROJECT_DIR$/website/vendor/sebastian/complexity" />
-      <path value="$PROJECT_DIR$/website/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/website/vendor/sebastian/diff" />
       <path value="$PROJECT_DIR$/website/vendor/sebastian/code-unit-reverse-lookup" />
-      <path value="$PROJECT_DIR$/website/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/website/vendor/sebastian/comparator" />
       <path value="$PROJECT_DIR$/website/vendor/sebastian/cli-parser" />
-      <path value="$PROJECT_DIR$/website/vendor/fruitcake/php-cors" />
+      <path value="$PROJECT_DIR$/website/vendor/sebastian/code-unit" />
       <path value="$PROJECT_DIR$/website/vendor/phpoption/phpoption" />
-      <path value="$PROJECT_DIR$/website/vendor/alexusmai/laravel-file-manager" />
+      <path value="$PROJECT_DIR$/website/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/website/vendor/carbonphp/carbon-doctrine-types" />
+      <path value="$PROJECT_DIR$/website/vendor/fruitcake/php-cors" />
       <path value="$PROJECT_DIR$/website/vendor/fakerphp/faker" />
       <path value="$PROJECT_DIR$/website/vendor/hamcrest/hamcrest-php" />
       <path value="$PROJECT_DIR$/website/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/website/vendor/doctrine/lexer" />
-      <path value="$PROJECT_DIR$/website/vendor/brick/math" />
-      <path value="$PROJECT_DIR$/website/vendor/nette/schema" />
-      <path value="$PROJECT_DIR$/website/vendor/filp/whoops" />
-      <path value="$PROJECT_DIR$/website/vendor/voku/portable-ascii" />
-      <path value="$PROJECT_DIR$/website/vendor/psr/simple-cache" />
-      <path value="$PROJECT_DIR$/website/vendor/psy/psysh" />
-      <path value="$PROJECT_DIR$/website/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/website/vendor/symfony/yaml" />
-      <path value="$PROJECT_DIR$/website/vendor/psr/log" />
       <path value="$PROJECT_DIR$/website/vendor/theseer/tokenizer" />
-      <path value="$PROJECT_DIR$/website/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/website/vendor/symfony/uid" />
-      <path value="$PROJECT_DIR$/website/vendor/psr/http-factory" />
       <path value="$PROJECT_DIR$/website/vendor/symfony/var-dumper" />
-      <path value="$PROJECT_DIR$/website/vendor/psr/container" />
       <path value="$PROJECT_DIR$/website/vendor/symfony/translation" />
-      <path value="$PROJECT_DIR$/website/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/website/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/website/vendor/symfony/service-contracts" />
-      <path value="$PROJECT_DIR$/website/vendor/psr/clock" />
       <path value="$PROJECT_DIR$/website/vendor/symfony/string" />
       <path value="$PROJECT_DIR$/website/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/website/vendor/symfony/routing" />
@@ -88,24 +72,22 @@
       <path value="$PROJECT_DIR$/website/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/website/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/website/vendor/symfony/event-dispatcher-contracts" />
-      <path value="$PROJECT_DIR$/website/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/website/vendor/symfony/deprecation-contracts" />
-      <path value="$PROJECT_DIR$/website/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/website/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/website/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/website/vendor/symfony/css-selector" />
       <path value="$PROJECT_DIR$/website/vendor/phpunit/php-timer" />
       <path value="$PROJECT_DIR$/website/vendor/phpunit/phpunit" />
-      <path value="$PROJECT_DIR$/website/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/website/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/website/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/website/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/website/vendor/phpunit/php-file-iterator" />
       <path value="$PROJECT_DIR$/website/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/website/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/website/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/website/vendor/myclabs/deep-copy" />
-      <path value="$PROJECT_DIR$/website/vendor/composer" />
-      <path value="$PROJECT_DIR$/website/vendor/laravel/ui" />
-      <path value="$PROJECT_DIR$/website/vendor/mockery/mockery" />
       <path value="$PROJECT_DIR$/website/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/website/vendor/mockery/mockery" />
       <path value="$PROJECT_DIR$/website/vendor/laravel/sanctum" />
       <path value="$PROJECT_DIR$/website/vendor/laravel/serializable-closure" />
       <path value="$PROJECT_DIR$/website/vendor/laravel/prompts" />
@@ -126,15 +108,25 @@
       <path value="$PROJECT_DIR$/website/vendor/league/mime-type-detection" />
       <path value="$PROJECT_DIR$/website/vendor/league/config" />
       <path value="$PROJECT_DIR$/website/vendor/league/flysystem" />
-      <path value="$PROJECT_DIR$/website/vendor/league/commonmark" />
       <path value="$PROJECT_DIR$/website/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/website/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/website/vendor/nette/schema" />
       <path value="$PROJECT_DIR$/website/vendor/nette/utils" />
-      <path value="$PROJECT_DIR$/website/vendor/darryldecode/cart" />
+      <path value="$PROJECT_DIR$/website/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/website/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/website/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/website/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/website/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/website/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/website/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/website/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/website/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/website/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/website/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/website/vendor/psr/container" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
-    <option name="suggestChangeDefaultLanguageLevel" value="false" />
-  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
