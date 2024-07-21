@@ -2,7 +2,7 @@
 
 
 use App\Http\Controllers\Frontend\BrandController;
-use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Orders\OrderController;
@@ -44,15 +44,19 @@ Route::prefix('brands')->group(function() {
     Route::get('/', [BrandController::class, 'index'])->name('brands.index');
     Route::get('{id}', [BrandController::class, 'show'])->name('brands.show');
 });
-// Cart routes
-Route::prefix('cart')->group(function () {
+Route::prefix('cart')->middleware(['auth'])->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/add', [CartController::class, 'add'])->name('cart.add');
+    Route::post('/update/{id}', [CartController::class, 'update'])->name('cart.update');
+    Route::get('/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    // Clear all items from the cart
+    Route::get('/clear', [CartController::class, 'clear'])->name('cart.clear');
+    // Proceed to checkout
     Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
     Route::post('/checkout', [CartController::class, 'processCheckout'])->name('cart.processCheckout');
     Route::get('/summary', [CartController::class, 'summary'])->name('cart.summary');
-    Route::post('/update', [CartController::class, 'update'])->name('cart.update');
-    Route::get('/checkout-complete', [CartController::class, 'checkoutComplete'])->name('cart.checkoutComplete');
 });
+
 
 Route::prefix('cart')->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');

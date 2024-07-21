@@ -390,7 +390,7 @@
                                        uk-grid>
                                        <div class="uk-card-media-left uk-cover-container uk-width-1-2@s">
                                            @if ($product->featuredImage)
-                                               <img style="height: 100%" src="{{ $product->featuredImage }}"
+                                               <img style="height: 100%" src="{{ $product->featuredImage->path }}"
                                                     alt="{{ $product->name }}" uk-cover>
                                            @else
                                                <img style="height: 100%"
@@ -437,7 +437,7 @@
                                                </div>
                                                <div class="wcl-button w-50 uk-text-right">
                                                    <a class="uk-margin-small uk-button uk-button-primary uk-border-rounded custom-add-to-cart-button"
-                                                      href="">Mua ngay</a>
+                                                      href="{{ route("products.show", $product->id) }}">Mua ngay</a>
                                                    {{--                                                <a class="uk-margin-small uk-button uk-button-primary uk-border-rounded custom-add-to-cart-button" href="{{ route('product.show', $product->slug) }}">Mua ngay</a>--}}
                                                </div>
                                            </div>

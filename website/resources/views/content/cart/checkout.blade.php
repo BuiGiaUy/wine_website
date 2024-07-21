@@ -150,21 +150,21 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($order['products'] as $product)
+                                        @foreach($cartItems as $item)
                                             <tr>
-                                                <td>{{ $product['name'] }} <strong>× {{ $product['quantity'] }}</strong></td>
-                                                <td><strong>{{ number_format($product['price'], 0, ',', '.') }} ₫</strong></td>
+                                                <td>{{ $item['name'] }} × {{ $item['quantity'] }}</td>
+                                                <td>{{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }} ₫</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
                                         <tfoot>
                                         <tr>
                                             <td colspan="1"><strong>Tạm tính</strong></td>
-                                            <td><strong>{{ number_format($order['subtotal'], 0, ',', '.') }} ₫</strong></td>
+                                            <td><strong>{{ number_format($subtotal, 0, ',', '.') }} ₫</strong></td>
                                         </tr>
                                         <tr>
                                             <td colspan="1"><strong>Tổng</strong></td>
-                                            <td><strong>{{ number_format($order['total'], 0, ',', '.') }} ₫</strong></td>
+                                            <td><strong>{{ number_format($total, 0, ',', '.') }} ₫</strong></td>
                                         </tr>
                                         </tfoot>
                                     </table>
