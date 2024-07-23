@@ -334,29 +334,26 @@
                                 </a>
                             </div>
                             <div class=" uk-margin-small uk-margin-remove-bottom">
-                                <p class="uk-text-meta">
-                                    Hiển thị 1–24 của 1622 kết quả
-                                </p>
+                                @if($products->total() > 0)
+                                    <p class="uk-text-meta">
+                                        Hiển thị {{ $products->firstItem() }}–{{ $products->lastItem() }} của {{ $products->total() }} kết quả
+                                    </p>
+                                @else
+                                    <p class="uk-text-meta">Không có kết quả nào.</p>
+                                @endif
                             </div>
                             <div class="catalog-order uk-flex uk-flex-middle">
                                 <div id="stack-list-filter" class="uk-flex uk-flex-middle uk-margin-small-left">
-                                    <div id="stack-list-view" class="uk-child-width-auto uk-grid-small uk-flex-between">
-                                        <a href="https://winecellar.vn/ruou-vang" class="plain uk-icon-link"
-                                           uk-icon="thumbnails"></a>
-                                        <a href="https://winecellar.vn/ruou-vang?mode=list" class="plain uk-icon-link"
-                                           uk-icon="list"></a>
-                                    </div>
-
                                     <form class="woocommerce-ordering uk-margin-small-left" method="get">
-                                        <select name="orderby" class="uk-select" aria-label="Đơn hàng của cửa hàng">
-                                            <option value="menu_order" selected="selected">Thứ tự mặc định</option>
-                                            <option value="popularity">Thứ tự theo mức độ phổ biến</option>
-                                            <option value="date">Mới nhất</option>
-                                            <option value="price">Thứ tự theo giá: thấp đến cao</option>
-                                            <option value="price-desc">Thứ tự theo giá: cao xuống thấp</option>
-                                            <option value="on_sale">Khuyến mại</option>
+                                        <select name="orderby" class="uk-select" aria-label="Đơn hàng của cửa hàng" onchange="this.form.submit()">
+                                            <option value="created_at" {{ request()->get('orderby') == 'created_at' ? 'selected' : '' }}>Thứ tự mặc định</option>
+{{--                                            <option value="popularity"  {{ request()->get('orderby') == 'popularity' ? 'selected' : '' }}>Thứ tự theo mức độ phổ biến</option>--}}
+{{--                                            <option value="date" {{ request()->get('orderby') == 'date' ? 'selected' : '' }}>Mới nhất</option>--}}
+                                            <option value="price" {{ request()->get('orderby') == 'price' ? 'selected' : '' }}>Thứ tự theo giá: thấp đến cao</option>
+                                            <option value="price-desc" {{ request()->get('orderby') == 'price-desc' ? 'selected' : '' }}>Thứ tự theo giá: cao xuống thấp</option>
+{{--                                            <option value="on_sale" {{ request()->get('orderby') == 'on_sale' ? 'selected' : '' }}>Khuyến mại</option>--}}
                                         </select>
-                                        <input type="hidden" name="paged" value="1">
+                                        <input type="hidden" name="paged" value="{{ request()->get('paged', 1) }}">
                                     </form>
                                 </div>
                             </div>
@@ -366,17 +363,17 @@
                             <div class="range-price uk-flex uk-flex-middle">
                                 <div class="range-price__label">Phân khúc:</div>
                                 <div class="range-price__links uk-flex">
-                                    <a href="?max_price=500000" class="uk-button uk-button-small"><span
+                                    <a href="{{ request()->fullUrlWithQuery(['max_price' => 500000]) }}" class="uk-button uk-button-small"><span
                                             style="color: #990d23;">Dưới 500K</span></a>
                                     <span class="sp-line">|</span>
-                                    <a href="?min_price=500000&amp;max_price=1000000" class="uk-button uk-button-small"><span
+                                    <a href="{{ request()->fullUrlWithQuery(['min_price' => 500000, 'max_price' => 1000000]) }}" class="uk-button uk-button-small"><span
                                             style="color: #990d23;">500K - 1 triệu</span></a>
                                     <span class="sp-line">|</span>
-                                    <a href="?min_price=1000000&amp;max_price=3000000"
+                                    <a href="{{ request()->fullUrlWithQuery(['min_price' => 1000000, 'max_price' => 3000000]) }}"
                                        class="uk-button  uk-button-small"><span
                                             style="color: #990d23;">1 - 3 triệu</span></a>
                                     <span class="sp-line">|</span>
-                                    <a href="?min_price=3000000" class="uk-button  uk-button-small"><span
+                                    <a href="{{ request()->fullUrlWithQuery(['min_price' => 3000000]) }}" class="uk-button  uk-button-small"><span
                                             style="color: #990d23;">Trên 3 triệu</span></a>
                                 </div>
                             </div>

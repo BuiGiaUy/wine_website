@@ -6,7 +6,7 @@ use App\Models\Brand;
 use App\Models\Post;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use Debugbar;
 class HomeController extends Controller
 {
     /**

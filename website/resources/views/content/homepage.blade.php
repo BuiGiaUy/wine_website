@@ -234,7 +234,7 @@
             </div>
             <div class="uk-child-width-1-2@s uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
                 @foreach($posts as $post)
-                    <div class="uk-width-1-4@l">
+                    <div class="">
                         <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card"
                              style="background: #f5ecdb;">
                             <a href="">
