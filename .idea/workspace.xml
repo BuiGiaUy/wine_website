@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="111e7cd9-ba10-422d-aec2-8c56f7d275bf" name="Changes" comment="feat_adminLayout">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/wine_website.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/wine_website.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/website/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/website/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/homepage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/homepage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/products/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/products/category.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,6 +160,11 @@
       <path value="$PROJECT_DIR$/website/vendor/alexusmai/laravel-file-manager" />
       <path value="$PROJECT_DIR$/website/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/website/vendor/darryldecode/cart" />
+      <path value="$PROJECT_DIR$/website/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/website/vendor/maximebf/debugbar" />
+      <path value="$PROJECT_DIR$/website/vendor/symfony/psr-http-message-bridge" />
+      <path value="$PROJECT_DIR$/website/vendor/laravel/octane" />
+      <path value="$PROJECT_DIR$/website/vendor/laminas/laminas-diactoros" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
@@ -167,6 +184,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "feat__filter",
     "last_opened_file_path": "D:/web/OSPanel/domains/wine_website",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -233,6 +251,7 @@
       <workItem from="1721387754740" duration="20260000" />
       <workItem from="1721502144868" duration="370000" />
       <workItem from="1721504966654" duration="299000" />
+      <workItem from="1721648806801" duration="7811000" />
     </task>
     <task id="LOCAL-00001" summary="feat post">
       <option name="closed" value="true" />
@@ -356,6 +375,11 @@
           <url>file://$PROJECT_DIR$/website/resources/views/admin/content/product/add.blade.php</url>
           <line>45</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/website/resources/views/content/products/category.blade.php</url>
+          <line>325</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

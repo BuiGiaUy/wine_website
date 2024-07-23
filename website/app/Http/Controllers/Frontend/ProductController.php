@@ -9,11 +9,45 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the products.
-     *
-     * @return \Illuminate\View\View
-     */
+    private function getSortedProducts($categoryId, $sortBy, $orderDirection, $minPrice, $maxPrice)
+    {
+        switch ($sortBy) {
+            case 'popularity':
+                // Assuming you have a 'popularity' column in your 'products' table
+                $orderBy = 'popularity';
+                break;
+            case 'price':
+            case 'price-desc':
+                $orderBy = 'price';
+                break;
+            case 'date':
+                $orderBy = 'created_at'; // Assuming you want to sort by creation date
+                break;
+            case 'on_sale':
+                $orderBy = 'sale'; // Customize based on your field or logic
+                break;
+            default:
+                $orderBy = 'created_at'; // Default sorting
+        }
+
+        return Product::where('category_id', $categoryId)
+            ->whereBetween('price', [$minPrice, $maxPrice])
+            ->orderBy($orderBy, $orderDirection)
+            ->paginate(10);
+    }
+
+    private function getSortDirection($sortBy)
+    {
+        switch ($sortBy) {
+            case 'price-desc':
+            case 'date':
+                return 'desc';
+            default:
+                return 'asc';
+        }
+    }
+
+
     public function index()
     {
         $breadcrumbs = [
@@ -58,8 +92,14 @@ class ProductController extends Controller
         // Find the category by its slug
         $category = Category::where('slug', $slug)->firstOrFail();
 
-        // Retrieve products that belong to the found category
-        $products = Product::where('category_id', $category->id)->paginate(10);
+        // Get the sorting option from the request
+        $sortBy = request()->get('orderby', 'created_at');
+        $orderDirection = $this->getSortDirection($sortBy); // Determine sort direction
+        $minPrice = request()->get('min_price', 0);
+        $maxPrice = request()->get('max_price', PHP_INT_MAX);
+
+        // Retrieve products with sorting
+        $products = $this->getSortedProducts($category->id, $sortBy, $orderDirection, $minPrice, $maxPrice);
 
         $breadcrumbs = [
             ['title' => 'Trang chủ', 'url' => route('home')],
@@ -69,7 +109,8 @@ class ProductController extends Controller
         return view('content.products.category', [
             'products' => $products,
             'category' => $category,
-            'breadcrumbs' => $breadcrumbs
+            'breadcrumbs' => $breadcrumbs,
+            'currentSort' => $sortBy
         ]);
     }
 
