@@ -210,7 +210,7 @@
                                             </p>
                                         </div>
                                         <div class="uk-card uk-border-bottom">
-                                            <div class="uk-grid-small uk-child-width-1-3@s " uk-grid>
+                                            <div class="uk-grid-small uk-child-width-1-2 " uk-grid>
                                                 <div class="uk-flex">
                                                     <div class="">
                                                         <img
@@ -280,10 +280,11 @@
                                                 <li>Đơn hàng từ 1.000.000vnđ miễn phí giao hàng.</li>
                                             </ul>
                                         </div>
-                                        <div class="uk-visible@s">
+                                        <div class="">
                                             <p class="uk-text-default btn-wine" style="font-size: 22px">
                                                 <span >
-                                                    <bdi>{{ $product->price }}&nbsp;
+                                                    <bdi>
+                                                        {{ $product->price }}&nbsp;
                                                         <span>₫</span>
                                                     </bdi>
                                                 </span>
@@ -311,7 +312,7 @@
                                                 <input type="hidden" name="name" value="{{ $product->name }}">
                                                 <input type="hidden" name="price" value="{{ $product->price }}">
                                                 <input type="hidden" name="image" value="{{ $product->featuredImage->path }}">
-                                                <input type="hidden" name="url" value="{{ route('products.show', $product->id) }}">
+                                                <input type="hidden" name="url" value="{{ route('products.show', $product->slug) }}">
                                                 <div class="wcl-button w-50 uk-text-right">
                                                     <button type="submit" name="add-to-cart" class="uk-margin-small uk-button uk-button-primary uk-border-rounded custom-add-to-cart-button">
                                                         Thêm vào giỏ hàng
@@ -323,7 +324,7 @@
                                     </div>
                                 </div>
 
-                                <div id="col-317425088" class="">
+                                <div id="col-317425088" class="uk-margin-top">
                                     <div class="col-inner">
                                         <div class="uk-card uk-card-default uk-card-body ">
                                             <div class="uk-grid-small " uk-grid>

@@ -1,6 +1,6 @@
 @extends('content.layouts.app')
 
-@section('title', '')
+@section('title', 'Kiến Thức Rượu Vang')
 
 @section('style')
     <style>
@@ -48,8 +48,8 @@
 
             <section class="uk-section uk-section-kt uk-padding-remove" id="section_1792157930">
                 <div class="uk-section uk-section-content uk-padding-large uk-padding-remove-vertical">
-                    <div class="uk-flex">
-                        <div class="uk-width-1-2@m ">
+                    <div class="uk-child-width-1-2@l"uk-grid>
+                        <div class="uk-width-1-2@l uk-width-1-1">
                             <div class="uk-card uk-card-default uk-card-body uk-padding-large uk-height-1-1"
                                  style="background-color: rgb(243, 243, 243) !important;">
                                 <h2 class="uk-card-title"><a
@@ -63,7 +63,7 @@
                                     hiểu thêm</a>
                             </div>
                         </div>
-                        <div class="uk-width-1-2@m">
+                        <div class="uk-width-1-2@l uk-width-1-1">
                             <div class="uk-card ">
                                 <a href="https://winecellar.vn/ruou-vang-cho-nguoi-moi-bat-dau/" class="uk-link-reset">
                                     <img
@@ -80,8 +80,8 @@
             <section class="uk-section uk-section-kt uk-padding-remove" id="section_2043780788">
                 <div class="uk-section uk-section-content uk-padding-large uk-padding-remove-vertical">
                     <div class="">
-                        <div class="uk-flex">
-                            <div class="uk-width-1-2@m">
+                        <div class="uk-child-width-1-2@l" uk-grid>
+                            <div class="">
                                 <div class="uk-card ">
                                     <a href="https://winecellar.vn/kien-thuc-ruou-vang-co-ban/" class="uk-link-reset">
                                         <img
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
 
-                            <div class="uk-flex-middle uk-width-1-2@m">
+                            <div class="">
                                 <div class="uk-card uk-card-default uk-card-body uk-padding-large uk-height-1-1"
                                      style="background-color: rgb(243, 243, 243) !important;">
                                     <h2 class="uk-card-title"><a
@@ -133,8 +133,8 @@
 
             <section class="uk-section uk-section-kt uk-padding-remove" id="section_2142074539">
                 <div class="uk-section uk-section-content uk-padding-large uk-padding-remove-vertical">
-                    <div class="uk-flex">
-                        <div class="uk-width-1-2@m">
+                    <div class="uk-child-width-1-2@l" uk-grid>
+                        <div class="">
                             <div class="uk-card uk-card-default uk-card-body uk-padding-large uk-height-1-1"
                                  style="background-color: rgb(243, 243, 243) !important;">
                                 <h2 class="uk-card-title"><a
@@ -150,7 +150,7 @@
                                     hiểu thêm</a>
                             </div>
                         </div>
-                        <div class="uk-width-1-2@m">
+                        <div class="">
                             <div class="uk-card uk-card-default">
                                 <a href="https://winecellar.vn/nghe-thuat-thuong-thuc-ruou-vang/" class="uk-link-reset">
                                     <img
@@ -166,8 +166,8 @@
             <section class="uk-section uk-section-kt uk-padding-remove" id="section_909080405">
                 <div class="uk-section uk-section-content uk-padding-large uk-padding-remove-vertical">
                     <div class="">
-                        <div class="uk-flex">
-                            <div class="uk-width-1-4@m">
+                        <div class="uk-child-width-1-4@l" uk-grid>
+                            <div class="">
                                 <div class="uk-card  uk-height-1-1">
                                     <div class="uk-position-cover">
                                         <a class="uk-position-cover"
@@ -181,7 +181,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="uk-width-1-4@m">
+                            <div class="">
                                 <div class="uk-card uk-height-1-1">
                                     <a href="https://winecellar.vn/tim-hieu-ruou-vang-y/">
                                         <img
@@ -196,7 +196,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="uk-width-1-4@m">
+                            <div class="">
                                 <div class="uk-card uk-card-default uk-height-1-1">
                                     <a href="https://winecellar.vn/tim-hieu-ruou-vang-my/">
                                         <img
@@ -212,7 +212,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="uk-width-1-4@m">
+                            <div class="">
                                 <div class="uk-card uk-card-default uk-height-1-1">
                                     <a href="https://winecellar.vn/tim-hieu-ruou-vang-tay-ban-nha/">
                                         <img
@@ -234,14 +234,14 @@
 
             <section class="uk-section uk-section-kt uk-padding-remove" id="section_1643984231">
                 <div class="uk-section uk-section-content uk-padding-large uk-padding-remove-vertical">
-                    <div class="uk-flex">
-                        <div class="uk-width-1-2@m">
-                            <div class="uk-card  uk-flex uk-flex-center uk-flex-middle">
+                    <div class="uk-child-width-1-2@m" uk-grid>
+                        <div class="">
+                            <div class="uk-card   ">
                                 <img src="https://winecellar.vn/wp-content/uploads/2021/07/basic-wine-guide.jpg"
-                                     alt="basic wine guide" class="uk-width-1-1">
+                                     alt="basic wine guide" class="uk-width-1-1 uk-cover-container uk-height-large">
                             </div>
                         </div>
-                        <div class="uk-width-1-2@m">
+                        <div class="">
                             <div class="uk-card uk-card-default uk-card-body uk-padding-large uk-height-1-1 "
                                  style="background-color: rgb(243, 243, 243) !important;">
                                 <h2 class="uk-card-title">Phát triển khả năng cảm nhận rượu vang</h2>
@@ -274,8 +274,8 @@
             <section class="uk-section uk-section-kt uk-padding-remove" id="section_1814412409">
                 <div class="uk-section uk-section-content uk-padding-large uk-padding-remove-vertical">
                     <div class="">
-                        <div class="uk-flex">
-                            <div class="uk-width-1-2@m">
+                        <div class="uk-child-width-1-2@m" uk-grid>
+                            <div class="">
                                 <div class="uk-card uk-card-default uk-card-body uk-padding-large uk-height-1-1 "
                                      style="background-color: rgb(243, 243, 243) !important;">
                                     <h2 class="uk-card-title">Hướng dẫn bảo quản rượu vang đúng cách</h2>
@@ -305,7 +305,7 @@
                                         hiểu thêm</a>
                                 </div>
                             </div>
-                            <div class="uk-width-1-2@m">
+                            <div class="">
                                 <div class="uk-card  uk-flex uk-flex-center uk-flex-middle">
                                     <img
                                         src="https://winecellar.vn/wp-content/uploads/2021/06/day-chai-lom-giup-viec-xep-ruou-de-dang-hon.jpg"
@@ -321,15 +321,15 @@
             <section class="uk-section uk-section-kt uk-padding-remove" id="section_1220425891">
                 <div class="uk-section uk-section-content uk-padding-large uk-padding-remove-vertical">
                     <div class="">
-                        <div class="uk-flex">
-                            <div class="uk-width-1-2@m">
+                        <div class="uk-child-width-1-2@m" uk-grid>
+                            <div class="">
                                 <div class="uk-card  uk-flex uk-flex-center uk-flex-middle">
                                     <img
                                         src="https://winecellar.vn/wp-content/uploads/2023/03/tip-hay-khi-thuong-thuc-ruou-vang.jpg"
                                         alt="Tips hay khi thưởng thức rượu vang" class="uk-width-1-1">
                                 </div>
                             </div>
-                            <div class="uk-width-1-2@m">
+                            <div class="">
                                 <div class="uk-card uk-card-default uk-card-body uk-padding-large uk-height-1-1 "
                                      style="background-color: rgb(243, 243, 243) !important;">
                                     <h2 class="uk-card-title">Tips hay khi thưởng thức rượu vang</h2>
@@ -346,8 +346,8 @@
             <section class="uk-section uk-section-kt uk-padding-remove" id="section_1220425891">
                 <div class="uk-section uk-section-content uk-padding-large uk-padding-remove-vertical">
                     <div class="">
-                        <div class="uk-flex">
-                            <div class="uk-width-1-2@m">
+                        <div  class="uk-child-width-1-2@m" uk-grid>
+                            <div class="">
                                 <div class="uk-card uk-card-default uk-card-body uk-padding-large uk-height-1-1 "
                                      style="background-color: rgb(243, 243, 243) !important;">
                                     <h2 class="uk-card-title">Food wine Pairing</h2>
@@ -356,7 +356,7 @@
                                         hiểu thêm</a>
                                 </div>
                             </div>
-                            <div class="uk-width-1-2@m">
+                            <div class="">
                                 <div class="uk-card  uk-flex uk-flex-center uk-flex-middle">
                                     <img
                                         src="https://winecellar.vn/wp-content/uploads/2023/03/tip-hay-khi-thuong-thuc-ruou-vang.jpg"

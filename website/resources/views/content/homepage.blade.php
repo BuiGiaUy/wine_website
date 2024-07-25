@@ -117,33 +117,37 @@
 @endsection
 
 @section('content')
-    <section class="uk-section uk-padding-remove">
+    <section class="uk-section uk-padding-remove" >
         <div class=" uk-padding-remove uk-width-1-1	">
-            <div uk-slider>
+            <div class="uk-slider " uk-slider="autoplay: true; autoplay-interval: 3000">
                 <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
-                    <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-1@m">
+                    <ul class="uk-slider-items uk-child-width-1-1">
                         <li>
-                            <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg"
-                                 alt="Image 1">
+                            <div class="uk-cover-container uk-height-large uk-height-viewport@s">
+                                <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg" alt="Image 1" uk-cover>
+                            </div>
                         </li>
                         <li>
-                            <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg"
-                                 alt="Image 2">
+                            <div class="uk-cover-container uk-height-large uk-height-viewport@s">
+                                <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg" alt="Image 2" uk-cover>
+                            </div>
                         </li>
                         <li>
-                            <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg"
-                                 alt="Image 3">
+                            <div class="uk-cover-container uk-height-large uk-height-viewport@s">
+                                <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg" alt="Image 3" uk-cover>
+                            </div>
                         </li>
                         <li>
-                            <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg"
-                                 alt="Image 4">
+                            <div class="uk-cover-container uk-height-large uk-height-viewport@s">
+                                <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg" alt="Image 4" uk-cover>
+                            </div>
                         </li>
                         <li>
-                            <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg"
-                                 alt="Image 5">
+                            <div class="uk-cover-container uk-height-large uk-height-viewport@s">
+                                <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg" alt="Image 5" uk-cover>
+                            </div>
                         </li>
                     </ul>
-
                     <a class="uk-position-center-left uk-position-small uk-hidden-hover custom-nav" href="#"
                        uk-slidenav-previous uk-slider-item="previous"></a>
                     <a class="uk-position-center-right uk-position-small uk-hidden-hover custom-nav" href="#"
@@ -161,7 +165,7 @@
         </div>
     </section>
     <section class="uk-section uk-section-small uk-light uk-padding-remove" id="section_1130581520">
-        <div class="uk-background-cover uk-padding" style="background-color: #990d23;">
+        <div class="uk-background-cover uk-padding uk-flex uk-flex-center uk-flex-middle uk-height-small uk-height-viewport@m" style="background-color: #990d23;">
             <div class="">
                 <div id="text-1504872352" class="uk-text-center uk-text-white">
                     <h1 class="uk-margin-remove uk-heading-small uk-text-uppercase uk-text-large	"><strong>Winecellar.vn
@@ -173,7 +177,7 @@
     </section>
     <section class="uk-section uk-section-default" id="section_1364875212">
         <div class="uk-padding-remove">
-            <div class="uk-grid-collapse uk-child-width-1-4@m uk-child-width-1-2@s	" uk-grid>
+            <div class="uk-grid-collapse uk-child-width-1-4@l uk-child-width-1-2	uk-grid-medium uk-grid-match" uk-grid>
                 <div>
                     <div class="uk-card uk-card-hover uk-card-body uk-text-center ">
                         <div class="uk-card-media-top" style="width:20%; margin: 0 auto;">
@@ -232,22 +236,22 @@
             <div class="uk-text-center uk-margin-medium-bottom">
                 <h2 class="uk-text-large" style="color: #990d23">DANH MỤC SẢN PHẨM ĐA ĐẠNG & VÔ VÀN KHÁM PHÁ</h2>
             </div>
-            <div class="uk-child-width-1-2@s uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
+            <div class="uk-child-width-1-2 uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
                 @foreach($posts as $post)
                     <div class="">
                         <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card"
                              style="background: #f5ecdb;">
                             <a href="">
                                 {{--                                {{ route('post.show', ['slug' => $post->slug]) }}--}}
-                                @if ($post->featuredImage)
-                                    <img src="{{ asset($post->featuredImage->path) }}" alt="{{ $post->title }}"
-                                         class="uk-width-1-1">
-                                @else
+{{--                                @if ($post->featuredImage)--}}
+{{--                                    <img src="{{ asset($post->featuredImage->path) }}" alt="{{ $post->title }}"--}}
+{{--                                         class="uk-width-1-1">--}}
+{{--                                @else--}}
                                     <img
                                         src="https://winecellar.vn/wp-content/uploads/2024/05/ruou-vang-nhap-khau-home.jpg"
                                         alt="{{ $post->title }}" class="uk-width-1-1">
-                                @endif
-                                <h3 class="uk-card-title uk-text-default uk-text-center">{{ $post->name }}</h3>
+{{--                                @endif--}}
+                                <h3 class=" uk-card-title uk-text-default uk-text-center">{{ $post->name }}</h3>
                             </a>
                         </div>
                     </div>
@@ -259,13 +263,13 @@
         <div class="uk-background-cover uk-background-norepeat">
             <div class=" uk-position-relative">
                 <div class="uk-flex uk-flex-center">
-                    <div class="uk-width-3-5@s uk-padding">
+                    <div class=" uk-padding">
                         <div class="uk-text-center">
                             <h2 class="uk-heading-medium uk-text-bold uk-margin-remove-top uk-text-large"
                                 style="color: #990d23;">Bạn tìm gì hôm nay?</h2>
                         </div>
-                        <div class="uk-child-width-1-1 uk-child-width-1-4@m uk-grid-match" uk-grid>
-                            <div class="uk-width-1-1">
+                        <div class="-width-1-1 ">
+                            <div class="uk-width-2xlarge@m ">
                                 <form action="https://winecellar.vn/cua-hang-ruou-vang/" id="quick_search" method="get"
                                       class="uk-form-stacked">
                                     <!-- Your form content here -->
@@ -274,29 +278,27 @@
                                            placeholder="Hãy thử 'vang cá chép' xem sao!" value="" name="s">
                                 </form>
                             </div>
-                            <div class="uk-width-1-1 uk-margin-remove-top">
-                                <div class="uk-flex uk-flex-wrap uk-margin-top uk-margin-bottom">
-                                    <a href="https://winecellar.vn/ruou-vang-phap/"
-                                       class="uk-button uk-button-secondary uk-button-small uk-border-pill uk-margin-small-right">Vang
-                                        Pháp</a>
+                            <div class="uk-width-2xlarge@m uk-margin-remove-top">
+                                <div class="uk-margin-top  uk-child-width-1-3 uk-child-width-1-6@s  uk-margin-bottom" uk-grid>
+
                                     <a href="https://winecellar.vn/ruou-vang-my/"
-                                       class="uk-button uk-button-secondary uk-button-small uk-border-pill uk-margin-small-right">Vang
+                                       class="uk-button ">Vang
                                         Mỹ</a>
                                     <a href="https://winecellar.vn/ruou-vang-y/"
-                                       class="uk-button uk-button-secondary uk-button-small uk-border-pill uk-margin-small-right">Vang
+                                       class="uk-button ">Vang
                                         Ý</a>
                                     <a href="https://winecellar.vn/ruou-vang-phap/"
-                                       class="uk-button uk-button-secondary uk-button-small uk-border-pill uk-margin-small-right">Vang
-                                        Pháp</a>
+                                       class="uk-button">Vang
+                                        </a>
                                     <a href="https://winecellar.vn/ruou-vang-my/"
-                                       class="uk-button uk-button-secondary uk-button-small uk-border-pill uk-margin-small-right">Vang
+                                       class="uk-button">Vang
                                         Mỹ</a>
                                     <a href="https://winecellar.vn/ruou-vang-y/"
-                                       class="uk-button uk-button-secondary uk-button-small uk-border-pill uk-margin-small-right">Vang
+                                       class="uk-button ">Vang
                                         Ý</a>
                                     <a href="https://winecellar.vn/ruou-vang-phap/"
-                                       class="uk-button uk-button-secondary uk-button-small uk-border-pill uk-margin-small-right">Vang
-                                        Pháp</a>
+                                       class="uk-button">Vang
+                                        </a>
                                     <!-- Add more links as needed -->
                                 </div>
                             </div>
@@ -315,20 +317,20 @@
                 <p>WINECELLAR.vn tự hào là đại diện độc quyền nhập khẩu và phân phối sản phẩm từ một số nhà sản xuất
                     rượu vang tốt nhất thế giới tại Việt Nam.</p>
             </div>
-            <div class="uk-child-width-1-2@s uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
+            <div class="uk-child-width-1-2 uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
                 @foreach($brands as $brand)
-                    <div class="uk-width-1-4@l">
+                    <div class="">
                         <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card"
                              style="background: #f5ecdb;">
                             <a href="">
                                 {{--                                <a href="{{ route('brand.show', ['slug' => $brand->slug]) }}">--}}
-                                @if ($post->featuredImage)
-                                    <img src="{{ asset($brand->path) }}" alt="{{ $brand->name }}" uk-cover
-                                         class="uk-width-1-1">
-                                @else
+{{--                                @if ($post->featuredImage)--}}
+{{--                                    <img src="{{ asset($brand->path) }}" alt="{{ $brand->name }}" uk-cover--}}
+{{--                                         class="uk-width-1-1">--}}
+{{--                                @else--}}
                                     <img src="https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png"
                                          alt="{{ $post->title }}" class="uk-width-1-1">
-                                @endif
+{{--                                @endif--}}
                                 <h3 class="uk-text-default uk-text-center"
                                     style="color: #0A0A0A">{{ $brand->name }}</h3>
                             </a>
@@ -340,37 +342,39 @@
         </div>
     </section>
     <section class="uk-section uk-section-small uk-background-norepeat uk-background-cover uk-background-center-center"
-             style="background-image: url('path/to/background/image.jpg');" id="section_1212447303">
-        <div class="">
+             style="" id="section_1212447303">
+        <div class="uk-width-1-1">
             <div class="uk-text-center">
                 <h2 class="uk-text-large uk-margin-remove-top" style="color: #990d23; font-weight: 600">Sản phẩm bán
                     chạy</h2>
             </div>
-            <div class="uk-child-width-1-2@s uk-child-width-1-5@m uk-grid-match uk-grid-small" uk-grid
-                 uk-scrollspy="cls: uk-animation-slide-bottom; target: .uk-card; delay: 100; repeat: false">
-                @foreach($products as $product)
-                    <div>
-                        <div
-                            class="uk-card uk-card-default uk-card-body uk-card-hover uk-flex uk-flex-column uk-flex-middle">
-                            <a href="">
-                                {{--                                <a href="{{ route('product.show', ['slug' => $product->slug]) }}">--}}
-                                @if ($product->featuredImage)
-                                    <img src="{{ asset($product->featuredImage->path) }}" alt="{{ $product->name }}">
-                                @else
-                                    <img
-                                        src="https://winecellar.vn/wp-content/uploads/2024/03/cf-collefrisio-montepulciano-dabruzzo-300x400.jpg"
-                                        alt="{{ $product->name }}">
-                                @endif
-                            </a>
-                            <h3 class="uk-text-default uk-text-center">{{ $product->name }}</h3>
-                            <p class="uk-text-meta uk-margin-remove-top"
-                               style="color: #990d23; font-weight: bold;">{{ number_format($product->price, 0, ',', '.') }}
-                                ₫</p>
-                            <a href="?add-to-cart={{ $product->id }}" class="uk-button uk-border-rounded"
-                               style="background: #990d23; color: #FFFFFF">Thêm vào giỏ hàng</a>
-                        </div>
-                    </div>
-                @endforeach
+            <div class=" uk-width-1-1 uk-slider-container-offset " uk-slider="finite: true">
+                <div class="uk-position-relative uk-visible-toggle uk-light  uk-width-1-1">
+                    <ul class="uk-slider-items uk-width-1-1 uk-child-width-1-1 uk-child-width-1-5@m uk-grid-medium uk-grid-match">
+                        @foreach($products as $product)
+                            <li class=" ">
+                                <div class="uk-card  uk-width-1-1 uk-card-default uk-padding-remove  uk-card-hover uk-flex uk-flex-column uk-flex-middle">
+                                    <div class="uk-card-media-top">
+                                        <a href="{{ route('products.show', ['slug' => $product->slug]) }}" aria-label="Rượu Vang Ý CF Collefrisio Montepulciano D’abruzzo 2022">
+                                            <img
+                                                src="https://winecellar.vn/wp-content/uploads/2024/03/cf-collefrisio-montepulciano-dabruzzo-300x400.jpg"
+                                                alt="{{ $product->name }}">
+                                        </a>
+                                    </div>
+                                    <div class="uk-text-center uk-padding-remove-horizontal uk-padding">
+                                        <h3 class="uk-text-default uk-text-center" style="color:#000;font-weight: bold">{{ $product->name }}</h3>
+                                        <p class="uk-text-meta uk-margin-remove-top"  style="color: #990d23; font-weight: bold;">{{ number_format($product->price, 0, ',', '.') }}₫</p>
+                                        <a href="{{ route('products.show', ['slug' => $product->slug]) }}" class="uk-button uk-border-rounded"
+                                           style="background: #990d23; color: #FFFFFF">Xem sản phẩm</a>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slider-item="previous"><span uk-icon="icon: chevron-left; ratio: 2"></span></a>
+                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slider-item="next"><span uk-icon="icon: chevron-right; ratio: 2"></span></a>
+                </div>
+                <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
             </div>
         </div>
     </section>
@@ -379,15 +383,15 @@
             <div class="uk-text-center">
                 <h2 class="uk-text-large" style="color: #FFFFFF; font-weight: 600">DỊCH VỤ KHÁCH HÀNG</h2>
             </div>
-            <div class="uk-grid uk-child-width-1-2@m" uk-grid>
+            <div class="uk-grid" uk-grid>
                 <div class="uk-width-2-3@m uk-flex uk-flex-middle">
-                    <div class="uk-position-relative uk-light uk-background-cover uk-height-1-1">
+                    <div class="uk-position-relative uk-light uk-background-cover uk-height-medium">
                         <img
                             src="https://winecellar.vn/wp-content/uploads/2023/11/hop-qua-tang-doanh-nghiep-phu-quy-doan-vien-chim-tri-banner-1400x510.jpg"
-                            class="uk-border-rounded" alt="" uk-cover>
+                            class="uk-border-rounded uk-width-1-1 uk-height-1-1" alt="" >
                     </div>
                 </div>
-                <div class="uk-width-1-3@m">
+                <div class="uk-width-1-3@m ">
                     <div class="uk-margin menu-services uk-height-1-1">
                         <ul class="uk-nav uk-nav-default uk-flex-column uk-height-1-1 uk-child-height-1-4@m uk-flex uk-flex-center">
                             <li class="uk-height-1-4"><a href="https://winecellar.vn/qua-tang-doanh-nghiep/"><i

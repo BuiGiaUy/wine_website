@@ -27,7 +27,7 @@
         </table>
 
         <div class="uk-margin">
-            <h3>Total: {{ number_format($totalAmount, 2) }} ₫</h3>
+            <h3>Total: {{ number_format($subtotal, 2) }} ₫</h3>
         </div>
 
         <a href="{{ route('checkout') }}" class="uk-button uk-button-primary">Proceed to Checkout</a>

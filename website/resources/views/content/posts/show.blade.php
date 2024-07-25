@@ -3,6 +3,11 @@
 @section('title', $post->title)
 
 @section('content')
+    <section class="uk-section uk-section-small uk-padding-small" id="section_1984779848">
+        <div class="uk-background-cover b"></div>
+        @include('content.components.breadcrumb', ['breadcrumbs' => $breadcrumbs])
+    </section>
+
     <div class="uk-container">
         <article class="uk-article">
             <h1 class="uk-article-title">{{ $post->title }}</h1>

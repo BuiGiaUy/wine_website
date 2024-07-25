@@ -16,17 +16,26 @@ class PostController extends Controller
     // Method to display a list of posts
     public function index()
     {
+        $breadcrumbs = [
+            ['title' => 'Trang chủ', 'url' => route('home')],
+            ['title' => 'Blog Posts']
+        ];
         $group = $this->post;
         $posts = Post::orderBy('category_id', 'ASC')->whereHas('category', function ($query) use ($group) {
             $query->where('model_type', $group);
         })->paginate(50);
-        return view('content.posts.index', ['posts'=>$posts]); // Pass posts to the index view
+        return view('content.posts.index', ['posts'=>$posts, 'breadcrumbs'=> $breadcrumbs]); // Pass posts to the index view
     }
 
     // Method to display a single post
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::findOrFail($id); // Fetch a post by its ID
-        return view('content.posts.show', ['post'=>$post]); // Pass the post to the show view
+        $post = Post::where('slug', $slug)->firstOrFail();
+        $breadcrumbs = [
+            ['title' => 'Trang chủ', 'url' => route('home')],
+            ['title' => "Blog Posts ", 'url' => route('posts.index')],
+            ['title' => $post->name]
+        ];
+        return view('content.posts.show', ['post'=>$post, 'breadcrumbs'=>$breadcrumbs]);
     }
 }
