@@ -69,10 +69,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show($slug)
     {
 
-        $product = Product::findOrFail($id); // Find product by ID or fail
+        $product = Product::where('slug', $slug)->firstOrFail(); // Find product by ID or fail
         $breadcrumbs = [
             ['title' => 'Trang chủ', 'url' => route('home')],
             ['title' => $product->category->name, 'url' => route('products.show', $product->category->slug)],

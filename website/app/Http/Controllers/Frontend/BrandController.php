@@ -15,9 +15,9 @@ class BrandController extends Controller
     }
 
     // Display the specified brand
-    public function show($id)
+    public function show($slug)
     {
-        $brand = Brand::findOrFail($id);
+        $brand = Brand::where("slug", $slug)->firstOrFail();
         return view('content.brands.show', ['brand' => $brand]);
     }
 }

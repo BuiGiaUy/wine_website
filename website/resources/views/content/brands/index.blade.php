@@ -40,31 +40,30 @@
 @endsection
 
 @section('content')
-    <div>
-        <div class="uk-section uk-padding-remove">
-            <div class="uk-position-relative uk-light">
-                <img src="https://winecellar.vn/wp-content/uploads/2024/06/nsx-banner-scaled.jpg" alt="Rượu Vang"
-                     uk-cover>
-                <div class="uk-overlay-primary uk-position-cover"></div>
-                <div class="uk-position-left uk-width-1-1 uk-flex uk-flex-between uk-container">
-                    <div class="uk-width-1-5"></div>
-                    <div
-                        class="uk-width-3-5 uk-text-center uk-padding-large uk-padding-remove-left uk-padding-remove-right uk-margin-large">
-                        <h1 class="uk-text-large">DANH SÁCH NHÀ SẢN XUẤT</h1>
-                        <p class="uk-text-default">
-                            Danh mục sản phẩm của WINECELLAR.vn không ngừng mở rộng từ các thương hiệu rượu vang, bia,
-                            whisky danh giá nhất thế giới đến các thương hiệu phụ kiện như ly pha lê Riedel, dụng cụ
-                            chiết vang Coravin, thịt heo muối Iberico, nước khoáng, các thương hiệu gốm sứ Anh Wedgwood,
-                            bánh quy Bỉ Jules Destrooper, trà Anh Quốc…
-                        </p>
-                    </div>
-                    <div class="uk-width-1-5"></div>
+       <section class="uk-section  uk-padding-remove ">
+           <div class="">
+               <div class="uk-position-relative uk-light  uk-height-large">
+                   <img src="https://winecellar.vn/wp-content/uploads/2024/06/nsx-banner-scaled.jpg" class="uk-height-1-1" alt="Rượu Vang">
+                   <div class="uk-overlay-primary uk-position-cover"></div>
+                   <div class="uk-position-left uk-width-1-1 uk-flex uk-flex-between uk-container">
+                       <div class="uk-width-1-5"></div>
+                       <div
+                           class="uk-width-3-5 uk-text-center uk-padding-large uk-padding-remove-left uk-padding-remove-right uk-margin-large">
+                           <h1 class="uk-text-large">DANH SÁCH NHÀ SẢN XUẤT</h1>
+                           <p class="uk-text-default">
+                               Danh mục sản phẩm của WINECELLAR.vn không ngừng mở rộng từ các thương hiệu rượu vang, bia,
+                               whisky danh giá nhất thế giới đến các thương hiệu phụ kiện như ly pha lê Riedel, dụng cụ
+                               chiết vang Coravin, thịt heo muối Iberico, nước khoáng, các thương hiệu gốm sứ Anh Wedgwood,
+                               bánh quy Bỉ Jules Destrooper, trà Anh Quốc…
+                           </p>
+                       </div>
+                       <div class="uk-width-1-5"></div>
 
-                </div>
-            </div>
-        </div>
+                   </div>
+               </div>
+           </div>
+       </section>
 
-        <main id="main">
             <section class="uk-section">
                 <div class="">
                     <div class="uk-padding-small">
@@ -101,7 +100,7 @@
                 </div>
             </section>
 
-            <section class="">
+            <section class="uk-section uk-padding-remove">
                 <div class="uk-padding ">
                     <div class="uk-margin-bottom">
                         <ul class="uk-subnav uk-subnav-pill uk-flex-center" uk-switcher="connect: .filter-nav">
@@ -146,51 +145,37 @@
                         </ul>
                     </div>
 
-                    <div
-                        class="uk-child-width-1-2@s uk-child-width-1-4@m uk-grid-medium uk-grid-match uk-grid uk-grid-stack"
-                        uk-grid="">
-                        @foreach($brands as $brand)
-                            <div class="uk-width-1-4@l uk-first-column">
-                                <div
-                                    class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card uk-border-rounded"
-                                    style="background: #f5ecdb;">
-                                    <a href="" style="text-decoration: none; color: #0A0A0A" class="uk-padding-remove">
-                                        {{--                                        <a href="{{ route('brand.show', ['slug' => $brand->slug]) }}" style="text-decoration: none; color: #0A0A0A" class="uk-padding-remove">--}}
-                                        @if ($brand->image)
-                                            <img src="{{ asset($brand->image) }}" alt="{{ $brand->name }}" uk-cover
-                                                 class="uk-width-1-1 uk-border-rounded">
-                                        @else
-                                            <img
-                                                src="https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png"
-                                                alt="Château Dauzac" uk-cover="" class="uk-width-1-1 uk-border-rounded">
-                                        @endif
-                                        <h3 class="uk-text-default uk-text-center uk-margin-remove uk-padding-small uk-padding-remove-bottom"
-                                            style="color: #0A0A0A;">{{ $brand->name }}</h3>
-                                        <div class="uk-flex uk-flex-between uk-flex-middle">
-                                            <div class="uk-flex uk-flex-middle uk-margin-right uk-padding-small">
-                                                <span uk-icon="icon: location" style="color: #b19458"></span>
-                                                <span class="uk-margin-small-left ">{{ $brand->country }}</span>
-                                            </div>
-                                            <div class="uk-flex uk-flex-middle uk-padding-small">
-                                                 <span class="uk-margin-small-right">
-                                                    <img decoding="async"
-                                                         src="https://winecellar.vn/wp-content/themes/winecellarvn/assets/icons/icon_region.png"
-                                                         alt="Vùng" uk-img>
-                                                </span>
-                                                {{ $brand->region }}
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
 
 
                 </div>
-            </section>
 
-        </main>
-    </div>
+
+            </section>
+        <section class="uk-section uk-padding">
+            <div class="uk-child-width-1-2 uk-child-width-1-4@l uk-grid-medium uk-grid-match uk-grid" uk-grid="">
+            @foreach($brands as $brand)
+                    <div class="">
+                        <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card uk-border-rounded" style="background: #f5ecdb;">
+                            <a href="{{ route('brands.show', ['slug' => $brand->slug]) }}" style="text-decoration: none; color: #0A0A0A" class="uk-padding-remove">
+                                <img src="{{ $brand->image ? asset($brand->image) : 'https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png' }}" alt="{{ $brand->name }}" class="uk-width-1-1 uk-border-rounded">
+                                <h3 class="uk-text-default uk-text-center uk-margin-remove uk-padding-small uk-padding-remove-bottom" style="color: #0A0A0A;">{{ $brand->name }}</h3>
+                                <div class="uk-flex uk-flex-between uk-flex-middle">
+                                    <div class="uk-flex uk-flex-middle uk-margin-right uk-padding-small">
+                                        <span uk-icon="icon: location" style="color: #b19458"></span>
+                                        <span class="uk-margin-small-left">{{ $brand->country }}</span>
+                                    </div>
+                                    <div class="uk-flex uk-flex-middle uk-padding-small">
+                                <span class="uk-margin-small-right">
+                                    <img decoding="async" src="https://winecellar.vn/wp-content/themes/winecellarvn/assets/icons/icon_region.png" alt="Vùng" uk-img>
+                                </span>
+                                        {{ $brand->region }}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </section>
 
 @endsection

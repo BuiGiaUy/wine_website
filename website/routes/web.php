@@ -36,13 +36,13 @@ Route::get('/tinymce', function () {
 });
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('products.index');
-    Route::get('/{id}', [ProductController::class, 'show'])->name('products.show');
+    Route::get('/{slug}', [ProductController::class, 'show'])->name('products.show');
     Route::get('/category/{slug}', [ProductController::class, 'category'])->name('products.category');
 });
 
 Route::prefix('brands')->group(function() {
     Route::get('/', [BrandController::class, 'index'])->name('brands.index');
-    Route::get('{id}', [BrandController::class, 'show'])->name('brands.show');
+    Route::get('/{slug}', [BrandController::class, 'show'])->name('brands.show');
 });
 Route::prefix('cart')->middleware(['auth'])->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('cart.index');
@@ -54,15 +54,15 @@ Route::prefix('cart')->middleware(['auth'])->group(function () {
     // Proceed to checkout
     Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
     Route::post('/checkout', [CartController::class, 'processCheckout'])->name('cart.processCheckout');
-    Route::get('/summary', [CartController::class, 'summary'])->name('cart.summary');
+    Route::get('/summary/data', [CartController::class, 'summaryData'])->name('cart.summary.data');
 });
 
 
-Route::prefix('cart')->group(function () {
-    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
-    Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
+Route::prefix('orders')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/{id}', [OrderController::class, 'show'])->name('orders.show');
 });
 Route::prefix('posts')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('posts.index'); // Route for listing all posts
-    Route::get('/{post}', [PostController::class, 'show'])->name('posts.show'); // Route for showing a single post
+    Route::get('/{slug}', [PostController::class, 'show'])->name('posts.show'); // Route for showing a single post
 });

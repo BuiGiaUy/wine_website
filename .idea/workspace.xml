@@ -5,19 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="111e7cd9-ba10-422d-aec2-8c56f7d275bf" name="Changes" comment="feat_adminLayout">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/wine_website.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/wine_website.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/BrandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/BrandController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/CartController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/PostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/website/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/website/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Orders/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Orders/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/brands/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/brands/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/cart/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/cart/checkout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/cart/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/cart/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/cart/sumary.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/cart/summary.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/contact.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/resources/views/content/homepage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/homepage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/includes/bodyJs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/includes/bodyJs.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/includes/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/includes/head.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/includes/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/includes/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/post.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/post.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/posts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/posts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/posts/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/posts/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/resources/views/content/products/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/products/category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/products/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +262,7 @@
       <workItem from="1721387754740" duration="20260000" />
       <workItem from="1721502144868" duration="370000" />
       <workItem from="1721504966654" duration="299000" />
-      <workItem from="1721648806801" duration="7811000" />
+      <workItem from="1721648806801" duration="42164000" />
     </task>
     <task id="LOCAL-00001" summary="feat post">
       <option name="closed" value="true" />
@@ -380,6 +391,21 @@
           <url>file://$PROJECT_DIR$/website/resources/views/content/products/category.blade.php</url>
           <line>325</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/website/resources/views/content/homepage.blade.php</url>
+          <line>241</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/website/resources/views/content/homepage.blade.php</url>
+          <line>271</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/website/resources/views/content/post.blade.php</url>
+          <line>214</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

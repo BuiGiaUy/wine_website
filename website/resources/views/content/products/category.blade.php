@@ -145,13 +145,13 @@
             <div class="uk-position-relative uk-light">
                 {{--                    <img src="{{ $backgroundImage }}" alt="Background Image" uk-cover>--}}
                 <img src="https://winecellar.vn/wp-content/uploads/2022/11/hinh-anh-nha-san-xuat-ruou-vang.jpeg"
-                     alt="Rượu Vang" uk-cover>
+                     alt="Rượu Vang" class="uk-width-1-1" >
                 <div class="uk-overlay-primary uk-position-cover"></div>
                 <div class="uk-position-left uk-width-1-1 uk-flex uk-flex-between uk-container">
-                    <div class="uk-width-1-3 uk-padding-small">
+                    <div class="uk-width-1-3@m uk-width-1-2   uk-padding-small">
                         @include('content.components.breadcrumb', ['breadcrumbs' => $breadcrumbs])
                     </div>
-                    <div class="uk-width-1-3 uk-text-center uk-padding-large uk-margin-large">
+                    <div class="uk-width-1-3@m uk-width-1-2  uk-text-center uk-padding-large uk-margin-large">
                         <h1 class="uk-text-large">{{ $category->name }}</h1>
                         <p class="uk-text-default">
                             {{ $category->description }}
@@ -323,23 +323,17 @@
                     </div>
                 </div>
 
-                <div class="uk-width-3-4@m uk-padding-small uk-padding-remove-top uk-padding-remove-bottom ">
-                    <div class="">
+                <div class="uk-width-3-4@m  uk-padding-remove-top uk-padding-remove-bottom ">
+                    <div class="uk-padding-remove-vertical uk-padding-small">
                         <div class="uk-flex uk-flex-between " style="border-bottom: 1px solid #cccccc;">
-                            <div class="uk-hidden@m btn-mobile-filter">
-                                <a href="#" uk-toggle="target: #shop-sidebar"
-                                   class="uk-button uk-button-default filter-button uk-text-uppercase">
-                                    <span uk-icon="icon: settings"></span>
-                                    <strong>Lọc sản phẩm</strong>
-                                </a>
-                            </div>
+
                             <div class=" uk-margin-small uk-margin-remove-bottom">
                                 @if($products->total() > 0)
-                                    <p class="uk-text-meta">
+                                    <p class="uk-text-meta " style="padding-top: 10px">
                                         Hiển thị {{ $products->firstItem() }}–{{ $products->lastItem() }} của {{ $products->total() }} kết quả
                                     </p>
                                 @else
-                                    <p class="uk-text-meta">Không có kết quả nào.</p>
+                                    <p class="uk-text-meta" style="padding-top: 10px">Không có kết quả nào.</p>
                                 @endif
                             </div>
                             <div class="catalog-order uk-flex uk-flex-middle">
@@ -386,15 +380,15 @@
                                        class="uk-card uk-card-default uk-grid-collapse uk-padding-small uk-child-width-1-2@s uk-margin"
                                        uk-grid>
                                        <div class="uk-card-media-left uk-cover-container uk-width-1-2@s">
-                                           @if ($product->featuredImage)
-                                               <img style="height: 100%" src="{{ $product->featuredImage->path }}"
-                                                    alt="{{ $product->name }}" uk-cover>
-                                           @else
+{{--                                           @if ($product->featuredImage)--}}
+{{--                                               <img style="height: 100%" src="{{ $product->featuredImage->path }}"--}}
+{{--                                                    alt="{{ $product->name }}" uk-cover>--}}
+{{--                                           @else--}}
                                                <img style="height: 100%"
                                                     src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-300x400.jpg"
                                                     alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)"
-                                                    uk-cover>
-                                           @endif
+                                                    >
+{{--                                           @endif--}}
                                        </div>
                                        <div class="uk-card-body uk-padding-small uk-flex uk-flex-column uk-flex-between">
                                            <ul class="uk-list uk-list-divider uk-iconlist">
@@ -434,7 +428,7 @@
                                                </div>
                                                <div class="wcl-button w-50 uk-text-right">
                                                    <a class="uk-margin-small uk-button uk-button-primary uk-border-rounded custom-add-to-cart-button"
-                                                      href="{{ route("products.show", $product->id) }}">Mua ngay</a>
+                                                      href="{{ route("products.show", $product->slug) }}">Mua ngay</a>
                                                    {{--                                                <a class="uk-margin-small uk-button uk-button-primary uk-border-rounded custom-add-to-cart-button" href="{{ route('product.show', $product->slug) }}">Mua ngay</a>--}}
                                                </div>
                                            </div>
@@ -578,17 +572,18 @@
                                 Và các giống nho trắng như Chardonnay, Sauvignon Blanc, Riesling, Gewurztraminer,
                                 Viognier, Sémillon, Pinot Grigio, Chenin Blanc…
                             </p>
-
-                            <figure id="attachment_25310" aria-describedby="caption-attachment-25310"
-                                    style="width: 1020px" class="wp-caption aligncenter">
-                                <img class="wp-image-25310 size-large"
+                            <figure id="attachment_26284" aria-describedby="caption-attachment-26284"
+                                    class="uk-align-center uk-width-1-1">
+                                <img class="uk-width-1-1"
                                      src="https://winecellar.vn/wp-content/uploads/2019/03/champagne-charles-heidsieck-blanc-de-blancs-1-1067x800.png"
-                                     alt="giống nho Chardonnay" width="1020" height="765">
-                                <figcaption id="caption-attachment-25310" class="uk-text-center uk-margin-remove"
+                                     alt="giống nho Chardonnay"
+                                     width="1020" height="765">
+                                <figcaption id="caption-attachment-26284" class="uk-text-center uk-margin-remove"
                                             style="background: rgba(0, 0, 0, .05); font-size: .9em; font-style: italic; padding: .4em;">
                                     Giống Nho Trắng Chardonnay
                                 </figcaption>
                             </figure>
+
 
                             <p style="text-align: justify;">Mỗi giống nho có một đặc điểm hương vị khác biệt. Tuỳ vào
                                 thổ nhưỡng, khí hậu và phong cách làm vang của từng nhà sản xuất mà một giống nho có thể
@@ -606,7 +601,7 @@
                             </p>
 
                             <figure id="attachment_27625" aria-describedby="caption-attachment-27625"
-                                    style="width: 1020px" class="wp-caption aligncenter">
+                                    style="width: 1020px" class="uk-align-center uk-width-1-1">
                                 <img class="size-large wp-image-27625"
                                      src="https://winecellar.vn/wp-content/uploads/2022/08/ruou-champagne-vintage-va-non-vintage-1067x800.jpg"
                                      alt="" width="1020" height="765">
@@ -646,7 +641,7 @@
                             </ul>
 
                             <figure id="attachment_28020" aria-describedby="caption-attachment-28020"
-                                    style="width: 1020px" class="wp-caption aligncenter">
+                                    style="width: 1020px" class="uk-align-center uk-width-1-1">
                                 <img class="size-large wp-image-28020"
                                      src="https://winecellar.vn/wp-content/uploads/2022/09/huong-vi-ruou-vang-do-closerie-saint-roc-2016-1067x800.jpg"
                                      alt="" width="1020" height="765">
@@ -721,7 +716,7 @@
                                 ở mức giá hợp lý đến bất ngờ.</p>
 
                             <figure id="attachment_28328" aria-describedby="caption-attachment-28328"
-                                    style="width: 1020px" class="wp-caption aligncenter">
+                                    style="width: 1020px" class="uk-align-center uk-width-1-1">
                                 <img class="size-large wp-image-28328"
                                      src="https://winecellar.vn/wp-content/uploads/2022/10/ruou-vang-my-treana-red-1067x800.jpg"
                                      alt="" width="1020" height="765">

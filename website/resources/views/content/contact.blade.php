@@ -1,6 +1,6 @@
 @extends('content.layouts.app')
 
-@section('title', '')
+@section('title', 'contact')
 
 @section('style')
     <style>
@@ -62,12 +62,12 @@
                             nghiệp, quà tặng Tết và mọi nhu cầu về rượu vang, bia, whisky, phụ kiện và ly pha lê rượu
                             vang.
                         </p>
-                        <div class="uk-margin-top">
+                        <div class="">
                             <a href="https://winecellar.vn/lien-he/he-thong-cua-hang/"
-                               class=" custom-add-to-cart-button uk-button uk-button-primary uk-margin-small-right">
+                               class="uk-margin-top custom-add-to-cart-button uk-button uk-button-primary uk-margin-small-right">
                                 <span uk-icon="location"></span> Hệ thống cửa hàng
                             </a>
-                            <a href="https://m.me/winecellar.vn" class="uk-button uk-button-secondary  checkout-button">
+                            <a href="https://m.me/winecellar.vn" class="uk-margin-top uk-button uk-button-secondary  checkout-button">
                                 <span uk-icon="facebook"></span> Nhắn tin Facebook
                             </a>
                         </div>
@@ -131,10 +131,10 @@
                             <p><strong>Email</strong>: <a href="mailto:info@winecellar.vn" class="link-p">info@winecellar.vn</a>
                             </p>
                             <a href="https://winecellar.vn/lien-he/he-thong-cua-hang/"
-                               class="custom-add-to-cart-button  uk-button uk-button-primary uk-border-pill">
+                               class="custom-add-to-cart-button uk-margin-top uk-button uk-button-primary uk-border-pill">
                                 <i class="uk-icon" uk-icon="icon: location"></i> Hệ thống cửa hàng
                             </a>
-                            <a href="https://m.me/winecellar.vn" class="uk-button uk-button-secondary checkout-button">
+                            <a href="https://m.me/winecellar.vn" class="uk-button uk-margin-top uk-button-secondary checkout-button">
                                 <i class="uk-icon" uk-icon="icon: facebook"></i> Nhắn tin Facebook
                             </a>
                             <div class="uk-margin"></div>

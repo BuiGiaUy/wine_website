@@ -33,7 +33,7 @@ class CartController extends Controller
             'quantity' => $request->quantity,
             'attributes' => [
                 'image' => $request->image,
-                'url' => $request->slug,
+                'url' => $request->url,
             ],
         ]);
 
@@ -54,6 +54,23 @@ class CartController extends Controller
     }
 
 
+    public function summaryData()
+    {
+        $userID = auth()->id(); // Get the current authenticated user's ID
+        $cartItems = Cart::session($userID)->getContent()->toArray();
+
+        $subtotal = array_reduce($cartItems, function ($carry, $item) {
+            return $carry + ($item['quantity'] * $item['price']);
+        }, 0);
+
+        $total = $subtotal;
+
+        return response()->json([
+            'cartItems' => $cartItems,
+            'subtotal' => $subtotal,
+            'total' => $total
+        ]);
+    }
 
 
 
@@ -69,7 +86,14 @@ class CartController extends Controller
             ],
         ]);
 
-        return redirect()->route('cart.index')->with('success', 'Cart updated successfully!');
+        // Return updated cart summary
+        $subtotal = Cart::session($userID)->getTotal();
+        $total = $subtotal; // Adjust if you have additional charges or discounts
+
+        return response()->json([
+            'subtotal' => number_format($subtotal, 0, ',', '.'),
+            'total' => number_format($total, 0, ',', '.'),
+        ]);
     }
 
     /**
