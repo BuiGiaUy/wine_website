@@ -24,8 +24,8 @@ class Order extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function payment_method()
+    public function payment()
     {
-        return $this->belongsTo(PaymentMethod::class,'payment_id', 'id');
+        return $this->hasOne(Payment::class);
     }
 }

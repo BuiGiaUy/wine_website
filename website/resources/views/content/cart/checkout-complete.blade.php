@@ -67,6 +67,37 @@
 @endsection
 
 @section('content')
+    <div class="uk-section">
+        <div class="uk-container">
+            <div class="uk-flex uk-flex-wrap uk-flex-middle">
+                <nav class="uk-breadcrumb uk-width-1-1 uk-flex-center uk-text-center uk-margin-remove">
+                    <ul class="uk-breadcrumb">
+                        <li>
+                            <a href="{{ route('cart.index') }}" class="uk-text-large">
+                                <span class="breadcrumb-step uk-visible@m">1</span> Giỏ hàng
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cart.info') }}" class="uk-text-large">
+                                <span class="breadcrumb-step uk-visible@m">2</span> Thông tin người dùng
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('cart.checkout') }}" class="uk-text-large ">
+                                <span class="breadcrumb-step uk-visible@m">3</span> Đặt hàng
+                            </a>
+                        </li>
+                        <li class="uk-disabled">
+                            <a href="#" class="uk-text-large  uk-active">
+                                <span class="breadcrumb-step uk-visible@m">4</span> Hoàn thành
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
     <div class="checkout-complete-section">
         <div class="uk-container">
             <div class="checkout-complete-card uk-width-1-2@m uk-margin-auto">
@@ -78,12 +109,12 @@
                 </div>
                 <h3>Đặt hàng thành công!</h3>
                 <p>Cảm ơn bạn đã đặt hàng tại Wine Cellar. Đơn hàng của bạn đã được tiếp nhận và đang được xử lý.</p>
-                <p class="order-number">Mã đơn hàng của bạn là: <strong>#123456</strong></p>
+                <p class="order-number">Mã đơn hàng của bạn là: <strong>#{{ $payment->id }}</strong></p>
                 <div class="order-details">
                     <p>Chúng tôi sẽ liên hệ với bạn sớm nhất để xác nhận đơn hàng và thời gian giao hàng.</p>
                     <p>Xin vui lòng kiểm tra email của bạn để có thêm thông tin chi tiết về đơn hàng.</p>
                 </div>
-                <a href="/" class="cta-button">Quay lại trang chủ</a>
+                <a href="/home" class="cta-button">Quay lại trang chủ</a>
             </div>
         </div>
     </div>
