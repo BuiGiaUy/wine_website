@@ -94,13 +94,18 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('cart.checkout') }}" class="uk-text-large">
-                                    <span class="breadcrumb-step uk-visible@m">2</span> Đặt hàng
+                                <a href="{{ route('cart.info') }}" class="uk-text-large ">
+                                    <span class="breadcrumb-step uk-visible@m">2</span> Thông tin người dùng
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('cart.checkout') }}" class="uk-text-large ">
+                                    <span class="breadcrumb-step uk-visible@m">3</span> Đặt hàng
                                 </a>
                             </li>
                             <li class="uk-disabled">
                                 <a href="#" class="uk-text-large">
-                                    <span class="breadcrumb-step uk-visible@m">3</span> Hoàn thành
+                                    <span class="breadcrumb-step uk-visible@m">4</span> Hoàn thành
                                 </a>
                             </li>
                         </ul>
@@ -114,7 +119,7 @@
                 @if(empty($cartItems) || count($cartItems) === 0)
                     <div class="uk-text-center">
                         <p>Chưa có sản phẩm nào trong giỏ hàng.</p>
-                        <a href="{{ route('products.index') }}" class="uk-button button-continue-shopping">
+                        <a href="{{ route('home') }}" class="uk-button button-continue-shopping">
                             <span uk-icon="icon: arrow-left"></span> QUAY TRỞ LẠI CỬA HÀNG
                         </a>
                     </div>

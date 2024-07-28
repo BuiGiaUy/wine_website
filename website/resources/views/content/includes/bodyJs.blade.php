@@ -41,24 +41,34 @@
                 console.error('Error fetching cart summary:', error);
             });
     }
-
+    // function renderLoginPrompt() {
+    //     let cartSummaryElement = document.getElementById('widget_shopping_cart_content');
+    //     cartSummaryElement.innerHTML = `
+    //     <p>Bạn cần phải đăng nhập để sử dụng giỏ hàng</p>
+    //     <div class="ux-mini-cart-footer uk-margin-top">
+    //         <p class="woocommerce-mini-cart__buttons buttons uk-text-center">
+    //             <a href="/login" class="button wc-forward uk-button uk-button-primary">Đăng nhập</a>
+    //         </p>
+    //     </div>
+    // `;
+    // }
     function renderCartSummary(data) {
 
         let cartSummaryElement = document.getElementById('widget_shopping_cart_content');
-        if (!data.cartItems ) {
-            cartSummaryElement.innerHTML = `
+
+
+        if (data.cartItems.length === 0) {
+            return cartSummaryElement.innerHTML = `
             <p>không có sản phẩm nào</p>
             <div class="ux-mini-cart-footer uk-margin-top">
 
                 <p class="woocommerce-mini-cart__buttons buttons uk-text-center">
                     <a href="/cart/" class="button wc-forward uk-button uk-button-primary">Xem giỏ hàng</a>
-                    <a href="/checkout/" class="button checkout wc-forward uk-button uk-button-secondary">Thanh toán</a>
                 </p>
             </div>
 
                 `;
         } else {
-            console.log(data)
             cartSummaryElement.innerHTML = `
             <ul class="uk-list uk-list-divider">
                 ${Object.keys(data.cartItems).map(key => {

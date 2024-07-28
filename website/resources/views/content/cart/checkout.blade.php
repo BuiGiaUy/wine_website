@@ -71,13 +71,18 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('cart.checkout') }}" class="uk-text-large uk-active">
-                                    <span class="breadcrumb-step uk-visible@m">2</span> Đặt hàng
+                                <a href="{{ route('cart.info') }}" class="uk-text-large">
+                                    <span class="breadcrumb-step uk-visible@m">2</span> Thông tin người dùng
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('cart.checkout') }}" class="uk-text-large  uk-active">
+                                    <span class="breadcrumb-step uk-visible@m">3</span> Đặt hàng
                                 </a>
                             </li>
                             <li class="uk-disabled">
                                 <a href="#" class="uk-text-large">
-                                    <span class="breadcrumb-step uk-visible@m">3</span> Hoàn thành
+                                    <span class="breadcrumb-step uk-visible@m">4</span> Hoàn thành
                                 </a>
                             </li>
                         </ul>
@@ -98,45 +103,39 @@
 
             <div class="uk-section">
                 <div class="uk-container">
-                    <form name="checkout" method="post" class="checkout woocommerce-checkout uk-container"
-                          action="{{ route('cart.processCheckout') }}" enctype="multipart/form-data" novalidate="novalidate">
-                        @csrf
+
                         <div class="uk-grid uk-grid-small" uk-grid>
                             <div class="uk-width-3-5@m">
                                 <div id="customer_details">
                                     <div class="woocommerce-billing-fields">
                                         <h3 class="uk-heading-line"><span>Thông tin thanh toán</span></h3>
                                         <div class="uk-margin">
-                                            <input type="text" class="uk-input red-border" name="billing_first_name"
-                                                   id="billing_first_name" placeholder="Họ và tên" value=""
-                                                   autocomplete="given-name">
+                                            <div>Name: <span>{{ isset($user->info->name) ? $user->info->name : '' }}</span></div>
                                         </div>
                                         <div class="uk-margin">
-                                            <input type="text" class="uk-input red-border" name="billing_address_1"
-                                                   id="billing_address_1" placeholder="Địa chỉ" value=""
-                                                   autocomplete="address-line1">
+                                            <div>Address: <span>{{ isset($user->info->address) ? $user->info->address : '' }}</span></div>
                                         </div>
                                         <div class="uk-margin">
-                                            <input type="tel" class="uk-input red-border" name="billing_phone"
-                                                   id="billing_phone" placeholder="Số điện thoại" value="" autocomplete="tel">
+                                            <div>Phone: <span>{{ isset($user->info->phone) ? $user->info->phone : '' }}</span></div>
                                         </div>
+
                                         <div class="uk-margin">
-                                            <input type="email" class="uk-input red-border" name="billing_email"
-                                                   id="billing_email" placeholder="Địa chỉ email" value="" autocomplete="email">
+                                            <div>Email: <span>{{ $user->email }}</span></div>
                                         </div>
-                                        <div class="uk-margin">
-                                            <input type="text" class="uk-input red-border" name="kakaotalk_id"
-                                                   id="kakaotalk_id" placeholder="Kakaotalk ID (tuỳ chọn)" value="">
-                                        </div>
+
                                     </div>
                                     <div class="woocommerce-additional-fields">
                                         <h3 class="uk-heading-line"><span>Thông tin bổ sung</span></h3>
                                         <div class="uk-margin">
-                                <textarea name="order_comments" class="uk-textarea" id="order_comments"
-                                          placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn."
-                                          rows="2" cols="5"></textarea>
+                                         <textarea name="order_comments" class="uk-textarea" id="order_comments"
+                                                   placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn."
+                                                   rows="2" cols="5">
+                                         </textarea>
                                         </div>
                                     </div>
+                                    <a href="{{ route('cart.info') }}" class="uk-width-1-1 uk-button checkout-button">
+                                        Sửa Thông tin
+                                    </a>
                                 </div>
                             </div>
                             <div class="uk-width-2-5@m">
@@ -163,11 +162,24 @@
                                             <td><strong>{{ number_format($subtotal, 0, ',', '.') }} ₫</strong></td>
                                         </tr>
                                         <tr>
+                                            <td colspan="1">Phí vận chuyển</td>
+                                            <td >{{ number_format(30000, 0, ',', '.') }} ₫</td>
+                                        </tr>
+                                        <tr>
                                             <td colspan="1"><strong>Tổng</strong></td>
                                             <td><strong>{{ number_format($total, 0, ',', '.') }} ₫</strong></td>
                                         </tr>
                                         </tfoot>
                                     </table>
+                                    <div class="uk-margin">
+                                        <label>
+                                            <input required type="checkbox" class="uk-checkbox" name="terms" id="terms"> Tôi đã đọc và
+                                            đồng ý với <a href="#"
+                                                          class="uk-link" target="_blank">điều khoản và điều kiện</a> của
+                                            website <span class="required">*</span>
+                                        </label>
+                                        <input type="hidden" name="terms-field" value="1">
+                                    </div>
                                     <div id="payment" class="woocommerce-checkout-payment">
                                         <ul class="uk-list">
                                             <li class="uk-margin">
@@ -175,10 +187,27 @@
                                                        name="payment_method" value="bacs" checked>
                                                 <label for="payment_method_bacs" class="uk-form-label uk-text-bold">Chuyển khoản
                                                     ngân hàng</label>
-                                                <div class="uk-alert uk-alert-primary">
-                                                    Thực hiện thanh toán vào ngay tài khoản ngân hàng của chúng tôi. Vui lòng sử
-                                                    dụng Mã đơn hàng của bạn trong phần Nội dung thanh toán. Đơn hàng sẽ được
-                                                    giao sau khi tiền đã chuyển.
+                                                <div class="uk-alert">
+{{--                                                    <div>--}}
+{{--                                                        <form name="checkout" method="post" class=""--}}
+{{--                                                              action="{{ route('cart.checkoutMomo') }}" enctype="multipart/form-data" novalidate="novalidate">--}}
+{{--                                                            @csrf--}}
+{{--                                                            <button id="momo" type="submit" class="uk-width-1-2 uk-button checkout-button" name="payment_method" value="momo" >--}}
+{{--                                                                Momo--}}
+{{--                                                            </button>--}}
+{{--                                                        </form>--}}
+{{--                                                    </div>--}}
+                                                    <div>
+                                                        <form name="checkout" method="post"
+                                                              action="{{ route('cart.checkoutVNPay') }}" enctype="multipart/form-data" novalidate="novalidate">
+                                                            @csrf
+                                                                <input name="total_amount" value="{{ $total }}" class="uk-hidden"/>
+                                                                <input name="redirect" class="uk-hidden"/>
+                                                            <button id="vnpay" type="submit"  class="uk-margin uk-width-1-2 uk-button checkout-button" name="payment_method" value="vnpay">
+                                                                VNPay
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </li>
                                             <li class="uk-margin">
@@ -186,27 +215,22 @@
                                                        name="payment_method" value="cod">
                                                 <label for="payment_method_cod" class="uk-form-label uk-text-bold">Trả tiền mặt
                                                     khi nhận hàng</label>
-                                                <div class="uk-alert uk-alert-primary" id="cod_payment_info"
+                                                <div class="uk-alert " id="cod_payment_info"
                                                      style="display:none;">
-                                                    Trả tiền mặt khi giao hàng.
+                                                    <form name="checkout" method="post"
+                                                          action="{{ route('cart.checkoutCash') }}" enctype="multipart/form-data" novalidate="novalidate">
+                                                        @csrf
+                                                        <input name="total_amount" value="{{ $total }}" class="uk-hidden"/>
+                                                        <button id="card" type="submit"  class="uk-margin uk-width-1-2 uk-button checkout-button" name="payment_method" value="cash">
+                                                            Đặt hàng
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="uk-margin">
-                                        <label><input type="checkbox" class="uk-checkbox" name="terms" id="terms"> Tôi đã đọc và
-                                            đồng ý với <a href="https://winecellar.vn/lien-he/chinh-sach-va-dieu-khoan-dich-vu/"
-                                                          class="uk-link" target="_blank">điều khoản và điều kiện</a> của
-                                            website <span class="required">*</span></label>
-                                        <input type="hidden" name="terms-field" value="1">
-                                    </div>
-                                    <button type="submit" class="uk-width-1-1 uk-button checkout-button"
-                                            name="woocommerce_checkout_place_order" id="place_order" value="Đặt hàng"
-                                            data-value="Đặt hàng">Đặt hàng
-                                    </button>
-                                    <input type="hidden" id="woocommerce-process-checkout-nonce"
-                                           name="woocommerce-process-checkout-nonce" value="eb62b9640b">
-                                    <input type="hidden" name="_wp_http_referer" value="/?wc-ajax=update_order_review">
+
+
                                 </div>
                             </div>
                         </div>
@@ -225,14 +249,17 @@
 
             // Get the corresponding divs
             var bacsDiv = document.querySelector('#payment_method_bacs + label + .uk-alert');
-            var codDiv = document.getElementById('cod_payment_info');
+            var codDiv = document.querySelector('#payment_method_cod + label + .uk-alert');
 
             // Function to handle radio button change
             function handlePaymentMethodChange() {
                 if (codRadio.checked) {
                     bacsDiv.style.display = 'none';
+                    codDiv.style.display = "block"
                 } else {
                     bacsDiv.style.display = 'block';
+                    codDiv.style.display = "none"
+
                 }
             }
 
