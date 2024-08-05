@@ -43,7 +43,7 @@
        <section class="uk-section  uk-padding-remove ">
            <div class="">
                <div class="uk-position-relative uk-light  uk-height-large">
-                   <img src="https://winecellar.vn/wp-content/uploads/2024/06/nsx-banner-scaled.jpg" class="uk-height-1-1" alt="Rượu Vang">
+                   <img src="https://winecellar.vn/wp-content/uploads/2024/06/nsx-banner-scaled.jpg" class="uk-height-1-1 uk-width-1-1" alt="Rượu Vang">
                    <div class="uk-overlay-primary uk-position-cover"></div>
                    <div class="uk-position-left uk-width-1-1 uk-flex uk-flex-between uk-container">
                        <div class="uk-width-1-5"></div>

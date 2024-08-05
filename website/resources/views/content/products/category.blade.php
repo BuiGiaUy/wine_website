@@ -135,7 +135,10 @@
             font-weight: 500;
         }
 
+        .border-products {
+            border: #cccccc solid 1px ;
 
+        }
     </style>
 @endsection
 
@@ -373,38 +376,54 @@
                             </div>
                         </div>
 
-                        <div class="uk-grid uk-child-width-1-3@s uk-margin-small" uk-grid>
+                        <div class="uk-grid uk-child-width-1-3@s uk-margin-small uk-grid-medium uk-grid-match " uk-grid>
                             @foreach ($products as $product)
-                               <div>
-                                   <div
-                                       class="uk-card uk-card-default uk-grid-collapse uk-padding-small uk-child-width-1-2@s uk-margin"
+                                <div class=""
+                                     style="padding: 0; margin: 0; "
+                                >
+                                    <div
+                                        style="padding: 10px"
+                                       class="uk-grid-collapse border-products uk-child-width-1-2@s  "
                                        uk-grid>
-                                       <div class="uk-card-media-left uk-cover-container uk-width-1-2@s">
-{{--                                           @if ($product->featuredImage)--}}
-{{--                                               <img style="height: 100%" src="{{ $product->featuredImage->path }}"--}}
-{{--                                                    alt="{{ $product->name }}" uk-cover>--}}
-{{--                                           @else--}}
+                                       <div class="uk-card-media-left uk-cover-container uk-width-1-2@s" >
+{{--                                           <h2>{{ $product->name }}</h2>--}}
+{{--                                           {{ dd($product->featuredImage) }}--}}
+                                           @if ($product->featuredImage)
+                                               <img style="height: 100%" height="400" width="300" src="{{ $product->featuredImage->path }}"
+                                                    alt="{{ $product->name }}"  >
+                                           @else
                                                <img style="height: 100%"
                                                     src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-300x400.jpg"
                                                     alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)"
                                                     >
-{{--                                           @endif--}}
+                                           @endif
                                        </div>
                                        <div class="uk-card-body uk-padding-small uk-flex uk-flex-column uk-flex-between">
-                                           <ul class="uk-list uk-list-divider uk-iconlist">
-                                               <li><i class="fas fa-wine-glass"></i> <a href=""
-                                                                                        rel="tag">{{ $product->category->name }}</a>
+                                           <ul class="uk-list uk-list-divider uk-iconlist uk-text-small" >
+                                               <li>
+                                                   <i class="fas fa-wine-glass"></i>
+                                                   <a href="{{ route('products.category', [ 'slug' =>  $product->category->slug]) }}"
+                                                      rel="tag">{{ $product->category->name }}</a>
                                                </li>
-                                               <li><i class="fas fa-wine-bottle"></i> <a href=""
-                                                                                         rel="tag">{{ $product->brand->name }}</a>
+                                               <li>
+                                                   <i class="fas fa-wine-bottle"></i>
+                                                   <a href="{{ route('brands.show', [ 'slug' =>  $product->brand->slug]) }}"
+                                                      rel="tag">{{ $product->brand->name }}</a>
                                                </li>
-                                               <li><i class="fas fa-industry"></i> <a href=""
-                                                                                      rel="tag">{{ $product->post->name }}</a>
+{{--                                               <li>--}}
+{{--                                                   <i class="fas fa-industry"></i>--}}
+{{--                                                   <a href="{{ route('posts.show', [ 'slug' =>  $product->post->slug]) }}"--}}
+{{--                                                      rel="tag">{{ $product->post->name }}</a>--}}
+{{--                                               </li>--}}
+{{--                                               <li><i class="fas fa-globe-europe"></i> {{ $product->origin }}</li>--}}
+                                               <li>
+                                                   <i class="fas fa-percentage"></i>
+                                                   {{ $product->discount_percent }}% ABV*
                                                </li>
-                                               <li><i class="fas fa-globe-europe"></i> {{ $product->origin }}</li>
-                                               <li><i class="fas fa-percentage"></i> {{ $product->discount_percent }}% ABV*
+                                               <li>
+                                                   <i class="fas fa-wine-bottle"></i>
+                                                   750ml
                                                </li>
-                                               <li><i class="fas fa-wine-bottle"></i> 750ml</li>
                                                {{--                                            <li><i class="fas fa-wine-glass"></i> <a href="{{ route('category.show', $product->category->slug) }}" rel="tag">{{ $product->category->name }}</a></li>--}}
                                                {{--                                            <li><i class="fas fa-wine-bottle"></i> <a href="{{ route('brand.show', $product->brand->slug) }}" rel="tag">{{ $product->brand->name }}</a></li>--}}
                                                {{--                                            <li><i class="fas fa-industry"></i> <a href="{{ route('post.show', $product->post->slug) }}" rel="tag">{{ $product->post->title }}</a></li>--}}
@@ -434,7 +453,7 @@
                                            </div>
                                        </div>
                                    </div>
-                               </div>
+                                </div>
                             @endforeach
                             <!-- Repeat for other products -->
                         </div>
@@ -692,7 +711,6 @@
                                     họng, đưa ra những kết luận về hương vị của rượu).
                                 </li>
                             </ul>
-
 
                             <p style="text-align: justify;">
                                 <img class="size-large wp-image-25945 aligncenter"

@@ -39,12 +39,15 @@ class Product extends Model
     }
     public function post(): BelongsTo
     {
-        return $this->belongsTo(Brand::class, 'post_id', 'id');
+        return $this->belongsTo(Post::class, 'post_id', 'id');
     }
-    public function featuredImage() :HasOne
+    public function featuredImage(): HasOne
     {
-        return $this->hasOne(Image::class, 'model_id')->where('model_type', self::class);
+        return $this->hasOne(Image::class, 'model_id', 'id')
+            ->where('model_type', self::class)
+            ->orderBy('created_at'); // Order by created_at to get the first image
     }
+
     public function orders()
     {
         return $this->belongsToMany(Order::class, 'order_items')

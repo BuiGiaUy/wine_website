@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         ],
         'auth.custom' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'ensureHeader' => \App\Http\Middleware\EnsureHeaderIsSet::class,
 
     ];
 

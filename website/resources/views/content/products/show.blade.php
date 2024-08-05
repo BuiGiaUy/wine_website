@@ -311,7 +311,7 @@
                                                 <input type="hidden" name="id" value="{{ $product->id }}">
                                                 <input type="hidden" name="name" value="{{ $product->name }}">
                                                 <input type="hidden" name="price" value="{{ $product->price }}">
-                                                <input type="hidden" name="image" value="{{ $product->featuredImage->path }}">
+                                                <input type="hidden" name="image" value="@if($product->featuredImage){{ $product->featuredImage->path }} @else https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-300x400.jpg  @endif">
                                                 <input type="hidden" name="url" value="{{ route('products.show', $product->slug) }}">
                                                 <div class="wcl-button w-50 uk-text-right">
                                                     <button type="submit" name="add-to-cart" class="uk-margin-small uk-button uk-button-primary uk-border-rounded custom-add-to-cart-button">

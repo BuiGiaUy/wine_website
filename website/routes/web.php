@@ -1,11 +1,12 @@
 <?php
 
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\ProductController;
-use App\Http\Controllers\LocationController;
+
 use App\Http\Controllers\Orders\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,17 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Cart routes
-Route::prefix('cart')->group(function () {
-    Route::get('/', [CartController::class, 'index'])->name('cart');
-    Route::get('summary', [CartController::class, 'summary'])->name('cart.summary');
-//    Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
-//    Route::post('checkout', [OrderController::class, 'store'])->name('checkout.store');
-//    Route::get('checkout/complete/{order}', [OrderController::class, 'complete'])->name('checkout.complete');
-});
-Route::get('/checkout', [\App\Http\Controllers\Cart\CheckoutController::class, 'index'])->name('checkout');
-Route::get('/checkout-complete', [\App\Http\Controllers\Cart\CheckoutController::class, 'placeOrder'])->name('complete');
-Route::get('/ruou-vang', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
+Route::get('/showHeader', [Controller::class, 'showHeader'])->name('showHeader');
 
 //Route::get('/brand', [App\Http\Controllers\HomeController::class, 'brand'])->name('brand');
 Route::get('/post', [App\Http\Controllers\HomeController::class, 'post'])->name('post');
