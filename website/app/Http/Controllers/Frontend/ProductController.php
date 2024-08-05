@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -30,7 +31,8 @@ class ProductController extends Controller
                 $orderBy = 'created_at'; // Default sorting
         }
 
-        return Product::where('category_id', $categoryId)
+        return Product::with('featuredImage')
+            ->where('category_id', $categoryId)
             ->whereBetween('price', [$minPrice, $maxPrice])
             ->orderBy($orderBy, $orderDirection)
             ->paginate(10);
@@ -105,6 +107,11 @@ class ProductController extends Controller
             ['title' => 'Trang chủ', 'url' => route('home')],
             ['title' => $category->name] // Mục hiện tại không có liên kết
         ];
+        foreach ($products as $product) {
+            // Log the featured image path or indicate if it's missing
+            Log::info('Product: ' . $product->name);
+            Log::info('Featured Image: ' . ($product->featuredImage ? $product->featuredImage->path : 'No featured image'));
+        }
         // Pass the filtered products, category, and breadcrumbs to the view
         return view('content.products.category', [
             'products' => $products,
