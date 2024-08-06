@@ -6,17 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="111e7cd9-ba10-422d-aec2-8c56f7d275bf" name="Changes" comment="feat_adminLayout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/brands/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/brands/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/includes/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/includes/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/products/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/products/category.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/partials/menu-item.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/ConfigController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/ConfigController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/content/product/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/content/product/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/content/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/content/profile/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/content/setting/config.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/content/setting/config.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/includes/sideMenu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/includes/sideMenu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/includes/topBar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/includes/topBar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/resources/views/content/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/products/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/routes/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +250,7 @@
       <workItem from="1721648806801" duration="42164000" />
       <workItem from="1721938580387" duration="29489000" />
       <workItem from="1722197126873" duration="20739000" />
-      <workItem from="1722783261496" duration="896000" />
+      <workItem from="1722783261496" duration="11414000" />
     </task>
     <task id="LOCAL-00001" summary="feat post">
       <option name="closed" value="true" />
@@ -402,6 +399,11 @@
           <url>file://$PROJECT_DIR$/website/resources/views/content/cart/checkout-complete.blade.php</url>
           <line>69</line>
           <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/website/resources/views/admin/content/product/index.blade.php</url>
+          <line>18</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

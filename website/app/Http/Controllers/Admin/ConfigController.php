@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Support\Facades\Hash;
 
 class ConfigController extends Controller
 {
@@ -31,6 +32,29 @@ class ConfigController extends Controller
         Artisan::call('config:clear'); // Xóa bộ nhớ cache cấu hình
 
         return redirect()->route('admin.setting.config.edit'); // Chuyển hướng về trang chỉnh sửa cấu hình
+    }
+
+    public function profile() {
+        return view('admin.content.profile.index');
+    }
+    public function updateProfile(Request $request) {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . auth()->id(),
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        $user = auth()->user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->route('admin.profile')->with('success', 'Profile updated successfully.');
     }
 }
 

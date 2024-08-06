@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PostController;
@@ -76,5 +77,17 @@ Route::namespace('admin')->group(function () {
             Route::get('/', [UserController::class, 'index'])->name('admin.users.index');
             Route::get('/{id}', [UserController::class, 'show'])->name('admin.users.show');
         });
+
+        // Config System
+        Route:: group(['prefix'=>'config'], function() {
+            Route:: get( '/edit', [ConfigController::class, 'edit'])->name( 'admin.setting.config.edit');
+            Route:: post( '/edit', [ConfigController::class, 'update']) ->name ( 'admin.setting.config.update');
+        });
+
+        Route:: group(['prefix'=>'profile'], function() {
+            Route:: get( '/', [ConfigController::class, 'profile'])->name( 'admin.profile');
+            Route::post('/', [ConfigController::class, 'updateProfile'])->name('admin.profile.update');
+        });
+
     });
 });

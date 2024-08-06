@@ -65,6 +65,12 @@
                 <div class="side-menu__title"> Order </div>
             </a>
         </li>
+        <li>
+            <a href="/admin/config/edit" class="side-menu">
+                <div class="side-menu__icon"> <i data-lucide="settings"></i> </div>
+                <div class="side-menu__title"> Config </div>
+            </a>
+        </li>
         <li class="side-nav__devider my-6"></li>
     </ul>
 </nav>
