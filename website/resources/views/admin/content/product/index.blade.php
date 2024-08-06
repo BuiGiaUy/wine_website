@@ -51,9 +51,8 @@
         </div>
         <!-- Product Cards -->
         <!-- Replace this section with a loop to display products -->
-        <div id="productTableBody">
             @foreach($products as $product)
-                <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 product-cart">
+                <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3 product-cart" id="productTableBody">
                     <div class="box">
                         <div class="p-5">
                             <div
@@ -144,7 +143,6 @@
                 <!-- END: Delete Confirmation Modal -->
             @endforeach
 
-        </div>
         <!-- End Product Cards -->
 
         <!-- BEGIN: pagination.blade.php -->

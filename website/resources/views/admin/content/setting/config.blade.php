@@ -8,16 +8,16 @@
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Setting</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Cấu hình thông số hệ thống</li>
+            <li class="breadcrumb-item active" aria-current="page">Config</li>
         </ol>
     </nav>
 @endsection
 
 @section('content')
     <div class="iq-card">
-        <div class="iq-card-header d-flex justify-content-between">
+        <div class="iq-card-header d-flex justify-content-between" style="justify-content: center; display: flex; margin-top: 5px">
             <div class="iq-header-title">
-                <h4 class="card-title">Cấu hình thông số hệ thống</h4>
+                <h2 class="title" style="font-size: 24px">Edit Config </h2>
             </div>
         </div>
         <div class="iq-card-body">
@@ -96,7 +96,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row" style="margin-top: 5px">
                     <div class="col-sm-12">
                         <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
                     </div>

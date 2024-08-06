@@ -106,23 +106,27 @@
                             <div class="uk-grid uk-grid-small uk-child-width-1-1 uk-child-width-1-3@m"
                                  id="row-566856114">
                                 <div id="col-1218010425" class="uk-width-1-3@m">
-                                    <div class="uk-card uk-card-body uk-padding-remove">
+                                    <div class="uk-card uk-card-body uk-padding-remove"  uk-slideshow="animation: push">
                                         <div class="uk-position-relative uk-visible-toggle" tabindex="-1"
                                              uk-slideshow="animation: push; autoplay: false;">
-                                            <ul class="uk-slideshow-items" style="height: 506.65px;">
-                                                <li>
-                                                    <img
-                                                        src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold.jpg"
-                                                        alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)"
-                                                        uk-cover>
-                                                </li>
-                                                @foreach ($product->images as $image)
-                                                    <li>
-                                                        <img src="{{ $image->path }}" alt="{{ $image->alt }}" uk-cover>
-                                                    </li>
-                                                @endforeach
+                                            <div class="uk-slideshow-items" style="height: 506.65px;">
+                                                @if($product->images && $product->images->isNotEmpty() )
+                                                    @foreach ($product->images as $image)
+                                                        <div>
+                                                            <img src="{{ $image->path }}" alt="{{ $image->alt }}" uk-cover>
+                                                        </div>
+                                                    @endforeach
+                                                @else
+                                                    <div>
+                                                        <img
+                                                            src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold.jpg"
+                                                            alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)"
+                                                            uk-cover>
+                                                    </div>
+                                                @endif
 
-                                            </ul>
+
+                                            </div>
 
                                             <a class="uk-position-center-left uk-position-small uk-hidden-hover"
                                                href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
@@ -138,24 +142,29 @@
                                             </button>
                                         </div>
 
+                                        <!-- Thumbnail Navigation -->
+                                        <div class="uk-thumbnav uk-flex-center">
+                                                @if($product->images && $product->images->isNotEmpty())
+                                                <ul class="uk-slideshow-nav ">
+                                                    @foreach($product->images as $image)
+                                                        <li uk-slideshow-item="{{ $loop->index }}">
+                                                            <a href="#">
+                                                                <img src="{{ $image->path }}" width="100" height="100" alt="{{ $image->alt }}">
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                                @else
+                                                    <div uk-slideshow-item="0">
+                                                        <a href="#">
+                                                            <img src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-300x400.jpg"
+                                                                 width="100" height="100" alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)">
+                                                        </a>
+                                                    </div>
+                                                @endif
+                                        </div>
+                                    </div>
 
-                                    </div>
-                                    <div class="uk-thumbnav uk-flex-center">
-                                        <a href="#" uk-slideshow-item="0">
-                                            <img
-                                                src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-300x400.jpg"
-                                                width="100" height="100"
-                                                alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)">
-                                        </a>
-                                        @foreach($product->images as $index => $image)
-                                            <a href="#" uk-slideshow-item="{{ $index }}">
-                                                <img
-                                                    src="{{ $product->path }}"
-                                                    width="100" height="100"
-                                                    alt="{{ $product->alt }}">
-                                            </a>
-                                        @endforeach
-                                    </div>
                                 </div>
 
                                 <div id="col-{{ $product->id }}" class="col uk-width-1-3@m">
