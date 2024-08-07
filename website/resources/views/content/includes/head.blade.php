@@ -11,6 +11,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <style>
+    .custom-add-to-cart-button {
+        background: #990d23;
+        color: #FFFFFF;
+        transition: background-color 0.3s ease, color 0.3s ease; /* smooth transition */
+    }
+
+    .custom-add-to-cart-button:hover {
+        background: #990d23;
+
+        box-shadow: inset 0 0 0 100px rgba(0, 0, 0, .2);
+        color: #fff;
+        opacity: 1;
+        outline: none;
+    }
     .link-p {
         text-decoration: none;
         color: #990d23 !important;

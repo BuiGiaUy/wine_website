@@ -96,20 +96,7 @@
             background: #907948;
         }
 
-        .custom-add-to-cart-button {
-            background: #990d23;
-            color: #FFFFFF;
-            transition: background-color 0.3s ease, color 0.3s ease; /* smooth transition */
-        }
 
-        .custom-add-to-cart-button:hover {
-            background: #990d23;
-
-            box-shadow: inset 0 0 0 100px rgba(0, 0, 0, .2);
-            color: #fff;
-            opacity: 1;
-            outline: none;
-        }
 
         .uk-iconlist li a:hover {
             text-decoration: none; /* Loại bỏ dấu gạch chân khi hover */
@@ -327,7 +314,7 @@
                 </div>
 
                 <div class="uk-width-3-4@m  uk-padding-remove-top uk-padding-remove-bottom ">
-                    <div class="uk-padding-remove-vertical uk-padding-small">
+                    <div class="uk-padding-remove-vertical ">
                         <div class="uk-flex uk-flex-between " style="border-bottom: 1px solid #cccccc;">
 
                             <div class=" uk-margin-small uk-margin-remove-bottom">
@@ -376,86 +363,72 @@
                             </div>
                         </div>
 
-                        <div class="uk-grid uk-child-width-1-3@s uk-margin-small uk-grid-medium uk-grid-match " uk-grid>
+                        <div class="uk-grid uk-child-width-1-3@s uk-grid-medium uk-margin-top" uk-grid>
                             @foreach ($products as $product)
-                                <div class=""
-                                     style="padding: 0; margin: 0; "
-                                >
-                                    <div
-                                        style="padding: 10px"
-                                       class="uk-grid-collapse border-products uk-child-width-1-2@s  "
-                                       uk-grid>
-                                       <div class="uk-card-media-left uk-cover-container uk-width-1-2@s" >
-{{--                                           <h2>{{ $product->name }}</h2>--}}
-{{--                                           {{ dd($product->featuredImage) }}--}}
-                                           @if ($product->featuredImage)
-                                               <img style="height: 100%" height="400" width="300" src="{{ $product->featuredImage->path }}"
-                                                    alt="{{ $product->name }}"  >
-                                           @else
-                                               <img style="height: 100%"
-                                                    src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-300x400.jpg"
-                                                    alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)"
-                                                    >
-                                           @endif
-                                       </div>
-                                       <div class="uk-card-body uk-padding-small uk-flex uk-flex-column uk-flex-between">
-                                           <ul class="uk-list uk-list-divider uk-iconlist uk-text-small" >
-                                               <li>
-                                                   <i class="fas fa-wine-glass"></i>
-                                                   <a href="{{ route('products.category', [ 'slug' =>  $product->category->slug]) }}"
-                                                      rel="tag">{{ $product->category->name }}</a>
-                                               </li>
-                                               <li>
-                                                   <i class="fas fa-wine-bottle"></i>
-                                                   <a href="{{ route('brands.show', [ 'slug' =>  $product->brand->slug]) }}"
-                                                      rel="tag">{{ $product->brand->name }}</a>
-                                               </li>
-{{--                                               <li>--}}
-{{--                                                   <i class="fas fa-industry"></i>--}}
-{{--                                                   <a href="{{ route('posts.show', [ 'slug' =>  $product->post->slug]) }}"--}}
-{{--                                                      rel="tag">{{ $product->post->name }}</a>--}}
-{{--                                               </li>--}}
-{{--                                               <li><i class="fas fa-globe-europe"></i> {{ $product->origin }}</li>--}}
-                                               <li>
-                                                   <i class="fas fa-percentage"></i>
-                                                   {{ $product->discount_percent }}% ABV*
-                                               </li>
-                                               <li>
-                                                   <i class="fas fa-wine-bottle"></i>
-                                                   750ml
-                                               </li>
-                                               {{--                                            <li><i class="fas fa-wine-glass"></i> <a href="{{ route('category.show', $product->category->slug) }}" rel="tag">{{ $product->category->name }}</a></li>--}}
-                                               {{--                                            <li><i class="fas fa-wine-bottle"></i> <a href="{{ route('brand.show', $product->brand->slug) }}" rel="tag">{{ $product->brand->name }}</a></li>--}}
-                                               {{--                                            <li><i class="fas fa-industry"></i> <a href="{{ route('post.show', $product->post->slug) }}" rel="tag">{{ $product->post->title }}</a></li>--}}
-                                               {{--                                            <li><i class="fas fa-globe-europe"></i> {{ $product->origin }}</li>--}}
-                                               {{--                                            <li><i class="fas fa-percentage"></i> {{ $product->discount_percent }}% ABV*</li>--}}
-                                               {{--                                            <li><i class="fas fa-wine-bottle"></i> 750ml</li>--}}
-                                           </ul>
-                                       </div>
-                                       <div class="uk-width-1-1@s">
-                                           <h3 class="uk-text-default" style="color: #990d23">{{ $product->name }}</h3>
-                                           <p class="uk-text-small">{{ $product->description }}</p>
-                                           <div class="uk-flex uk-flex-between uk-margin-top">
-                                               <div class="wcl-price w-50 uk-text-center uk-margin">
-                                                <span class="price uk-text-bold" style="color: #990d23">
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi>{{ number_format($product->price) }}&nbsp;
-                                                            <span class="woocommerce-Price-currencySymbol">₫</span>
-                                                        </bdi>
+                                <div>
+                                    <div class="uk-card uk-card-default uk-grid-collapse" uk-grid>
+                                        <div
+                                            class="uk-child-width-1-2@s uk-width-1-1 "
+                                            uk-grid>
+                                            <div class="uk-card-media-left uk-cover-container" >
+                                                @if ($product->featuredImage)
+                                                    <img src="{{ $product->featuredImage->path }}" alt="{{ $product->name }}" style="height: 100%; width: 100%;" >
+                                                @else
+                                                    <img src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-300x400.jpg" alt="Default Image" style="height: 100%; width: 100%;">
+                                                @endif
+                                            </div>
+                                            <div class="uk-padding-remove">
+                                                <ul class="uk-list uk-list-divider uk-iconlist uk-text-small uk-padding-small" >
+                                                    <li>
+                                                        <i class="fas fa-wine-glass"></i>
+                                                        <a href="{{ route('products.category', [ 'slug' =>  $product->category->slug]) }}"
+                                                           rel="tag">{{ $product->category->name }}</a>
+                                                    </li>
+                                                    <li>
+                                                        <i class="fas fa-wine-bottle"></i>
+                                                        <a href="{{ route('brands.show', [ 'slug' =>  $product->brand->slug]) }}"
+                                                           rel="tag">{{ $product->brand->name }}</a>
+                                                    </li>
+                                                    {{--                                               <li>--}}
+                                                    {{--                                                   <i class="fas fa-industry"></i>--}}
+                                                    {{--                                                   <a href="{{ route('posts.show', [ 'slug' =>  $product->post->slug]) }}"--}}
+                                                    {{--                                                      rel="tag">{{ $product->post->name }}</a>--}}
+                                                    {{--                                               </li>--}}
+                                                    <li><i class="fas fa-globe-europe"></i> {{ $product->origin }}</li>
+                                                    <li>
+                                                        <i class="fas fa-percentage"></i>
+                                                        {{ $product->discount_percent }}% ABV*
+                                                    </li>
+                                                    <li>
+                                                        <i class="fas fa-wine-bottle"></i>
+                                                        750ml
+                                                    </li>
+                                                    {{--                                            <li><i class="fas fa-wine-glass"></i> <a href="{{ route('category.show', $product->category->slug) }}" rel="tag">{{ $product->category->name }}</a></li>--}}
+                                                    {{--                                            <li><i class="fas fa-wine-bottle"></i> <a href="{{ route('brand.show', $product->brand->slug) }}" rel="tag">{{ $product->brand->name }}</a></li>--}}
+                                                    {{--                                            <li><i class="fas fa-industry"></i> <a href="{{ route('post.show', $product->post->slug) }}" rel="tag">{{ $product->post->title }}</a></li>--}}
+                                                    {{--                                            <li><i class="fas fa-globe-europe"></i> {{ $product->origin }}</li>--}}
+                                                    {{--                                            <li><i class="fas fa-percentage"></i> {{ $product->discount_percent }}% ABV*</li>--}}
+                                                    {{--                                            <li><i class="fas fa-wine-bottle"></i> 750ml</li>--}}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="uk-card-footer uk-padding-small">
+                                            <h3 class="uk-text-default" style="color: #990d23">{{ $product->name }}</h3>
+                                            <p class="uk-text-small" style="height: 65px;">{{ $product->description }}</p>
+                                            <div class="uk-flex uk-flex-between uk-margin-top">
+                                                <div class="uk-text-center">
+                                                    <span class="uk-text-bold" style="color: #990d23">
+                                                        {{ number_format($product->price) }}&nbsp;₫
                                                     </span>
-                                                </span>
-                                               </div>
-                                               <div class="wcl-button w-50 uk-text-right">
-                                                   <a class="uk-margin-small uk-button uk-button-primary uk-border-rounded custom-add-to-cart-button"
-                                                      href="{{ route("products.show", $product->slug) }}">Mua ngay</a>
-                                                   {{--                                                <a class="uk-margin-small uk-button uk-button-primary uk-border-rounded custom-add-to-cart-button" href="{{ route('product.show', $product->slug) }}">Mua ngay</a>--}}
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
+                                                </div>
+                                                <div class="uk-text-right">
+                                                    <a class="uk-margin-small uk-button uk-button-primary uk-border-rounded custom-add-to-cart-button"
+                                                       href="{{ route("products.show", $product->slug) }}">Mua ngay</a>                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             @endforeach
-                            <!-- Repeat for other products -->
                         </div>
                         <div class="uk-flex uk-flex-center uk-margin">
                             {{ $products->links('content.components.pagination') }}

@@ -177,36 +177,36 @@
     </section>
     <section class="uk-section uk-section-default" id="section_1364875212">
         <div class="uk-padding-remove">
-            <div class="uk-grid-collapse uk-child-width-1-4@l uk-child-width-1-2	uk-grid-medium uk-grid-match" uk-grid>
+            <div class="uk-grid-collapse uk-child-width-1-4@l uk-child-width-1-1	uk-grid-medium uk-grid-match" uk-grid>
                 <div>
                     <div class="uk-card uk-card-hover uk-card-body uk-text-center ">
-                        <div class="uk-card-media-top" style="width:20%; margin: 0 auto;">
-                            <img src="https://winecellar.vn/wp-content/uploads/2022/03/champagne-1.png" width="80"
-                                 height="80" alt="">
+                        <div class="uk-card-media-top" style=" margin: 0 auto;">
+                            <img src="https://winecellar.vn/wp-content/uploads/2022/03/champagne-1.png" width="60"
+                                 height="60" alt="">
                         </div>
                         <div class="uk-padding-remove uk-card-body">
-                            <h4><span style="color: #800000;">2000 sản phẩm</span></h4>
+                            <h4><span style="color: #800000;">2000 SẢN PHẨM</span></h4>
                             <p><span style="font-size: 80%;">Nhập khẩu &amp; phân phối chính hãng</span></p>
                         </div>
                     </div>
                 </div>
                 <div>
                     <div class="uk-card uk-card-hover uk-card-body uk-text-center">
-                        <div class="uk-card-media-top" style="width:20%; margin: 0 auto;">
-                            <img src="https://winecellar.vn/wp-content/uploads/2023/06/gh-toan-quoc.png" width="42"
-                                 height="43" alt="">
+                        <div class="uk-card-media-top" style=" margin: 0 auto;">
+                            <img src="https://winecellar.vn/wp-content/uploads/2023/06/gh-toan-quoc.png" width="60"
+                                 height="60" alt="">
                         </div>
                         <div class="uk-card-body uk-padding-remove">
-                            <h4><span style="color: #800000;">Giao hàng toàn quốc</span></h4>
+                            <h4><span style="color: #800000; ">GIAO HÀNG TOÀN QUỐC</span></h4>
                             <p><span style="font-size: 80%;">Linh hoạt giao hàng theo yêu cầu từ Khách hàng</span></p>
                         </div>
                     </div>
                 </div>
                 <div>
                     <div class="uk-card uk-card-hover uk-card-body uk-text-center">
-                        <div class="uk-card-media-top" style="width:20%; margin: 0 auto;">
-                            <img src="https://winecellar.vn/wp-content/uploads/2022/03/delivery-1.png" width="80"
-                                 height="80" alt="">
+                        <div class="uk-card-media-top" style=" margin: 0 auto;">
+                            <img src="https://winecellar.vn/wp-content/uploads/2022/03/delivery-1.png" width="60"
+                                 height="60" alt="">
                         </div>
                         <div class="uk-card-body uk-padding-remove">
                             <h4><span style="color: #800000;">GIAO HÀNG NHANH (2H)</span></h4>
@@ -217,9 +217,9 @@
                 </div>
                 <div>
                     <div class="uk-card uk-card-hover uk-card-body uk-text-center">
-                        <div class="uk-card-media-top" style="width:20%; margin: 0 auto;">
-                            <img src="https://winecellar.vn/wp-content/uploads/2023/06/check-correct.png" width="48"
-                                 height="48" alt="">
+                        <div class="uk-card-media-top" style=" margin: 0 auto;">
+                            <img src="https://winecellar.vn/wp-content/uploads/2023/06/check-correct.png" width="60"
+                                 height="60" alt="">
                         </div>
                         <div class="uk-card-body uk-padding-remove">
                             <h4><span style="color: #800000;">CAM KẾT CHẤT LƯỢNG</span></h4>
@@ -236,7 +236,7 @@
             <div class="uk-text-center uk-margin-medium-bottom">
                 <h2 class="uk-text-large" style="color: #990d23">DANH MỤC SẢN PHẨM ĐA ĐẠNG & VÔ VÀN KHÁM PHÁ</h2>
             </div>
-            <div class="uk-child-width-1-2 uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
+            <div class="uk-child-width-1-1 uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
                 @foreach($posts as $post)
                     <div class="">
                         <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card"
@@ -317,7 +317,7 @@
                 <p>WINECELLAR.vn tự hào là đại diện độc quyền nhập khẩu và phân phối sản phẩm từ một số nhà sản xuất
                     rượu vang tốt nhất thế giới tại Việt Nam.</p>
             </div>
-            <div class="uk-child-width-1-2 uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
+            <div class="uk-child-width-1-1 uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
                 @foreach($brands as $brand)
                     <div class="">
                         <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card"
