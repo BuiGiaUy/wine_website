@@ -126,6 +126,37 @@
                 <div class="uk-navbar-item">
                     <a class="uk-navbar-toggle" href="#offcanvas-cart" uk-toggle title="Giỏ hàng"><span uk-icon="icon: cart"></span></a>
                 </div>
+                @auth
+                    <!-- Profile Dropdown for Authenticated Users -->
+                    <div class="uk-navbar-item">
+                        <div class="uk-inline">
+                            <button class="" style="background: #990d23; border: none; color: #FFFFFF" type="button" title=""><span uk-icon="icon: user"></span></button>
+                            <div uk-dropdown="pos: bottom-right">
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li class="uk-active"><a href="{{ route('user.profile') }}">{{ Auth::user()->name }}</a></li>
+                                    <li><a href="{{ route('orders.index') }}">My Orders</a></li>
+                                    <li class="uk-nav-divider"></li>
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                @endauth
+
+                @guest
+                    <!-- Login Button for Guests -->
+                    <div class="uk-navbar-item">
+                        <a class="uk-navbar-toggle uk-padding-remove" href="{{ route('login') }}">LOGIN</a>
+                    </div>
+                @endguest
             </div>
         </nav>
     </div>

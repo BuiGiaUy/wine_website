@@ -293,7 +293,7 @@
                                             <p class="uk-text-default btn-wine" style="font-size: 22px">
                                                 <span >
                                                     <bdi>
-                                                        {{ $product->price }}&nbsp;
+                                                        {{ number_format($product->price, 0, ',', '.') }}
                                                         <span>₫</span>
                                                     </bdi>
                                                 </span>

@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\ProductController;
 
+use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Orders\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/showHeader', [Controller::class, 'showHeader'])->name('showHeader');
@@ -23,9 +25,12 @@ Route::get('/showHeader', [Controller::class, 'showHeader'])->name('showHeader')
 //Route::get('/brand', [App\Http\Controllers\HomeController::class, 'brand'])->name('brand');
 Route::get('/post', [App\Http\Controllers\HomeController::class, 'post'])->name('post');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
-Route::get('/tinymce', function () {
-    return view('tinymce');
+Route::prefix('user')->group(function () {
+    Route::get('/profile', [UserController::class, 'showProfile'])->name('user.profile');
+    Route::get('/address', [UserController::class, 'showAddress'])->name('user.address');
+    Route::post('/profile', [UserController::class, 'updateProfile'])->name('user.profile.update');
 });
+
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('products.index');
     Route::get('/{slug}', [ProductController::class, 'show'])->name('products.show');
@@ -59,6 +64,7 @@ Route::prefix('orders')->group(function () {
     Route::get('/', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/{id}', [OrderController::class, 'show'])->name('orders.show');
 });
+
 Route::prefix('posts')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('posts.index'); // Route for listing all posts
     Route::get('/{slug}', [PostController::class, 'show'])->name('posts.show'); // Route for showing a single post

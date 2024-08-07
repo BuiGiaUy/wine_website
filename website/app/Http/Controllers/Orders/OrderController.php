@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Orders;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Payment;
 use App\Models\User;
 use Darryldecode\Cart\Facades\CartFacade as Cart;
@@ -142,17 +143,27 @@ class OrderController extends Controller
         $userID = Auth::id();
         $cartItems = Cart::session($userID)->getContent();
 
-        $totalAmount = $payment->amount / 100;
+        $totalAmount = $payment->amount ;
         $discount = 0;
         $total = $totalAmount - $discount;
 
-        Order::create([
+        $order = Order::create([
             'user_id' => $userID,
             'payment_id' => $payment->id,
             'total' => $total,
             'discount' => $discount,
             'total_amount' => $totalAmount,
         ]);
+
+        foreach ($cartItems as $item) {
+            OrderItem::create([
+                'order_id' => $order->id,
+                'product_id' => $item->id, // Ensure this is the product ID from the cart item
+                'quantity' => $item->quantity,
+                'price' => $item->price,
+                'discount' => 0, // Adjust as necessary
+            ]);
+        }
 
         Cart::session($userID)->clear();
     }

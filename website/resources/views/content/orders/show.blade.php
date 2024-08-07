@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('content.layouts.app')
+@section('title', 'Order ' . $order->id)
 
 @section('content')
     <div class="uk-section uk-section-small">
@@ -10,7 +11,7 @@
                 <p>Tổng tiền: {{ number_format($order->total, 0, ',', '.') }} ₫</p>
                 <p>Trạng thái: {{ $order->status }}</p>
                 <h4>Danh sách sản phẩm</h4>
-                <table class="uk-table uk-table-divider">
+                <table class="uk-table uk-table-divider uk-table-striped">
                     <thead>
                     <tr>
                         <th>Sản phẩm</th>
@@ -22,7 +23,7 @@
                     <tbody>
                     @foreach ($order->items as $item)
                         <tr>
-                            <td>{{ $item->product_name }}</td>
+                            <td>{{ $item->name }}</td>
                             <td>{{ $item->quantity }}</td>
                             <td>{{ number_format($item->price, 0, ',', '.') }} ₫</td>
                             <td>{{ number_format($item->price * $item->quantity, 0, ',', '.') }} ₫</td>
@@ -30,7 +31,9 @@
                     @endforeach
                     </tbody>
                 </table>
-                <a href="{{ route('orders.index') }}" class="uk-button uk-button-default">Quay lại danh sách đơn hàng</a>
+                <div class="uk-flex uk-flex-center uk-margin">
+                    <a href="{{ route('orders.index') }}" class="uk-button uk-button-default">Quay lại danh sách đơn hàng</a>
+                </div>
             </div>
         </div>
     </div>
