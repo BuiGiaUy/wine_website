@@ -62,7 +62,7 @@
                         <td class="whitespace-nowrap">{{ $order->id }}</td>
                         <td class="whitespace-nowrap">{{ $order->user->name }}</td>
                         <td class="whitespace-nowrap">{{ $order->total_amount }}</td>
-                        <td class="whitespace-nowrap">{{ $order->status }}</td>
+                        <td class="whitespace-nowrap">{{ $order->payment->status }}</td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a href="{{ route('admin.orders.show', $order->id) }}"

@@ -156,6 +156,9 @@
                     <div class="uk-navbar-item">
                         <a class="uk-navbar-toggle uk-padding-remove" href="{{ route('login') }}">LOGIN</a>
                     </div>
+                    <div class="uk-navbar-item">
+                        <a class="uk-navbar-toggle uk-padding-remove" href="{{ route('register') }}">REGISTER</a>
+                    </div>
                 @endguest
             </div>
         </nav>

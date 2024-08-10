@@ -1,69 +1,61 @@
-@extends('layouts.app')
+@extends('content.layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <div class="uk-container">
+        <div class="uk-flex uk-flex-center uk-margin-large-top uk-margin-large-bottom">
+            <div class="uk-width-1-2@m">
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h3 class="uk-card-title">{{ __('Register') }}</h3>
 
-                <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
+                        <div class="uk-margin">
+                            <label for="name" class="uk-form-label">{{ __('Name') }}</label>
+                            <div class="uk-form-controls">
+                                <input id="name" type="text" class="uk-input @error('name') uk-form-danger @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                 @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="uk-text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
+                        <div class="uk-margin">
+                            <label for="email" class="uk-form-label">{{ __('Email Address') }}</label>
+                            <div class="uk-form-controls">
+                                <input id="email" type="email" class="uk-input @error('email') uk-form-danger @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="uk-text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                        <div class="uk-margin">
+                            <label for="password" class="uk-form-label">{{ __('Password') }}</label>
+                            <div class="uk-form-controls">
+                                <input id="password" type="password" class="uk-input @error('password') uk-form-danger @enderror" name="password" required autocomplete="new-password">
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="uk-text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        <div class="uk-margin">
+                            <label for="password-confirm" class="uk-form-label">{{ __('Confirm Password') }}</label>
+                            <div class="uk-form-controls">
+                                <input id="password-confirm" type="password" class="uk-input" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="uk-margin">
+                            <div class="uk-flex uk-flex-right">
+                                <button type="submit" class="uk-button uk-button-primary  custom-add-to-cart-button uk-border-rounded">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -73,5 +65,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

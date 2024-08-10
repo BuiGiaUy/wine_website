@@ -5,20 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="111e7cd9-ba10-422d-aec2-8c56f7d275bf" name="Changes" comment="feat_adminLayout">
+      <change afterPath="$PROJECT_DIR$/website/resources/views/content/posts/replies.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/CommentController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/PostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Orders/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Orders/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Models/OrderItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Models/OrderItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Models/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Models/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Models/Payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Models/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/content/order/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/content/order/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/content/post/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/content/post/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/content/product/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/content/product/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/content/product/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/content/product/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/auth/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/resources/views/content/homepage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/homepage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/includes/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/includes/head.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/resources/views/content/includes/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/includes/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/orders/ index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/orders/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/orders/ show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/orders/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/products/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/products/category.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/products/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/user/orders.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/user/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/user/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/posts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/posts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/resources/views/content/posts/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/posts/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,22 +188,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feat__order",
-    "last_opened_file_path": "D:/web/OSPanel/domains/wine_website",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat__comment&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/web/OSPanel/domains/wine_website&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\web\OSPanel\domains\wine_website\website\resources\views\admin" />
@@ -256,7 +263,8 @@
       <workItem from="1721648806801" duration="42164000" />
       <workItem from="1721938580387" duration="29489000" />
       <workItem from="1722197126873" duration="20739000" />
-      <workItem from="1722783261496" duration="23074000" />
+      <workItem from="1722783261496" duration="33221000" />
+      <workItem from="1723189484825" duration="13668000" />
     </task>
     <task id="LOCAL-00001" summary="feat post">
       <option name="closed" value="true" />

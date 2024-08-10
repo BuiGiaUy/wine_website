@@ -1,5 +1,11 @@
 @extends('admin.layouts.app')
-
+@section('breadcrumb')
+    <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Dashboard</li>
+        </ol>
+    </nav>
+@endsection
 @section('content')
     <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12 2xl:col-span-9">
