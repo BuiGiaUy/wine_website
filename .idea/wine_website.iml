@@ -123,6 +123,9 @@
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/laravel/octane" />
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/maximebf/debugbar" />
       <excludeFolder url="file://$MODULE_DIR$/website/vendor/symfony/psr-http-message-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/website/vendor/paragonie/random_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/website/vendor/paragonie/sodium_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/website/vendor/pusher/pusher-php-server" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

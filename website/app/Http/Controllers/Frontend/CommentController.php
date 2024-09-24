@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Events\CommentPosted;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Post;
@@ -22,15 +23,18 @@ class CommentController extends Controller
         $post = Post::where('slug', $slug)->firstOrFail();
 
         // Create the comment
-        Comment::create([
+        $comment = Comment::create([
             'content' => $validatedData['content'],
             'post_id' => $validatedData['post_id'],
             'user_id' => auth()->id(), // Get the currently authenticated user's ID
             'parent_id' => $validatedData['parent_id'] ?? null // Handle replies
         ]);
 
+        event(new CommentPosted($comment));
+
+
         // Redirect back to the post with a success message
-        return redirect()->route('posts.show', $slug)->with('success', 'Comment added successfully.');
+        return response()->json($comment);
     }
 
 }

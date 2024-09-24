@@ -5,28 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="111e7cd9-ba10-422d-aec2-8c56f7d275bf" name="Changes" comment="feat_adminLayout">
-      <change afterPath="$PROJECT_DIR$/website/resources/views/content/posts/replies.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/wine_website.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/wine_website.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Admin/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/CommentController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Models/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Models/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Models/Payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Models/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/content/order/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/content/order/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/content/post/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/content/post/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/content/product/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/content/product/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/content/product/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/content/product/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/admin/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/admin/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/homepage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/homepage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/includes/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/includes/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/resources/views/content/posts/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/posts/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/app/Http/Controllers/Frontend/CommentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/website/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/website/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/config/broadcasting.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/config/broadcasting.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/resources/views/content/posts/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/resources/views/content/posts/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/website/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,6 +161,9 @@
       <path value="$PROJECT_DIR$/website/vendor/symfony/psr-http-message-bridge" />
       <path value="$PROJECT_DIR$/website/vendor/laravel/octane" />
       <path value="$PROJECT_DIR$/website/vendor/laminas/laminas-diactoros" />
+      <path value="$PROJECT_DIR$/website/vendor/paragonie/sodium_compat" />
+      <path value="$PROJECT_DIR$/website/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/website/vendor/pusher/pusher-php-server" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
@@ -193,14 +183,15 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feat__comment&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/web/OSPanel/domains/wine_website&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat__commentRealtime&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/web/OSPanel/domains/localWebsite&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2023.2.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -264,7 +255,8 @@
       <workItem from="1721938580387" duration="29489000" />
       <workItem from="1722197126873" duration="20739000" />
       <workItem from="1722783261496" duration="33221000" />
-      <workItem from="1723189484825" duration="13668000" />
+      <workItem from="1723189484825" duration="19019000" />
+      <workItem from="1723893132513" duration="386000" />
     </task>
     <task id="LOCAL-00001" summary="feat post">
       <option name="closed" value="true" />
