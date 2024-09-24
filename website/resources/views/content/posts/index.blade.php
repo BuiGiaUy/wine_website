@@ -23,9 +23,13 @@
         <div class="uk-grid uk-grid-match uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
             @foreach ($posts as $post)
                 <!-- Blog Post Item -->
-                <div class="uk-card  uk-card-hover ">
-                    <div class="uk-card-media-top">
-                        <img src="{{ $post->featuredImage->path }}" alt="{{ $post->featuredImage->alt }}" class="uk-img" style="height: 250px; object-fit: cover;">
+                <div class="uk-card uk-card-body uk-padding-small  uk-card-hover ">
+                    <div class="uk-card-media-top ">
+                        @if ($post->featuredImage)
+                            <img src="{{ $post->featuredImage->path }}" alt="{{ $post->featuredImage->alt }}" class="uk-img uk-margin-auto" style="height: 250px; object-fit: cover;">
+                        @else
+                            <img src="https://winecellar.vn/wp-content/uploads/2023/04/hai-san-va-ruou-vang-600x400.jpg" alt="Default Image"  class="uk-img uk-margin-auto" style="height: 250px; object-fit: cover;">
+                        @endif
                     </div>
                     <div class="uk-padding-small">
                         <a href="{{ route('posts.show', ['slug' => $post->slug]) }}"  style="text-decoration: none;">

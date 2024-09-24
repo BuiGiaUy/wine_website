@@ -1,5 +1,5 @@
 @extends('content.layouts.app')
-@section('title', '')
+@section('title', 'Trang chủ')
 @section('style')
     <style>
         .custom-nav {
@@ -362,7 +362,7 @@
                                         </a>
                                     </div>
                                     <div class="uk-text-center uk-padding-remove-horizontal uk-padding">
-                                        <h3 class="uk-text-default uk-text-center" style="color:#000;font-weight: bold">{{ $product->name }}</h3>
+                                        <h3 class="uk-text-default uk-text-center" style="color:#000;font-weight: bold; height: 46px">{{ $product->name }}</h3>
                                         <p class="uk-text-meta uk-margin-remove-top"  style="color: #990d23; font-weight: bold;">{{ number_format($product->price, 0, ',', '.') }}₫</p>
                                         <a href="{{ route('products.show', ['slug' => $product->slug]) }}" class="uk-button uk-border-rounded"
                                            style="background: #990d23; color: #FFFFFF">Xem sản phẩm</a>

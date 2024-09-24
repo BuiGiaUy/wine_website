@@ -29,7 +29,7 @@
                         <!-- Content -->
                         <div class="">
                             <label for="content" class="block text-gray-700 font-medium mb-2">Content</label>
-                            <textarea name="content" id="content" class="form-textarea w-full" rows="8"
+                            <textarea name="content" id="myTextArea" class="form-textarea w-full" rows="8"
                                       placeholder="Enter content..."></textarea>
                             @error('content')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

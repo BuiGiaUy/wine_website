@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        // Apply auth middleware only to actions that require authentication
+        $this->middleware('auth');
+    }
     // Method to show the user's profile page
     public function showProfile()
     {

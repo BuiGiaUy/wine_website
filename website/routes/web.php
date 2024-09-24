@@ -1,12 +1,12 @@
 <?php
 
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\BrandController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Frontend\ProductController;
-
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Orders\OrderController;
 use Illuminate\Support\Facades\Auth;
@@ -66,6 +66,8 @@ Route::prefix('orders')->group(function () {
 });
 
 Route::prefix('posts')->group(function () {
+    Route::post('/comments/store/{slug}', [CommentController::class, 'store'])->name('comments.store');
+
     Route::get('/', [PostController::class, 'index'])->name('posts.index'); // Route for listing all posts
     Route::get('/{slug}', [PostController::class, 'show'])->name('posts.show'); // Route for showing a single post
 });

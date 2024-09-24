@@ -71,7 +71,7 @@
                                 <div class="absolute bottom-0 text-white px-5 pb-6 z-10">
                                     <a href="{{ route('admin.product.index', $product->id) }}"
                                        class="block font-medium text-base product-name">{{ $product->name }}</a>
-                                    <span class="text-white/90 text-xs mt-3">{{ $product->category }}</span>
+                                    <span class="text-white/90 text-xs mt-3">{{ $product->category->name }}</span>
                                 </div>
                             </div>
                             <div class="text-slate-600 dark:text-slate-500 mt-5">

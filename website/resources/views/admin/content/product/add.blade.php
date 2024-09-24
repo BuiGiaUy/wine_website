@@ -67,14 +67,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mt-3">
-                                <label class="form-label">Post</label>
-                                <select name="post_id" class="form-control">
-                                    @foreach($posts as $post)
-                                        <option value="{{ $post->id }}">{{ $post->title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                                 <!-- Upload Image -->
@@ -100,6 +93,59 @@
                     </div>
                 </div>
 
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <div class="">
+                        <label for="content" class="block text-gray-700 font-medium mb-2">Content</label>
+                        <textarea name="content" id="myTextArea" class="form-textarea w-full" rows="8"
+                                  placeholder="Enter content..."></textarea>
+                        @error('content')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <!-- SEO Title -->
+                    <div>
+                        <label for="seo_title" class="block text-gray-700 font-medium mb-2">SEO Title</label>
+                        <input type="text" name="seo_title" id="seo_title" class="form-input w-full"
+                               placeholder="Enter SEO title...">
+                        @error('seo_title')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <!-- SEO Keywords -->
+                    <div>
+                        <label for="seo_keywords" class="block text-gray-700 font-medium mb-2">SEO Keywords</label>
+                        <textarea type="text" name="seo_keywords" id="seo_keywords" class="form-input w-full"
+                                  placeholder="Enter SEO keywords...">
+                            </textarea>
+                        @error('seo_keywords')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <!-- SEO Description -->
+                    <div class="">
+                        <label for="seo_description" class="block text-gray-700 font-medium mb-2">SEO
+                            Description</label>
+                        <textarea name="seo_description" id="seo_description" class="form-textarea w-full" rows="4"
+                                  placeholder="Enter SEO description..."></textarea>
+                        @error('seo_description')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <!-- Categories -->
+                    <div>
+                        <label for="category" class="block text-gray-700 font-medium mb-2">Categories</label>
+                        <select name="post_category_id" id="category" class="form-select w-full">
+                            @foreach($postCategories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                </div>
                 {{--                <div class="grid grid-cols-12 gap-6 mt-5 bg-white rounded-lg shadow-md p-8">--}}
                 {{--                    <div class="intro-y col-span-12 lg:col-span-6">--}}
                 {{--                        <!-- Title -->--}}

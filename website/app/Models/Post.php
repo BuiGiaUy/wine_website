@@ -14,6 +14,11 @@ class Post extends Model
     protected $fillable = ['id','name', 'slug', 'description', 'content', 'seo_title', 'seo_description', 'seo_keywords', 'category_id', 'views', 'rating_number', 'rating_value'];
 
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'post_id', 'id');
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
@@ -24,7 +29,7 @@ class Post extends Model
     }
     public function images() :HasMany
     {
-        return $this->hasMany(Image::class, 'model_id','id')->where('model_type', 'post');
+        return $this->hasMany(Image::class, 'model_id','id')->where('model_type', 'App\Models\Post');
     }
 
     public function deleteImages()
