@@ -921,7 +921,7 @@
         var keywordKinds = {
           type: 'bool byte char decimal double dynamic float int long object sbyte short string uint ulong ushort var void',
           typeDeclaration: 'class enum interface record struct',
-          contextual: 'add alias and ascending async await by descending from(?=\\s*(?:\\w|$)) get global group into init(?=\\s*;) join let nameof not notnull on or orderby partial remove select set unmanaged value when where with(?=\\s*{)',
+          contextual: 'add alias and ascending async await by descending from(?=\\s*(?:\\w|$)) get global group into init(?=\\s*;) join let nameof not notnull on or orderby includes remove select set unmanaged value when where with(?=\\s*{)',
           other: 'abstract as base break case catch checked const continue default delegate do else event explicit extern finally fixed for foreach goto if implicit in internal is lock namespace new null operator out override params private protected public readonly ref return sealed sizeof stackalloc static switch this throw try typeof unchecked unsafe using virtual volatile while yield'
         };
         function keywordsToPattern(words) {

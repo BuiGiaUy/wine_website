@@ -19,7 +19,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.de',
   '</dl>\n' +
   '\n' +
   '<p>Die Navigation beginnt beim ersten Benutzeroberflächenelement, welches hervorgehoben ist. Falls sich das erste Element im Pfad der Fußzeile befindet,\n' +
-  '  ist es unterstrichen.</p>\n' +
+  '  ist vi unterstrichen.</p>\n' +
   '\n' +
   '<h1>Zwischen Abschnitten der Benutzeroberfläche navigieren</h1>\n' +
   '\n' +

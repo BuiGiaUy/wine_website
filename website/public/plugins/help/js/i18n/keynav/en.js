@@ -78,7 +78,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '\n' +
   '<h1>Navigate non-tabbed dialogs</h1>\n' +
   '\n' +
-  '<p>In non-tabbed dialogs, the first interactive component takes focus when the dialog opens.</p>\n' +
+  '<p>In non-tabbed dialogs, the first interactive components takes focus when the dialog opens.</p>\n' +
   '\n' +
   '<p>Navigate between interactive dialog components by pressing <strong>Tab</strong> or <strong>Shift+Tab</strong>.</p>\n' +
   '\n' +

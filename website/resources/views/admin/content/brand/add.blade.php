@@ -1,4 +1,4 @@
-@extends('layouts.adminPartialLayout')
+@extends('admin.layouts.app')
 
 @section('title', 'Add Brand')
 

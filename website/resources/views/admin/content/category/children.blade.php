@@ -1,11 +1,12 @@
-@extends('layouts.adminPartialLayout')
+@extends('admin.layouts.app')
 
 @section('title', 'Categories')
 
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('admin.category.index', $model_type) }}">Categories {{ $model_type }}</a></li>
+            <li class="breadcrumb-item"><a
+                    href="{{ route('admin.category.index', $model_type) }}">Categories {{ $model_type }}</a></li>
         </ol>
     </nav>
 @endsection
@@ -31,7 +32,9 @@
                         <td class="w-40">
                             <div class="flex">
                                 <div class="w-10 h-10 image-fit zoom-in">
-                                    <img alt="{{ $child->name }}" class="tooltip rounded-full" src="{{ asset('path/to/image.jpg') }}" title="Uploaded at {{ $child->created_at }}">
+                                    <img alt="{{ $child->name }}" class="tooltip rounded-full"
+                                         src="{{ asset('path/to/image.jpg') }}"
+                                         title="Uploaded at {{ $child->created_at }}">
                                 </div>
                             </div>
                         </td>
@@ -41,15 +44,18 @@
                         </td>
                         <td>
                             <a class="text-slate-500 flex items-center mr-3" href="javascript:;">
-                                <i data-lucide="external-link" class="w-4 h-4 mr-2"></i> /category/{{ $model_type }}/{{ $child->slug }}
+                                <i data-lucide="external-link" class="w-4 h-4 mr-2"></i> /category/{{ $model_type }}
+                                /{{ $child->slug }}
                             </a>
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center mr-3" href="{{ route('admin.category.edit', [$model_type, $child->id]) }}">
+                                <a class="flex items-center mr-3"
+                                   href="{{ route('admin.category.edit', [$model_type, $child->id]) }}">
                                     <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                 </a>
-                                <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal-{{ $child->id }}">
+                                <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal"
+                                   data-tw-target="#delete-confirmation-modal-{{ $child->id }}">
                                     <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
                                 </a>
                             </div>
@@ -70,8 +76,12 @@
                                         </div>
                                     </div>
                                     <div class="px-5 pb-8 text-center">
-                                        <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
-                                        <button type="button" class="btn btn-danger w-24 delete-category" data-category-id="{{ $child->id }}">Delete</button>
+                                        <button type="button" data-tw-dismiss="modal"
+                                                class="btn btn-outline-secondary w-24 mr-1">Cancel
+                                        </button>
+                                        <button type="button" class="btn btn-danger w-24 delete-category"
+                                                data-category-id="{{ $child->id }}">Delete
+                                        </button>
                                     </div>
                                 </div>
                             </div>

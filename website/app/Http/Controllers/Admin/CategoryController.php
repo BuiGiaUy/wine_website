@@ -35,9 +35,21 @@ class CategoryController extends Controller
 
         return view('admin.content.category.children', compact('category', 'children', 'model_type'));
     }
-    private function getCategories($model_type, $perPage = 10){
-        return Category::where('model_type','=', $model_type)
-            ->where('parent_id','=',0)
+    private function getCategories(string $model_type, int $perPage = 10)
+    {
+        $modelMap = [
+            'product' => \App\Models\Product::class,
+            'post' => \App\Models\Post::class,
+        ];
+
+        $modelClass = $modelMap[$model_type] ?? null;
+
+        if (!$modelClass) {
+            throw new \InvalidArgumentException("Invalid model type: $model_type");
+        }
+
+        return Category::where('model_type', $modelClass)
+            ->where('parent_id', 0)
             ->with('subCategories')
             ->paginate($perPage);
     }
@@ -49,9 +61,7 @@ class CategoryController extends Controller
     }
     public function index($model_type): Factory|View|Application
     {
-//        echo "<pre>";
-//        print_r($post->images);
-//        echo "</pre>";
+
         return view("admin.content.category.index",[
             "categories" => $this->getCategories($model_type),
             'model_type' => $model_type,

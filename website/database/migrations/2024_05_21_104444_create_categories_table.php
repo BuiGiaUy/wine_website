@@ -9,17 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-//        Schema::create('categories', function (Blueprint $table) {
-//            $table->id();
-//            $table->foreignId('parent_id')->default(0)->constrained();
-//            $table->text('name');
-//            $table->text('slug');
-//            $table->text('icon_path')->nullable();
-//            $table->text('model_type');
-//            $table->timestamps();
-//        });
+        // Check if the table exists before creating it
+        if (!Schema::hasTable('categories')) {
+            Schema::create('categories', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('parent_id')->nullable()->default(0);
+                $table->text('name');
+                $table->text('slug');
+                $table->text('icon_path')->nullable();
+                $table->text('model_type');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

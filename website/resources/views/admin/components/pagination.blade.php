@@ -9,7 +9,7 @@
                 <li class="page-item"><a class="page-link" href="{{ $paginator->url(1) }}" rel="prev"><i class="w-4 h-4" data-lucide="chevrons-left"></i></a></li>
                 <li class="page-item"><a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev"><i class="w-4 h-4" data-lucide="chevron-left"></i></a></li>
             @endif
-            {{-- Pagination Elements --}}
+            {{-- pagination.blade.php Elements --}}
             @foreach ($elements as $element)
                 {{-- "Three Dots" Separator --}}
                 @if (is_string($element))

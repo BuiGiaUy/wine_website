@@ -656,7 +656,7 @@
             ],
             [
               8706,
-              'partial differential'
+              'includes differential'
             ],
             [
               8704,

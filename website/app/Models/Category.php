@@ -12,7 +12,6 @@ class Category extends Model
     protected $fillable = ['id','name', 'slug', 'icon_path', 'parent_id', 'model_type'];
     protected $hidden = ['created_at', 'updated_at'];
 
-    //  Tạo mối quan hệ một nhiều. trả ve danh sách các category con cua 1 category
     public function subCategories():HasMany {
         return $this->hasMany(Category::class, "parent_id", "id");
     }
@@ -34,7 +33,10 @@ class Category extends Model
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
-
+    public function posts()
+    {
+        return $this->hasMany(Post::class,'category_id');
+    }
     //cấu hình boot cho model category
     public static function boot() : void
     {

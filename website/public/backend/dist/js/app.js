@@ -375,7 +375,7 @@ function applyStyleProp(el, name, val) {
 // ----------------------------------------------------------------------------------------------------------------
 // if intercepting bubbled events at the document/window/body level,
 // and want to see originating element (the 'target'), use this util instead
-// of `ev.target` because it goes within web-component boundaries.
+// of `ev.target` because it goes within web-components boundaries.
 function getEventTargetViaRoot(ev) {
     var _a, _b;
     return (_b = (_a = ev.composedPath) === null || _a === void 0 ? void 0 : _a.call(ev)[0]) !== null && _b !== void 0 ? _b : ev.target;
@@ -5337,7 +5337,7 @@ function setRef(ref, current) {
 }
 
 /*
-an INTERACTABLE date component
+an INTERACTABLE date components
 
 PURPOSES:
 - hook up to fg, fill, and mirror renderers
@@ -8056,7 +8056,7 @@ var Toolbar = /** @class */ (function (_super) {
     return Toolbar;
 }(BaseComponent));
 
-// TODO: do function component?
+// TODO: do function components?
 var ViewContainer = /** @class */ (function (_super) {
     (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__extends)(ViewContainer, _super);
     function ViewContainer() {
@@ -8155,7 +8155,7 @@ var EventClicking = /** @class */ (function (_super) {
 
 /*
 Triggers events and adds/removes core classNames when the user's pointer
-enters/leaves event-elements of a component.
+enters/leaves event-elements of a components.
 */
 var EventHovering = /** @class */ (function (_super) {
     (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__extends)(EventHovering, _super);
@@ -8800,7 +8800,7 @@ var Slicer = /** @class */ (function () {
         return segs;
     };
     /*
-    "complete" seg means it has component and eventRange
+    "complete" seg means it has components and eventRange
     */
     Slicer.prototype.sliceEventRanges = function (eventRanges, extraArgs) {
         var segs = [];
@@ -8811,7 +8811,7 @@ var Slicer = /** @class */ (function () {
         return segs;
     };
     /*
-    "complete" seg means it has component and eventRange
+    "complete" seg means it has components and eventRange
     */
     Slicer.prototype.sliceEventRange = function (eventRange, extraArgs) {
         var dateRange = eventRange.range;
@@ -8931,7 +8931,7 @@ function isInteractionPropsValid(state, context, dateSpanMeta, filterConfig) {
             }
         }
         // allow (a function)
-        var calendarEventStore = currentState.eventStore; // need global-to-calendar, not local to component (splittable)state
+        var calendarEventStore = currentState.eventStore; // need global-to-calendar, not local to components (splittable)state
         for (var _i = 0, _a = subjectConfig.allows; _i < _a.length; _i++) {
             var subjectAllow = _a[_i];
             var subjectDateSpan = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_2__.__assign)({}, dateSpanMeta), { range: subjectInstance.range, allDay: subjectDef.allDay });
@@ -11331,7 +11331,7 @@ var TableDateProfileGenerator = /** @class */ (function (_super) {
         // ensure 6 weeks
         if (this.props.monthMode &&
             this.props.fixedWeekCount) {
-            var rowCnt = Math.ceil(// could be partial weeks due to hiddenDays
+            var rowCnt = Math.ceil(// could be includes weeks due to hiddenDays
             (0,_fullcalendar_common__WEBPACK_IMPORTED_MODULE_1__.diffWeeks)(start, end));
             end = (0,_fullcalendar_common__WEBPACK_IMPORTED_MODULE_1__.addWeeks)(end, 6 - rowCnt);
         }
@@ -12479,7 +12479,7 @@ function buildDatePointApi(span, dateEnv) {
 }
 
 /*
-Monitors when the user clicks on a specific date/time of a component.
+Monitors when the user clicks on a specific date/time of a components.
 A pointerdown+pointerup on the same "hit" constitutes a click.
 */
 var DateClicking = /** @class */ (function (_super) {
@@ -12520,7 +12520,7 @@ var DateClicking = /** @class */ (function (_super) {
 }(_fullcalendar_common__WEBPACK_IMPORTED_MODULE_0__.Interaction));
 
 /*
-Tracks when the user selects a portion of time of a component,
+Tracks when the user selects a portion of time of a components,
 constituted by a drag over date cells, with a possible delay at the beginning of the drag.
 */
 var DateSelecting = /** @class */ (function (_super) {
@@ -12533,7 +12533,7 @@ var DateSelecting = /** @class */ (function (_super) {
             var options = component.context.options;
             var canSelect = options.selectable &&
                 component.isValidDateDownEl(ev.origEvent.target);
-            // don't bother to watch expensive moves if component won't do selection
+            // don't bother to watch expensive moves if components won't do selection
             dragging.setIgnoreMove(!canSelect);
             // if touch, require user to hold down
             dragging.delay = ev.isTouch ? getComponentTouchDelay$1(component) : null;
@@ -13307,7 +13307,7 @@ var ExternalElementDragging = /** @class */ (function () {
             _this.droppableEvent = null;
         };
         var hitDragging = this.hitDragging = new HitDragging(dragging, _fullcalendar_common__WEBPACK_IMPORTED_MODULE_0__.interactionSettingsStore);
-        hitDragging.requireInitial = false; // will start outside of a component
+        hitDragging.requireInitial = false; // will start outside of a components
         hitDragging.emitter.on('dragstart', this.handleDragStart);
         hitDragging.emitter.on('hitupdate', this.handleHitUpdate);
         hitDragging.emitter.on('dragend', this.handleDragEnd);
@@ -14869,7 +14869,7 @@ function collectCellEls(elMap, cells) {
     return cells.map(function (cell) { return elMap[cell.key]; });
 }
 
-/* A component that renders one or more columns of vertical time slots
+/* A components that renders one or more columns of vertical time slots
 ----------------------------------------------------------------------------------------------------------------------*/
 var TimeCols = /** @class */ (function (_super) {
     (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__extends)(TimeCols, _super);
@@ -40173,7 +40173,7 @@ var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-j
 module.exports = fails(function () {
   if (typeof ArrayBuffer == 'function') {
     var buffer = new ArrayBuffer(8);
-    // eslint-disable-next-line es-x/no-object-isextensible, es-x/no-object-defineproperty -- safe
+    // eslint-disable-next-line vi-x/no-object-isextensible, vi-x/no-object-defineproperty -- safe
     if (Object.isExtensible(buffer)) Object.defineProperty(buffer, 'a', { value: 8 });
   }
 });
@@ -40198,7 +40198,7 @@ var STRICT_METHOD = arrayMethodIsStrict('forEach');
 // https://tc39.es/ecma262/#sec-array.prototype.foreach
 module.exports = !STRICT_METHOD ? function forEach(callbackfn /* , thisArg */) {
   return $forEach(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-// eslint-disable-next-line es-x/no-array-prototype-foreach -- safe
+// eslint-disable-next-line vi-x/no-array-prototype-foreach -- safe
 } : [].forEach;
 
 
@@ -40533,7 +40533,7 @@ try {
   iteratorWithReturn[ITERATOR] = function () {
     return this;
   };
-  // eslint-disable-next-line es-x/no-array-from, no-throw-literal -- required for testing
+  // eslint-disable-next-line vi-x/no-array-from, no-throw-literal -- required for testing
   Array.from(iteratorWithReturn, function () { throw 2; });
 } catch (error) { /* empty */ }
 
@@ -40909,7 +40909,7 @@ var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-j
 module.exports = !fails(function () {
   function F() { /* empty */ }
   F.prototype.constructor = null;
-  // eslint-disable-next-line es-x/no-object-getprototypeof -- required for testing
+  // eslint-disable-next-line vi-x/no-object-getprototypeof -- required for testing
   return Object.getPrototypeOf(new F()) !== F.prototype;
 });
 
@@ -41173,7 +41173,7 @@ var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-j
 
 // Detect IE8's incomplete defineProperty implementation
 module.exports = !fails(function () {
-  // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
+  // eslint-disable-next-line vi-x/no-object-defineproperty -- required for testing
   return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] != 7;
 });
 
@@ -41436,7 +41436,7 @@ module.exports = function (exec) {
 "use strict";
 
 // TODO: Remove from `core-js@4` since it's moved to entry points
-__webpack_require__(/*! ../modules/es.regexp.exec */ "./node_modules/core-js/modules/es.regexp.exec.js");
+__webpack_require__(/*! ../modules/vi.regexp.exec */ "./node_modules/core-js/modules/es.regexp.exec.js");
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/core-js/internals/function-uncurry-this.js");
 var defineBuiltIn = __webpack_require__(/*! ../internals/define-built-in */ "./node_modules/core-js/internals/define-built-in.js");
 var regexpExec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
@@ -41521,7 +41521,7 @@ module.exports = function (KEY, exec, FORCED, SHAM) {
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
 module.exports = !fails(function () {
-  // eslint-disable-next-line es-x/no-object-isextensible, es-x/no-object-preventextensions -- required for testing
+  // eslint-disable-next-line vi-x/no-object-isextensible, vi-x/no-object-preventextensions -- required for testing
   return Object.isExtensible(Object.preventExtensions({}));
 });
 
@@ -41540,7 +41540,7 @@ var FunctionPrototype = Function.prototype;
 var apply = FunctionPrototype.apply;
 var call = FunctionPrototype.call;
 
-// eslint-disable-next-line es-x/no-reflect -- safe
+// eslint-disable-next-line vi-x/no-reflect -- safe
 module.exports = typeof Reflect == 'object' && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function () {
   return call.apply(apply, arguments);
 });
@@ -41580,7 +41580,7 @@ module.exports = function (fn, that) {
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
 module.exports = !fails(function () {
-  // eslint-disable-next-line es-x/no-function-prototype-bind -- safe
+  // eslint-disable-next-line vi-x/no-function-prototype-bind -- safe
   var test = (function () { /* empty */ }).bind();
   // eslint-disable-next-line no-prototype-builtins -- safe
   return typeof test != 'function' || test.hasOwnProperty('prototype');
@@ -41616,7 +41616,7 @@ var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_mo
 var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
 
 var FunctionPrototype = Function.prototype;
-// eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
+// eslint-disable-next-line vi-x/no-object-getownpropertydescriptor -- safe
 var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
 
 var EXISTS = hasOwn(FunctionPrototype, 'name');
@@ -41807,7 +41807,7 @@ var check = function (it) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 module.exports =
-  // eslint-disable-next-line es-x/no-global-this -- safe
+  // eslint-disable-next-line vi-x/no-global-this -- safe
   check(typeof globalThis == 'object' && globalThis) ||
   check(typeof window == 'object' && window) ||
   // eslint-disable-next-line no-restricted-globals -- safe
@@ -41832,7 +41832,7 @@ var hasOwnProperty = uncurryThis({}.hasOwnProperty);
 
 // `HasOwnProperty` abstract operation
 // https://tc39.es/ecma262/#sec-hasownproperty
-// eslint-disable-next-line es-x/no-object-hasown -- safe
+// eslint-disable-next-line vi-x/no-object-hasown -- safe
 module.exports = Object.hasOwn || function hasOwn(it, key) {
   return hasOwnProperty(toObject(it), key);
 };
@@ -41876,7 +41876,7 @@ var createElement = __webpack_require__(/*! ../internals/document-create-element
 
 // Thanks to IE8 for its funny defineProperty
 module.exports = !DESCRIPTORS && !fails(function () {
-  // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
+  // eslint-disable-next-line vi-x/no-object-defineproperty -- required for testing
   return Object.defineProperty(createElement('div'), 'a', {
     get: function () { return 7; }
   }).a != 7;
@@ -42171,7 +42171,7 @@ var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_module
 
 // `IsArray` abstract operation
 // https://tc39.es/ecma262/#sec-isarray
-// eslint-disable-next-line es-x/no-array-isarray -- safe
+// eslint-disable-next-line vi-x/no-array-isarray -- safe
 module.exports = Array.isArray || function isArray(argument) {
   return classof(argument) == 'Array';
 };
@@ -42470,7 +42470,7 @@ var BUGGY_SAFARI_ITERATORS = false;
 // https://tc39.es/ecma262/#sec-%iteratorprototype%-object
 var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
 
-/* eslint-disable es-x/no-array-prototype-keys -- safe */
+/* eslint-disable vi-x/no-array-prototype-keys -- safe */
 if ([].keys) {
   arrayIterator = [].keys();
   // Safari 8 has buggy iterators w/o `next`
@@ -42550,7 +42550,7 @@ var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */
 
 var enforceInternalState = InternalStateModule.enforce;
 var getInternalState = InternalStateModule.get;
-// eslint-disable-next-line es-x/no-object-defineproperty -- safe
+// eslint-disable-next-line vi-x/no-object-defineproperty -- safe
 var defineProperty = Object.defineProperty;
 
 var CONFIGURABLE_LENGTH = DESCRIPTORS && !fails(function () {
@@ -42597,11 +42597,11 @@ Function.prototype.toString = makeBuiltIn(function toString() {
   \*********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-/* eslint-disable es-x/no-symbol -- required for testing */
+/* eslint-disable vi-x/no-symbol -- required for testing */
 var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/core-js/internals/engine-v8-version.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
-// eslint-disable-next-line es-x/no-object-getownpropertysymbols -- required for testing
+// eslint-disable-next-line vi-x/no-object-getownpropertysymbols -- required for testing
 module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
   var symbol = Symbol();
   // Chrome 38 Symbol has incorrect toString conversion
@@ -42681,9 +42681,9 @@ var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-pro
 var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
 var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js");
 
-// eslint-disable-next-line es-x/no-object-assign -- safe
+// eslint-disable-next-line vi-x/no-object-assign -- safe
 var $assign = Object.assign;
-// eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
+// eslint-disable-next-line vi-x/no-object-defineproperty -- required for testing
 var defineProperty = Object.defineProperty;
 var concat = uncurryThis([].concat);
 
@@ -42703,7 +42703,7 @@ module.exports = !$assign || fails(function () {
   // should work with symbols and should have deterministic property order (V8 bug)
   var A = {};
   var B = {};
-  // eslint-disable-next-line es-x/no-symbol -- safe
+  // eslint-disable-next-line vi-x/no-symbol -- safe
   var symbol = Symbol();
   var alphabet = 'abcdefghijklmnopqrst';
   A[symbol] = 7;
@@ -42808,7 +42808,7 @@ hiddenKeys[IE_PROTO] = true;
 
 // `Object.create` method
 // https://tc39.es/ecma262/#sec-object.create
-// eslint-disable-next-line es-x/no-object-create -- safe
+// eslint-disable-next-line vi-x/no-object-create -- safe
 module.exports = Object.create || function create(O, Properties) {
   var result;
   if (O !== null) {
@@ -42839,7 +42839,7 @@ var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_mod
 
 // `Object.defineProperties` method
 // https://tc39.es/ecma262/#sec-object.defineproperties
-// eslint-disable-next-line es-x/no-object-defineproperties -- safe
+// eslint-disable-next-line vi-x/no-object-defineproperties -- safe
 exports.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var props = toIndexedObject(Properties);
@@ -42868,9 +42868,9 @@ var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules
 var toPropertyKey = __webpack_require__(/*! ../internals/to-property-key */ "./node_modules/core-js/internals/to-property-key.js");
 
 var TypeError = global.TypeError;
-// eslint-disable-next-line es-x/no-object-defineproperty -- safe
+// eslint-disable-next-line vi-x/no-object-defineproperty -- safe
 var $defineProperty = Object.defineProperty;
-// eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
+// eslint-disable-next-line vi-x/no-object-getownpropertydescriptor -- safe
 var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 var ENUMERABLE = 'enumerable';
 var CONFIGURABLE = 'configurable';
@@ -42923,7 +42923,7 @@ var toPropertyKey = __webpack_require__(/*! ../internals/to-property-key */ "./n
 var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/core-js/internals/has-own-property.js");
 var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/core-js/internals/ie8-dom-define.js");
 
-// eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
+// eslint-disable-next-line vi-x/no-object-getownpropertydescriptor -- safe
 var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 
 // `Object.getOwnPropertyDescriptor` method
@@ -42946,7 +42946,7 @@ exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDes
   \**********************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-/* eslint-disable es-x/no-object-getownpropertynames -- safe */
+/* eslint-disable vi-x/no-object-getownpropertynames -- safe */
 var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
 var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
 var $getOwnPropertyNames = (__webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js").f);
@@ -42986,7 +42986,7 @@ var hiddenKeys = enumBugKeys.concat('length', 'prototype');
 
 // `Object.getOwnPropertyNames` method
 // https://tc39.es/ecma262/#sec-object.getownpropertynames
-// eslint-disable-next-line es-x/no-object-getownpropertynames -- safe
+// eslint-disable-next-line vi-x/no-object-getownpropertynames -- safe
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return internalObjectKeys(O, hiddenKeys);
 };
@@ -43000,7 +43000,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   \***************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-// eslint-disable-next-line es-x/no-object-getownpropertysymbols -- safe
+// eslint-disable-next-line vi-x/no-object-getownpropertysymbols -- safe
 exports.f = Object.getOwnPropertySymbols;
 
 
@@ -43048,7 +43048,7 @@ var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules
 var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
 var ARRAY_BUFFER_NON_EXTENSIBLE = __webpack_require__(/*! ../internals/array-buffer-non-extensible */ "./node_modules/core-js/internals/array-buffer-non-extensible.js");
 
-// eslint-disable-next-line es-x/no-object-isextensible -- safe
+// eslint-disable-next-line vi-x/no-object-isextensible -- safe
 var $isExtensible = Object.isExtensible;
 var FAILS_ON_PRIMITIVES = fails(function () { $isExtensible(1); });
 
@@ -43117,7 +43117,7 @@ var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_
 
 // `Object.keys` method
 // https://tc39.es/ecma262/#sec-object.keys
-// eslint-disable-next-line es-x/no-object-keys -- safe
+// eslint-disable-next-line vi-x/no-object-keys -- safe
 module.exports = Object.keys || function keys(O) {
   return internalObjectKeys(O, enumBugKeys);
 };
@@ -43134,7 +43134,7 @@ module.exports = Object.keys || function keys(O) {
 "use strict";
 
 var $propertyIsEnumerable = {}.propertyIsEnumerable;
-// eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
+// eslint-disable-next-line vi-x/no-object-getownpropertydescriptor -- safe
 var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 
 // Nashorn ~ JDK8 bug
@@ -43164,13 +43164,13 @@ var aPossiblePrototype = __webpack_require__(/*! ../internals/a-possible-prototy
 // `Object.setPrototypeOf` method
 // https://tc39.es/ecma262/#sec-object.setprototypeof
 // Works with __proto__ only. Old v8 can't work with null proto objects.
-// eslint-disable-next-line es-x/no-object-setprototypeof -- safe
+// eslint-disable-next-line vi-x/no-object-setprototypeof -- safe
 module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
   var CORRECT_SETTER = false;
   var test = {};
   var setter;
   try {
-    // eslint-disable-next-line es-x/no-object-getownpropertydescriptor -- safe
+    // eslint-disable-next-line vi-x/no-object-getownpropertydescriptor -- safe
     setter = uncurryThis(Object.getOwnPropertyDescriptor(Object.prototype, '__proto__').set);
     setter(test, []);
     CORRECT_SETTER = test instanceof Array;
@@ -43553,7 +43553,7 @@ module.exports = function (it) {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
 
-// eslint-disable-next-line es-x/no-object-defineproperty -- safe
+// eslint-disable-next-line vi-x/no-object-defineproperty -- safe
 var defineProperty = Object.defineProperty;
 
 module.exports = function (key, value) {
@@ -43969,7 +43969,7 @@ module.exports = function (key) {
   \*************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-/* eslint-disable es-x/no-symbol -- required for testing */
+/* eslint-disable vi-x/no-symbol -- required for testing */
 var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/core-js/internals/native-symbol.js");
 
 module.exports = NATIVE_SYMBOL
@@ -43991,7 +43991,7 @@ var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-j
 // V8 ~ Chrome 36-
 // https://bugs.chromium.org/p/v8/issues/detail?id=3334
 module.exports = DESCRIPTORS && fails(function () {
-  // eslint-disable-next-line es-x/no-object-defineproperty -- required for testing
+  // eslint-disable-next-line vi-x/no-object-defineproperty -- required for testing
   return Object.defineProperty(function () { /* empty */ }, 'prototype', {
     value: 42,
     writable: false
@@ -44050,7 +44050,7 @@ module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u
 
 /***/ "./node_modules/core-js/modules/es.array.filter.js":
 /*!*********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.filter.js ***!
+  !*** ./node_modules/core-js/modules/vi.array.filter.js ***!
   \*********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -44076,7 +44076,7 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
 
 /***/ "./node_modules/core-js/modules/es.array.for-each.js":
 /*!***********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.for-each.js ***!
+  !*** ./node_modules/core-js/modules/vi.array.for-each.js ***!
   \***********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -44087,7 +44087,7 @@ var forEach = __webpack_require__(/*! ../internals/array-for-each */ "./node_mod
 
 // `Array.prototype.forEach` method
 // https://tc39.es/ecma262/#sec-array.prototype.foreach
-// eslint-disable-next-line es-x/no-array-prototype-foreach -- safe
+// eslint-disable-next-line vi-x/no-array-prototype-foreach -- safe
 $({ target: 'Array', proto: true, forced: [].forEach != forEach }, {
   forEach: forEach
 });
@@ -44097,7 +44097,7 @@ $({ target: 'Array', proto: true, forced: [].forEach != forEach }, {
 
 /***/ "./node_modules/core-js/modules/es.array.iterator.js":
 /*!***********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.iterator.js ***!
+  !*** ./node_modules/core-js/modules/vi.array.iterator.js ***!
   \***********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -44169,7 +44169,7 @@ if (!IS_PURE && DESCRIPTORS && values.name !== 'values') try {
 
 /***/ "./node_modules/core-js/modules/es.array.reduce.js":
 /*!*********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.reduce.js ***!
+  !*** ./node_modules/core-js/modules/vi.array.reduce.js ***!
   \*********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -44200,7 +44200,7 @@ $({ target: 'Array', proto: true, forced: !STRICT_METHOD || CHROME_BUG }, {
 
 /***/ "./node_modules/core-js/modules/es.function.name.js":
 /*!**********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.function.name.js ***!
+  !*** ./node_modules/core-js/modules/vi.function.name.js ***!
   \**********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -44235,7 +44235,7 @@ if (DESCRIPTORS && !FUNCTION_NAME_EXISTS) {
 
 /***/ "./node_modules/core-js/modules/es.object.assign.js":
 /*!**********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.object.assign.js ***!
+  !*** ./node_modules/core-js/modules/vi.object.assign.js ***!
   \**********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -44244,7 +44244,7 @@ var assign = __webpack_require__(/*! ../internals/object-assign */ "./node_modul
 
 // `Object.assign` method
 // https://tc39.es/ecma262/#sec-object.assign
-// eslint-disable-next-line es-x/no-object-assign -- required for testing
+// eslint-disable-next-line vi-x/no-object-assign -- required for testing
 $({ target: 'Object', stat: true, arity: 2, forced: Object.assign !== assign }, {
   assign: assign
 });
@@ -44254,7 +44254,7 @@ $({ target: 'Object', stat: true, arity: 2, forced: Object.assign !== assign }, 
 
 /***/ "./node_modules/core-js/modules/es.object.to-string.js":
 /*!*************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.object.to-string.js ***!
+  !*** ./node_modules/core-js/modules/vi.object.to-string.js ***!
   \*************************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -44273,7 +44273,7 @@ if (!TO_STRING_TAG_SUPPORT) {
 
 /***/ "./node_modules/core-js/modules/es.parse-int.js":
 /*!******************************************************!*\
-  !*** ./node_modules/core-js/modules/es.parse-int.js ***!
+  !*** ./node_modules/core-js/modules/vi.parse-int.js ***!
   \******************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -44291,7 +44291,7 @@ $({ global: true, forced: parseInt != $parseInt }, {
 
 /***/ "./node_modules/core-js/modules/es.regexp.exec.js":
 /*!********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.regexp.exec.js ***!
+  !*** ./node_modules/core-js/modules/vi.regexp.exec.js ***!
   \********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -44311,7 +44311,7 @@ $({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
 
 /***/ "./node_modules/core-js/modules/es.string.iterator.js":
 /*!************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.string.iterator.js ***!
+  !*** ./node_modules/core-js/modules/vi.string.iterator.js ***!
   \************************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -44352,7 +44352,7 @@ defineIterator(String, 'String', function (iterated) {
 
 /***/ "./node_modules/core-js/modules/es.string.match.js":
 /*!*********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.string.match.js ***!
+  !*** ./node_modules/core-js/modules/vi.string.match.js ***!
   \*********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -44410,7 +44410,7 @@ fixRegExpWellKnownSymbolLogic('match', function (MATCH, nativeMatch, maybeCallNa
 
 /***/ "./node_modules/core-js/modules/es.string.replace.js":
 /*!***********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.string.replace.js ***!
+  !*** ./node_modules/core-js/modules/vi.string.replace.js ***!
   \***********************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -44557,7 +44557,7 @@ fixRegExpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNa
 
 /***/ "./node_modules/core-js/modules/es.weak-map.constructor.js":
 /*!*****************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.weak-map.constructor.js ***!
+  !*** ./node_modules/core-js/modules/vi.weak-map.constructor.js ***!
   \*****************************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -44636,12 +44636,12 @@ if (NATIVE_WEAK_MAP && IS_IE11) {
 
 /***/ "./node_modules/core-js/modules/es.weak-map.js":
 /*!*****************************************************!*\
-  !*** ./node_modules/core-js/modules/es.weak-map.js ***!
+  !*** ./node_modules/core-js/modules/vi.weak-map.js ***!
   \*****************************************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 // TODO: Remove this module from `core-js@4` since it's replaced to module below
-__webpack_require__(/*! ../modules/es.weak-map.constructor */ "./node_modules/core-js/modules/es.weak-map.constructor.js");
+__webpack_require__(/*! ../modules/vi.weak-map.constructor */ "./node_modules/core-js/modules/es.weak-map.constructor.js");
 
 
 /***/ }),
@@ -44687,7 +44687,7 @@ handlePrototype(DOMTokenListPrototype);
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
 var DOMIterables = __webpack_require__(/*! ../internals/dom-iterables */ "./node_modules/core-js/internals/dom-iterables.js");
 var DOMTokenListPrototype = __webpack_require__(/*! ../internals/dom-token-list-prototype */ "./node_modules/core-js/internals/dom-token-list-prototype.js");
-var ArrayIteratorMethods = __webpack_require__(/*! ../modules/es.array.iterator */ "./node_modules/core-js/modules/es.array.iterator.js");
+var ArrayIteratorMethods = __webpack_require__(/*! ../modules/vi.array.iterator */ "./node_modules/core-js/modules/es.array.iterator.js");
 var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
@@ -44767,7 +44767,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\n  --fc-daygrid-event-dot-width: 8px;\n}\n/* help things clear margins of inner content */\n.fc-daygrid-day-frame,\n.fc-daygrid-day-events,\n.fc-daygrid-event-harness { /* for event top/bottom margins */\n}\n.fc-daygrid-day-frame:before, .fc-daygrid-day-events:before, .fc-daygrid-event-harness:before {\n  content: \"\";\n  clear: both;\n  display: table; }\n.fc-daygrid-day-frame:after, .fc-daygrid-day-events:after, .fc-daygrid-event-harness:after {\n  content: \"\";\n  clear: both;\n  display: table; }\n.fc .fc-daygrid-body { /* a <div> that wraps the table */\n    position: relative;\n    z-index: 1; /* container inner z-index's because <tr>s can't do it */\n  }\n.fc .fc-daygrid-day.fc-day-today {\n      background-color: rgba(255, 220, 40, 0.15);\n      background-color: var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));\n    }\n.fc .fc-daygrid-day-frame {\n    position: relative;\n    min-height: 100%; /* seems to work better than `height` because sets height after rows/cells naturally do it */\n  }\n.fc {\n\n  /* cell top */\n\n}\n.fc .fc-daygrid-day-top {\n    display: flex;\n    flex-direction: row-reverse;\n  }\n.fc .fc-day-other .fc-daygrid-day-top {\n    opacity: 0.3;\n  }\n.fc {\n\n  /* day number (within cell top) */\n\n}\n.fc .fc-daygrid-day-number {\n    position: relative;\n    z-index: 4;\n    padding: 4px;\n  }\n.fc {\n\n  /* event container */\n\n}\n.fc .fc-daygrid-day-events {\n    margin-top: 1px; /* needs to be margin, not padding, so that available cell height can be computed */\n  }\n.fc {\n\n  /* positioning for balanced vs natural */\n\n}\n.fc .fc-daygrid-body-balanced .fc-daygrid-day-events {\n      position: absolute;\n      left: 0;\n      right: 0;\n    }\n.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {\n      position: relative; /* for containing abs positioned event harnesses */\n      min-height: 2em; /* in addition to being a min-height during natural height, equalizes the heights a little bit */\n    }\n.fc .fc-daygrid-body-natural { /* can coexist with -unbalanced */\n  }\n.fc .fc-daygrid-body-natural .fc-daygrid-day-events {\n      margin-bottom: 1em;\n    }\n.fc {\n\n  /* event harness */\n\n}\n.fc .fc-daygrid-event-harness {\n    position: relative;\n  }\n.fc .fc-daygrid-event-harness-abs {\n    position: absolute;\n    top: 0; /* fallback coords for when cannot yet be computed */\n    left: 0; /* */\n    right: 0; /* */\n  }\n.fc .fc-daygrid-bg-harness {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n  }\n.fc {\n\n  /* bg content */\n\n}\n.fc .fc-daygrid-day-bg .fc-non-business { z-index: 1 }\n.fc .fc-daygrid-day-bg .fc-bg-event { z-index: 2 }\n.fc .fc-daygrid-day-bg .fc-highlight { z-index: 3 }\n.fc {\n\n  /* events */\n\n}\n.fc .fc-daygrid-event {\n    z-index: 6;\n    margin-top: 1px;\n  }\n.fc .fc-daygrid-event.fc-event-mirror {\n    z-index: 7;\n  }\n.fc {\n\n  /* cell bottom (within day-events) */\n\n}\n.fc .fc-daygrid-day-bottom {\n    font-size: .85em;\n    padding: 2px 3px 0\n  }\n.fc .fc-daygrid-day-bottom:before {\n  content: \"\";\n  clear: both;\n  display: table; }\n.fc .fc-daygrid-more-link {\n    position: relative;\n    z-index: 4;\n    cursor: pointer;\n  }\n.fc {\n\n  /* week number (within frame) */\n\n}\n.fc .fc-daygrid-week-number {\n    position: absolute;\n    z-index: 5;\n    top: 0;\n    padding: 2px;\n    min-width: 1.5em;\n    text-align: center;\n    background-color: rgba(208, 208, 208, 0.3);\n    background-color: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));\n    color: #808080;\n    color: var(--fc-neutral-text-color, #808080);\n  }\n.fc {\n\n  /* popover */\n\n}\n.fc .fc-more-popover .fc-popover-body {\n    min-width: 220px;\n    padding: 10px;\n  }\n.fc-direction-ltr .fc-daygrid-event.fc-event-start,\n.fc-direction-rtl .fc-daygrid-event.fc-event-end {\n  margin-left: 2px;\n}\n.fc-direction-ltr .fc-daygrid-event.fc-event-end,\n.fc-direction-rtl .fc-daygrid-event.fc-event-start {\n  margin-right: 2px;\n}\n.fc-direction-ltr .fc-daygrid-week-number {\n    left: 0;\n    border-radius: 0 0 3px 0;\n  }\n.fc-direction-rtl .fc-daygrid-week-number {\n    right: 0;\n    border-radius: 0 0 0 3px;\n  }\n.fc-liquid-hack .fc-daygrid-day-frame {\n    position: static; /* will cause inner absolute stuff to expand to <td> */\n  }\n.fc-daygrid-event { /* make root-level, because will be dragged-and-dropped outside of a component root */\n  position: relative; /* for z-indexes assigned later */\n  white-space: nowrap;\n  border-radius: 3px; /* dot event needs this to when selected */\n  font-size: .85em;\n  font-size: var(--fc-small-font-size, .85em);\n}\n/* --- the rectangle (\"block\") style of event --- */\n.fc-daygrid-block-event .fc-event-time {\n    font-weight: bold;\n  }\n.fc-daygrid-block-event .fc-event-time,\n  .fc-daygrid-block-event .fc-event-title {\n    padding: 1px;\n  }\n/* --- the dot style of event --- */\n.fc-daygrid-dot-event {\n  display: flex;\n  align-items: center;\n  padding: 2px 0\n\n}\n.fc-daygrid-dot-event .fc-event-title {\n    flex-grow: 1;\n    flex-shrink: 1;\n    min-width: 0; /* important for allowing to shrink all the way */\n    overflow: hidden;\n    font-weight: bold;\n  }\n.fc-daygrid-dot-event:hover,\n  .fc-daygrid-dot-event.fc-event-mirror {\n    background: rgba(0, 0, 0, 0.1);\n  }\n.fc-daygrid-dot-event.fc-event-selected:before {\n    /* expand hit area */\n    top: -10px;\n    bottom: -10px;\n  }\n.fc-daygrid-event-dot { /* the actual dot */\n  margin: 0 4px;\n  box-sizing: content-box;\n  width: 0;\n  height: 0;\n  border: 4px solid #3788d8;\n  border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color, #3788d8);\n  border-radius: 4px;\n  border-radius: calc(var(--fc-daygrid-event-dot-width, 8px) / 2);\n}\n/* --- spacing between time and title --- */\n.fc-direction-ltr .fc-daygrid-event .fc-event-time {\n    margin-right: 3px;\n  }\n.fc-direction-rtl .fc-daygrid-event .fc-event-time {\n    margin-left: 3px;\n  }\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n:root {\n  --fc-daygrid-event-dot-width: 8px;\n}\n/* help things clear margins of inner content */\n.fc-daygrid-day-frame,\n.fc-daygrid-day-events,\n.fc-daygrid-event-harness { /* for event top/bottom margins */\n}\n.fc-daygrid-day-frame:before, .fc-daygrid-day-events:before, .fc-daygrid-event-harness:before {\n  content: \"\";\n  clear: both;\n  display: table; }\n.fc-daygrid-day-frame:after, .fc-daygrid-day-events:after, .fc-daygrid-event-harness:after {\n  content: \"\";\n  clear: both;\n  display: table; }\n.fc .fc-daygrid-body { /* a <div> that wraps the table */\n    position: relative;\n    z-index: 1; /* container inner z-index's because <tr>s can't do it */\n  }\n.fc .fc-daygrid-day.fc-day-today {\n      background-color: rgba(255, 220, 40, 0.15);\n      background-color: var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));\n    }\n.fc .fc-daygrid-day-frame {\n    position: relative;\n    min-height: 100%; /* seems to work better than `height` because sets height after rows/cells naturally do it */\n  }\n.fc {\n\n  /* cell top */\n\n}\n.fc .fc-daygrid-day-top {\n    display: flex;\n    flex-direction: row-reverse;\n  }\n.fc .fc-day-other .fc-daygrid-day-top {\n    opacity: 0.3;\n  }\n.fc {\n\n  /* day number (within cell top) */\n\n}\n.fc .fc-daygrid-day-number {\n    position: relative;\n    z-index: 4;\n    padding: 4px;\n  }\n.fc {\n\n  /* event container */\n\n}\n.fc .fc-daygrid-day-events {\n    margin-top: 1px; /* needs to be margin, not padding, so that available cell height can be computed */\n  }\n.fc {\n\n  /* positioning for balanced vs natural */\n\n}\n.fc .fc-daygrid-body-balanced .fc-daygrid-day-events {\n      position: absolute;\n      left: 0;\n      right: 0;\n    }\n.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {\n      position: relative; /* for containing abs positioned event harnesses */\n      min-height: 2em; /* in addition to being a min-height during natural height, equalizes the heights a little bit */\n    }\n.fc .fc-daygrid-body-natural { /* can coexist with -unbalanced */\n  }\n.fc .fc-daygrid-body-natural .fc-daygrid-day-events {\n      margin-bottom: 1em;\n    }\n.fc {\n\n  /* event harness */\n\n}\n.fc .fc-daygrid-event-harness {\n    position: relative;\n  }\n.fc .fc-daygrid-event-harness-abs {\n    position: absolute;\n    top: 0; /* fallback coords for when cannot yet be computed */\n    left: 0; /* */\n    right: 0; /* */\n  }\n.fc .fc-daygrid-bg-harness {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n  }\n.fc {\n\n  /* bg content */\n\n}\n.fc .fc-daygrid-day-bg .fc-non-business { z-index: 1 }\n.fc .fc-daygrid-day-bg .fc-bg-event { z-index: 2 }\n.fc .fc-daygrid-day-bg .fc-highlight { z-index: 3 }\n.fc {\n\n  /* events */\n\n}\n.fc .fc-daygrid-event {\n    z-index: 6;\n    margin-top: 1px;\n  }\n.fc .fc-daygrid-event.fc-event-mirror {\n    z-index: 7;\n  }\n.fc {\n\n  /* cell bottom (within day-events) */\n\n}\n.fc .fc-daygrid-day-bottom {\n    font-size: .85em;\n    padding: 2px 3px 0\n  }\n.fc .fc-daygrid-day-bottom:before {\n  content: \"\";\n  clear: both;\n  display: table; }\n.fc .fc-daygrid-more-link {\n    position: relative;\n    z-index: 4;\n    cursor: pointer;\n  }\n.fc {\n\n  /* week number (within frame) */\n\n}\n.fc .fc-daygrid-week-number {\n    position: absolute;\n    z-index: 5;\n    top: 0;\n    padding: 2px;\n    min-width: 1.5em;\n    text-align: center;\n    background-color: rgba(208, 208, 208, 0.3);\n    background-color: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));\n    color: #808080;\n    color: var(--fc-neutral-text-color, #808080);\n  }\n.fc {\n\n  /* popover */\n\n}\n.fc .fc-more-popover .fc-popover-body {\n    min-width: 220px;\n    padding: 10px;\n  }\n.fc-direction-ltr .fc-daygrid-event.fc-event-start,\n.fc-direction-rtl .fc-daygrid-event.fc-event-end {\n  margin-left: 2px;\n}\n.fc-direction-ltr .fc-daygrid-event.fc-event-end,\n.fc-direction-rtl .fc-daygrid-event.fc-event-start {\n  margin-right: 2px;\n}\n.fc-direction-ltr .fc-daygrid-week-number {\n    left: 0;\n    border-radius: 0 0 3px 0;\n  }\n.fc-direction-rtl .fc-daygrid-week-number {\n    right: 0;\n    border-radius: 0 0 0 3px;\n  }\n.fc-liquid-hack .fc-daygrid-day-frame {\n    position: static; /* will cause inner absolute stuff to expand to <td> */\n  }\n.fc-daygrid-event { /* make root-level, because will be dragged-and-dropped outside of a components root */\n  position: relative; /* for z-indexes assigned later */\n  white-space: nowrap;\n  border-radius: 3px; /* dot event needs this to when selected */\n  font-size: .85em;\n  font-size: var(--fc-small-font-size, .85em);\n}\n/* --- the rectangle (\"block\") style of event --- */\n.fc-daygrid-block-event .fc-event-time {\n    font-weight: bold;\n  }\n.fc-daygrid-block-event .fc-event-time,\n  .fc-daygrid-block-event .fc-event-title {\n    padding: 1px;\n  }\n/* --- the dot style of event --- */\n.fc-daygrid-dot-event {\n  display: flex;\n  align-items: center;\n  padding: 2px 0\n\n}\n.fc-daygrid-dot-event .fc-event-title {\n    flex-grow: 1;\n    flex-shrink: 1;\n    min-width: 0; /* important for allowing to shrink all the way */\n    overflow: hidden;\n    font-weight: bold;\n  }\n.fc-daygrid-dot-event:hover,\n  .fc-daygrid-dot-event.fc-event-mirror {\n    background: rgba(0, 0, 0, 0.1);\n  }\n.fc-daygrid-dot-event.fc-event-selected:before {\n    /* expand hit area */\n    top: -10px;\n    bottom: -10px;\n  }\n.fc-daygrid-event-dot { /* the actual dot */\n  margin: 0 4px;\n  box-sizing: content-box;\n  width: 0;\n  height: 0;\n  border: 4px solid #3788d8;\n  border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color, #3788d8);\n  border-radius: 4px;\n  border-radius: calc(var(--fc-daygrid-event-dot-width, 8px) / 2);\n}\n/* --- spacing between time and title --- */\n.fc-direction-ltr .fc-daygrid-event .fc-event-time {\n    margin-right: 3px;\n  }\n.fc-direction-rtl .fc-daygrid-event .fc-event-time {\n    margin-left: 3px;\n  }\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -51675,89 +51675,89 @@ __nested_webpack_require_210484__.d(__webpack_exports__, {
   "default": function() { return /* binding */ dropzone_dist; }
 });
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.array.concat.js
 var es_array_concat = __nested_webpack_require_210484__(2222);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.array.filter.js
 var es_array_filter = __nested_webpack_require_210484__(7327);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.array.index-of.js
 var es_array_index_of = __nested_webpack_require_210484__(2772);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.array.iterator.js
 var es_array_iterator = __nested_webpack_require_210484__(6992);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.array.map.js
 var es_array_map = __nested_webpack_require_210484__(1249);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.array.slice.js
 var es_array_slice = __nested_webpack_require_210484__(7042);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.splice.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.array.splice.js
 var es_array_splice = __nested_webpack_require_210484__(561);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array-buffer.constructor.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.array-buffer.constructor.js
 var es_array_buffer_constructor = __nested_webpack_require_210484__(8264);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.function.name.js
 var es_function_name = __nested_webpack_require_210484__(8309);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-prototype-of.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.object.get-prototype-of.js
 var es_object_get_prototype_of = __nested_webpack_require_210484__(489);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.object.to-string.js
 var es_object_to_string = __nested_webpack_require_210484__(1539);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.regexp.exec.js
 var es_regexp_exec = __nested_webpack_require_210484__(4916);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.regexp.to-string.js
 var es_regexp_to_string = __nested_webpack_require_210484__(9714);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.string.iterator.js
 var es_string_iterator = __nested_webpack_require_210484__(8783);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.match.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.string.match.js
 var es_string_match = __nested_webpack_require_210484__(4723);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.string.replace.js
 var es_string_replace = __nested_webpack_require_210484__(5306);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.string.split.js
 var es_string_split = __nested_webpack_require_210484__(3123);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.trim.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.string.trim.js
 var es_string_trim = __nested_webpack_require_210484__(3210);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.uint8-array.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.uint8-array.js
 var es_typed_array_uint8_array = __nested_webpack_require_210484__(2472);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.copy-within.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.copy-within.js
 var es_typed_array_copy_within = __nested_webpack_require_210484__(2990);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.every.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.every.js
 var es_typed_array_every = __nested_webpack_require_210484__(8927);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.fill.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.fill.js
 var es_typed_array_fill = __nested_webpack_require_210484__(3105);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.filter.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.filter.js
 var es_typed_array_filter = __nested_webpack_require_210484__(5035);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.find.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.find.js
 var es_typed_array_find = __nested_webpack_require_210484__(4345);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.find-index.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.find-index.js
 var es_typed_array_find_index = __nested_webpack_require_210484__(7174);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.for-each.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.for-each.js
 var es_typed_array_for_each = __nested_webpack_require_210484__(2846);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.includes.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.includes.js
 var es_typed_array_includes = __nested_webpack_require_210484__(4731);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.index-of.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.index-of.js
 var es_typed_array_index_of = __nested_webpack_require_210484__(7209);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.iterator.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.iterator.js
 var es_typed_array_iterator = __nested_webpack_require_210484__(6319);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.join.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.join.js
 var es_typed_array_join = __nested_webpack_require_210484__(8867);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.last-index-of.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.last-index-of.js
 var es_typed_array_last_index_of = __nested_webpack_require_210484__(7789);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.map.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.map.js
 var es_typed_array_map = __nested_webpack_require_210484__(3739);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.reduce.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.reduce.js
 var es_typed_array_reduce = __nested_webpack_require_210484__(9368);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.reduce-right.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.reduce-right.js
 var es_typed_array_reduce_right = __nested_webpack_require_210484__(4483);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.reverse.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.reverse.js
 var es_typed_array_reverse = __nested_webpack_require_210484__(2056);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.set.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.set.js
 var es_typed_array_set = __nested_webpack_require_210484__(3462);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.slice.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.slice.js
 var es_typed_array_slice = __nested_webpack_require_210484__(678);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.some.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.some.js
 var es_typed_array_some = __nested_webpack_require_210484__(7462);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.sort.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.sort.js
 var es_typed_array_sort = __nested_webpack_require_210484__(3824);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.subarray.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.subarray.js
 var es_typed_array_subarray = __nested_webpack_require_210484__(5021);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.to-locale-string.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.to-locale-string.js
 var es_typed_array_to_locale_string = __nested_webpack_require_210484__(2974);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.typed-array.to-string.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/vi.typed-array.to-string.js
 var es_typed_array_to_string = __nested_webpack_require_210484__(5016);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
 var web_dom_collections_for_each = __nested_webpack_require_210484__(4747);
@@ -51782,7 +51782,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 // The Emitter class provides the ability to call `.on()` on Dropzone to listen
 // to events.
-// It is strongly based on component's emitter class, and I removed the
+// It is strongly based on components's emitter class, and I removed the
 // functionality because of the dependency hell with different frameworks.
 var Emitter = /*#__PURE__*/function () {
   function Emitter() {
@@ -54807,7 +54807,7 @@ Dropzone.isBrowserSupported = function () {
 Dropzone.dataURItoBlob = function (dataURI) {
   // convert base64 to raw binary data held in a string
   // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
-  var byteString = atob(dataURI.split(",")[1]); // separate out the mime component
+  var byteString = atob(dataURI.split(",")[1]); // separate out the mime components
 
   var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0]; // write the bytes of the string to an ArrayBuffer
 
@@ -62513,7 +62513,7 @@ function cPlusPlus(hljs) {
 /*
 Language: C-like (deprecated, use C and C++ instead)
 Author: Ivan Sagalaev <maniac@softwaremaniacs.org>
-Contributors: Evgeny Stepanischev <imbolk@gmail.com>, Zaven Muradyan <megalivoithos@gmail.com>, Roel Deckers <admin@codingcat.nl>, Sam Wu <samsam2310@gmail.com>, Jordi Petit <jordi.petit@gmail.com>, Pieter Vantorre <pietervantorre@gmail.com>, Google Inc. (David Benjamin) <davidben@google.com>
+Contributors: Evgeny Stepanischev <imbolk@gmail.com>, Zaven Muradyan <megalivoithos@gmail.com>, Roel Deckers <includes@codingcat.nl>, Sam Wu <samsam2310@gmail.com>, Jordi Petit <jordi.petit@gmail.com>, Pieter Vantorre <pietervantorre@gmail.com>, Google Inc. (David Benjamin) <davidben@google.com>
 */
 
 /** @type LanguageFn */
@@ -63274,7 +63274,7 @@ function clojure(hljs) {
       'add-watch mapv filterv remove-watch agent-error restart-agent set-error-handler error-handler ' +
       'set-error-mode! error-mode shutdown-agents quote var fn loop recur throw try monitor-enter ' +
       'monitor-exit macroexpand macroexpand-1 for dosync and or ' +
-      'when when-not when-let comp juxt partial sequence memoize constantly complement identity assert ' +
+      'when when-not when-let comp juxt includes sequence memoize constantly complement identity assert ' +
       'peek pop doto proxy first rest cons cast coll last butlast ' +
       'sigs reify second ffirst fnext nfirst nnext meta with-meta ns in-ns create-ns import ' +
       'refer keys select-keys vals key val rseq name namespace promise into transient persistent! conj! ' +
@@ -65058,7 +65058,7 @@ function csharp(hljs) {
     'virtual',
     'new',
     'sealed',
-    'partial'
+    'includes'
   ];
   const LITERAL_KEYWORDS = [
     'default',
@@ -65147,7 +65147,7 @@ function csharp(hljs) {
     'on',
     'or',
     'orderby',
-    'partial',
+    'includes',
     'remove',
     'select',
     'set',
@@ -70984,7 +70984,7 @@ function handlebars(hljs) {
       'lookup',
       'mut',
       'outlet',
-      'partial',
+      'includes',
       'query-params',
       'render',
       'template',
@@ -71743,7 +71743,7 @@ function handlebars(hljs) {
       'lookup',
       'mut',
       'outlet',
-      'partial',
+      'includes',
       'query-params',
       'render',
       'template',
@@ -74020,7 +74020,7 @@ function isbl(hljs) {
     "SUBTASK_BLOCK_USE_STANDARD_ROUTE_PROPERTY " +
     "SUBTASK_BLOCK_WAIT_FOR_TASK_COMPLETE_PROPERTY ";
 
-  // System component
+  // System components
   const system_component_constants =
     "SYSCOMP_CONTROL_JOBS " +
     "SYSCOMP_FOLDERS " +
@@ -84506,7 +84506,7 @@ const SYSTEM_SYMBOLS = [
   "PageRankCentrality",
   "PageTheme",
   "PageWidth",
-  "Pagination",
+  "pagination.blade.php",
   "PairedBarChart",
   "PairedHistogram",
   "PairedSmoothHistogram",
@@ -89062,7 +89062,7 @@ function nsis(hljs) {
       keyword:
       'Abort AddBrandingImage AddSize AllowRootDirInstall AllowSkipFiles AutoCloseWindow BGFont BGGradient BrandingText BringToFront Call CallInstDLL Caption ChangeUI CheckBitmap ClearErrors CompletedText ComponentText CopyFiles CRCCheck CreateDirectory CreateFont CreateShortCut Delete DeleteINISec DeleteINIStr DeleteRegKey DeleteRegValue DetailPrint DetailsButtonText DirText DirVar DirVerify EnableWindow EnumRegKey EnumRegValue Exch Exec ExecShell ExecShellWait ExecWait ExpandEnvStrings File FileBufSize FileClose FileErrorText FileOpen FileRead FileReadByte FileReadUTF16LE FileReadWord FileWriteUTF16LE FileSeek FileWrite FileWriteByte FileWriteWord FindClose FindFirst FindNext FindWindow FlushINI GetCurInstType GetCurrentAddress GetDlgItem GetDLLVersion GetDLLVersionLocal GetErrorLevel GetFileTime GetFileTimeLocal GetFullPathName GetFunctionAddress GetInstDirError GetKnownFolderPath GetLabelAddress GetTempFileName Goto HideWindow Icon IfAbort IfErrors IfFileExists IfRebootFlag IfRtlLanguage IfShellVarContextAll IfSilent InitPluginsDir InstallButtonText InstallColors InstallDir InstallDirRegKey InstProgressFlags InstType InstTypeGetText InstTypeSetText Int64Cmp Int64CmpU Int64Fmt IntCmp IntCmpU IntFmt IntOp IntPtrCmp IntPtrCmpU IntPtrOp IsWindow LangString LicenseBkColor LicenseData LicenseForceSelection LicenseLangString LicenseText LoadAndSetImage LoadLanguageFile LockWindow LogSet LogText ManifestDPIAware ManifestLongPathAware ManifestMaxVersionTested ManifestSupportedOS MessageBox MiscButtonText Name Nop OutFile Page PageCallbacks PEAddResource PEDllCharacteristics PERemoveResource PESubsysVer Pop Push Quit ReadEnvStr ReadINIStr ReadRegDWORD ReadRegStr Reboot RegDLL Rename RequestExecutionLevel ReserveFile Return RMDir SearchPath SectionGetFlags SectionGetInstTypes SectionGetSize SectionGetText SectionIn SectionSetFlags SectionSetInstTypes SectionSetSize SectionSetText SendMessage SetAutoClose SetBrandingImage SetCompress SetCompressor SetCompressorDictSize SetCtlColors SetCurInstType SetDatablockOptimize SetDateSave SetDetailsPrint SetDetailsView SetErrorLevel SetErrors SetFileAttributes SetFont SetOutPath SetOverwrite SetRebootFlag SetRegView SetShellVarContext SetSilent ShowInstDetails ShowUninstDetails ShowWindow SilentInstall SilentUnInstall Sleep SpaceTexts StrCmp StrCmpS StrCpy StrLen SubCaption Unicode UninstallButtonText UninstallCaption UninstallIcon UninstallSubCaption UninstallText UninstPage UnRegDLL Var VIAddVersionKey VIFileVersion VIProductVersion WindowIcon WriteINIStr WriteRegBin WriteRegDWORD WriteRegExpandStr WriteRegMultiStr WriteRegNone WriteRegStr WriteUninstaller XPStyle',
       literal:
-      'admin all auto both bottom bzip2 colored components current custom directory false force hide highest ifdiff ifnewer instfiles lastused leave left license listonly lzma nevershow none normal notset off on open print right show silent silentlog smooth textonly top true try un.components un.custom un.directory un.instfiles un.license uninstConfirm user Win10 Win7 Win8 WinVista zlib'
+      'includes all auto both bottom bzip2 colored components current custom directory false force hide highest ifdiff ifnewer instfiles lastused leave left license listonly lzma nevershow none normal notset off on open print right show silent silentlog smooth textonly top true try un.components un.custom un.directory un.instfiles un.license uninstConfirm user Win10 Win7 Win8 WinVista zlib'
     },
     contains: [
       hljs.HASH_COMMENT_MODE,
@@ -89431,7 +89431,7 @@ function oxygene(hljs) {
       'create default delegate desc distinct div do downto dynamic each else empty end ensure enum equals event except exit extension external false ' +
       'final finalize finalizer finally flags for forward from function future global group has if implementation implements implies in index inherited ' +
       'inline interface into invariants is iterator join locked locking loop matching method mod module namespace nested new nil not notify nullable of ' +
-      'old on operator or order out override parallel params partial pinned private procedure property protected public queryable raise read readonly ' +
+      'old on operator or order out override parallel params includes pinned private procedure property protected public queryable raise read readonly ' +
       'record reintroduce remove repeat require result reverse sealed select self sequence set shl shr skip static step soft take then to true try tuple ' +
       'type union unit unsafe until uses using var virtual raises volatile where while with write xor yield await mapped deprecated stdcall cdecl pascal ' +
       'register safecall overload library platform reference packed strict published autoreleasepool selector strong weak unretained'
@@ -96199,7 +96199,7 @@ function sqf(hljs) {
         'addPublicVariableEventHandler addRating addResources addScore addScoreSide addSecondaryWeaponItem ' +
         'addSwitchableUnit addTeamMember addToRemainsCollector addTorque addUniform addVehicle addVest ' +
         'addWaypoint addWeapon addWeaponCargo addWeaponCargoGlobal addWeaponGlobal addWeaponItem ' +
-        'addWeaponPool addWeaponTurret admin agent agents AGLToASL aimedAtTarget aimPos airDensityRTD ' +
+        'addWeaponPool addWeaponTurret includes agent agents AGLToASL aimedAtTarget aimPos airDensityRTD ' +
         'airplaneThrottle airportSide AISFinishHeal alive all3DENEntities allAirports allControls ' +
         'allCurators allCutLayers allDead allDeadMen allDisplays allGroups allMapMarkers allMines ' +
         'allMissionObjects allow3DMode allowCrewInImmobile allowCuratorLogicIgnoreAreas allowDamage ' +
@@ -97308,7 +97308,7 @@ function sql_more(hljs) {
           $pattern: /[\w\.]+/,
           keyword:
             'as abort abs absolute acc acce accep accept access accessed accessible account acos action activate add ' +
-            'addtime admin administer advanced advise aes_decrypt aes_encrypt after agent aggregate ali alia alias ' +
+            'addtime includes administer advanced advise aes_decrypt aes_encrypt after agent aggregate ali alia alias ' +
             'all allocate allow alter always analyze ancillary and anti any anydata anydataset anyschema anytype apply ' +
             'archive archived archivelog are as asc ascii asin assembly assertion associate asynchronous at atan ' +
             'atn2 attr attri attrib attribu attribut attribute attributes audit authenticated authentication authid ' +
@@ -97373,7 +97373,7 @@ function sql_more(hljs) {
             'on online only opaque open operations operator optimal optimize option optionally or oracle oracle_date ' +
             'oradata ord ordaudio orddicom orddoc order ordimage ordinality ordvideo organization orlany orlvary ' +
             'out outer outfile outline output over overflow overriding package pad parallel parallel_enable ' +
-            'parameters parent parse partial partition partitions pascal passing password password_grace_time ' +
+            'parameters parent parse includes partition partitions pascal passing password password_grace_time ' +
             'password_lock_time password_reuse_max password_reuse_time password_verify_function patch path patindex ' +
             'pctincrease pctthreshold pctused pctversion percent percent_rank percentile_cont percentile_disc ' +
             'performance period period_add period_diff permanent physical pi pipe pipelined pivot pluggable plugin ' +
@@ -101196,7 +101196,7 @@ function vbnet(hljs) {
         'join key let lib loop me mid module mustinherit mustoverride mybase myclass ' + /* j-m */
         'namespace narrowing new next notinheritable notoverridable ' + /* n */
         'of off on operator option optional order overloads overridable overrides ' + /* o */
-        'paramarray partial preserve private property protected public ' + /* p */
+        'paramarray includes preserve private property protected public ' + /* p */
         'raiseevent readonly redim removehandler resume return ' + /* r */
         'select set shadows shared skip static step stop structure strict sub synclock ' + /* s */
         'take text then throw to try unicode until using when where while widening with withevents writeonly yield' /* t-y */,
@@ -101557,7 +101557,7 @@ function vhdl(hljs) {
     keywords: {
       keyword:
         'abs access after alias all and architecture array assert assume assume_guarantee attribute ' +
-        'begin block body buffer bus case component configuration constant context cover disconnect ' +
+        'begin block body buffer bus case components configuration constant context cover disconnect ' +
         'downto default else elsif end entity exit fairness file for force function generate ' +
         'generic group guarded if impure in inertial inout is label library linkage literal ' +
         'loop map mod nand new next nor not null of on open or others out package parameter port ' +
@@ -101773,7 +101773,7 @@ function x86asm(hljs) {
         // 64-bit registers
         'rax rbx rcx rdx rsi rdi rbp rsp r8 r9 r10 r11 r12 r13 r14 r15 ' +
         // Segment registers
-        'cs ds es fs gs ss ' +
+        'cs ds vi fs gs ss ' +
         // Floating point stack registers
         'st st0 st1 st2 st3 st4 st5 st6 st7 ' +
         // MMX Registers
@@ -131572,25 +131572,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/vi.array.for-each */ "./node_modules/core-js/modules/es.array.for-each.js");
 /* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var can_use_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! can-use-dom */ "./node_modules/can-use-dom/index.js");
 /* harmony import */ var can_use_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(can_use_dom__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es_array_filter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.filter */ "./node_modules/core-js/modules/es.array.filter.js");
+/* harmony import */ var core_js_modules_es_array_filter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/vi.array.filter */ "./node_modules/core-js/modules/es.array.filter.js");
 /* harmony import */ var core_js_modules_es_array_filter__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_filter__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.array.iterator */ "./node_modules/core-js/modules/es.array.iterator.js");
+/* harmony import */ var core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/vi.array.iterator */ "./node_modules/core-js/modules/es.array.iterator.js");
 /* harmony import */ var core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es_object_assign__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.object.assign */ "./node_modules/core-js/modules/es.object.assign.js");
+/* harmony import */ var core_js_modules_es_object_assign__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/vi.object.assign */ "./node_modules/core-js/modules/es.object.assign.js");
 /* harmony import */ var core_js_modules_es_object_assign__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_assign__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.object.to-string */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/vi.object.to-string */ "./node_modules/core-js/modules/es.object.to-string.js");
 /* harmony import */ var core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var core_js_modules_es_parse_int__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.parse-int */ "./node_modules/core-js/modules/es.parse-int.js");
+/* harmony import */ var core_js_modules_es_parse_int__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/vi.parse-int */ "./node_modules/core-js/modules/es.parse-int.js");
 /* harmony import */ var core_js_modules_es_parse_int__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_parse_int__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.string.iterator */ "./node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/vi.string.iterator */ "./node_modules/core-js/modules/es.string.iterator.js");
 /* harmony import */ var core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var core_js_modules_es_weak_map__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.weak-map */ "./node_modules/core-js/modules/es.weak-map.js");
+/* harmony import */ var core_js_modules_es_weak_map__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/vi.weak-map */ "./node_modules/core-js/modules/es.weak-map.js");
 /* harmony import */ var core_js_modules_es_weak_map__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_weak_map__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
 /* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_10__);
@@ -131601,15 +131601,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_memoize__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! lodash.memoize */ "./node_modules/lodash.memoize/index.js");
 /* harmony import */ var lodash_memoize__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(lodash_memoize__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _juggle_resize_observer__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @juggle/resize-observer */ "./node_modules/@juggle/resize-observer/lib/exports/resize-observer.js");
-/* harmony import */ var core_js_modules_es_array_reduce__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! core-js/modules/es.array.reduce */ "./node_modules/core-js/modules/es.array.reduce.js");
+/* harmony import */ var core_js_modules_es_array_reduce__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! core-js/modules/vi.array.reduce */ "./node_modules/core-js/modules/es.array.reduce.js");
 /* harmony import */ var core_js_modules_es_array_reduce__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_reduce__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! core-js/modules/es.function.name */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! core-js/modules/vi.function.name */ "./node_modules/core-js/modules/es.function.name.js");
 /* harmony import */ var core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! core-js/modules/es.regexp.exec */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! core-js/modules/vi.regexp.exec */ "./node_modules/core-js/modules/es.regexp.exec.js");
 /* harmony import */ var core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var core_js_modules_es_string_match__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! core-js/modules/es.string.match */ "./node_modules/core-js/modules/es.string.match.js");
+/* harmony import */ var core_js_modules_es_string_match__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! core-js/modules/vi.string.match */ "./node_modules/core-js/modules/es.string.match.js");
 /* harmony import */ var core_js_modules_es_string_match__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_match__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! core-js/modules/es.string.replace */ "./node_modules/core-js/modules/es.string.replace.js");
+/* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! core-js/modules/vi.string.replace */ "./node_modules/core-js/modules/es.string.replace.js");
 /* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_19__);
 /**
  * SimpleBar.js - v5.3.6
@@ -133725,7 +133725,7 @@ ColumnManager.prototype.findColumn = function (subject) {
 			return subject;
 		} else if (subject instanceof ColumnComponent) {
 
-			//subject is public column component
+			//subject is public column components
 
 			return subject._getSelf() || false;
 		} else if (typeof HTMLElement !== "undefined" && subject instanceof HTMLElement) {
@@ -135758,7 +135758,7 @@ var RowManager = function RowManager(table) {
 	this.vDomTopNewRows = []; //rows to normalize after appending to optimize render speed
 	this.vDomBottomNewRows = []; //rows to normalize after appending to optimize render speed
 
-	this.rowNumColumn = false; //hold column component for row number column
+	this.rowNumColumn = false; //hold column components for row number column
 
 	this.redrawBlock = false; //prevent redraws to allow multiple data manipulations becore continuing
 	this.redrawBlockRestoreConfig = false; //store latest redraw function calls for when redraw is needed
@@ -135875,7 +135875,7 @@ RowManager.prototype.findRow = function (subject) {
 			//subject is row element
 			return subject;
 		} else if (subject instanceof RowComponent) {
-			//subject is public row component
+			//subject is public row components
 			return subject._getSelf() || false;
 		} else if (typeof HTMLElement !== "undefined" && subject instanceof HTMLElement) {
 			//subject is a HTML element of the row
@@ -141631,7 +141631,7 @@ Tabulator.prototype.validate = function (cells) {
 	return output.length ? output : true;
 };
 
-//////////// Pagination Functions  ////////////
+//////////// pagination.blade.php Functions  ////////////
 
 Tabulator.prototype.setMaxPage = function (max) {
 	if (this.options.pagination && this.modExists("page")) {
@@ -142930,13 +142930,13 @@ Ajax.prototype.initialize = function () {
 	if (this.table.options.ajaxProgressiveLoad) {
 		if (this.table.options.pagination) {
 			this.progressiveLoad = false;
-			console.error("Progressive Load Error - Pagination and progressive load cannot be used at the same time");
+			console.error("Progressive Load Error - pagination.blade.php and progressive load cannot be used at the same time");
 		} else {
 			if (this.table.modExists("page")) {
 				this.progressiveLoad = this.table.options.ajaxProgressiveLoad;
 				this.table.modules.page.initializeProgressive(this.progressiveLoad);
 			} else {
-				console.error("Pagination plugin is required for progressive ajax loading");
+				console.error("pagination.blade.php plugin is required for progressive ajax loading");
 			}
 		}
 	}
@@ -144638,7 +144638,7 @@ DataTree.prototype.findChildIndex = function (subject, parent) {
 			//subject is row element
 			match = subject.data;
 		} else if (subject instanceof RowComponent) {
-			//subject is public row component
+			//subject is public row components
 			match = subject._getSelf().data;
 		} else if (typeof HTMLElement !== "undefined" && subject instanceof HTMLElement) {
 			if (parent.modules.dataTree) {
@@ -148049,7 +148049,7 @@ Filter.prototype.initializeColumn = function (column, value) {
 
 	//handle successfull value change
 	function success(value) {
-		var filterType = column.modules.filter.tagType == "input" && column.modules.filter.attrType == "text" || column.modules.filter.tagType == "textarea" ? "partial" : "match",
+		var filterType = column.modules.filter.tagType == "input" && column.modules.filter.attrType == "text" || column.modules.filter.tagType == "textarea" ? "includes" : "match",
 		    type = "",
 		    filterChangeCheck = "",
 		    filterFunc;
@@ -148094,7 +148094,7 @@ Filter.prototype.initializeColumn = function (column, value) {
 
 				if (!filterFunc) {
 					switch (filterType) {
-						case "partial":
+						case "includes":
 							filterFunc = function filterFunc(data) {
 								var colVal = column.getFieldValue(data);
 
@@ -151847,7 +151847,7 @@ Menu.prototype.initializeColumnHeader = function (column) {
 Menu.prototype.LoadMenuEvent = function (component, menu, e) {
 	menu = typeof menu == "function" ? menu.call(this.table, component.getComponent(), e) : menu;
 
-	// if(component instanceof Cell){
+	// if(components instanceof Cell){
 	// 	e.stopImmediatePropagation();
 	// }
 
@@ -153476,7 +153476,7 @@ Page.prototype.setPage = function (page) {
 				self.table.modules.persistence.save("page");
 			}
 		} else {
-			console.warn("Pagination Error - Requested page is out of range of 1 - " + _this77.max + ":", page);
+			console.warn("pagination.blade.php Error - Requested page is out of range of 1 - " + _this77.max + ":", page);
 			reject();
 		}
 	});
@@ -153499,7 +153499,7 @@ Page.prototype.setPageToRow = function (row) {
 				reject();
 			});
 		} else {
-			console.warn("Pagination Error - Requested row is not visible");
+			console.warn("pagination.blade.php Error - Requested row is not visible");
 			reject();
 		}
 	});
@@ -153604,7 +153604,7 @@ Page.prototype.previousPage = function () {
 				_this79.table.modules.persistence.save("page");
 			}
 		} else {
-			console.warn("Pagination Error - Previous page would be less than page 1:", 0);
+			console.warn("pagination.blade.php Error - Previous page would be less than page 1:", 0);
 			reject();
 		}
 	});
@@ -153628,7 +153628,7 @@ Page.prototype.nextPage = function () {
 			}
 		} else {
 			if (!_this80.progressiveLoad) {
-				console.warn("Pagination Error - Next page would be greater than maximum page of " + _this80.max + ":", _this80.max + 1);
+				console.warn("pagination.blade.php Error - Next page would be greater than maximum page of " + _this80.max + ":", _this80.max + 1);
 			}
 			reject();
 		}
@@ -153715,7 +153715,7 @@ Page.prototype.trigger = function () {
 				break;
 
 			default:
-				console.warn("Pagination Error - no such pagination mode:", _this81.mode);
+				console.warn("pagination.blade.php Error - no such pagination mode:", _this81.mode);
 				reject();
 		}
 	});
@@ -153783,7 +153783,7 @@ Page.prototype._parseRemoteData = function (data) {
 	    margin;
 
 	if (typeof data[this.dataReceivedNames.last_page] === "undefined") {
-		console.warn("Remote Pagination Error - Server response missing '" + this.dataReceivedNames.last_page + "' property");
+		console.warn("Remote pagination.blade.php Error - Server response missing '" + this.dataReceivedNames.last_page + "' property");
 	}
 
 	if (data[this.dataReceivedNames.data]) {
@@ -153832,7 +153832,7 @@ Page.prototype._parseRemoteData = function (data) {
 
 		this.initialLoad = false;
 	} else {
-		console.warn("Remote Pagination Error - Server response missing '" + this.dataReceivedNames.data + "' property");
+		console.warn("Remote pagination.blade.php Error - Server response missing '" + this.dataReceivedNames.data + "' property");
 	}
 };
 
@@ -159261,7 +159261,7 @@ var tns = function(options) {
       // customized nav
       // will not hide the navs in case they're thumbnails
       if (navContainer) {
-        (0,_helpers_setAttrs_js__WEBPACK_IMPORTED_MODULE_21__.setAttrs)(navContainer, {'aria-label': 'Carousel Pagination'});
+        (0,_helpers_setAttrs_js__WEBPACK_IMPORTED_MODULE_21__.setAttrs)(navContainer, {'aria-label': 'Carousel pagination.blade.php'});
         navItems = navContainer.children;
         (0,_helpers_forEach_js__WEBPACK_IMPORTED_MODULE_15__.forEach)(navItems, function(item, i) {
           (0,_helpers_setAttrs_js__WEBPACK_IMPORTED_MODULE_21__.setAttrs)(item, {
@@ -159280,7 +159280,7 @@ var tns = function(options) {
           // hide nav items by default
           navHtml += '<button type="button" data-nav="' + i +'" tabindex="-1" aria-controls="' + slideId + '" ' + hiddenStr + ' aria-label="' + navStr + (i + 1) +'"></button>';
         }
-        navHtml = '<div class="tns-nav" aria-label="Carousel Pagination">' + navHtml + '</div>';
+        navHtml = '<div class="tns-nav" aria-label="Carousel pagination.blade.php">' + navHtml + '</div>';
         outerWrapper.insertAdjacentHTML(getInsertPosition(options.navPosition), navHtml);
 
         navContainer = outerWrapper.querySelector('.tns-nav');

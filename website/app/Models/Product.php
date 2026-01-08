@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
 {
@@ -38,7 +39,13 @@ class Product extends Model
     }
     public function post(): BelongsTo
     {
-        return $this->belongsTo(Brand::class, 'post_id', 'id');
+        return $this->belongsTo(Post::class, 'post_id', 'id');
+    }
+    public function featuredImage(): HasOne
+    {
+        return $this->hasOne(Image::class, 'model_id', 'id')
+            ->where('model_type', self::class)
+            ->orderBy('created_at'); // Order by created_at to get the first image
     }
 
     public function orders()
@@ -50,7 +57,7 @@ class Product extends Model
 
     public function images()
     {
-        return $this->hasMany(Image::class, 'model_id','id')->where('model_type', 'product');
+        return $this->hasMany(Image::class, 'model_id','id')->where('model_type', self::class);
     }
 
     public function deleteImages()

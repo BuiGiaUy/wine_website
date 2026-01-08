@@ -1,9 +1,10 @@
-@extends('layouts.adminPartialLayout')
+@extends('admin.layouts.app')
 @section('title', 'Add Category')
 @section('breadcrumb')
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('admin.category.index', $model_type) }}">Categories {{ $model_type }}</a></li>
+            <li class="breadcrumb-item"><a
+                    href="{{ route('admin.category.index', $model_type) }}">Categories {{ $model_type }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">Add Category</li>
         </ol>
     </nav>
