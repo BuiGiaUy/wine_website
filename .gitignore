@@ -1,0 +1,96 @@
+# ==========================================
+# Wine Website - Git Ignore Configuration
+# ==========================================
+
+# ==========================================
+# IDE & Editor
+# ==========================================
+.idea/
+.vscode/
+.fleet/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# ==========================================
+# OS Generated Files
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# Laravel Application (website/)
+# ==========================================
+website/vendor/
+website/node_modules/
+website/.env
+website/.env.backup
+website/.env.production
+website/.env.*.local
+website/storage/*.key
+website/storage/logs/*.log
+website/storage/framework/cache/data/*
+website/storage/framework/sessions/*
+website/storage/framework/views/*
+website/storage/debugbar/
+website/bootstrap/cache/*
+!website/bootstrap/cache/.gitkeep
+website/public/build/
+website/public/hot
+website/public/storage
+website/.phpunit.cache
+website/.phpunit.result.cache
+
+# ==========================================
+# Composer
+# ==========================================
+composer.phar
+
+# ==========================================
+# NPM & Yarn
+# ==========================================
+npm-debug.log
+yarn-error.log
+yarn.lock
+package-lock.json
+
+# ==========================================
+# Testing
+# ==========================================
+.phpunit.result.cache
+coverage/
+.coverage
+
+# ==========================================
+# Homestead / Vagrant
+# ==========================================
+Homestead.json
+Homestead.yaml
+auth.json
+
+# ==========================================
+# Docker (optional)
+# ==========================================
+docker-compose.override.yml
+
+# ==========================================
+# Logs & Debug
+# ==========================================
+*.log
+logs/
+
+# ==========================================
+# Temporary Files
+# ==========================================
+*.tmp
+*.temp
+*.bak
+*.backup
