@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
+    use HasFactory;
+
     protected $table = 'categories';
     protected $fillable = ['id','name', 'slug', 'icon_path', 'parent_id', 'model_type'];
     protected $hidden = ['created_at', 'updated_at'];
