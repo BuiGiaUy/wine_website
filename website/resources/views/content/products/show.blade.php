@@ -243,7 +243,7 @@
                                                     <div class="uk-text-small">
                                                         <div class="pa-info__label">Nhà sản xuất</div>
                                                         <div class="uk-text-bold">
-                                                            <p><a href="{{ route('brands.show', $product->brand->id) }}"
+                                                            <p><a href="{{ route('brands.show', $product->brand->slug) }}"
                                                                   class="btn-wine " rel="tag">{{ $product->brand->name }}</a></p>
                                                         </div>
                                                     </div>
@@ -253,12 +253,12 @@
                                                     <div class="">
                                                         <img
                                                             src="https://winecellar.vn/wp-content/themes/winecellarvn/assets/icons/svg/pa_quoc-gia.svg"
-                                                            alt="Quốc gia">
+                                                            alt="Category">
                                                     </div>
                                                     <div class="uk-text-small">
-                                                        <div class="pa-info__label">Quốc gia</div>
+                                                        <div class="pa-info__label">Category</div>
                                                         <div class="uk-text-bold">
-                                                            <p>{{ $product->country }}</p>
+                                                            <p>{{ $product->category->name ?? 'N/A' }}</p>
                                                         </div>
                                                     </div>
                                                 </div>

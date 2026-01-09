@@ -237,21 +237,15 @@
                 <h2 class="uk-text-large" style="color: #990d23">DANH MỤC SẢN PHẨM ĐA ĐẠNG & VÔ VÀN KHÁM PHÁ</h2>
             </div>
             <div class="uk-child-width-1-1 uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
-                @foreach($posts as $post)
+                @foreach($categories as $category)
                     <div class="">
                         <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card"
                              style="background: #f5ecdb;">
-                            <a href="">
-                                {{--                                {{ route('post.show', ['slug' => $post->slug]) }}--}}
-{{--                                @if ($post->featuredImage)--}}
-{{--                                    <img src="{{ asset($post->featuredImage->path) }}" alt="{{ $post->title }}"--}}
-{{--                                         class="uk-width-1-1">--}}
-{{--                                @else--}}
-                                    <img
-                                        src="https://winecellar.vn/wp-content/uploads/2024/05/ruou-vang-nhap-khau-home.jpg"
-                                        alt="{{ $post->title }}" class="uk-width-1-1">
-{{--                                @endif--}}
-                                <h3 class=" uk-card-title uk-text-default uk-text-center">{{ $post->name }}</h3>
+                            <a href="{{ route('products.category', ['slug' => $category->slug]) }}">
+                                <img
+                                    src="https://winecellar.vn/wp-content/uploads/2024/05/ruou-vang-nhap-khau-home.jpg"
+                                    alt="{{ $category->name }}" class="uk-width-1-1">
+                                <h3 class="uk-card-title uk-text-default uk-text-center">{{ $category->name }}</h3>
                             </a>
                         </div>
                     </div>
@@ -322,15 +316,9 @@
                     <div class="">
                         <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card"
                              style="background: #f5ecdb;">
-                            <a href="">
-                                {{--                                <a href="{{ route('brand.show', ['slug' => $brand->slug]) }}">--}}
-{{--                                @if ($post->featuredImage)--}}
-{{--                                    <img src="{{ asset($brand->path) }}" alt="{{ $brand->name }}" uk-cover--}}
-{{--                                         class="uk-width-1-1">--}}
-{{--                                @else--}}
-                                    <img src="https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png"
-                                         alt="{{ $post->title }}" class="uk-width-1-1">
-{{--                                @endif--}}
+                            <a href="{{ route('brands.show', ['slug' => $brand->slug]) }}">
+                                <img src="https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png"
+                                     alt="{{ $brand->name }}" class="uk-width-1-1">
                                 <h3 class="uk-text-default uk-text-center"
                                     style="color: #0A0A0A">{{ $brand->name }}</h3>
                             </a>
