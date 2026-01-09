@@ -394,7 +394,7 @@
                                                     {{--                                                   <a href="{{ route('posts.show', [ 'slug' =>  $product->post->slug]) }}"--}}
                                                     {{--                                                      rel="tag">{{ $product->post->name }}</a>--}}
                                                     {{--                                               </li>--}}
-                                                    <li><i class="fas fa-globe-europe"></i> {{ $product->origin }}</li>
+                                                    <li><i class="fas fa-globe-europe"></i> {{ $product->category->name ?? 'N/A' }}</li>
                                                     <li>
                                                         <i class="fas fa-percentage"></i>
                                                         {{ $product->discount_percent }}% ABV*

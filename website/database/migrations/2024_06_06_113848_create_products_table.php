@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained('categories', 'id')->onDelete('cascade');
             $table->foreignId('brand_id')->constrained('brands', 'id')->onDelete('cascade');
-            $table->foreignId('post_id')->constrained('posts', 'id')->onDelete('cascade');
+            $table->foreignId('post_id')->nullable()->constrained('posts', 'id')->onDelete('cascade');
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('barcode')->unique();
