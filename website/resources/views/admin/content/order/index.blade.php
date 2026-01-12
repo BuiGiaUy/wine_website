@@ -60,9 +60,21 @@
                 @foreach ($orders as $order)
                     <tr class="intro-x">
                         <td class="whitespace-nowrap">{{ $order->id }}</td>
-                        <td class="whitespace-nowrap">{{ $order->user->name }}</td>
-                        <td class="whitespace-nowrap">{{ $order->total_amount }}</td>
-                        <td class="whitespace-nowrap">{{ $order->payment->status }}</td>
+                        <td class="whitespace-nowrap">{{ $order->user?->name ?? 'N/A' }}</td>
+                        <td class="whitespace-nowrap">{{ number_format($order->total_amount, 0, ',', '.') }}đ</td>
+                        <td class="whitespace-nowrap">
+                            @if($order->payment)
+                                <span class="px-2 py-1 rounded text-xs font-medium
+                                    @if($order->payment->status == 'completed') bg-success/20 text-success
+                                    @elseif($order->payment->status == 'pending') bg-warning/20 text-warning
+                                    @else bg-danger/20 text-danger
+                                    @endif">
+                                    {{ ucfirst($order->payment->status) }}
+                                </span>
+                            @else
+                                <span class="px-2 py-1 rounded text-xs font-medium bg-slate-100 text-slate-500">N/A</span>
+                            @endif
+                        </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a href="{{ route('admin.orders.show', $order->id) }}"

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\LoginController;
-use App\Http\Controllers\Admin\Auth\RegisterController;
+// use App\Http\Controllers\Admin\Auth\RegisterController; // Disabled for security
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ConfigController;
@@ -17,8 +17,9 @@ Route::namespace('admin')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('admin.login.form');
     Route::post('/login', [LoginController::class, 'login'])->name('admin.login');
 
-    Route::get('/register',[RegisterController::class,'showRegisterForm'])->name('admin.register.form');
-    Route::post('/register',[RegisterController::class,'register'])->name('admin.register');
+    // Admin registration disabled for security - create admin accounts via seeder or existing admin
+    // Route::get('/register',[RegisterController::class,'showRegisterForm'])->name('admin.register.form');
+    // Route::post('/register',[RegisterController::class,'register'])->name('admin.register');
 
     Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
@@ -76,6 +77,7 @@ Route::namespace('admin')->group(function () {
         Route::group(['prefix' => 'users'], function () {
             Route::get('/', [UserController::class, 'index'])->name('admin.users.index');
             Route::get('/{id}', [UserController::class, 'show'])->name('admin.users.show');
+            Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('admin.users.delete');
         });
 
         // Config System

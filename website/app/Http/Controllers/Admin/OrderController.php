@@ -18,7 +18,7 @@ class OrderController extends Controller
 
     private function getAllOrders()
     {
-        return Order::paginate(10);
+        return Order::with(['user', 'payment'])->paginate(10);
     }
 
     public function index(): Factory|View|Application
