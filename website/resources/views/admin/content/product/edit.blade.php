@@ -93,8 +93,8 @@
                     </div>
                     <div class="mt-3">
                         <label class="form-label">Post</label>
-                        <input type="number" name="post_id" class="form-control" placeholder="Discount Percent"
-                               value="{{ $product->post->id }}" step="0.01" min="0" max="100">
+                        <input type="number" name="post_id" class="form-control" placeholder="Post ID"
+                               value="{{ $product->post?->id ?? $product->post_id }}" step="1" min="0">
                     </div>
                 </div>
                 <div class="box p-5">
