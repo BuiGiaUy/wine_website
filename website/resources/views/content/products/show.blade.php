@@ -119,7 +119,7 @@
                                                 @else
                                                     <div>
                                                         <img
-                                                            src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold.jpg"
+                                                            src="https://via.placeholder.com/400x500/722F37/D4AF37?text=BIGBA"
                                                             alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)"
                                                             uk-cover>
                                                     </div>
@@ -137,8 +137,11 @@
 
                                         <!-- Wishlist Button -->
                                         <div class="uk-position-top-right uk-padding-small uk-margin-small-top">
-                                            <button class="btn-icon" aria-label="Wishlist">
-                                                <span uk-icon="heart"></span>
+                                            <button class="btn-icon wishlist-btn"
+                                                    aria-label="Wishlist"
+                                                    data-product-id="{{ $product->id }}"
+                                                    data-authenticated="{{ Auth::check() ? 'true' : 'false' }}">
+                                                <span uk-icon="heart" class="wishlist-icon"></span>
                                             </button>
                                         </div>
 
@@ -157,7 +160,7 @@
                                                 @else
                                                     <div uk-slideshow-item="0">
                                                         <a href="#">
-                                                            <img src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-300x400.jpg"
+                                                            <img src="https://via.placeholder.com/300x400/722F37/D4AF37?text=BIGBA"
                                                                  width="100" height="100" alt="Rượu Vang Ý 60 Sessantanni Limited Edition (24 Karat Gold)">
                                                         </a>
                                                     </div>
@@ -221,10 +224,8 @@
                                         <div class="uk-card uk-border-bottom">
                                             <div class="uk-grid-small uk-child-width-1-2 " uk-grid>
                                                 <div class="uk-flex">
-                                                    <div class="">
-                                                        <img
-                                                            src="https://winecellar.vn/wp-content/themes/winecellarvn/assets/icons/svg/pa_dung-tich.svg"
-                                                            alt="Dung tích">
+                                                    <div class="uk-margin-small-right" style="color: #990d23;">
+                                                        <span uk-icon="icon: database; ratio: 1.2"></span>
                                                     </div>
                                                     <div class="uk-text-small">
                                                         <div class="pa-info__label">Dung tích</div>
@@ -235,10 +236,8 @@
                                                 </div>
 
                                                 <div class="uk-flex">
-                                                    <div class="">
-                                                        <img
-                                                            src="https://winecellar.vn/wp-content/themes/winecellarvn/assets/icons/svg/pa_nha-san-xuat.svg"
-                                                            alt="Nhà sản xuất">
+                                                    <div class="uk-margin-small-right" style="color: #990d23;">
+                                                        <span uk-icon="icon: home; ratio: 1.2"></span>
                                                     </div>
                                                     <div class="uk-text-small">
                                                         <div class="pa-info__label">Nhà sản xuất</div>
@@ -250,13 +249,11 @@
                                                 </div>
 
                                                 <div class="uk-flex">
-                                                    <div class="">
-                                                        <img
-                                                            src="https://winecellar.vn/wp-content/themes/winecellarvn/assets/icons/svg/pa_quoc-gia.svg"
-                                                            alt="Category">
+                                                    <div class="uk-margin-small-right" style="color: #990d23;">
+                                                        <span uk-icon="icon: tag; ratio: 1.2"></span>
                                                     </div>
                                                     <div class="uk-text-small">
-                                                        <div class="pa-info__label">Category</div>
+                                                        <div class="pa-info__label">Danh mục</div>
                                                         <div class="uk-text-bold">
                                                             <p>{{ $product->category->name ?? 'N/A' }}</p>
                                                         </div>
@@ -264,10 +261,8 @@
                                                 </div>
 
                                                 <div class="uk-flex uk-margin-remove-top">
-                                                    <div class="">
-                                                        <img class="uk-margin-remove"
-                                                             src="https://winecellar.vn/wp-content/themes/winecellarvn/assets/icons/svg/pa_nong-do.svg"
-                                                             alt="Nồng độ">
+                                                    <div class="uk-margin-small-right" style="color: #990d23;">
+                                                        <span uk-icon="icon: bolt; ratio: 1.2"></span>
                                                     </div>
                                                     <div class="uk-text-small">
                                                         <div class="pa-info__label">Nồng độ</div>
@@ -275,6 +270,9 @@
                                                             <p class="uk-margin-remove">40% ABV*</p>
                                                         </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -320,7 +318,7 @@
                                                 <input type="hidden" name="id" value="{{ $product->id }}">
                                                 <input type="hidden" name="name" value="{{ $product->name }}">
                                                 <input type="hidden" name="price" value="{{ $product->price }}">
-                                                <input type="hidden" name="image" value="@if($product->featuredImage){{ $product->featuredImage->path }} @else https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-300x400.jpg  @endif">
+                                                <input type="hidden" name="image" value="@if($product->featuredImage){{ $product->featuredImage->path }} @else https://via.placeholder.com/300x400/722F37/D4AF37?text=BIGBA  @endif">
                                                 <input type="hidden" name="url" value="{{ route('products.show', $product->slug) }}">
                                                 <div class="wcl-button w-50 uk-text-right">
                                                     <button type="submit" name="add-to-cart" class="uk-margin-small uk-button uk-button-primary uk-border-rounded custom-add-to-cart-button">
@@ -338,11 +336,8 @@
                                         <div class="uk-card uk-card-default uk-card-body ">
                                             <div class="uk-grid-small " uk-grid>
                                                 <div class="uk-width-auto">
-                                                    <div class="icon-box-img uk-border-circle uk-box-shadow-medium">
-                                                        <img width="25" height="25"
-                                                             src="https://winecellar.vn/wp-content/uploads/2022/04/icon_hotline.png"
-                                                             class="attachment-medium size-medium" alt=""
-                                                             decoding="async" loading="lazy">
+                                                    <div class="icon-box-img uk-border-circle uk-box-shadow-medium" style="padding: 10px; background: #990d23;">
+                                                        <span uk-icon="icon: receiver; ratio: 1.2" style="color: #fff;"></span>
                                                     </div>
                                                 </div>
                                                 <div class="uk-width-expand">
@@ -352,21 +347,15 @@
                                                         </p>
                                                         <p><a class="btn-winea" href="tel:0903.520.268">0903.520.268</a>
                                                         </p>
-                                                        <p><a class="btn-winea" href="tel:0903.530.268">0903.530.268</a>
-                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div id="text-412004289" class="text wcl-text-uu-dai hidden uk-margin-top">
+                                        <div id="text-412004289" class="text wcl-text-uu-dai uk-margin-top">
                                             <div class="uk-card uk-card-default uk-card-body">
                                                 <p style="text-align: center;"><strong>Ưu đãi thêm</strong></p>
                                                 <ul class="uk-list uk-list-bullet">
-                                                    <li><span style="font-size: 100%;">Xem chính sách ưu đãi dành riêng cho <a
-                                                                class="btn-winea"
-                                                                href="https://winecellar.vn/my-account/rank/">WINE Member</a>.</span>
-                                                    </li>
                                                     <li><span style="font-size: 100%;">Quà tặng khui rượu vang cho đơn đặt hàng đầu tiên.</span>
                                                     </li>
                                                     <li><span style="font-size: 100%;">Giảm thêm 5%/tổng hóa đơn cho tháng sinh nhật.</span>
@@ -399,103 +388,31 @@
                                         </h3>
                                         <ul uk-accordion>
                                             <li>
-                                                <a class="uk-accordion-title" href="#">Địa chỉ các cửa hàng của
-                                                    WINECELLAR.vn ở đâu</a>
+                                                <a class="uk-accordion-title" href="#">Làm sao để chọn được chai vang phù hợp nhất?</a>
                                                 <div class="uk-accordion-content">
-                                                    <p>Cảm ơn quý khách đã quan tâm đến sản phẩm của WINECELLAR.vn.</p>
-                                                    <p><strong>Quý khách có thể tìm kiếm cửa hàng mua rượu vang của
-                                                            WINECELLAR.vn tại Hà Nội: </strong></p>
                                                     <ul>
-                                                        <li>78 Vũ Phạm Hàm, Cầu Giấy: 02435379777</li>
-                                                        <li>88 Đào Tấn, Ba Đình: 02432262599</li>
-                                                        <li>246 Hoàng Ngân, Cầu Giấy: 02439037888</li>
-                                                        <li>43 Phan Chu Trinh, Hoàn Kiếm: 02432047097</li>
-                                                    </ul>
-                                                    <p><strong>Tại thành phố Đà Nẵng: </strong></p>
-                                                    <ul>
-                                                        <li>172 Nguyễn Văn Linh, Thanh Khê: 02363996588</li>
-                                                    </ul>
-                                                    <p><strong>Tại thành phố Hội An: </strong></p>
-                                                    <ul>
-                                                        <li>Số 166 Nguyễn Trường Tộ, Phường Cẩm Phô, Hội An</li>
-                                                    </ul>
-                                                    <p><strong>Tại thành phố Nha Trang: </strong></p>
-                                                    <ul>
-                                                        <li>Số 15 Hai Bà Trưng, Phường Xương Huân, Thành phố Nha Trang,
-                                                            Tỉnh Khánh Hòa
-                                                        </li>
-                                                    </ul>
-                                                    <p><strong>Tại thành phố Hồ Chí Minh: </strong></p>
-                                                    <ul>
-                                                        <li>188 Nguyễn Văn Thủ, Quận 1: 02838237197</li>
-                                                        <li>253 Nam Kỳ Khởi Nghĩa, Quận 3: 02838435368</li>
-                                                        <li>58 Song Hành, thành phố Thủ Đức</li>
-                                                    </ul>
-                                                    <p><strong>Tại Phú Quốc: </strong></p>
-                                                    <ul>
-                                                        <li>Số 217B Đường 30/4, Phú Quốc, Kiên Giang</li>
+                                                        <li>Trò chuyện trực tiếp với chúng tôi để được tư vấn dòng vang phù hợp nhất</li>
+                                                        <li>Liên hệ qua HOTLINE 094 669 8008 để được tư vấn nhanh nhất</li>
+                                                        <li>Xem thêm các bài viết, tin tức về rượu vang tại <a href="{{ route('posts.index') }}">mục Tin tức</a></li>
                                                     </ul>
                                                 </div>
                                             </li>
                                             <li>
-                                                <a class="uk-accordion-title" href="#">Làm sao để chọn được chai vang
-                                                    phù hợp nhất</a>
+                                                <a class="uk-accordion-title" href="#">Chính sách thanh toán</a>
                                                 <div class="uk-accordion-content">
-                                                    <ul>
-                                                        <li>Trò chuyện trực tiếp với chúng tôi chúng tôi sẽ tư vấn cho
-                                                            quý vị dòng vang phù hợp nhất để thưởng thức
-                                                        </li>
-                                                        <li>Liên hệ với chúng tôi qua HOTLINE 094 669 8008 để được tư
-                                                            vấn nhanh nhất có thể
-                                                        </li>
-                                                        <li>Xem thêm các bài viết, tin tức về rượu vang tại <a
-                                                                href="https://winecellar.vn/tin-tuc" target="_blank"
-                                                                rel="noopener">https://winecellar.vn/tin-tuc/</a></li>
-                                                    </ul>
+                                                    <p>Chúng tôi hỗ trợ nhiều hình thức thanh toán: tiền mặt khi nhận hàng (COD), chuyển khoản ngân hàng, và thanh toán online qua các cổng thanh toán phổ biến.</p>
                                                 </div>
                                             </li>
                                             <li>
-                                                <a class="uk-accordion-title" href="#">Những hình thức thanh toán tại
-                                                    Winecellar.vn</a>
+                                                <a class="uk-accordion-title" href="#">Thời gian giao hàng trong bao lâu?</a>
                                                 <div class="uk-accordion-content">
-                                                    <p>Những thông tin, nội dung trên website chỉ mang tính chất giới
-                                                        thiệu sản phẩm. Chúng tôi không bán hàng trực tuyến ! Quý khách
-                                                        mua hàng xin vui lòng liên hệ trực tiếp hoặc ghé thăm <a
-                                                            href="https://winecellar.vn/lien-he/he-thong-cua-hang/">Hệ
-                                                            thống cửa hàng WINECELLAR.vn</a> để chọn mua rượu vang ngon
-                                                        và giá tốt.</p>
+                                                    <p>Ngay sau khi tiếp nhận được yêu cầu từ quý khách, chúng tôi sẽ chuẩn bị và đóng gói sản phẩm nhanh nhất có thể. Thông thường, thời gian giao hàng tại nội thành tối đa 5 giờ, các tỉnh khác từ 1-2 ngày.</p>
                                                 </div>
                                             </li>
                                             <li>
-                                                <a class="uk-accordion-title" href="#">Thời gian giao hàng trong bao
-                                                    lâu?</a>
+                                                <a class="uk-accordion-title" href="#">Chính sách đổi trả</a>
                                                 <div class="uk-accordion-content">
-                                                    <p>Ngay sau khi tiếp nhận được yêu cầu từ quý khách, chúng tôi sẽ
-                                                        chuẩn bị, đóng gói sản phẩm nhanh nhất có thể để đem tới tận tay
-                                                        quý khách một cách sớm nhất. Thông thường tại nội thị các thành
-                                                        phố Hà Nội, Đà Nẵng, Tp. Hồ Chí Minh, thời gian giao hàng thường
-                                                        trong tối đa 5h, đối với các tỉnh khác thời gian tối đa thường
-                                                        là 1-2 ngày.</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a class="uk-accordion-title" href="#">Liệu có thể nếm thử vang trước
-                                                    khi yêu cầu về sản phẩm?</a>
-                                                <div class="uk-accordion-content">
-                                                    <p>Tại WINECELLAR.vn, chúng tôi luôn có các buổi FREE TASTING tại hệ
-                                                        thống cửa hàng hoặc thông qua đội ngũ tư vấn viên chuyên sâu về
-                                                        rượu vang. Hãy đăng ký tham gia để thử nếm và lựa chọn dòng vang
-                                                        phù hợp nhất.</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a class="uk-accordion-title" href="#">Chương trình thưởng thức vang kèm
-                                                    đồ nguội MIỄN PHÍ</a>
-                                                <div class="uk-accordion-content">
-                                                    <p>Tại hệ thống cửa hàng WINECELLAR.vn, chúng tôi tặng MIỄN PHÍ đồ
-                                                        nguội (Jamon Iberico, Salami, Phomai, Bánh mì...) tới quý khách
-                                                        khi thưởng thức vang tại Tasting Room. Hãy đăng ký, đặt bàn để
-                                                        tận hưởng trải nghiệm ẩm thực độc đáo tại WINECELLAR.vn</p>
+                                                    <p>Chúng tôi cam kết đổi trả sản phẩm trong vòng 7 ngày nếu sản phẩm bị lỗi do nhà sản xuất hoặc trong quá trình vận chuyển. Vui lòng liên hệ hotline để được hỗ trợ.</p>
                                                 </div>
                                             </li>
                                         </ul>

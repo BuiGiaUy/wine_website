@@ -54,15 +54,44 @@ class ProductController extends Controller
     {
         $breadcrumbs = [
             ['title' => 'Trang chủ', 'url' => route('home')],
-            ['title' => 'Rượu Vang'] // Mục hiện tại không có liên kết
+            ['title' => 'Tất cả sản phẩm']
         ];
-        $group = "App\Models\Product";
-        $products = Product::orderBy('category_id', 'ASC')
-            ->whereHas('category', function ($query) use ($group) {
-                $query->where('model_type', $group);
-            })
-            ->paginate(50);
-        return view('content.products.index', ['breadcrumbs'=> $breadcrumbs, 'products' => $products]); // Pass products to the view
+
+        // Get filter parameters
+        $search = request()->get('q');
+        $sortBy = request()->get('orderby', 'created_at');
+        $orderDirection = $this->getSortDirection($sortBy);
+        $minPrice = request()->get('min_price', 0);
+        $maxPrice = request()->get('max_price', PHP_INT_MAX);
+
+        // Determine order column
+        $orderBy = match($sortBy) {
+            'price', 'price-desc' => 'price',
+            default => 'created_at'
+        };
+
+        // Build query
+        $query = Product::with(['featuredImage', 'category', 'brand']);
+
+        // Apply search filter
+        if ($search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+
+        // Apply price filter
+        if ($minPrice > 0 || $maxPrice < PHP_INT_MAX) {
+            $query->whereBetween('price', [$minPrice, $maxPrice]);
+        }
+
+        // Apply sorting
+        $query->orderBy($orderBy, $orderDirection);
+
+        $products = $query->paginate(12);
+
+        return view('content.products.index', [
+            'breadcrumbs' => $breadcrumbs,
+            'products' => $products
+        ]);
     }
 
     /**
