@@ -178,3 +178,109 @@
         });
     });
 </script>
+
+<!-- Wishlist JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize wishlist buttons
+    initWishlistButtons();
+});
+
+function initWishlistButtons() {
+    const wishlistButtons = document.querySelectorAll('.wishlist-btn');
+
+    wishlistButtons.forEach(button => {
+        const productId = button.dataset.productId;
+        const isAuthenticated = button.dataset.authenticated === 'true';
+
+        // Check initial wishlist status if authenticated
+        if (isAuthenticated && productId) {
+            checkWishlistStatus(productId, button);
+        }
+
+        // Add click listener
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            handleWishlistClick(button);
+        });
+    });
+}
+
+function checkWishlistStatus(productId, button) {
+    fetch(`{{ url('wishlist/check') }}?product_id=${productId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.in_wishlist) {
+                button.classList.add('wishlist-active');
+            }
+        })
+        .catch(error => console.error('Error checking wishlist:', error));
+}
+
+function handleWishlistClick(button) {
+    const productId = button.dataset.productId;
+    const isAuthenticated = button.dataset.authenticated === 'true';
+
+    if (!isAuthenticated) {
+        // Show notification and redirect to login
+        UIkit.notification({
+            message: 'Vui lòng đăng nhập để thêm vào danh sách yêu thích',
+            status: 'warning',
+            pos: 'top-center',
+            timeout: 3000
+        });
+        setTimeout(() => {
+            window.location.href = '{{ route("login") }}';
+        }, 1500);
+        return;
+    }
+
+    // Toggle wishlist
+    fetch('{{ route("wishlist.toggle") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({ product_id: productId })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            if (data.in_wishlist) {
+                button.classList.add('wishlist-active');
+            } else {
+                button.classList.remove('wishlist-active');
+            }
+            UIkit.notification({
+                message: data.message,
+                status: data.in_wishlist ? 'success' : 'primary',
+                pos: 'top-center',
+                timeout: 2000
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        UIkit.notification({
+            message: 'Có lỗi xảy ra, vui lòng thử lại',
+            status: 'danger',
+            pos: 'top-center',
+            timeout: 2000
+        });
+    });
+}
+</script>
+
+<style>
+.wishlist-btn.wishlist-active {
+    background: #990d23 !important;
+    color: #fff !important;
+    border-color: #990d23 !important;
+}
+.wishlist-btn.wishlist-active .wishlist-icon svg {
+    fill: #fff;
+}
+</style>
+

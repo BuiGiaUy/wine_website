@@ -134,8 +134,8 @@
         <div class="uk-section uk-padding-remove">
             <div class="uk-position-relative uk-light">
                 {{--                    <img src="{{ $backgroundImage }}" alt="Background Image" uk-cover>--}}
-                <img src="https://winecellar.vn/wp-content/uploads/2022/11/hinh-anh-nha-san-xuat-ruou-vang.jpeg"
-                     alt="Rượu Vang" class="uk-width-1-1" >
+                <img src="https://via.placeholder.com/1920x400/722F37/D4AF37?text=BIGBA"
+                     alt="Sản phẩm" class="uk-width-1-1" >
                 <div class="uk-overlay-primary uk-position-cover"></div>
                 <div class="uk-position-left uk-width-1-1 uk-flex uk-flex-between uk-container">
                     <div class="uk-width-1-3@m uk-width-1-2   uk-padding-small">
@@ -159,7 +159,7 @@
                             <div id="woocommerce_product_search-2" class="">
                                 <h3 class="uk-text-large uk-text-bold">Tìm kiếm rượu</h3>
                                 <form role="search" method="get" class="uk-width-1-1 uk-search uk-search-default"
-                                      action="https://winecellar.vn/">
+                                      action="{{ route('products.index') }}">
                                     <div class="uk-position-relative">
                                         <input type="search" id="woocommerce-product-search-field-2" class="uk-input"
                                                placeholder="Hãy thử 'vang cá chép' xem sao!" value="" name="s">
@@ -374,7 +374,7 @@
                                                 @if ($product->featuredImage)
                                                     <img src="{{ $product->featuredImage->path }}" alt="{{ $product->name }}" style="height: 100%; width: 100%;" >
                                                 @else
-                                                    <img src="https://winecellar.vn/wp-content/uploads/2023/11/60-sessantanni-limited-edition-24-karat-gold-300x400.jpg" alt="Default Image" style="height: 100%; width: 100%;">
+                                                    <img src="https://via.placeholder.com/300x400/722F37/D4AF37?text=BIGBA" alt="Default Image" style="height: 100%; width: 100%;">
                                                 @endif
                                             </div>
                                             <div class="uk-padding-remove">

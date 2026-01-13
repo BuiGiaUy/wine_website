@@ -1,402 +1,605 @@
 @extends('content.layouts.app')
-@section('title', 'Trang chủ')
+@section('title', 'BIGBA - Rượu Vang Cao Cấp')
+
 @section('style')
-    <style>
-        .custom-nav {
-            position: relative;
-            display: flex;
-            justify-content: center;
+<style>
+    :root {
+        --primary: #722F37;
+        --primary-dark: #5a252c;
+        --accent: #D4AF37;
+        --accent-light: #e8c856;
+        --dark: #1a1a2e;
+        --light: #faf8f5;
+        --gray: #6b7280;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        position: relative;
+        min-height: 100vh;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1920') center/cover;
+        opacity: 0.15;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        padding: 60px 20px;
+    }
+
+    .hero-badge {
+        display: inline-block;
+        background: rgba(212, 175, 55, 0.2);
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        padding: 8px 24px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+    }
+
+    .hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 20px;
+    }
+
+    .hero-title span {
+        color: var(--accent);
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto 40px;
+        line-height: 1.8;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn-primary-custom {
+        background: var(--accent);
+        color: var(--dark);
+        padding: 16px 40px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn-primary-custom:hover {
+        background: var(--accent-light);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        color: var(--dark);
+    }
+
+    .btn-outline-custom {
+        background: transparent;
+        border: 2px solid rgba(255,255,255,0.5);
+        color: #fff;
+        padding: 14px 38px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .btn-outline-custom:hover {
+        background: #fff;
+        color: var(--primary);
+        border-color: #fff;
+    }
+
+    .scroll-indicator {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        opacity: 0.7;
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+        40% { transform: translateX(-50%) translateY(-10px); }
+        60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* Features Section */
+    .features-section {
+        background: var(--light);
+        padding: 80px 0;
+    }
+
+    .feature-card {
+        text-align: center;
+        padding: 40px 30px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    .feature-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        color: #fff;
+    }
+
+    .feature-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 12px;
+    }
+
+    .feature-desc {
+        color: var(--gray);
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    /* Categories Section */
+    .categories-section {
+        padding: 100px 0;
+        background: #fff;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-badge {
+        display: inline-block;
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 15px;
+    }
+
+    .section-subtitle {
+        color: var(--gray);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .category-card {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        min-height: 300px;
+        display: flex;
+        align-items: flex-end;
+        transition: all 0.4s ease;
+    }
+
+    .category-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+        z-index: 1;
+    }
+
+    .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(114, 47, 55, 0.3);
+    }
+
+    .category-content {
+        position: relative;
+        z-index: 2;
+        padding: 30px;
+        color: #fff;
+        width: 100%;
+    }
+
+    .category-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .category-count {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+
+    /* Products Section */
+    .products-section {
+        padding: 100px 0;
+        background: var(--light);
+    }
+
+    .product-card {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    .product-image {
+        position: relative;
+        padding-top: 120%;
+        background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    }
+
+    .product-image img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 70%;
+        max-height: 80%;
+        object-fit: contain;
+    }
+
+    .product-info {
+        padding: 25px;
+        text-align: center;
+    }
+
+    .product-name {
+        font-weight: 600;
+        color: var(--dark);
+        font-size: 1rem;
+        margin-bottom: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 48px;
+    }
+
+    .product-price {
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-bottom: 15px;
+    }
+
+    .product-btn {
+        background: var(--primary);
+        color: #fff;
+        padding: 12px 28px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 13px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+
+    .product-btn:hover {
+        background: var(--primary-dark);
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+    /* Brands Section */
+    .brands-section {
+        padding: 100px 0;
+        background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
+        color: #fff;
+    }
+
+    .brand-card {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .brand-card:hover {
+        background: rgba(255,255,255,0.1);
+        transform: translateY(-5px);
+    }
+
+    .brand-logo {
+        width: 120px;
+        height: 80px;
+        object-fit: contain;
+        margin-bottom: 20px;
+        filter: brightness(0) invert(1);
+        opacity: 0.8;
+    }
+
+    .brand-name {
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        padding: 100px 0;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        text-align: center;
+        color: #fff;
+    }
+
+    .cta-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .cta-subtitle {
+        font-size: 1.15rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero-section {
+            min-height: 80vh;
+        }
+
+        .hero-buttons {
+            flex-direction: column;
             align-items: center;
-            width: 40px; /* Adjust the size as needed */
-            height: 45px; /* Adjust the size as needed */
-            background-color: transparent;
-            border: 1px solid #FFFFFF; /* Add a border to see the circle more clearly */
-            border-radius: 50%;
-            transition: background-color 0.3s ease;
         }
 
-        .custom-nav svg {
-            width: 40%; /* Adjust the size of the SVG as needed */
-            height: auto; /* Maintain aspect ratio */
+        .features-section,
+        .categories-section,
+        .products-section,
+        .brands-section,
+        .cta-section {
+            padding: 60px 0;
         }
 
-        .custom-nav:hover {
-            background-color: #990d23;
-            color: white;
-            border: none;
+        .category-card {
+            min-height: 200px;
         }
-
-
-        .banner-gradient {
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
-            color: white;
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .uk-slider-items img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-
-        .uk-slider-nav-wrapper {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        @media (max-width: 767px) {
-            .banner-gradient {
-                padding: 30px 0;
-            }
-
-            .uk-slider-nav-wrapper {
-                bottom: 10px;
-            }
-        }
-
-        #section_1364875212 {
-            padding-top: 50px;
-            padding-bottom: 50px;
-            background-color: rgb(249, 245, 240);
-        }
-
-        .uk-section a {
-            text-decoration: none;
-        }
-
-        .custom-card {
-            background: #f5ecdb;
-            border-radius: 5%; /* Rounded corners */
-            overflow: hidden; /* Ensure content stays within rounded corners */
-        }
-
-        .custom-card a {
-            display: block; /* Make the entire card clickable */
-            text-decoration: none; /* Remove underline from link */
-            color: inherit; /* Inherit text color */
-        }
-
-
-        .menu-services a {
-            font-size: 20px !important;
-            text-transform: uppercase;
-            color: #fff;
-            font-weight: 500 !important;
-            margin: 10px 0; /* Adjust margin as needed */
-            display: flex;
-            align-items: center; /* Aligns text and icon vertically */
-        }
-
-        .menu-services a i.uk-icon {
-            margin-right: 10px; /* Adjust icon spacing */
-            display: inline-flex; /* Ensures icon is inline with text */
-            justify-content: center; /* Centers icon horizontally */
-            align-items: center; /* Centers icon vertically */
-        }
-
-        .menu-services ul.uk-nav-default {
-            font-weight: 400;
-            font-size: 13px;
-            line-height: 20px;
-        }
-
-        .uk-height-1-4 {
-            height: 25%; /* Adjust height percentage as needed */
-        }
-
-        .uk-flex-center {
-            justify-content: center; /* Center align items horizontally */
-        }
-
-
-    </style>
+    }
+</style>
 @endsection
 
 @section('content')
-    <section class="uk-section uk-padding-remove" >
-        <div class=" uk-padding-remove uk-width-1-1	">
-            <div class="uk-slider " uk-slider="autoplay: true; autoplay-interval: 3000">
-                <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
-                    <ul class="uk-slider-items uk-child-width-1-1">
-                        <li>
-                            <div class="uk-cover-container uk-height-large uk-height-viewport@s">
-                                <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg" alt="Image 1" uk-cover>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="uk-cover-container uk-height-large uk-height-viewport@s">
-                                <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg" alt="Image 2" uk-cover>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="uk-cover-container uk-height-large uk-height-viewport@s">
-                                <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg" alt="Image 3" uk-cover>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="uk-cover-container uk-height-large uk-height-viewport@s">
-                                <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg" alt="Image 4" uk-cover>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="uk-cover-container uk-height-large uk-height-viewport@s">
-                                <img src="https://winecellar.vn/wp-content/uploads/2022/04/banner-vang-trang-0.jpg" alt="Image 5" uk-cover>
-                            </div>
-                        </li>
-                    </ul>
-                    <a class="uk-position-center-left uk-position-small uk-hidden-hover custom-nav" href="#"
-                       uk-slidenav-previous uk-slider-item="previous"></a>
-                    <a class="uk-position-center-right uk-position-small uk-hidden-hover custom-nav" href="#"
-                       uk-slidenav-next uk-slider-item="next"></a>
-
-                    <!-- Add the navigation dots inside the images -->
-                    <div class="uk-slider-nav-wrapper">
-                        <ul class="uk-slider-nav uk-dotnav"></ul>
-                    </div>
-                </div>
-
-                <ul class="uk-slider-nav uk-dotnav uk-flex-center "></ul>
-
-            </div>
-        </div>
-    </section>
-    <section class="uk-section uk-section-small uk-light uk-padding-remove" id="section_1130581520">
-        <div class="uk-background-cover uk-padding uk-flex uk-flex-center uk-flex-middle uk-height-small uk-height-viewport@m" style="background-color: #990d23;">
-            <div class="">
-                <div id="text-1504872352" class="uk-text-center uk-text-white">
-                    <h1 class="uk-margin-remove uk-heading-small uk-text-uppercase uk-text-large	"><strong>Winecellar.vn
-                            – We are master of wine</strong></h1>
-                    <p class="uk-margin-remove uk-text-small	">Nơi trải nghiệm rượu vang trọn vẹn và thăng hoa</p>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="uk-container">
+            <div class="hero-content">
+                <span class="hero-badge">Premium Wine Collection</span>
+                <h1 class="hero-title">
+                    Khám Phá Thế Giới<br>
+                    <span>Rượu Vang</span> Đẳng Cấp
+                </h1>
+                <p class="hero-subtitle">
+                    BIGBA tự hào mang đến bộ sưu tập rượu vang hảo hạng từ những vùng trồng nho nổi tiếng nhất thế giới.
+                </p>
+                <div class="hero-buttons">
+                    <a href="{{ route('products.index') }}" class="btn-primary-custom">
+                        <span uk-icon="icon: cart; ratio: 0.9"></span>
+                        Khám phá ngay
+                    </a>
+                    <a href="{{ route('contact') }}" class="btn-outline-custom">
+                        Liên hệ tư vấn
+                    </a>
                 </div>
             </div>
         </div>
+        <div class="scroll-indicator">
+            <span uk-icon="icon: chevron-down; ratio: 1.5"></span>
+        </div>
     </section>
-    <section class="uk-section uk-section-default" id="section_1364875212">
-        <div class="uk-padding-remove">
-            <div class="uk-grid-collapse uk-child-width-1-4@l uk-child-width-1-1	uk-grid-medium uk-grid-match" uk-grid>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="uk-container">
+            <div class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-4@l" uk-grid>
                 <div>
-                    <div class="uk-card uk-card-hover uk-card-body uk-text-center ">
-                        <div class="uk-card-media-top" style=" margin: 0 auto;">
-                            <img src="https://winecellar.vn/wp-content/uploads/2022/03/champagne-1.png" width="60"
-                                 height="60" alt="">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <span uk-icon="icon: check; ratio: 2"></span>
                         </div>
-                        <div class="uk-padding-remove uk-card-body">
-                            <h4><span style="color: #800000;">2000 SẢN PHẨM</span></h4>
-                            <p><span style="font-size: 80%;">Nhập khẩu &amp; phân phối chính hãng</span></p>
-                        </div>
+                        <h3 class="feature-title">Chính Hãng 100%</h3>
+                        <p class="feature-desc">Nhập khẩu trực tiếp từ các nhà sản xuất uy tín hàng đầu thế giới</p>
                     </div>
                 </div>
                 <div>
-                    <div class="uk-card uk-card-hover uk-card-body uk-text-center">
-                        <div class="uk-card-media-top" style=" margin: 0 auto;">
-                            <img src="https://winecellar.vn/wp-content/uploads/2023/06/gh-toan-quoc.png" width="60"
-                                 height="60" alt="">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <span uk-icon="icon: location; ratio: 2"></span>
                         </div>
-                        <div class="uk-card-body uk-padding-remove">
-                            <h4><span style="color: #800000; ">GIAO HÀNG TOÀN QUỐC</span></h4>
-                            <p><span style="font-size: 80%;">Linh hoạt giao hàng theo yêu cầu từ Khách hàng</span></p>
-                        </div>
+                        <h3 class="feature-title">Giao Hàng Toàn Quốc</h3>
+                        <p class="feature-desc">Miễn phí ship nội thành, giao hàng nhanh chóng trong 2-4 giờ</p>
                     </div>
                 </div>
                 <div>
-                    <div class="uk-card uk-card-hover uk-card-body uk-text-center">
-                        <div class="uk-card-media-top" style=" margin: 0 auto;">
-                            <img src="https://winecellar.vn/wp-content/uploads/2022/03/delivery-1.png" width="60"
-                                 height="60" alt="">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <span uk-icon="icon: star; ratio: 2"></span>
                         </div>
-                        <div class="uk-card-body uk-padding-remove">
-                            <h4><span style="color: #800000;">GIAO HÀNG NHANH (2H)</span></h4>
-                            <p><span style="font-size: 80%;">Miễn phí giao hàng tại<br> Hà Nội, Đà Nẵng, Nha Trang, Hồ Chí Minh, Phú Quốc</span>
-                            </p>
-                        </div>
+                        <h3 class="feature-title">2000+ Sản Phẩm</h3>
+                        <p class="feature-desc">Đa dạng lựa chọn từ phổ thông đến cao cấp, phù hợp mọi dịp</p>
                     </div>
                 </div>
                 <div>
-                    <div class="uk-card uk-card-hover uk-card-body uk-text-center">
-                        <div class="uk-card-media-top" style=" margin: 0 auto;">
-                            <img src="https://winecellar.vn/wp-content/uploads/2023/06/check-correct.png" width="60"
-                                 height="60" alt="">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <span uk-icon="icon: receiver; ratio: 2"></span>
                         </div>
-                        <div class="uk-card-body uk-padding-remove">
-                            <h4><span style="color: #800000;">CAM KẾT CHẤT LƯỢNG</span></h4>
-                            <p><span style="font-size: 80%;">Sản phẩm nhập nguyên chai, chính hãng,<br> từ thương hiệu uy tín.</span>
-                            </p>
-                        </div>
+                        <h3 class="feature-title">Tư Vấn 24/7</h3>
+                        <p class="feature-desc">Đội ngũ chuyên gia sẵn sàng hỗ trợ bạn chọn chai vang hoàn hảo</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="section_1276758985" class="uk-section uk-padding">
-        <div class="">
-            <div class="uk-text-center uk-margin-medium-bottom">
-                <h2 class="uk-text-large" style="color: #990d23">DANH MỤC SẢN PHẨM ĐA ĐẠNG & VÔ VÀN KHÁM PHÁ</h2>
+
+    <!-- Categories Section -->
+    <!-- <section class="categories-section">
+        <div class="uk-container">
+            <div class="section-header">
+                <span class="section-badge">Danh Mục</span>
+                <h2 class="section-title">Khám Phá Bộ Sưu Tập</h2>
+                <p class="section-subtitle">Đa dạng các loại rượu vang từ khắp nơi trên thế giới</p>
             </div>
-            <div class="uk-child-width-1-1 uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
+            <div class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-4@l" uk-grid>
                 @foreach($categories as $category)
-                    <div class="">
-                        <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card"
-                             style="background: #f5ecdb;">
-                            <a href="{{ route('products.category', ['slug' => $category->slug]) }}">
-                                <img
-                                    src="https://winecellar.vn/wp-content/uploads/2024/05/ruou-vang-nhap-khau-home.jpg"
-                                    alt="{{ $category->name }}" class="uk-width-1-1">
-                                <h3 class="uk-card-title uk-text-default uk-text-center">{{ $category->name }}</h3>
-                            </a>
+                <div>
+                    <a href="{{ route('products.category', ['slug' => $category->slug]) }}" class="category-card" style="background-image: url('https://images.unsplash.com/photo-1474722883778-792e7990302f?w=600'); background-size: cover; background-position: center;">
+                        <div class="category-content">
+                            <h3 class="category-name">{{ $category->name }}</h3>
+                            <span class="category-count">Xem sản phẩm →</span>
                         </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    <section class="uk-section uk-section-small" id="section_142852121" style="background-color: #f9f5f0;">
-        <div class="uk-background-cover uk-background-norepeat">
-            <div class=" uk-position-relative">
-                <div class="uk-flex uk-flex-center">
-                    <div class=" uk-padding">
-                        <div class="uk-text-center">
-                            <h2 class="uk-heading-medium uk-text-bold uk-margin-remove-top uk-text-large"
-                                style="color: #990d23;">Bạn tìm gì hôm nay?</h2>
-                        </div>
-                        <div class="-width-1-1 ">
-                            <div class="uk-width-2xlarge@m ">
-                                <form action="https://winecellar.vn/cua-hang-ruou-vang/" id="quick_search" method="get"
-                                      class="uk-form-stacked">
-                                    <!-- Your form content here -->
-                                    <input type="search" id="woocommerce-product-search-field-2"
-                                           class="uk-border-rounded uk-input"
-                                           placeholder="Hãy thử 'vang cá chép' xem sao!" value="" name="s">
-                                </form>
-                            </div>
-                            <div class="uk-width-2xlarge@m uk-margin-remove-top">
-                                <div class="uk-margin-top  uk-child-width-1-3 uk-child-width-1-6@s  uk-margin-bottom" uk-grid>
-
-                                    <a href="https://winecellar.vn/ruou-vang-my/"
-                                       class="uk-button ">Vang
-                                        Mỹ</a>
-                                    <a href="https://winecellar.vn/ruou-vang-y/"
-                                       class="uk-button ">Vang
-                                        Ý</a>
-                                    <a href="https://winecellar.vn/ruou-vang-phap/"
-                                       class="uk-button">Vang
-                                        </a>
-                                    <a href="https://winecellar.vn/ruou-vang-my/"
-                                       class="uk-button">Vang
-                                        Mỹ</a>
-                                    <a href="https://winecellar.vn/ruou-vang-y/"
-                                       class="uk-button ">Vang
-                                        Ý</a>
-                                    <a href="https://winecellar.vn/ruou-vang-phap/"
-                                       class="uk-button">Vang
-                                        </a>
-                                    <!-- Add more links as needed -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
-        </div>
-    </section>
-    <section class="uk-section uk-section-primary uk-padding" id="section_2140810014"
-             style="background: #9d7623; color: #0A0A0A">
-        <div class="">
-            <h2 class="uk-text-large uk-text-center uk-margin-remove-top uk-margin-remove-bottom">KHÁM PHÁ THƯƠNG
-                HIỆU</h2>
-            <div class="uk-text-center uk-light">
-                <p>WINECELLAR.vn tự hào là đại diện độc quyền nhập khẩu và phân phối sản phẩm từ một số nhà sản xuất
-                    rượu vang tốt nhất thế giới tại Việt Nam.</p>
-            </div>
-            <div class="uk-child-width-1-1 uk-child-width-1-4@l uk-grid-medium uk-grid-match" uk-grid>
-                @foreach($brands as $brand)
-                    <div class="">
-                        <div class="uk-card uk-card-default uk-card-body uk-padding-remove custom-card"
-                             style="background: #f5ecdb;">
-                            <a href="{{ route('brands.show', ['slug' => $brand->slug]) }}">
-                                <img src="https://winecellar.vn/wp-content/uploads/2024/04/chateau-dauzac.png"
-                                     alt="{{ $brand->name }}" class="uk-width-1-1">
-                                <h3 class="uk-text-default uk-text-center"
-                                    style="color: #0A0A0A">{{ $brand->name }}</h3>
-                            </a>
-                        </div>
-                    </div>
                 @endforeach
             </div>
-
         </div>
-    </section>
-    <section class="uk-section uk-section-small uk-background-norepeat uk-background-cover uk-background-center-center"
-             style="" id="section_1212447303">
-        <div class="uk-width-1-1">
-            <div class="uk-text-center">
-                <h2 class="uk-text-large uk-margin-remove-top" style="color: #990d23; font-weight: 600">Sản phẩm bán
-                    chạy</h2>
+    </section> -->
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="uk-container">
+            <div class="section-header">
+                <span class="section-badge">Sản Phẩm Nổi Bật</span>
+                <h2 class="section-title">Bán Chạy Nhất</h2>
+                <p class="section-subtitle">Những chai rượu được yêu thích nhất tại BIGBA</p>
             </div>
-            <div class=" uk-width-1-1 uk-slider-container-offset " uk-slider="finite: true">
-                <div class="uk-position-relative uk-visible-toggle uk-light  uk-width-1-1">
-                    <ul class="uk-slider-items uk-width-1-1 uk-child-width-1-1 uk-child-width-1-5@m uk-grid-medium uk-grid-match">
+            <div class="uk-slider uk-slider-container-offset" uk-slider="finite: true">
+                <div class="uk-position-relative uk-visible-toggle" tabindex="-1">
+                    <ul class="uk-slider-items uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-4@m">
                         @foreach($products as $product)
-                            <li class=" ">
-                                <div class="uk-card  uk-width-1-1 uk-card-default uk-padding-remove  uk-card-hover uk-flex uk-flex-column uk-flex-middle">
-                                    <div class="uk-card-media-top">
-                                        <a href="{{ route('products.show', ['slug' => $product->slug]) }}" aria-label="Rượu Vang Ý CF Collefrisio Montepulciano D’abruzzo 2022">
-                                            <img
-                                                src="https://winecellar.vn/wp-content/uploads/2024/03/cf-collefrisio-montepulciano-dabruzzo-300x400.jpg"
-                                                alt="{{ $product->name }}">
-                                        </a>
-                                    </div>
-                                    <div class="uk-text-center uk-padding-remove-horizontal uk-padding">
-                                        <h3 class="uk-text-default uk-text-center" style="color:#000;font-weight: bold; height: 46px">{{ $product->name }}</h3>
-                                        <p class="uk-text-meta uk-margin-remove-top"  style="color: #990d23; font-weight: bold;">{{ number_format($product->price, 0, ',', '.') }}₫</p>
-                                        <a href="{{ route('products.show', ['slug' => $product->slug]) }}" class="uk-button uk-border-rounded"
-                                           style="background: #990d23; color: #FFFFFF">Xem sản phẩm</a>
-                                    </div>
+                        <li>
+                            <div class="product-card">
+                                <div class="product-image">
+                                    @if($product->featuredImage)
+                                        <img src="{{ $product->featuredImage->path }}" alt="{{ $product->name }}">
+                                    @else
+                                        <img src="https://via.placeholder.com/300x400/722F37/D4AF37?text=BIGBA" alt="{{ $product->name }}">
+                                    @endif
                                 </div>
-                            </li>
+                                <div class="product-info">
+                                    <h3 class="product-name">{{ $product->name }}</h3>
+                                    <p class="product-price">{{ number_format($product->price, 0, ',', '.') }}₫</p>
+                                    <a href="{{ route('products.show', ['slug' => $product->slug]) }}" class="product-btn">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </li>
                         @endforeach
                     </ul>
-                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slider-item="previous"><span uk-icon="icon: chevron-left; ratio: 2"></span></a>
-                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slider-item="next"><span uk-icon="icon: chevron-right; ratio: 2"></span></a>
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href uk-slidenav-previous uk-slider-item="previous" style="color: var(--primary);"></a>
+                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href uk-slidenav-next uk-slider-item="next" style="color: var(--primary);"></a>
                 </div>
-                <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
-            </div>
-        </div>
-    </section>
-    <section class="uk-section uk-section-primary" id="section_1822066111" style="background: #9d7623">
-        <div class="uk-padding uk-padding-remove-top">
-            <div class="uk-text-center">
-                <h2 class="uk-text-large" style="color: #FFFFFF; font-weight: 600">DỊCH VỤ KHÁCH HÀNG</h2>
-            </div>
-            <div class="uk-grid" uk-grid>
-                <div class="uk-width-2-3@m uk-flex uk-flex-middle">
-                    <div class="uk-position-relative uk-light uk-background-cover uk-height-medium">
-                        <img
-                            src="https://winecellar.vn/wp-content/uploads/2023/11/hop-qua-tang-doanh-nghiep-phu-quy-doan-vien-chim-tri-banner-1400x510.jpg"
-                            class="uk-border-rounded uk-width-1-1 uk-height-1-1" alt="" >
-                    </div>
-                </div>
-                <div class="uk-width-1-3@m ">
-                    <div class="uk-margin menu-services uk-height-1-1">
-                        <ul class="uk-nav uk-nav-default uk-flex-column uk-height-1-1 uk-child-height-1-4@m uk-flex uk-flex-center">
-                            <li class="uk-height-1-4"><a href="https://winecellar.vn/qua-tang-doanh-nghiep/"><i
-                                        class="uk-icon uk-margin-small-right icon-user-o"></i> Khách hàng doanh
-                                    nghiệp</a></li>
-                            <li class="uk-height-1-4"><a href="https://winecellar.vn/qua-tang-doanh-nghiep/"><i
-                                        class="uk-icon uk-margin-small-right icon-gift"></i> Quà tặng doanh nghiệp</a>
-                            </li>
-                            <li class="uk-height-1-4"><a href="https://winecellar.vn"><i
-                                        class="uk-icon uk-margin-small-right icon-star"></i> Tư vấn quà tặng</a></li>
-                            <li class="uk-height-1-4"><a href="https://winecellar.vn"><i
-                                        class="uk-icon uk-margin-small-right icon-menu"></i> Đào tạo</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin-medium-top"></ul>
             </div>
         </div>
     </section>
 
+    <!-- Brands Section -->
+    <section class="brands-section">
+        <div class="uk-container">
+            <div class="section-header">
+                <span class="section-badge" style="color: var(--accent);">Thương Hiệu</span>
+                <h2 class="section-title" style="color: #fff;">Đối Tác Tin Cậy</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">Đại lý chính thức của các thương hiệu rượu vang hàng đầu</p>
+            </div>
+            <div class="uk-grid uk-grid-medium uk-child-width-1-2@s uk-child-width-1-4@m" uk-grid>
+                @foreach($brands as $brand)
+                <div>
+                    <a href="{{ route('brands.show', ['slug' => $brand->slug]) }}" class="brand-card uk-display-block">
+                        <div class="brand-name" style="color: var(--accent);">{{ $brand->name }}</div>
+                    </a>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="uk-container">
+            <h2 class="cta-title">Sẵn Sàng Khám Phá?</h2>
+            <p class="cta-subtitle">Liên hệ ngay với chúng tôi để được tư vấn miễn phí và nhận ưu đãi đặc biệt dành cho thành viên mới.</p>
+            <div class="hero-buttons">
+                <a href="tel:0946698008" class="btn-primary-custom">
+                    <span uk-icon="icon: receiver; ratio: 0.9"></span>
+                    094 669 8008
+                </a>
+                <a href="{{ route('products.index') }}" class="btn-outline-custom">
+                    Xem tất cả sản phẩm
+                </a>
+            </div>
+        </div>
+    </section>
 @endsection

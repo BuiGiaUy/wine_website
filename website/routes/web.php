@@ -12,23 +12,22 @@ use App\Http\Controllers\Orders\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/showHeader', [Controller::class, 'showHeader'])->name('showHeader');
 
 //Route::get('/brand', [App\Http\Controllers\HomeController::class, 'brand'])->name('brand');
 Route::get('/post', [App\Http\Controllers\HomeController::class, 'post'])->name('post');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
-Route::prefix('user')->group(function () {
+Route::prefix('user')->middleware(['auth'])->group(function () {
     Route::get('/profile', [UserController::class, 'showProfile'])->name('user.profile');
     Route::get('/address', [UserController::class, 'showAddress'])->name('user.address');
     Route::post('/profile', [UserController::class, 'updateProfile'])->name('user.profile.update');
+    Route::post('/address', [UserController::class, 'updateAddress'])->name('user.address.update');
+    Route::post('/password', [UserController::class, 'changePassword'])->name('user.password.update');
 });
 
 Route::prefix('products')->group(function () {
@@ -63,6 +62,13 @@ Route::prefix('cart')->middleware(['auth'])->group(function () {
 Route::prefix('orders')->group(function () {
     Route::get('/', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/{id}', [OrderController::class, 'show'])->name('orders.show');
+});
+
+Route::prefix('wishlist')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Frontend\WishlistController::class, 'index'])->name('wishlist.index');
+    Route::post('/toggle', [\App\Http\Controllers\Frontend\WishlistController::class, 'toggle'])->name('wishlist.toggle');
+    Route::post('/remove', [\App\Http\Controllers\Frontend\WishlistController::class, 'remove'])->name('wishlist.remove');
+    Route::get('/check', [\App\Http\Controllers\Frontend\WishlistController::class, 'check'])->name('wishlist.check');
 });
 
 Route::prefix('posts')->group(function () {

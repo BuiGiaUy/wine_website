@@ -1,145 +1,374 @@
-<header id="header" class="  uk-navbar-container uk-navbar-transparent uk-sticky" uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
-    <div class="uk-container">
-        <nav class="uk-navbar-container  uk-hidden@l" uk-navbar >
-            <div class="uk-navbar-left" >
-                <!-- Navbar toggle button for mobile -->
-                <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="#offcanvas-nav" uk-toggle></a>
-            </div>
-            <div class="uk-navbar-right">
-                <div class="uk-navbar-item">
-                    <a href="#modal-full" class="text-white"  uk-search-icon uk-toggle></a>
-                </div>
-                <div class="uk-navbar-item">
-                    <a class="uk-navbar-toggle" href="#offcanvas-cart" uk-toggle title="Giỏ hàng"><span uk-icon="icon: cart"></span></a>
-                </div>
-            </div>
-        </nav>
+<style>
+    :root {
+        --primary: #722F37;
+        --primary-dark: #5a252c;
+        --primary-light: #8B3A44;
+        --accent: #D4AF37;
+        --accent-hover: #B8962E;
+        --dark: #1a1a2e;
+        --light: #faf8f5;
+        --text-light: rgba(255,255,255,0.9);
+    }
 
-        <nav class="uk-navbar uk-visible@l" uk-navbar>
-            <div class="uk-navbar-left">
-                <a class="uk-navbar-item uk-logo" href="{{ route('home') }}">
-                </a>
+    /* Header Styles */
+    .main-header {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        transition: all 0.4s ease;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+
+    .main-header.uk-sticky-fixed {
+        background: rgba(114, 47, 55, 0.98);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+    }
+
+    .header-top-bar {
+        background: rgba(0,0,0,0.25);
+        padding: 10px 0;
+        font-size: 13px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .header-top-bar a {
+        color: var(--text-light);
+        transition: color 0.3s ease;
+    }
+
+    .header-top-bar a:hover {
+        color: var(--accent);
+        text-decoration: none;
+    }
+
+    .header-main {
+        padding: 18px 0;
+    }
+
+    .header-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 32px;
+        font-weight: 700;
+        color: #fff !important;
+        text-decoration: none;
+        letter-spacing: 2px;
+    }
+
+    .header-logo span {
+        color: var(--accent);
+    }
+
+    .header-nav .uk-navbar-nav > li > a {
+        color: var(--text-light);
+        font-weight: 500;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 12px 18px;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .header-nav .uk-navbar-nav > li > a::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .header-nav .uk-navbar-nav > li > a:hover,
+    .header-nav .uk-navbar-nav > li.uk-active > a {
+        color: #fff;
+    }
+
+    .header-nav .uk-navbar-nav > li > a:hover::after,
+    .header-nav .uk-navbar-nav > li.uk-active > a::after {
+        width: 30px;
+    }
+
+    .header-icons a {
+        color: var(--text-light);
+        margin-left: 15px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .header-icons a:hover {
+        color: var(--dark);
+        background: var(--accent);
+        border-color: var(--accent);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .header-btn-login {
+        background: transparent;
+        border: 2px solid rgba(255,255,255,0.4);
+        color: #fff !important;
+        padding: 10px 24px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 13px;
+        transition: all 0.3s ease;
+        margin-left: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .header-btn-login:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--dark) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .header-btn-register {
+        background: var(--accent);
+        border: 2px solid var(--accent);
+        color: var(--dark) !important;
+        padding: 10px 24px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 13px;
+        transition: all 0.3s ease;
+        margin-left: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .header-btn-register:hover {
+        background: var(--accent-hover);
+        border-color: var(--accent-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .user-dropdown-btn {
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.2);
+        color: #fff;
+        padding: 10px 18px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        margin-left: 15px;
+    }
+
+    .user-dropdown-btn:hover {
+        background: rgba(255,255,255,0.2);
+        border-color: rgba(255,255,255,0.3);
+    }
+
+    .user-dropdown-btn .user-name {
+        font-size: 13px;
+        font-weight: 500;
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    /* Mobile Header */
+    .mobile-header {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        padding: 15px 0;
+    }
+
+    .mobile-toggle {
+        color: #fff !important;
+        width: 48px;
+        height: 48px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .mobile-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff !important;
+    }
+
+    .mobile-logo span {
+        color: var(--accent);
+    }
+
+    .mobile-icons a {
+        color: #fff;
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.1);
+        border-radius: 12px;
+        margin-left: 10px;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    /* Dropdown styling */
+    .uk-dropdown {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        padding: 15px;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .uk-dropdown-nav > li > a {
+        color: var(--dark);
+        padding: 12px 16px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+    }
+
+    .uk-dropdown-nav > li > a:hover {
+        background: var(--light);
+        color: var(--primary);
+    }
+
+    /* Search Modal */
+    .search-modal {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    }
+
+    .search-modal .uk-search-input {
+        background: rgba(255,255,255,0.1);
+        border: 2px solid rgba(255,255,255,0.25);
+        color: #fff;
+        font-size: 22px;
+        padding: 22px 35px;
+        border-radius: 50px;
+        width: 100%;
+        max-width: 650px;
+    }
+
+    .search-modal .uk-search-input::placeholder {
+        color: rgba(255,255,255,0.5);
+    }
+
+    .search-modal .uk-search-input:focus {
+        border-color: var(--accent);
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+    }
+
+    .search-btn {
+        background: var(--accent);
+        color: var(--dark);
+        border: none;
+        padding: 16px 45px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 15px;
+        margin-top: 25px;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .search-btn:hover {
+        background: var(--accent-hover);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+    }
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Desktop Header -->
+<header class="main-header uk-visible@l" uk-sticky="animation: uk-animation-slide-top; sel-target: .main-header; cls-active: uk-sticky-fixed; cls-inactive: uk-navbar-transparent; top: 100">
+    <!-- Top Bar -->
+    <div class="header-top-bar">
+        <div class="uk-container">
+            <div class="uk-flex uk-flex-between uk-flex-middle">
+                <div>
+                    <a href="tel:0946698008" class="uk-margin-right">
+                        <span uk-icon="icon: receiver; ratio: 0.8"></span> 0946.698.008
+                    </a>
+                    <a href="mailto:info@bigba.vn">
+                        <span uk-icon="icon: mail; ratio: 0.8"></span> info@bigba.vn
+                    </a>
+                </div>
+                <div>
+                    <a href="{{ route('posts.index') }}" class="uk-margin-right">Tin tức</a>
+                    <a href="{{ route('contact') }}">Liên hệ</a>
+                </div>
             </div>
-            <div class="uk-navbar-right"  id="menu-container">
-                <ul class="uk-navbar-nav">
-                    @foreach ($menuTree as $menu)
-                        @include('content.partials.menu-item', ['menu' => $menu])
-                    @endforeach
-                </ul>
-{{--                <ul class="uk-navbar-nav ">--}}
-{{--                    <li class="uk-active"><a href="{{ route('home') }}">Trang chủ</a></li>--}}
-{{--                    <li>--}}
-{{--                        <a href="#">RƯỢU VANG <span uk-icon="icon: triangle-down"></span></a>--}}
-{{--                        <div class="uk-navbar-dropdown uk-width-auto" uk-drop="boundary: !.uk-navbar; stretch: x; flip: false">--}}
-{{--                            <div class="uk-drop-grid uk-child-width-1-4" uk-grid>--}}
-{{--                                <div>--}}
-{{--                                    <ul class="uk-nav uk-navbar-dropdown-nav">--}}
-{{--                                        <li class="uk-nav-header">Theo loại rượu</li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-do']) }}">Rượu vang đỏ</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-trang']) }}">Rượu vang trắng</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-sui']) }}">Rượu vang sủi</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-champagne']) }}">Rượu Champagne</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-hong']) }}">Rượu vang hồng</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-ngot']) }}">Rượu vang ngọt</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-cuong-hoa']) }}">Rượu vang cường hóa</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-khong-con']) }}">Rượu vang không cồn</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-organic']) }}">Rượu vang Organic</a></li>--}}
-{{--                                        <li class="uk-nav-divider"></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'tat-ca-ruou-vang']) }}" style="padding-left: 5px" class="link-p">Tất cả rượu vang</a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </div>--}}
-{{--                                <div>--}}
-{{--                                    <ul class="uk-nav uk-navbar-dropdown-nav">--}}
-{{--                                        <li class="uk-nav-header">Theo quốc gia</li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-phap']) }}">Rượu vang Pháp</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-y']) }}">Rượu vang Ý</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'vang-tay-ban-nha']) }}">Rượu vang Tây Ban Nha</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-chile']) }}">Rượu vang Chile</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-my']) }}">Rượu vang Mỹ</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-uc']) }}">Rượu vang Úc</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-newzealand']) }}">Rượu vang New Zealand</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-argentina']) }}">Rượu vang Argentina</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-bo-dao-nha']) }}">Rượu vang Bồ Đào Nha</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-duc']) }}">Rượu vang Đức</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-nam-phi']) }}">Rượu vang Nam Phi</a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </div>--}}
-{{--                                <div>--}}
-{{--                                    <ul class="uk-nav uk-navbar-dropdown-nav">--}}
-{{--                                        <li class="uk-nav-header">Theo giống nho</li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'cabernet-sauvignon']) }}">Cabernet Sauvignon</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'merlot']) }}">Merlot</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'syrah-shiraz']) }}">Syrah (Shiraz)</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'pinot-noir']) }}">Pinot Noir</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'malbec']) }}">Malbec</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'montepulciano-d-abruzzo']) }}">Montepulciano D'Abruzzo</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'negroamaro']) }}">Negroamaro</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'primitivo']) }}">Primitivo</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'chardonnay']) }}">Chardonnay</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'sauvignon-blanc']) }}">Sauvignon Blanc</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'riesling']) }}">Riesling</a></li>--}}
-{{--                                        <li class="uk-nav-divider"></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'tim-giong-nho']) }}" style="padding-left: 5px" class="link-p">Tìm giống nho</a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </div>--}}
-{{--                                <div>--}}
-{{--                                    <ul class="uk-nav uk-navbar-dropdown-nav">--}}
-{{--                                        <li class="uk-nav-header">Theo vùng nổi tiếng</li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-bordeaux']) }}">Rượu vang Bordeaux (Pháp)</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-burgundy']) }}">Rượu vang Bourgogne (Pháp)</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-tuscany']) }}">Rượu vang Tuscany (Ý)</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-puglia']) }}">Rượu vang Puglia (Ý)</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-piedmont']) }}">Rượu vang Piedmont (Ý)</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-california']) }}">Rượu vang California (Mỹ)</a></li>--}}
-{{--                                        <li><a href="{{ route('products.category', ['slug' => 'ruou-champagne']) }}">Rượu Champagne (Pháp)</a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="{{ route('products.category', ['slug' => 'ruou-manh']) }}">Rượu Mạnh</a></li>--}}
-{{--                    <li>--}}
-{{--                        <a href="#">Pha Lê Riedel <span uk-icon="icon: triangle-down"></span></a>--}}
-{{--                        <div class="uk-navbar-dropdown">--}}
-{{--                            <ul class="uk-nav uk-navbar-dropdown-nav">--}}
-{{--                                <li><a href="{{ route('product.show', ['slug' => 'ly-vang-do']) }}">Ly Vang Đỏ</a></li>--}}
-{{--                                <li><a href="{{ route('product.show', ['slug' => 'ly-vang-trang']) }}">Ly Vang Trắng</a></li>--}}
-{{--                                <li><a href="{{ route('product.show', ['slug' => 'ly-champagne']) }}">Ly Champagne</a></li>--}}
-{{--                                <li><a href="{{ route('product.show', ['slug' => 'ly-ruou-manh']) }}">Ly Rượu Mạnh</a></li>--}}
-{{--                                <li><a href="{{ route('product.show', ['slug' => 'ly-chan-mau']) }}">Ly Chân Màu</a></li>--}}
-{{--                                <li><a href="{{ route('product.show', ['slug' => 'ly-cocktail']) }}">Ly Cocktail</a></li>--}}
-{{--                                <li><a href="{{ route('product.show', ['slug' => 'coc-nuoc']) }}">Cốc nước</a></li>--}}
-{{--                                <li><a href="{{ route('product.show', ['slug' => 'binh-decanter']) }}">Bình Decanter</a></li>--}}
-{{--                                <li><a href="{{ route('product.show', ['slug' => 'phu-kien-ruou']) }}">Phụ kiện rượu</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </li>--}}
-{{--                    <li><a href="{{ route('brands.index') }}">Nhà sản xuất</a></li>--}}
-{{--                    <li><a href="" class="uk-icon"><span uk-icon="icon: gift"></span> QUÀ TẶNG</a></li>--}}
-{{--                    <li><a href="" class="uk-icon"><span uk-icon="icon: tag"></span> Khuyến mại</a></li>--}}
-{{--                    <li><a href="{{ route('post') }}">Kiến thức</a></li>--}}
-{{--                    <li><a href="">Liên hệ</a></li>--}}
-{{--                </ul>--}}
-                <div class="uk-navbar-item">
-                    <a href="#modal-full" class="text-white"  uk-search-icon uk-toggle></a>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <div class="header-main">
+        <div class="uk-container">
+            <nav class="uk-navbar header-nav" uk-navbar>
+                <div class="uk-navbar-left">
+                    <a class="header-logo" href="{{ route('home') }}">
+                        BIG<span>BA</span>
+                    </a>
+                    <ul class="uk-navbar-nav uk-margin-left">
+                        <li><a href="{{ route('home') }}">Trang chủ</a></li>
+                        <li><a href="{{ route('products.index') }}">Sản phẩm</a></li>
+                        <li><a href="{{ route('brands.index') }}">Nhà sản xuất</a></li>
+                        <li><a href="{{ route('posts.index') }}">Tin tức</a></li>
+                        <li><a href="{{ route('contact') }}">Liên hệ</a></li>
+                    </ul>
                 </div>
-                <div class="uk-navbar-item">
-                    <a class="uk-navbar-toggle" href="#offcanvas-cart" uk-toggle title="Giỏ hàng"><span uk-icon="icon: cart"></span></a>
-                </div>
-                @auth
-                    <!-- Profile Dropdown for Authenticated Users -->
-                    <div class="uk-navbar-item">
-                        <div class="uk-inline">
-                            <button class="" style="background: #990d23; border: none; color: #FFFFFF" type="button" title=""><span uk-icon="icon: user"></span></button>
-                            <div uk-dropdown="pos: bottom-right">
+
+                <div class="uk-navbar-right">
+                    <div class="header-icons uk-flex uk-flex-middle">
+                        <!-- Search -->
+                        <a href="#search-modal" uk-toggle title="Tìm kiếm">
+                            <span uk-icon="icon: search; ratio: 1"></span>
+                        </a>
+
+                        <!-- Wishlist -->
+                        <a href="{{ route('wishlist.index') }}" title="Yêu thích">
+                            <span uk-icon="icon: heart; ratio: 1"></span>
+                        </a>
+
+                        <!-- Cart -->
+                        <a href="#offcanvas-cart" uk-toggle title="Giỏ hàng" class="uk-position-relative">
+                            <span uk-icon="icon: cart; ratio: 1"></span>
+                        </a>
+                    </div>
+
+                    @auth
+                        <!-- User Dropdown -->
+                        <div class="uk-inline uk-margin-left">
+                            <button class="user-dropdown-btn" type="button">
+                                <span uk-icon="icon: user; ratio: 0.9"></span>
+                                <span class="user-name">{{ Auth::user()->name }}</span>
+                                <span uk-icon="icon: chevron-down; ratio: 0.7"></span>
+                            </button>
+                            <div uk-dropdown="pos: bottom-right; mode: click">
                                 <ul class="uk-nav uk-dropdown-nav">
-                                    <li class="uk-active"><a href="{{ route('user.profile') }}">{{ Auth::user()->name }}</a></li>
-                                    <li><a href="{{ route('orders.index') }}">My Orders</a></li>
+                                    <li><a href="{{ route('user.profile') }}"><span uk-icon="icon: user; ratio: 0.9" class="uk-margin-small-right"></span> Tài khoản</a></li>
+                                    <li><a href="{{ route('orders.index') }}"><span uk-icon="icon: bag; ratio: 0.9" class="uk-margin-small-right"></span> Đơn hàng</a></li>
+                                    <li><a href="{{ route('wishlist.index') }}"><span uk-icon="icon: heart; ratio: 0.9" class="uk-margin-small-right"></span> Yêu thích</a></li>
                                     <li class="uk-nav-divider"></li>
                                     <li>
-                                        <a href="{{ route('logout') }}"
-                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            Logout
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color: #990d23;">
+                                            <span uk-icon="icon: sign-out; ratio: 0.9" class="uk-margin-small-right"></span> Đăng xuất
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
@@ -148,117 +377,135 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                @endauth
+                    @endauth
 
-                @guest
-                    <!-- Login Button for Guests -->
-                    <div class="uk-navbar-item">
-                        <a class="uk-navbar-toggle uk-padding-remove" href="{{ route('login') }}">LOGIN</a>
-                    </div>
-                    <div class="uk-navbar-item">
-                        <a class="uk-navbar-toggle uk-padding-remove" href="{{ route('register') }}">REGISTER</a>
-                    </div>
-                @endguest
+                    @guest
+                        <a class="header-btn-login" href="{{ route('login') }}">Đăng nhập</a>
+                        <a class="header-btn-register" href="{{ route('register') }}">Đăng ký</a>
+                    @endguest
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Header -->
+<header class="mobile-header uk-hidden@l" uk-sticky="animation: uk-animation-slide-top">
+    <div class="uk-container">
+        <div class="uk-flex uk-flex-between uk-flex-middle">
+            <a class="mobile-toggle" href="#offcanvas-nav" uk-toggle>
+                <span uk-icon="icon: menu; ratio: 1.2"></span>
+            </a>
+
+            <a class="mobile-logo" href="{{ route('home') }}">
+                BIG<span>BA</span>
+            </a>
+
+            <div class="mobile-icons uk-flex">
+                <a href="#search-modal" uk-toggle>
+                    <span uk-icon="icon: search"></span>
+                </a>
+                <a href="#offcanvas-cart" uk-toggle>
+                    <span uk-icon="icon: cart"></span>
+                </a>
             </div>
-        </nav>
+        </div>
     </div>
 </header>
 
 <!-- Off-canvas menu for mobile -->
-<div id="offcanvas-nav" uk-offcanvas="overlay: true" >
-    <div class="uk-offcanvas-bar uk-width-1-2" style="background: #990d23 ">
+<div id="offcanvas-nav" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar" style="background: linear-gradient(135deg, #990d23 0%, #6b0a19 100%); width: 280px;">
         <button class="uk-offcanvas-close" type="button" uk-close></button>
-        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical" uk-nav>
-            <li class="uk-active"><a href="{{ route('home') }}">Trang chủ</a></li>
+
+        <div class="uk-margin-top uk-text-center">
+            <a class="mobile-logo" href="{{ route('home') }}" style="font-size: 24px;">
+                BIG<span>BA</span>
+            </a>
+        </div>
+
+        @auth
+            <div class="uk-margin uk-padding-small" style="background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 20px;">
+                <div class="uk-flex uk-flex-middle">
+                    <span uk-icon="icon: user; ratio: 1.2" style="color: #b4975a;"></span>
+                    <div class="uk-margin-small-left" style="color: #fff;">
+                        <div style="font-weight: 600;">{{ Auth::user()->name }}</div>
+                        <a href="{{ route('user.profile') }}" style="font-size: 12px; color: #b4975a;">Quản lý tài khoản</a>
+                    </div>
+                </div>
+            </div>
+        @endauth
+
+        <ul class="uk-nav uk-nav-default uk-margin-top" uk-nav>
+            <li class="uk-active"><a href="{{ route('home') }}" style="color: #fff;">Trang chủ</a></li>
             <li class="uk-parent">
-                <a href="#">RƯỢU VANG</a>
+                <a href="#" style="color: #fff;">Sản phẩm</a>
                 <ul class="uk-nav-sub">
-                    <li class="uk-parent">Theo loại rượu</li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-do']) }}">Rượu vang đỏ</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-trang']) }}">Rượu vang trắng</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-sui']) }}">Rượu vang sủi</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-champagne']) }}">Rượu Champagne</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-hong']) }}">Rượu vang hồng</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-ngot']) }}">Rượu vang ngọt</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-cuong-hoa']) }}">Rượu vang cường hóa</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-khong-con']) }}">Rượu vang không cồn</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-organic']) }}">Rượu vang Organic</a></li>
-                    <li class="uk-nav-divider"></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'tat-ca-ruou-vang']) }}" style="padding-left: 5px" class="link-p">Tất cả rượu vang</a></li>
-                    <li class="uk-nav-header">Theo quốc gia</li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-phap']) }}">Rượu vang Pháp</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-y']) }}">Rượu vang Ý</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'vang-tay-ban-nha']) }}">Rượu vang Tây Ban Nha</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-chile']) }}">Rượu vang Chile</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-my']) }}">Rượu vang Mỹ</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-uc']) }}">Rượu vang Úc</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-newzealand']) }}">Rượu vang New Zealand</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-argentina']) }}">Rượu vang Argentina</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-bo-dao-nha']) }}">Rượu vang Bồ Đào Nha</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-duc']) }}">Rượu vang Đức</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-nam-phi']) }}">Rượu vang Nam Phi</a></li>
-                    <li class="uk-nav-header">Theo giống nho</li>
-                    <li><a href="{{ route('products.category', ['slug' => 'cabernet-sauvignon']) }}">Cabernet Sauvignon</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'merlot']) }}">Merlot</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'syrah-shiraz']) }}">Syrah (Shiraz)</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'pinot-noir']) }}">Pinot Noir</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'malbec']) }}">Malbec</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'montepulciano-d-abruzzo']) }}">Montepulciano D'Abruzzo</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'negroamaro']) }}">Negroamaro</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'primitivo']) }}">Primitivo</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'chardonnay']) }}">Chardonnay</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'sauvignon-blanc']) }}">Sauvignon Blanc</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'riesling']) }}">Riesling</a></li>
-                    <li class="uk-nav-divider"></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'tim-giong-nho']) }}" style="padding-left: 5px" class="link-p">Tìm giống nho</a></li>
-                    <li class="uk-nav-header">Theo vùng nổi tiếng</li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-bordeaux']) }}">Rượu vang Bordeaux (Pháp)</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-burgundy']) }}">Rượu vang Bourgogne (Pháp)</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-tuscany']) }}">Rượu vang Tuscany (Ý)</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-puglia']) }}">Rượu vang Puglia (Ý)</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-piedmont']) }}">Rượu vang Piedmont (Ý)</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-veneto']) }}">Rượu vang Veneto (Ý)</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-mendoza']) }}">Rượu vang Mendoza (Argentina)</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-maipo']) }}">Rượu vang Maipo (Chile)</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-barossa']) }}">Rượu vang Barossa Valley (Úc)</a></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'ruou-vang-marlborough']) }}">Rượu vang Marlborough (New Zealand)</a></li>
-                    <li class="uk-nav-divider"></li>
-                    <li><a href="{{ route('products.category', ['slug' => 'tat-ca-ruou-vang']) }}" style="padding-left: 5px" class="link-p">Tất cả rượu vang</a></li>
+                    <li><a href="{{ route('products.index') }}" style="color: rgba(255,255,255,0.8);">Tất cả sản phẩm</a></li>
+                    @foreach ($menuTree as $menu)
+                        <li><a href="{{ $menu->url ?? '#' }}" style="color: rgba(255,255,255,0.8);">{{ $menu->name }}</a></li>
+                    @endforeach
                 </ul>
             </li>
-            <li><a href="#">SẢN PHẨM KHÁC</a></li>
-            <li><a href="#">TIN TỨC</a></li>
-            <li><a href="#">LIÊN HỆ</a></li>
+            <li><a href="{{ route('brands.index') }}" style="color: #fff;">Nhà sản xuất</a></li>
+            <li><a href="{{ route('posts.index') }}" style="color: #fff;">Tin tức</a></li>
+            <li><a href="{{ route('contact') }}" style="color: #fff;">Liên hệ</a></li>
+            @auth
+                <li class="uk-nav-divider" style="border-color: rgba(255,255,255,0.2);"></li>
+                <li><a href="{{ route('orders.index') }}" style="color: #fff;"><span uk-icon="bag" class="uk-margin-small-right"></span> Đơn hàng</a></li>
+                <li><a href="{{ route('wishlist.index') }}" style="color: #fff;"><span uk-icon="heart" class="uk-margin-small-right"></span> Yêu thích</a></li>
+                <li>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();" style="color: #b4975a;">
+                        <span uk-icon="sign-out" class="uk-margin-small-right"></span> Đăng xuất
+                    </a>
+                    <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+            @endauth
         </ul>
+
+        @guest
+            <div class="uk-margin-top uk-padding-small">
+                <a href="{{ route('login') }}" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom" style="background: transparent; border: 2px solid #fff; color: #fff; border-radius: 25px;">
+                    Đăng nhập
+                </a>
+                <a href="{{ route('register') }}" class="uk-button uk-width-1-1" style="background: #b4975a; color: #fff; border-radius: 25px;">
+                    Đăng ký
+                </a>
+            </div>
+        @endguest
     </div>
 </div>
 
 <!-- Search Modal -->
-<div id="modal-full" class="uk-modal-full" uk-modal>
+<div id="search-modal" class="uk-modal-full search-modal" uk-modal>
     <div class="uk-modal-dialog uk-flex uk-flex-center uk-flex-middle" uk-height-viewport>
-        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
-        <form class="uk-search uk-search-large">
-            <input class="uk-search-input uk-text-center" type="search" placeholder="Search..." autofocus>
-        </form>
-    </div>
-</div>
-
-<div id="offcanvas-cart" uk-offcanvas="flip: true; overlay: true">
-    <div class="uk-offcanvas-bar" style="background: #990d23 ">
-        <div class="uk-padding-remove">
-            <button class="uk-offcanvas-close" type="button" uk-close></button>
-            <div class="cart-popup-title uk-text-center">
-                <span class="heading-font uk-text-uppercase">Giỏ hàng</span>
-                <div class="uk-divider-icon"></div>
-            </div>
-            <div class="widget woocommerce widget_shopping_cart">
-                <div id="widget_shopping_cart_content" class="widget_shopping_cart_content">
-                    <!-- Cart summary will be rendered here by JavaScript -->
-                </div>
-            </div>
+        <button class="uk-modal-close-full uk-close-large" type="button" uk-close style="color: #fff;"></button>
+        <div class="uk-text-center">
+            <h2 style="color: #fff; font-family: 'Playfair Display', serif; margin-bottom: 30px;">Bạn đang tìm gì?</h2>
+            <form action="{{ route('products.index') }}" method="GET">
+                <input class="uk-search-input" type="search" name="q" placeholder="Nhập tên sản phẩm..." autofocus>
+                <button type="submit" class="search-btn uk-display-block uk-margin-auto">
+                    <span uk-icon="search" class="uk-margin-small-right"></span> Tìm kiếm
+                </button>
+            </form>
         </div>
     </div>
 </div>
 
-
+<!-- Cart Offcanvas -->
+<div id="offcanvas-cart" uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar" style="background: #fff; width: 350px; padding: 0;">
+        <div style="background: linear-gradient(135deg, #990d23 0%, #6b0a19 100%); padding: 20px; color: #fff;">
+            <button class="uk-offcanvas-close" type="button" uk-close style="color: #fff;"></button>
+            <h3 class="uk-margin-remove" style="font-family: 'Playfair Display', serif;">
+                <span uk-icon="icon: cart; ratio: 1.2" class="uk-margin-small-right"></span>
+                Giỏ hàng
+            </h3>
+        </div>
+        <div id="widget_shopping_cart_content" class="uk-padding">
+            <!-- Cart items will be loaded here -->
+        </div>
+    </div>
+</div>
