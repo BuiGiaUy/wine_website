@@ -1,6 +1,6 @@
 @extends('content.layouts.app')
 
-@section('title', 'Thông tin cá nhân')
+@section('title', 'Địa chỉ giao hàng')
 
 @section('style')
     <style>
@@ -56,12 +56,6 @@
             padding-bottom: 10px;
             border-bottom: 2px solid #990d23;
         }
-
-        .password-section {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
-        }
     </style>
 @endsection
 
@@ -81,8 +75,8 @@
                             <p class="uk-margin-small-top uk-text-bold">{{ Auth::user()->name }}</p>
                         </div>
                         <ul class="uk-nav uk-nav-default">
-                            <li class="uk-active"><a href="{{ route('user.profile') }}"><span uk-icon="user"></span> Thông tin cá nhân</a></li>
-                            <li><a href="{{ route('user.address') }}"><span uk-icon="location"></span> Địa chỉ giao hàng</a></li>
+                            <li><a href="{{ route('user.profile') }}"><span uk-icon="user"></span> Thông tin cá nhân</a></li>
+                            <li class="uk-active"><a href="{{ route('user.address') }}"><span uk-icon="location"></span> Địa chỉ giao hàng</a></li>
                             <li><a href="{{ route('orders.index') }}"><span uk-icon="bag"></span> Đơn hàng của tôi</a></li>
                             <li><a href="{{ route('wishlist.index') }}"><span uk-icon="heart"></span> Yêu thích</a></li>
                         </ul>
@@ -93,7 +87,7 @@
                 <div class="uk-width-3-4@m">
                     <div class="account-card uk-card uk-card-body">
                         <h3 class="form-section-title">
-                            <span uk-icon="user"></span> Thông tin cá nhân
+                            <span uk-icon="location"></span> Địa chỉ giao hàng
                         </h3>
 
                         @if(session('success'))
@@ -114,73 +108,42 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('user.profile.update') }}" method="POST">
+                        <form action="{{ route('user.address.update') }}" method="POST">
                             @csrf
 
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="name">Họ và tên *</label>
+                                <label class="uk-form-label" for="name">Họ và tên người nhận *</label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" id="name" name="name" type="text"
-                                           value="{{ old('name', $user->name) }}" required>
+                                           value="{{ old('name', $userInfo->name ?? Auth::user()->name) }}"
+                                           placeholder="Nhập họ tên người nhận hàng" required>
                                 </div>
                             </div>
 
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="email">Email *</label>
+                                <label class="uk-form-label" for="phone">Số điện thoại *</label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input" id="email" name="email" type="email"
-                                           value="{{ old('email', $user->email) }}" required>
+                                    <input class="uk-input" id="phone" name="phone" type="tel"
+                                           value="{{ old('phone', $userInfo->phone ?? '') }}"
+                                           placeholder="Nhập số điện thoại liên hệ" required>
                                 </div>
                             </div>
 
                             <div class="uk-margin">
+                                <label class="uk-form-label" for="address">Địa chỉ giao hàng *</label>
+                                <div class="uk-form-controls">
+                                    <textarea class="uk-textarea" id="address" name="address" rows="3"
+                                              placeholder="Nhập địa chỉ chi tiết (số nhà, đường, phường/xã, quận/huyện, tỉnh/thành phố)"
+                                              required>{{ old('address', $userInfo->address ?? '') }}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="uk-margin uk-margin-medium-top">
                                 <button class="custom-btn-primary uk-button" type="submit">
-                                    <span uk-icon="check"></span> Cập nhật thông tin
+                                    <span uk-icon="check"></span> Lưu địa chỉ
                                 </button>
                             </div>
                         </form>
-
-                        {{-- Password Change Section --}}
-                        <div class="password-section">
-                            <h3 class="form-section-title">
-                                <span uk-icon="lock"></span> Đổi mật khẩu
-                            </h3>
-
-                            <form action="{{ route('user.password.update') }}" method="POST">
-                                @csrf
-
-                                <div class="uk-margin">
-                                    <label class="uk-form-label" for="current_password">Mật khẩu hiện tại *</label>
-                                    <div class="uk-form-controls">
-                                        <input class="uk-input" id="current_password" name="current_password"
-                                               type="password" required>
-                                    </div>
-                                </div>
-
-                                <div class="uk-margin">
-                                    <label class="uk-form-label" for="password">Mật khẩu mới *</label>
-                                    <div class="uk-form-controls">
-                                        <input class="uk-input" id="password" name="password"
-                                               type="password" required minlength="8">
-                                    </div>
-                                    <small class="uk-text-muted">Tối thiểu 8 ký tự</small>
-                                </div>
-
-                                <div class="uk-margin">
-                                    <label class="uk-form-label" for="password_confirmation">Xác nhận mật khẩu mới *</label>
-                                    <div class="uk-form-controls">
-                                        <input class="uk-input" id="password_confirmation" name="password_confirmation"
-                                               type="password" required>
-                                    </div>
-                                </div>
-
-                                <div class="uk-margin">
-                                    <button class="custom-btn-primary uk-button" type="submit">
-                                        <span uk-icon="lock"></span> Đổi mật khẩu
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
