@@ -95,6 +95,59 @@ class ProductController extends Controller
     }
 
     /**
+     * Display search results.
+     */
+    public function search(Request $request)
+    {
+        $query = $request->get('q', '');
+
+        $breadcrumbs = [
+            ['title' => 'Trang chủ', 'url' => route('home')],
+            ['title' => 'Tìm kiếm: ' . $query]
+        ];
+
+        // Get filter parameters
+        $sortBy = $request->get('orderby', 'created_at');
+        $orderDirection = $this->getSortDirection($sortBy);
+        $minPrice = $request->get('min_price', 0);
+        $maxPrice = $request->get('max_price', PHP_INT_MAX);
+
+        // Determine order column
+        $orderBy = match($sortBy) {
+            'price', 'price-desc' => 'price',
+            default => 'created_at'
+        };
+
+        // Build query
+        $productsQuery = Product::with(['featuredImage', 'category', 'brand']);
+
+        // Apply search filter
+        if ($query) {
+            $productsQuery->where(function($q) use ($query) {
+                $q->where('name', 'like', '%' . $query . '%')
+                  ->orWhere('description', 'like', '%' . $query . '%');
+            });
+        }
+
+        // Apply price filter
+        if ($minPrice > 0 || $maxPrice < PHP_INT_MAX) {
+            $productsQuery->whereBetween('price', [$minPrice, $maxPrice]);
+        }
+
+        // Apply sorting
+        $productsQuery->orderBy($orderBy, $orderDirection);
+
+        $products = $productsQuery->paginate(12)->appends($request->query());
+
+        return view('content.products.search', [
+            'breadcrumbs' => $breadcrumbs,
+            'products' => $products,
+            'searchQuery' => $query,
+            'currentSort' => $sortBy
+        ]);
+    }
+
+    /**
      * Display the specified product.
      *
      * @param  int  $id
@@ -106,7 +159,7 @@ class ProductController extends Controller
         $product = Product::where('slug', $slug)->firstOrFail(); // Find product by ID or fail
         $breadcrumbs = [
             ['title' => 'Trang chủ', 'url' => route('home')],
-            ['title' => $product->category->name, 'url' => route('products.show', $product->category->slug)],
+            ['title' => $product->category->name, 'url' => route('products.category', $product->category->slug)],
             ['title' => $product->name]
         ];
         return view('content.products.show', [

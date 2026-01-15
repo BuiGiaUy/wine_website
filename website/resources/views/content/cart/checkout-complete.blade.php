@@ -114,7 +114,7 @@
                     <p>Chúng tôi sẽ liên hệ với bạn sớm nhất để xác nhận đơn hàng và thời gian giao hàng.</p>
                     <p>Xin vui lòng kiểm tra email của bạn để có thêm thông tin chi tiết về đơn hàng.</p>
                 </div>
-                <a href="/home" class="cta-button">Quay lại trang chủ</a>
+                <a href="/" class="cta-button">Quay lại trang chủ</a>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 @extends('content.layouts.app')
 
-@section('title', $category->name . ' - Sản phẩm')
+@section('title', 'Tìm kiếm: ' . $searchQuery)
 
 @section('style')
     <style>
@@ -70,54 +70,37 @@
             font-weight: 600;
         }
 
-        .category-header {
-            background: linear-gradient(135deg, #722F37 0%, #5a252c 100%);
+        .search-highlight {
+            background: linear-gradient(135deg, #990d23, #7a0a1c);
             color: #fff;
-            padding: 40px 0;
-            margin-bottom: 30px;
-        }
-
-        .category-header h1 {
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .category-header p {
-            color: rgba(255,255,255,0.8);
-            max-width: 600px;
-            margin: 0 auto;
+            padding: 2px 8px;
+            border-radius: 4px;
         }
     </style>
 @endsection
 
 @section('content')
-    {{-- Category Header --}}
-    <div class="category-header uk-text-center">
-        <div class="uk-container">
-            <h1 class="uk-heading-medium uk-margin-remove-bottom">{{ $category->name }}</h1>
-            @if($category->description)
-                <p class="uk-margin-small-top">{{ $category->description }}</p>
-            @endif
-        </div>
-    </div>
-
-    <div class="uk-section uk-section-small uk-padding-remove-top">
+    <div class="uk-section uk-section-small">
         <div class="uk-container">
             {{-- Breadcrumb --}}
             @include('content.components.breadcrumb', ['breadcrumbs' => $breadcrumbs])
 
-            <div class="uk-grid-medium uk-margin-top" uk-grid>
+            <h1 class="uk-heading-line uk-text-center uk-margin-medium-bottom">
+                <span>Kết quả tìm kiếm cho: <span class="search-highlight">"{{ $searchQuery }}"</span></span>
+            </h1>
+
+            <div class="uk-grid-medium" uk-grid>
                 {{-- Sidebar Filter --}}
                 <div class="uk-width-1-4@m">
                     <div class="filter-sidebar uk-padding">
                         {{-- Search --}}
                         <div class="uk-margin-bottom">
-                            <h4 class="filter-title">Tìm kiếm</h4>
-                            <form action="{{ route('products.index') }}" method="get">
+                            <h4 class="filter-title">Tìm kiếm mới</h4>
+                            <form action="{{ route('search') }}" method="get">
                                 <div class="uk-position-relative">
                                     <input type="search" class="uk-input" name="q"
                                            placeholder="Tìm sản phẩm..."
-                                           value="{{ request('q') }}">
+                                           value="{{ $searchQuery }}">
                                     <button type="submit"
                                             class="uk-position-center-right checkout-button"
                                             style="height: 100%; min-width: 2.5em; padding: 0 .6em; border: none;">
@@ -135,7 +118,7 @@
                                 <li><a href="{{ request()->fullUrlWithQuery(['min_price' => 500000, 'max_price' => 1000000]) }}">500K - 1 triệu</a></li>
                                 <li><a href="{{ request()->fullUrlWithQuery(['min_price' => 1000000, 'max_price' => 3000000]) }}">1 - 3 triệu</a></li>
                                 <li><a href="{{ request()->fullUrlWithQuery(['min_price' => 3000000, 'max_price' => null]) }}">Trên 3 triệu</a></li>
-                                <li><a href="{{ route('products.category', $category->slug) }}" class="uk-text-bold">Xóa bộ lọc</a></li>
+                                <li><a href="{{ route('search', ['q' => $searchQuery]) }}" class="uk-text-bold">Xóa bộ lọc</a></li>
                             </ul>
                         </div>
 
@@ -143,13 +126,8 @@
                         <div class="uk-margin-bottom">
                             <h4 class="filter-title">Danh mục</h4>
                             <ul class="uk-nav uk-nav-default">
-                                @foreach($navCategories as $cat)
-                                    <li class="{{ $cat->id == $category->id ? 'uk-active' : '' }}">
-                                        <a href="{{ route('products.category', $cat->slug) }}" 
-                                           style="{{ $cat->id == $category->id ? 'color: #990d23; font-weight: bold;' : '' }}">
-                                            {{ $cat->name }}
-                                        </a>
-                                    </li>
+                                @foreach($navCategories as $category)
+                                    <li><a href="{{ route('products.category', $category->slug) }}">{{ $category->name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -157,11 +135,12 @@
                         {{-- Sort --}}
                         <div class="uk-margin-bottom">
                             <h4 class="filter-title">Sắp xếp</h4>
-                            <form action="{{ route('products.category', $category->slug) }}" method="get">
+                            <form action="{{ route('search') }}" method="get">
+                                <input type="hidden" name="q" value="{{ $searchQuery }}">
                                 <select name="orderby" class="uk-select" onchange="this.form.submit()">
-                                    <option value="created_at" {{ request('orderby') == 'created_at' ? 'selected' : '' }}>Mới nhất</option>
-                                    <option value="price" {{ request('orderby') == 'price' ? 'selected' : '' }}>Giá: Thấp đến cao</option>
-                                    <option value="price-desc" {{ request('orderby') == 'price-desc' ? 'selected' : '' }}>Giá: Cao đến thấp</option>
+                                    <option value="created_at" {{ ($currentSort ?? '') == 'created_at' ? 'selected' : '' }}>Mới nhất</option>
+                                    <option value="price" {{ ($currentSort ?? '') == 'price' ? 'selected' : '' }}>Giá: Thấp đến cao</option>
+                                    <option value="price-desc" {{ ($currentSort ?? '') == 'price-desc' ? 'selected' : '' }}>Giá: Cao đến thấp</option>
                                 </select>
                             </form>
                         </div>
@@ -181,10 +160,15 @@
                     <div class="uk-flex uk-flex-between uk-flex-middle uk-margin-bottom">
                         @if($products->total() > 0)
                             <p class="uk-text-meta uk-margin-remove">
-                                Hiển thị {{ $products->firstItem() }}–{{ $products->lastItem() }} của {{ $products->total() }} sản phẩm trong <strong>{{ $category->name }}</strong>
+                                Tìm thấy <strong>{{ $products->total() }}</strong> sản phẩm
+                                (Hiển thị {{ $products->firstItem() }}–{{ $products->lastItem() }})
                             </p>
                         @else
-                            <p class="uk-text-meta uk-margin-remove">Không tìm thấy sản phẩm nào trong danh mục này.</p>
+                            <div class="uk-width-1-1 uk-text-center uk-padding-large">
+                                <span uk-icon="icon: search; ratio: 3" style="color: #ddd;"></span>
+                                <h3 class="uk-margin-top">Không tìm thấy sản phẩm nào</h3>
+                                <p class="uk-text-muted">Thử tìm kiếm với từ khóa khác hoặc <a href="{{ route('products.index') }}" style="color: #990d23;">xem tất cả sản phẩm</a></p>
+                            </div>
                         @endif
                     </div>
 
@@ -210,7 +194,7 @@
                                                 </a>
                                             </h5>
                                             <p class="uk-text-small uk-text-muted uk-margin-remove">
-                                                {{ $product->brand->name ?? 'N/A' }}
+                                                {{ $product->category->name ?? 'N/A' }}
                                             </p>
                                             <div class="uk-flex uk-flex-between uk-flex-middle uk-margin-small-top">
                                                 <span class="product-price">{{ number_format($product->price) }}₫</span>
@@ -227,16 +211,7 @@
 
                         {{-- Pagination --}}
                         <div class="uk-flex uk-flex-center uk-margin-large-top">
-                            {{ $products->appends(request()->query())->links('content.components.pagination') }}
-                        </div>
-                    @else
-                        <div class="uk-text-center uk-padding-large">
-                            <span uk-icon="icon: bag; ratio: 3" style="color: #ddd;"></span>
-                            <h3 class="uk-margin-top">Chưa có sản phẩm</h3>
-                            <p class="uk-text-muted">Danh mục này hiện chưa có sản phẩm. Vui lòng quay lại sau.</p>
-                            <a href="{{ route('products.index') }}" class="uk-button uk-button-primary" style="background: #990d23;">
-                                Xem tất cả sản phẩm
-                            </a>
+                            {{ $products->links('content.components.pagination') }}
                         </div>
                     @endif
                 </div>

@@ -174,44 +174,36 @@
                                     <div class="uk-card uk-padding-remove uk-card-body">
                                         <h1 class="uk-text-bold uk-text-large btn-wine">{{ $product->name }}</h1>
 {{--                                        rating--}}
+                                        @php
+                                            $avgRating = $product->averageRating();
+                                            $reviewCount = $product->reviewsCount();
+                                            $ratingWidth = ($avgRating / 5) * 100;
+                                        @endphp
                                         <div class="uk-margin" uk-margin>
                                             <div class="uk-flex" uk-grid>
                                                 <div class="uk-width-auto">
-                                                    <div class="uk-position-relative uk-display-inline-block uk-rating"
-                                                         uk-rating="{rating: 4.6, size: 18, width: 103.3, best: 5}">
+                                                    <div class="uk-position-relative uk-display-inline-block">
                                                         <div class="uk-position-relative uk-display-inline-block">
-                                                            <div
-                                                                class="uk-rating-stars uk-display-inline-block uk-position-relative">
-                                                                <span class="uk-rating-star uk-icon"
-                                                                      uk-icon="icon: star"></span>
-                                                                <span class="uk-rating-star uk-icon"
-                                                                      uk-icon="icon: star"></span>
-                                                                <span class="uk-rating-star uk-icon"
-                                                                      uk-icon="icon: star"></span>
-                                                                <span class="uk-rating-star uk-icon"
-                                                                      uk-icon="icon: star"></span>
-                                                                <span class="uk-rating-star uk-icon"
-                                                                      uk-icon="icon: star"></span>
+                                                            <div class="uk-display-inline-block uk-position-relative" style="color: #ddd;">
+                                                                <span uk-icon="icon: star"></span>
+                                                                <span uk-icon="icon: star"></span>
+                                                                <span uk-icon="icon: star"></span>
+                                                                <span uk-icon="icon: star"></span>
+                                                                <span uk-icon="icon: star"></span>
                                                             </div>
-                                                            <div
-                                                                class="uk-position-absolute uk-position-cover uk-display-inline-block uk-rating-stars"
-                                                                style="overflow: hidden; width: 103.3px;">
-                                                                <span class="uk-rating-star uk-icon"
-                                                                      uk-icon="icon: star"></span>
-                                                                <span class="uk-rating-star uk-icon"
-                                                                      uk-icon="icon: star"></span>
-                                                                <span class="uk-rating-star uk-icon"
-                                                                      uk-icon="icon: star"></span>
-                                                                <span class="uk-rating-star uk-icon"
-                                                                      uk-icon="icon: star"></span>
-                                                                <span class="uk-rating-star uk-icon"
-                                                                      uk-icon="icon: star"></span>
+                                                            <div class="uk-position-absolute uk-position-cover uk-display-inline-block"
+                                                                 style="overflow: hidden; width: {{ $ratingWidth }}%; color: #D4AF37;">
+                                                                <span uk-icon="icon: star"></span>
+                                                                <span uk-icon="icon: star"></span>
+                                                                <span uk-icon="icon: star"></span>
+                                                                <span uk-icon="icon: star"></span>
+                                                                <span uk-icon="icon: star"></span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="uk-width-auto">
-                                                    <span class="uk-text-muted uk-margin-small-left">4.6/5 - (5 bình chọn)</span>
+                                                    <span class="uk-text-muted uk-margin-small-left">{{ $avgRating > 0 ? $avgRating : '-' }}/5 - ({{ $reviewCount }} đánh giá)</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -416,6 +408,156 @@
                                                 </div>
                                             </li>
                                         </ul>
+
+                                        {{-- Reviews Section --}}
+                                        <h3 class="heading-yellow uk-heading-line uk-text-center uk-margin-large-top">
+                                            <span>Đánh giá sản phẩm ({{ $product->reviewsCount() }})</span>
+                                        </h3>
+
+                                        @if(session('success'))
+                                            <div class="uk-alert-success" uk-alert>
+                                                <a class="uk-alert-close" uk-close></a>
+                                                <p>{{ session('success') }}</p>
+                                            </div>
+                                        @endif
+
+                                        @if($errors->any())
+                                            <div class="uk-alert-danger" uk-alert>
+                                                <a class="uk-alert-close" uk-close></a>
+                                                <ul class="uk-list">
+                                                    @foreach($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+
+                                        {{-- Average Rating Display --}}
+                                        <div class="uk-card uk-card-default uk-card-body uk-margin">
+                                            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                                <div class="uk-width-auto">
+                                                    <div class="uk-text-center">
+                                                        <div style="font-size: 48px; font-weight: bold; color: #990d23;">
+                                                            {{ $product->averageRating() > 0 ? $product->averageRating() : '-' }}
+                                                        </div>
+                                                        <div class="uk-flex uk-flex-center">
+                                                            @for($i = 1; $i <= 5; $i++)
+                                                                @if($i <= floor($product->averageRating()))
+                                                                    <span uk-icon="icon: star" style="color: #D4AF37;"></span>
+                                                                @elseif($i - 0.5 <= $product->averageRating())
+                                                                    <span uk-icon="icon: star" style="color: #D4AF37; opacity: 0.5;"></span>
+                                                                @else
+                                                                    <span uk-icon="icon: star" style="color: #ddd;"></span>
+                                                                @endif
+                                                            @endfor
+                                                        </div>
+                                                        <div class="uk-text-muted uk-text-small">{{ $product->reviewsCount() }} đánh giá</div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-expand">
+                                                    @php
+                                                        $totalReviews = $product->reviewsCount() ?: 1;
+                                                        $ratingCounts = [];
+                                                        for ($i = 5; $i >= 1; $i--) {
+                                                            $ratingCounts[$i] = $product->reviews()->where('rating', $i)->count();
+                                                        }
+                                                    @endphp
+                                                    @for($i = 5; $i >= 1; $i--)
+                                                        <div class="uk-grid-small uk-flex-middle uk-margin-small" uk-grid>
+                                                            <div class="uk-width-auto">
+                                                                <span>{{ $i }}</span>
+                                                                <span uk-icon="icon: star; ratio: 0.8" style="color: #D4AF37;"></span>
+                                                            </div>
+                                                            <div class="uk-width-expand">
+                                                                <progress class="uk-progress" value="{{ $ratingCounts[$i] }}" max="{{ $totalReviews }}" style="height: 8px;"></progress>
+                                                            </div>
+                                                            <div class="uk-width-auto uk-text-muted uk-text-small" style="width: 30px;">
+                                                                {{ $ratingCounts[$i] }}
+                                                            </div>
+                                                        </div>
+                                                    @endfor
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{-- Review Form --}}
+                                        @auth
+                                            @php
+                                                $userReview = $product->reviews()->where('user_id', Auth::id())->first();
+                                            @endphp
+                                            <div class="uk-card uk-card-default uk-card-body uk-margin">
+                                                <h4 class="uk-margin-small-bottom" style="color: #990d23;">
+                                                    {{ $userReview ? 'Cập nhật đánh giá của bạn' : 'Viết đánh giá' }}
+                                                </h4>
+                                                <form action="{{ route('products.review.store', $product->slug) }}" method="POST">
+                                                    @csrf
+                                                    <div class="uk-margin">
+                                                        <label class="uk-form-label">Đánh giá của bạn *</label>
+                                                        <div class="uk-flex uk-flex-middle star-rating-input" style="gap: 5px;">
+                                                            @for($i = 1; $i <= 5; $i++)
+                                                                <label style="cursor: pointer;">
+                                                                    <input type="radio" name="rating" value="{{ $i }}" class="uk-hidden" {{ old('rating', $userReview->rating ?? 5) == $i ? 'checked' : '' }}>
+                                                                    <span uk-icon="icon: star; ratio: 1.5" class="rating-star" data-value="{{ $i }}" style="color: {{ $i <= ($userReview->rating ?? 5) ? '#D4AF37' : '#ddd' }};"></span>
+                                                                </label>
+                                                            @endfor
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-margin">
+                                                        <label class="uk-form-label" for="comment">Nhận xét</label>
+                                                        <textarea class="uk-textarea" id="comment" name="comment" rows="4" placeholder="Chia sẻ trải nghiệm của bạn về sản phẩm này...">{{ old('comment', $userReview->comment ?? '') }}</textarea>
+                                                    </div>
+                                                    <div class="uk-margin">
+                                                        <button type="submit" class="uk-button" style="background: #990d23; color: #fff; border-radius: 5px;">
+                                                            <span uk-icon="check"></span> {{ $userReview ? 'Cập nhật đánh giá' : 'Gửi đánh giá' }}
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        @else
+                                            <div class="uk-card uk-card-default uk-card-body uk-margin uk-text-center">
+                                                <p>Vui lòng <a href="{{ route('login') }}" style="color: #990d23; font-weight: 600;">đăng nhập</a> để viết đánh giá.</p>
+                                            </div>
+                                        @endauth
+
+                                        {{-- Reviews List --}}
+                                        @if($product->reviews->count() > 0)
+                                            <div class="uk-margin-medium-top">
+                                                @foreach($product->reviews as $review)
+                                                    <div class="uk-card uk-card-default uk-card-body uk-margin-small">
+                                                        <div class="uk-grid-small" uk-grid>
+                                                            <div class="uk-width-auto">
+                                                                <div class="uk-border-circle uk-flex uk-flex-center uk-flex-middle" style="width: 50px; height: 50px; background: #990d23; color: #fff; font-weight: bold; font-size: 18px;">
+                                                                    {{ strtoupper(substr($review->user->name, 0, 1)) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="uk-width-expand">
+                                                                <div class="uk-flex uk-flex-between uk-flex-middle">
+                                                                    <div>
+                                                                        <h5 class="uk-margin-remove-bottom uk-text-bold">{{ $review->user->name }}</h5>
+                                                                        <div class="uk-flex" style="gap: 2px;">
+                                                                            @for($i = 1; $i <= 5; $i++)
+                                                                                <span uk-icon="icon: star; ratio: 0.8" style="color: {{ $i <= $review->rating ? '#D4AF37' : '#ddd' }};"></span>
+                                                                            @endfor
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="uk-text-muted uk-text-small">
+                                                                        {{ $review->created_at->diffForHumans() }}
+                                                                    </div>
+                                                                </div>
+                                                                @if($review->comment)
+                                                                    <p class="uk-margin-small-top uk-margin-remove-bottom">{{ $review->comment }}</p>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @else
+                                            <div class="uk-text-center uk-margin-medium-top uk-text-muted">
+                                                <span uk-icon="icon: comments; ratio: 2"></span>
+                                                <p>Chưa có đánh giá nào. Hãy là người đầu tiên đánh giá sản phẩm này!</p>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -435,4 +577,47 @@
             </div>
         </div>
     </main>
+
+    <script>
+    // Interactive star rating
+    document.addEventListener('DOMContentLoaded', function() {
+        const ratingContainer = document.querySelector('.star-rating-input');
+        if (ratingContainer) {
+            const stars = ratingContainer.querySelectorAll('.rating-star');
+            const inputs = ratingContainer.querySelectorAll('input[name="rating"]');
+
+            function updateStars(value) {
+                stars.forEach((star, index) => {
+                    if (index < value) {
+                        star.style.color = '#D4AF37';
+                    } else {
+                        star.style.color = '#ddd';
+                    }
+                });
+            }
+
+            stars.forEach((star, index) => {
+                star.addEventListener('mouseenter', function() {
+                    updateStars(index + 1);
+                });
+
+                star.addEventListener('click', function() {
+                    const value = index + 1;
+                    inputs.forEach(input => {
+                        input.checked = (parseInt(input.value) === value);
+                    });
+                    updateStars(value);
+                });
+            });
+
+            ratingContainer.addEventListener('mouseleave', function() {
+                let checkedValue = 5;
+                inputs.forEach(input => {
+                    if (input.checked) checkedValue = parseInt(input.value);
+                });
+                updateStars(checkedValue);
+            });
+        }
+    });
+    </script>
 @endsection

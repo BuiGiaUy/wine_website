@@ -62,6 +62,38 @@ class Product extends Model
         return $this->hasMany(Image::class, 'model_id','id')->where('model_type', self::class);
     }
 
+    /**
+     * Get all reviews for the product.
+     */
+    public function reviews()
+    {
+        return $this->hasMany(ProductReview::class)->where('is_approved', true)->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Get all reviews including unapproved (for admin).
+     */
+    public function allReviews()
+    {
+        return $this->hasMany(ProductReview::class)->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Get the average rating for the product.
+     */
+    public function averageRating(): float
+    {
+        return round($this->reviews()->avg('rating') ?? 0, 1);
+    }
+
+    /**
+     * Get the total number of reviews.
+     */
+    public function reviewsCount(): int
+    {
+        return $this->reviews()->count();
+    }
+
     public function deleteImages()
     {
         $images = Image::where('model_type', 'post')->where('model_id', $this->id)->get();

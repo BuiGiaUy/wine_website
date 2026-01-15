@@ -113,7 +113,7 @@ class DatabaseSeeder extends Seeder
         // Main menu items
         $home = Menu::create([
             'name' => 'Trang chủ',
-            'url' => '/home',
+            'url' => '/',
             'parent_id' => null,
         ]);
 

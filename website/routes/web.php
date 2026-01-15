@@ -22,6 +22,7 @@ Route::get('/showHeader', [Controller::class, 'showHeader'])->name('showHeader')
 //Route::get('/brand', [App\Http\Controllers\HomeController::class, 'brand'])->name('brand');
 Route::get('/post', [App\Http\Controllers\HomeController::class, 'post'])->name('post');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 Route::prefix('user')->middleware(['auth'])->group(function () {
     Route::get('/profile', [UserController::class, 'showProfile'])->name('user.profile');
     Route::get('/address', [UserController::class, 'showAddress'])->name('user.address');
@@ -32,8 +33,11 @@ Route::prefix('user')->middleware(['auth'])->group(function () {
 
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('products.index');
-    Route::get('/{slug}', [ProductController::class, 'show'])->name('products.show');
     Route::get('/category/{slug}', [ProductController::class, 'category'])->name('products.category');
+    Route::post('/{slug}/review', [\App\Http\Controllers\Frontend\ProductReviewController::class, 'store'])
+        ->middleware('auth')
+        ->name('products.review.store');
+    Route::get('/{slug}', [ProductController::class, 'show'])->name('products.show');
 });
 
 Route::prefix('brands')->group(function() {
