@@ -113,6 +113,16 @@
                             </ul>
                         </div>
 
+                        {{-- Category Filter --}}
+                        <div class="uk-margin-bottom">
+                            <h4 class="filter-title">Danh mục</h4>
+                            <ul class="uk-nav uk-nav-default">
+                                @foreach($navCategories as $category)
+                                    <li><a href="{{ route('products.category', $category->slug) }}">{{ $category->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+
                         {{-- Sort --}}
                         <div class="uk-margin-bottom">
                             <h4 class="filter-title">Sắp xếp</h4>

@@ -327,7 +327,18 @@
                     </a>
                     <ul class="uk-navbar-nav uk-margin-left">
                         <li><a href="{{ route('home') }}">Trang chủ</a></li>
-                        <li><a href="{{ route('products.index') }}">Sản phẩm</a></li>
+                        <li>
+                            <a href="{{ route('products.index') }}">Sản phẩm</a>
+                            <div class="uk-navbar-dropdown" uk-dropdown="mode: hover; pos: bottom-left">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li><a href="{{ route('products.index') }}"><strong>Tất cả sản phẩm</strong></a></li>
+                                    <li class="uk-nav-divider"></li>
+                                    @foreach($navCategories as $category)
+                                        <li><a href="{{ route('products.category', $category->slug) }}">{{ $category->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </li>
                         <li><a href="{{ route('brands.index') }}">Nhà sản xuất</a></li>
                         <li><a href="{{ route('posts.index') }}">Tin tức</a></li>
                         <li><a href="{{ route('contact') }}">Liên hệ</a></li>
