@@ -3,59 +3,57 @@
 @section('title', 'Blog Posts')
 
 @section('content')
-    <header class="uk-background-cover uk-margin-remove-bottom uk-background-center-center uk-position-relative " data-src="https://winecellar.vn/wp-content/uploads/2022/04/pinot-noir-banner.jpg" uk-img style="margin-bottom: 40px">
-        <div class="uk-overlay uk-overlay-primary uk-position-cover" style="background-color: rgba(0, 0, 0, 0.4); "></div>
-        <section class="uk-section uk-section-large uk-text-center uk-position-relative">
-            <div class="uk-container uk-container-large">
-                <div class="uk-position-center uk-text-center">
-                    <h1 class="uk-heading-default " style="color: #cccccc">
-                        Rượu vang cho người mới bắt đầu
-                    </h1>
-                </div>
-            </div>
-        </section>
-    </header>
-    <section class="uk-section uk-section-small uk-padding-small" id="section_1984779848">
-        <div class="uk-background-cover b"></div>
-        @include('content.components.breadcrumb', ['breadcrumbs' => $breadcrumbs])
-    </section>
-    <div class="uk-container uk-margin-top">
-        <div class="uk-grid uk-grid-match uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
-            @foreach ($posts as $post)
-                <!-- Blog Post Item -->
-                <div class="uk-card uk-card-body uk-padding-small  uk-card-hover ">
-                    <div class="uk-card-media-top ">
-                        @if ($post->featuredImage)
-                            <img src="{{ $post->featuredImage->path }}" alt="{{ $post->featuredImage->alt }}" class="uk-img uk-margin-auto" style="height: 250px; object-fit: cover;">
-                        @else
-                            <img src="https://winecellar.vn/wp-content/uploads/2023/04/hai-san-va-ruou-vang-600x400.jpg" alt="Default Image"  class="uk-img uk-margin-auto" style="height: 250px; object-fit: cover;">
-                        @endif
-                    </div>
-                    <div class="uk-padding-small">
-                        <a href="{{ route('posts.show', ['slug' => $post->slug]) }}"  style="text-decoration: none;">
-                            <h3 class="uk-text-large uk-text-center uk-margin-remove">{{ $post->name }}</h3>
-                        </a>
-                        <p class="uk-text-default uk-text-center uk-padding-small uk-margin-remove">{{ $post->description }}</p>
-                    </div>
-                </div>
-            @endforeach
-
-            <!-- Blog Post Item -->
-            <div>
-                <div class="uk-card uk-card-hover ">
-                    <a href="https://winecellar.vn/15-mon-ngon-ket-hop-cung-ruou-vang/" style="text-decoration: none">
-                        <div class="uk-card-media-top">
-                            <img style="height: 250px" src="https://winecellar.vn/wp-content/uploads/2023/04/hai-san-va-ruou-vang-600x400.jpg" alt="15+ Món Ngon Ăn Kèm Với Rượu Vang" class="uk-img">
-                        </div>
-                        <h3 class="uk-text-large uk-text-center uk-padding-small uk-margin-remove">15+ Món Ngon Ăn Kèm Với Rượu Vang và 3 Quy Tắc Vàng Dành Cho Người Mới</h3>
-                    </a>
-                    <p class="uk-text-default uk-text-center uk-padding-small uk-margin-remove">Rượu vang và đồ ăn từ lâu vẫn đi liền với nhau, một chai rượu [...]</p>
-                </div>
-            </div>
-            <!-- Repeat for other posts -->
-
+    <!-- Hero Section -->
+    <header class="uk-background-cover uk-background-center-center uk-position-relative uk-height-medium uk-flex uk-flex-center uk-flex-middle" 
+            data-src="https://winecellar.vn/wp-content/uploads/2022/04/pinot-noir-banner.jpg" uk-img>
+        <div class="uk-overlay uk-overlay-primary uk-position-cover" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+        <div class="uk-position-relative uk-text-center uk-light z-index-1">
+            <h1 class="hero-title uk-margin-remove">Kiến Thức Rượu Vang</h1>
+             <p class="uk-text-lead uk-margin-small-top">Khám phá thế giới rượu vang đầy cảm hứng</p>
         </div>
-    </div>
+    </header>
 
+    <section class="uk-section bg-light">
+        <div class="uk-container">
+            <!-- Breadcrumb -->
+            <div class="uk-margin-medium-bottom">
+                 @include('content.components.breadcrumb', ['breadcrumbs' => $breadcrumbs])
+            </div>
 
+            <!-- Blog Grid -->
+            <div class="uk-grid-medium uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-3@l uk-grid-match" uk-grid>
+                @foreach ($posts as $post)
+                    <div>
+                        <div class="blog-card">
+                            <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="uk-link-reset">
+                                <div class="uk-cover-container blog-card-image">
+                                    @if ($post->featuredImage)
+                                        <img src="{{ asset($post->featuredImage->path) }}" alt="{{ $post->name }}" uk-cover>
+                                    @else
+                                        <img src="https://winecellar.vn/wp-content/uploads/2023/04/hai-san-va-ruou-vang-600x400.jpg" alt="Default Image" uk-cover>
+                                    @endif
+                                </div>
+                            </a>
+                            <div class="blog-card-body">
+                                <h3 class="blog-title">
+                                    <a href="{{ route('posts.show', ['slug' => $post->slug]) }}">{{ $post->name }}</a>
+                                </h3>
+                                <p class="blog-excerpt">
+                                    {{ Str::limit($post->description, 120) }}
+                                </p>
+                                <div class="uk-margin-auto-top">
+                                    <a href="{{ route('posts.show', ['slug' => $post->slug]) }}" class="uk-button uk-button-text text-primary">Đọc tiếp <span uk-icon="arrow-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <!-- Pagination -->
+            <div class="uk-margin-large-top">
+                 {{ $posts->links('content.components.pagination') }}
+            </div>
+        </div>
+    </section>
 @endsection

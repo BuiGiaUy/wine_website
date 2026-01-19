@@ -69,6 +69,7 @@ Route::namespace('admin')->group(function () {
         // Quản lý Order
         Route::group(['prefix' => 'order'], function () {
             Route::get('/', [OrderController::class, 'index'])->name('admin.orders.index');
+            Route::get('/export', [OrderController::class, 'export'])->name('admin.orders.export');
             Route::get('/{id}', [OrderController::class, 'show'])->name('admin.orders.show');
             Route::delete('/delete/{id}', [OrderController::class, 'destroy'])->name('admin.order.delete');
         });

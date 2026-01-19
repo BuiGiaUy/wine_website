@@ -18,6 +18,7 @@ class BrandController extends Controller
     public function show($slug)
     {
         $brand = Brand::where("slug", $slug)->firstOrFail();
-        return view('content.brands.show', ['brand' => $brand]);
+        $products = $brand->products()->paginate(12);
+        return view('content.brands.show', ['brand' => $brand, 'products' => $products]);
     }
 }

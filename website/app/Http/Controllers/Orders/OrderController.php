@@ -46,7 +46,7 @@ class OrderController extends Controller
     }
     public function checkoutVNPay () {
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://winewebsite.th/cart/checkout-complete";
+        $vnp_Returnurl = route('cart.checkoutComplete');
         $vnp_TmnCode = "GTIRHD0X";//Mã website tại VNPAY
         $vnp_HashSecret = "VNS34LU4SQJOM2W93BUYJMXU1YH4URQS"; //Chuỗi bí mật
 

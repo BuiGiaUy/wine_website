@@ -40,19 +40,19 @@ class ConfigController extends Controller
     public function updateProfile(Request $request) {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . auth()->id(),
+            'email' => 'required|string|email|max:255|unique:admins,email,' . auth('admin')->id(),
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
-        $user = auth()->user();
-        $user->name = $request->name;
-        $user->email = $request->email;
+        $admin = auth('admin')->user();
+        $admin->name = $request->name;
+        $admin->email = $request->email;
 
         if ($request->password) {
-            $user->password = Hash::make($request->password);
+            $admin->password = Hash::make($request->password);
         }
 
-        $user->save();
+        $admin->save();
 
         return redirect()->route('admin.profile')->with('success', 'Profile updated successfully.');
     }
