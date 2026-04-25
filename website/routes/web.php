@@ -81,3 +81,8 @@ Route::prefix('posts')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('posts.index'); // Route for listing all posts
     Route::get('/{slug}', [PostController::class, 'show'])->name('posts.show'); // Route for showing a single post
 });
+
+// CTV Schedule Registration Page
+Route::get('/ctv/schedule', [App\Http\Controllers\Frontend\CtvSchedulePageController::class, 'index'])
+    ->name('ctv.schedule');
+
