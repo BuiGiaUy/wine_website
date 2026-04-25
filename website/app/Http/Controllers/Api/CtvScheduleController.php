@@ -9,153 +9,78 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * CTV Schedule Controller — User-facing endpoints.
+ *
+ * All routes are protected by:
+ *   - auth (web guard / session) → user must be logged in
+ *   - ctv                        → user must exist in ctv_profiles
+ */
 class CtvScheduleController extends Controller
 {
     // ──────────────────────────────────────────────
-    //  CTV PROFILES — CRUD
+    //  GET /api/ctv/schedule/me?week_key=YYYY-WW
     // ──────────────────────────────────────────────
 
     /**
-     * List all CTV profiles (with related user info).
-     * GET /api/ctv/profiles
+     * Return the authenticated CTV's level and schedule for the requested week.
+     * If no schedule exists for that week, returns an empty slots array.
      */
-    public function indexProfiles(): JsonResponse
-    {
-        $profiles = CtvProfile::with('user:id,name,email')->get();
-
-        return response()->json([
-            'success' => true,
-            'data'    => $profiles,
-        ]);
-    }
-
-    /**
-     * Show a single CTV profile.
-     * GET /api/ctv/profiles/{userId}
-     */
-    public function showProfile(int $userId): JsonResponse
-    {
-        $profile = CtvProfile::with('user:id,name,email')->find($userId);
-
-        if (!$profile) {
-            return response()->json([
-                'success' => false,
-                'message' => 'CTV profile not found.',
-            ], 404);
-        }
-
-        return response()->json([
-            'success' => true,
-            'data'    => $profile,
-        ]);
-    }
-
-    /**
-     * Create or update a CTV profile for a user.
-     * POST /api/ctv/profiles
-     *
-     * Body: { "user_id": 1, "level": "NEW" }
-     */
-    public function storeProfile(Request $request): JsonResponse
+    public function me(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required|integer|exists:users,id',
-            'level'   => 'required|in:NEW,SENIOR',
+            'week_key' => ['required', 'string', 'regex:/^\d{4}-\d{2}$/'],
         ]);
 
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
+                'message' => 'Invalid week_key format. Expected YYYY-WW.',
                 'errors'  => $validator->errors(),
             ], 422);
         }
 
-        $profile = CtvProfile::updateOrCreate(
-            ['user_id' => $request->input('user_id')],
-            ['level'   => $request->input('level')]
-        );
+        $user    = $request->user();
+        $profile = CtvProfile::where('user_id', $user->id)->firstOrFail();
+        $weekKey = $request->input('week_key');
+
+        $schedule = CtvSchedule::where('user_id', $user->id)
+            ->where('week_key', $weekKey)
+            ->first();
+
+        // Compute total free hours
+        $slots     = $schedule ? ($schedule->slots ?? []) : [];
+        $slotCount = count($slots);
+        $freeHours = $profile->level === 'SENIOR'
+            ? CtvProfile::TOTAL_SLOTS_PER_WEEK - $slotCount
+            : $slotCount;
 
         return response()->json([
             'success' => true,
-            'message' => 'CTV profile saved.',
-            'data'    => $profile,
-        ], 201);
-    }
-
-    /**
-     * Delete a CTV profile (cascades to schedules).
-     * DELETE /api/ctv/profiles/{userId}
-     */
-    public function destroyProfile(int $userId): JsonResponse
-    {
-        $deleted = CtvProfile::where('user_id', $userId)->delete();
-
-        if (!$deleted) {
-            return response()->json([
-                'success' => false,
-                'message' => 'CTV profile not found.',
-            ], 404);
-        }
-
-        return response()->json([
-            'success' => true,
-            'message' => 'CTV profile and related schedules deleted.',
+            'data'    => [
+                'user_id'          => $user->id,
+                'user_name'        => $user->name,
+                'level'            => $profile->level,
+                'week_key'         => $weekKey,
+                'slots'            => $slots,
+                'is_finalized'     => $schedule->is_finalized ?? false,
+                'total_free_hours' => $freeHours,
+            ],
         ]);
     }
 
     // ──────────────────────────────────────────────
-    //  CTV SCHEDULES — CRUD
+    //  POST /api/ctv/schedule/save
     // ──────────────────────────────────────────────
 
     /**
-     * List schedules for a given user (optionally filtered by week_key).
-     * GET /api/ctv/schedules/{userId}?week_key=2026-17
-     */
-    public function indexSchedules(int $userId, Request $request): JsonResponse
-    {
-        $profile = CtvProfile::find($userId);
-
-        if (!$profile) {
-            return response()->json([
-                'success' => false,
-                'message' => 'CTV profile not found for this user.',
-            ], 404);
-        }
-
-        $query = CtvSchedule::where('user_id', $userId);
-
-        if ($request->filled('week_key')) {
-            $query->where('week_key', $request->input('week_key'));
-        }
-
-        $schedules = $query->orderByDesc('week_key')->get();
-
-        // Append computed attribute
-        $schedules->each(function ($schedule) {
-            $schedule->append('total_free_hours');
-        });
-
-        return response()->json([
-            'success' => true,
-            'level'   => $profile->level,
-            'data'    => $schedules,
-        ]);
-    }
-
-    /**
-     * Create or update a weekly schedule (upsert by user_id + week_key).
-     * POST /api/ctv/schedules
+     * Save (create or update) the authenticated CTV's schedule for a given week.
      *
-     * Body: {
-     *   "user_id":  1,
-     *   "week_key": "2026-17",
-     *   "slots":    ["Mon_Morning", "Mon_Afternoon", "Tue_Evening"]
-     * }
+     * Body: { "week_key": "2026-17", "slots": ["Mon_Morning", "Tue_Afternoon"] }
      */
-    public function storeSchedule(Request $request): JsonResponse
+    public function save(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
-            'user_id'  => 'required|integer|exists:ctv_profiles,user_id',
             'week_key' => ['required', 'string', 'regex:/^\d{4}-\d{2}$/'],
             'slots'    => 'required|array',
             'slots.*'  => 'string|in:' . implode(',', CtvProfile::ALL_SLOTS),
@@ -164,13 +89,16 @@ class CtvScheduleController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
+                'message' => 'Validation failed.',
                 'errors'  => $validator->errors(),
             ], 422);
         }
 
+        $user = $request->user();
+
         $schedule = CtvSchedule::updateOrCreate(
             [
-                'user_id'  => $request->input('user_id'),
+                'user_id'  => $user->id,
                 'week_key' => $request->input('week_key'),
             ],
             [
@@ -178,76 +106,29 @@ class CtvScheduleController extends Controller
             ]
         );
 
+        $schedule->load('profile');
         $schedule->append('total_free_hours');
 
         return response()->json([
             'success' => true,
-            'message' => 'Schedule saved.',
+            'message' => 'Schedule saved successfully.',
             'data'    => $schedule,
         ], 201);
     }
 
-    /**
-     * Finalize a schedule (mark as confirmed).
-     * PATCH /api/ctv/schedules/{id}/finalize
-     */
-    public function finalizeSchedule(int $id): JsonResponse
-    {
-        $schedule = CtvSchedule::find($id);
-
-        if (!$schedule) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Schedule not found.',
-            ], 404);
-        }
-
-        $schedule->is_finalized = true;
-        $schedule->save();
-
-        $schedule->append('total_free_hours');
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Schedule finalized.',
-            'data'    => $schedule,
-        ]);
-    }
-
-    /**
-     * Delete a schedule entry.
-     * DELETE /api/ctv/schedules/{id}
-     */
-    public function destroySchedule(int $id): JsonResponse
-    {
-        $schedule = CtvSchedule::find($id);
-
-        if (!$schedule) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Schedule not found.',
-            ], 404);
-        }
-
-        $schedule->delete();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Schedule deleted.',
-        ]);
-    }
-
     // ──────────────────────────────────────────────
-    //  REPORTING
+    //  POST /api/ctv/schedule/copy-previous
     // ──────────────────────────────────────────────
 
     /**
-     * Weekly availability report for all CTVs.
-     * GET /api/ctv/report?week_key=2026-17
+     * Copy the previous week's slots to the current (target) week.
      *
-     * Returns each CTV's level, registered slots, and computed free hours.
+     * Body: { "week_key": "2026-17" }
+     *
+     * Logic: calculates week_key - 1, finds that schedule, and upserts
+     * the current week with the same slots.
      */
-    public function weeklyReport(Request $request): JsonResponse
+    public function copyPrevious(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
             'week_key' => ['required', 'string', 'regex:/^\d{4}-\d{2}$/'],
@@ -256,40 +137,62 @@ class CtvScheduleController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
+                'message' => 'Invalid week_key format. Expected YYYY-WW.',
                 'errors'  => $validator->errors(),
             ], 422);
         }
 
-        $weekKey = $request->input('week_key');
+        $user       = $request->user();
+        $targetWeek = $request->input('week_key');
 
-        $profiles = CtvProfile::with(['user:id,name,email', 'schedules' => function ($q) use ($weekKey) {
-            $q->where('week_key', $weekKey);
-        }])->get();
+        // ── Calculate previous week key ──────────────────────
+        [$year, $week] = explode('-', $targetWeek);
+        $year = (int) $year;
+        $week = (int) $week;
 
-        $report = $profiles->map(function (CtvProfile $profile) use ($weekKey) {
-            $schedule  = $profile->schedules->first();
-            $slotCount = $schedule ? count($schedule->slots ?? []) : 0;
+        if ($week <= 1) {
+            // Roll back to last week of the previous year (ISO 8601)
+            $prevYear = $year - 1;
+            $prevWeek = (int) date('W', strtotime("$prevYear-12-28"));
+            // Dec 28 always belongs to the last ISO week of its year
+        } else {
+            $prevYear = $year;
+            $prevWeek = $week - 1;
+        }
 
-            if ($profile->level === 'SENIOR') {
-                $freeHours = CtvProfile::TOTAL_SLOTS_PER_WEEK - $slotCount;
-            } else {
-                $freeHours = $slotCount;
-            }
+        $prevWeekKey = sprintf('%04d-%02d', $prevYear, $prevWeek);
 
-            return [
-                'user_id'        => $profile->user_id,
-                'user_name'      => $profile->user->name ?? null,
-                'level'          => $profile->level,
-                'week_key'       => $weekKey,
-                'slots'          => $schedule->slots ?? [],
-                'is_finalized'   => $schedule->is_finalized ?? false,
-                'total_free_hours' => $freeHours,
-            ];
-        });
+        // ── Find previous week schedule ──────────────────────
+        $previousSchedule = CtvSchedule::where('user_id', $user->id)
+            ->where('week_key', $prevWeekKey)
+            ->first();
+
+        if (!$previousSchedule || empty($previousSchedule->slots)) {
+            return response()->json([
+                'success' => false,
+                'message' => "No schedule found for previous week ($prevWeekKey). Nothing to copy.",
+            ], 404);
+        }
+
+        // ── Upsert target week with copied slots ─────────────
+        $schedule = CtvSchedule::updateOrCreate(
+            [
+                'user_id'  => $user->id,
+                'week_key' => $targetWeek,
+            ],
+            [
+                'slots' => $previousSchedule->slots,
+            ]
+        );
+
+        $schedule->load('profile');
+        $schedule->append('total_free_hours');
 
         return response()->json([
-            'success' => true,
-            'data'    => $report,
-        ]);
+            'success'          => true,
+            'message'          => "Slots copied from week $prevWeekKey to $targetWeek.",
+            'copied_from_week' => $prevWeekKey,
+            'data'             => $schedule,
+        ], 201);
     }
 }

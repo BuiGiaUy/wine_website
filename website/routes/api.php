@@ -29,21 +29,22 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
 
 // ─── CTV Availability Management ────────────────────────────
 use App\Http\Controllers\Api\CtvScheduleController;
+use App\Http\Controllers\Api\Admin\AdminCtvController;
 
-Route::prefix('ctv')->group(function () {
+// CTV User-side routes (requires login + CTV profile)
+Route::prefix('ctv/schedule')
+    ->middleware(['auth', 'ctv'])
+    ->group(function () {
+        Route::get('/me',            [CtvScheduleController::class, 'me']);
+        Route::post('/save',         [CtvScheduleController::class, 'save']);
+        Route::post('/copy-previous',[CtvScheduleController::class, 'copyPrevious']);
+    });
 
-    // Profiles
-    Route::get('/profiles',            [CtvScheduleController::class, 'indexProfiles']);
-    Route::get('/profiles/{userId}',   [CtvScheduleController::class, 'showProfile']);
-    Route::post('/profiles',           [CtvScheduleController::class, 'storeProfile']);
-    Route::delete('/profiles/{userId}',[CtvScheduleController::class, 'destroyProfile']);
+// Admin CTV management routes (requires admin login)
+Route::prefix('admin/ctv')
+    ->middleware('auth:admin')
+    ->group(function () {
+        Route::get('/stats',       [AdminCtvController::class, 'stats']);
+        Route::get('/export-data', [AdminCtvController::class, 'exportData']);
+    });
 
-    // Schedules
-    Route::get('/schedules/{userId}',        [CtvScheduleController::class, 'indexSchedules']);
-    Route::post('/schedules',                [CtvScheduleController::class, 'storeSchedule']);
-    Route::patch('/schedules/{id}/finalize', [CtvScheduleController::class, 'finalizeSchedule']);
-    Route::delete('/schedules/{id}',         [CtvScheduleController::class, 'destroySchedule']);
-
-    // Reporting
-    Route::get('/report', [CtvScheduleController::class, 'weeklyReport']);
-});
