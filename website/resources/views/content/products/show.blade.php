@@ -123,6 +123,7 @@
                             <input type="hidden" name="name" value="{{ $product->name }}">
                             <input type="hidden" name="price" value="{{ $product->price }}">
                             <input type="hidden" name="image" value="{{ $product->featuredImage->path ?? 'https://via.placeholder.com/300' }}">
+                            <input type="hidden" name="url" value="{{ route('products.show', $product->slug) }}">
                             
                             <button type="submit" class="uk-button btn-primary-custom uk-width-expand">Thêm vào giỏ hàng</button>
                         </div>
